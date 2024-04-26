@@ -1,0 +1,15 @@
+<div>
+    <form [formGroup]="formularioLogueo" (ngSubmit)="logueoUsuario();">
+        <fieldset>
+            <label for="usuario">Usuario</label>
+            <input type="text" value="" id="usuario" formControlName="usuario">
+        </fieldset>
+        <fieldset>
+            <label for="password">Contraseña</label>
+            <input type="password" value="" id="password" formControlName="password">
+        </fieldset>
+        <fieldset>
+            <input type="submit" value="Iniciar sesión" id="boton-logueo">
+        </fieldset>
+    </form>
+</div>
