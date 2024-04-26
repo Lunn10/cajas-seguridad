@@ -1,1 +1,2 @@
-<app-pantalla-logueo/>
+<app-pantalla-logueo *ngIf="!_sesionService.getSesionIniciada()" />
+<app-pantalla-inicio *ngIf="_sesionService.getSesionIniciada()" />

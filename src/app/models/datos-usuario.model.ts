@@ -1,4 +1,4 @@
 export interface IDatosUsuario {
-    nombre : string;
-    tipoUsuario : string;
+    nombre? : string;
+    tipoUsuario? : string;
 }
