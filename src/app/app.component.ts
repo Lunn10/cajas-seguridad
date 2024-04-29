@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { PantallaLogueoComponent } from './pantallas/pantalla-logueo/pantalla-logueo.component';
 import { PantallaInicioComponent } from "./pantallas/pantalla-inicio/pantalla-inicio.component";
 import { NgIf } from '@angular/common';

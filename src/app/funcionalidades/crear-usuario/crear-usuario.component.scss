@@ -1,0 +1,15 @@
+.contenedor-pagina {
+    display: flex !important;
+    flex-direction: column !important;
+    align-content: center !important;
+    align-items: center;
+}
+
+    .contenedor-formulario {
+        width: 50%;
+        text-align: center;
+    }
+
+        .input-extendido {
+            width: 90%;
+        }
