@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormularioLogueoService } from '../../services/formulario-logueo.service';
 import { IDatosUsuario } from '../../models/datos-usuario.model';
-import { SesionsService } from '../../services/sesion.service';
+import { SesionService } from '../../services/sesion.service';
 
 @Component({
   selector: 'app-pantalla-logueo',
@@ -18,7 +18,7 @@ export class PantallaLogueoComponent {
   constructor( 
     private form : FormBuilder, 
     private formularioLogueoService : FormularioLogueoService,
-    private _sesionService : SesionsService
+    private _sesionService : SesionService
   ) {
     this.formularioLogueo = this.form.group({
       usuario : ['', Validators.required],

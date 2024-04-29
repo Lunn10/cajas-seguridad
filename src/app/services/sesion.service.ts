@@ -4,12 +4,12 @@ import { IDatosUsuario } from '../models/datos-usuario.model';
 @Injectable({
   providedIn: 'root'
 })
-export class SesionsService {
-  sesionIniciada : boolean = false;
+export class SesionService {
+  sesionIniciada : boolean = true;
 
   datosUsuario : IDatosUsuario = {
-    nombre : '',
-    tipoUsuario: ''
+    nombre : 'nahuel',
+    tipoUsuario: 'root'
   }
 
   constructor() { }
