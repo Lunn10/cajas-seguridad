@@ -12,8 +12,8 @@
                 <mat-form-field class="input-extendido">
                     <mat-label for="password">Contraseña</mat-label>
                     <input matInput id="password" [type]="oculto ? 'password' : 'text'" formControlName="password">
-                    <button mat-icon-button matSuffix (click)="oculto = !oculto" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="oculto">
-                    <mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        <button mat-icon-button matSuffix (click)="oculto = !oculto" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="oculto">
+                        <mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
             </fieldset>
@@ -22,9 +22,10 @@
                     <mat-label for="repetir-password">Repetir contraseña</mat-label>
                     <input matInput id="repetir-password" [type]="oculto ? 'password' : 'text'" formControlName="repetirPassword">
                     <button mat-icon-button matSuffix (click)="oculto = !oculto" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="oculto">
-                    <mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        <mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
+                <mat-error *ngIf="formularioCrearUsuario.getError('debeSerIgual');">Las contraseñas no coinciden</mat-error>
             </fieldset>
             <fieldset>
                 <mat-form-field class="input-extendido">
@@ -42,5 +43,4 @@
             </fieldset>
         </form>
     </div>
-
 </div>
