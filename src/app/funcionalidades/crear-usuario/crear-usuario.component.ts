@@ -5,8 +5,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NgFor } from '@angular/common';
-import {FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EncabezadoComponent } from '../../components/encabezado/encabezado.component';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -18,7 +19,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     MatIconModule, 
     MatAutocompleteModule, 
     ReactiveFormsModule, 
-    NgFor
+    NgFor,
+    EncabezadoComponent
   ],
   templateUrl: './crear-usuario.component.html',
   styleUrl: './crear-usuario.component.scss'
@@ -26,7 +28,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CrearUsuarioComponent {
   oculto : boolean = true;
   formularioCrearUsuario : FormGroup;
-  opcionesSelect : string[] = ['administrador', 'producción', 'administración'];
+  opcionesSelect : string[] = ['Administrador', 'Producción', 'Administración'];
 
   constructor(
     private form : FormBuilder, 
@@ -46,7 +48,7 @@ export class CrearUsuarioComponent {
 
   filter(): void {
     const filterValue = this.input.nativeElement.value.toLowerCase();
-    this.valoresFiltrados = this.opcionesSelect.filter(o => o.toLowerCase().includes(filterValue));
+    this.valoresFiltrados = this.opcionesSelect.filter(o => o.includes(filterValue));
   }
 
   crearUsuario() {

@@ -35,8 +35,21 @@ $cajas-seguridad-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($cajas-seguridad-theme);
 
+@font-face {
+  font-family: "corporate-s-regular";
+  src: url(assets/fonts/corporate-s-regular.otf) format("opentype");
+}
+
 body {
     margin: 0px !important;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { 
+  height: 100%; 
+}
+
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background-color: #ECE6E5;
+}
