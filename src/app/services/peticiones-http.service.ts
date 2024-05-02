@@ -19,6 +19,12 @@ export class PeticionesHttpService {
   }
 
   public crearUsuario(datosUsuario : FormGroup) : Observable<IRespuestaServer> {
-    return this._httpClient.post<IRespuestaServer>('localhost:8900/users', datosUsuario.value);
+    let datosEnvio = {
+      user: datosUsuario.value.usuario,
+      password: datosUsuario.value.password,
+      role: datosUsuario.value.tipoUsuario
+    }
+
+    return this._httpClient.post<IRespuestaServer>('localhost:8900/users', datosEnvio);
   }
 }

@@ -1,0 +1,45 @@
+<app-encabezado titulo="Crear usuario"/>
+
+<div class="contenedor-pagina">
+    <div class="contenedor-formulario">
+        <form [formGroup]="formularioCrearUsuario" (ngSubmit)="crearUsuario();">
+            <mat-form-field class="input-extendido">
+                <mat-label for="usuario">Usuario</mat-label>
+                <input matInput placeholder="Usuario" id="usuario" value="" formControlName="usuario">
+                <mat-error>Usuario requerido</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-extendido">
+                <mat-label for="password">Contraseña</mat-label>
+                <input matInput id="password" [type]="oculto ? 'password' : 'text'" (change)="resetearCampoConfirmacion();" formControlName="password" >
+                    <button mat-icon-button matSuffix (click)="oculto = !oculto" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="oculto">
+                    <mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error>Contraseña requerida</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-extendido">
+                <mat-label for="repetir-password">Repetir contraseña</mat-label>
+                <input matInput id="repetir-password" [type]="oculto ? 'password' : 'text'" formControlName="repetirPassword">
+                <button mat-icon-button matSuffix (click)="oculto = !oculto" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="oculto">
+                    <mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error>
+                    <span *ngIf="!formularioCrearUsuario?.get('repetirPassword')?.hasError('required') && formularioCrearUsuario?.get('repetirPassword')?.hasError('notEqual')">Las contraseñas no coinciden</span>
+                    <span *ngIf="formularioCrearUsuario?.get('repetirPassword')?.hasError('required')">Confirmación de contraseña requerida</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-extendido">
+                <mat-label for="tipo-usuario">Tipo de usuario</mat-label>
+                <input #input type="text" id="tipo-usuario" placeholder="Seleccione uno" matInput formControlName="tipoUsuario" [matAutocomplete]="auto" (input)="filter()" (focus)="filter()">
+                <mat-autocomplete requireSelection #auto="matAutocomplete">
+                    @for (option of valoresFiltrados; track option) {
+                        <mat-option [value]="option">{{option}}</mat-option>
+                    }
+                </mat-autocomplete>
+                <mat-error>Tipo de usuario requerido</mat-error>
+            </mat-form-field>
+            <mat-card-actions>
+                <button class="input-extendido" mat-raised-button color="primary">Cargar usuario</button>
+            </mat-card-actions>
+        </form>
+    </div>
+</div>

@@ -5,7 +5,14 @@
     display: flex;
     align-items: center;
     background-color: #FFFFFF;
-    font-size: 5vh;
+    font-size: 4vh;
     font-weight: bold;
     font-family: "corporate-s-regular";
 }
+
+    .imagen-logo {
+        width: 8vh;
+        height: 8vh;
+        scale: 1.3;
+        margin: 0vw 1vw;
+    }

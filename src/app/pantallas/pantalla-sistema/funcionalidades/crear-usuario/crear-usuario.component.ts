@@ -4,13 +4,12 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatError, MatFormFieldModule} from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
 import { NgFor, NgIf } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EncabezadoComponent } from '../../components/encabezado/encabezado.component';
-import { CustomValidators } from '../../otros/custom-validators'; 
-import { PeticionesHttpService } from '../../services/peticiones-http.service';
-import { IRespuestaServer } from '../../models/respuesta-server.model';
+import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
+import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -21,7 +20,8 @@ import { IRespuestaServer } from '../../models/respuesta-server.model';
     MatButtonModule, 
     MatIconModule, 
     MatError,
-    MatAutocompleteModule, 
+    MatAutocompleteModule,
+    MatCardModule, 
     ReactiveFormsModule, 
     NgFor,
     NgIf,
@@ -42,18 +42,34 @@ export class CrearUsuarioComponent {
     this.formularioCrearUsuario = this.form.group({
       usuario : ['', Validators.required],
       password : ['', Validators.required],
-      repetirPassword : ['', [ Validators.required ]
-      ],
+      repetirPassword : ['', [Validators.required, this.passwordMatchValidator.bind(this)] ],
       tipoUsuario : ['', Validators.required]
-    },
-    {
-      validators: CustomValidators.debeSerIgual(
-        'password',
-        'repetirPassword'
-      ),
     })
     
     this.valoresFiltrados = this.opcionesSelect.slice()
+  }
+
+  resetearCampoConfirmacion() : void {
+    this.formularioCrearUsuario?.patchValue({repetirPassword: ""});
+  }
+
+  passwordMatchValidator(control : FormControl) {
+    let password : String = '';
+    let repetirPassword : String = '';
+
+    if(this.formularioCrearUsuario?.get('password')?.value) {
+      password = this.formularioCrearUsuario.get('password')?.value;
+    }
+
+    if(this.formularioCrearUsuario?.get('repetirPassword')?.value) {
+      repetirPassword = this.formularioCrearUsuario.get('repetirPassword')?.value;
+    }
+
+    if (password !== repetirPassword) {
+      return { notEqual: true };
+    } else {
+      return null;
+    }
   }
 
   @ViewChild('input') input!: ElementRef<HTMLInputElement>;
@@ -65,8 +81,17 @@ export class CrearUsuarioComponent {
   }
 
   crearUsuario() {
-    this._peticionesHttp.crearUsuario(this.formularioCrearUsuario).subscribe((respuesta : IRespuestaServer) => {
-      console.log(respuesta);
+    if(!this.formularioCrearUsuario.valid) {
+      return;
+    }
+
+    this._peticionesHttp.crearUsuario(this.formularioCrearUsuario).subscribe({
+      next : () => {
+
+      },
+      error : () => {
+
+      }
     });
   }
 }
