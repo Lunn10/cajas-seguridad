@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -10,6 +10,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
 import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
+import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -25,7 +26,11 @@ import { PeticionesHttpService } from '../../../../services/peticiones-http.serv
     ReactiveFormsModule, 
     NgFor,
     NgIf,
-    EncabezadoComponent
+    EncabezadoComponent,
+    RespuestaServerComponent
+  ],
+  providers: [
+    RespuestaServerComponent
   ],
   templateUrl: './crear-usuario.component.html',
   styleUrl: './crear-usuario.component.scss'
@@ -34,10 +39,14 @@ export class CrearUsuarioComponent {
   oculto : boolean = true;
   formularioCrearUsuario : FormGroup;
   opcionesSelect : string[] = ['Administrador', 'Producción', 'Administración'];
+  @ViewChild('input') input!: ElementRef<HTMLInputElement>;
+  mensajeServer : String = '';
+  valoresFiltrados: string[];
 
   constructor(
     private form : FormBuilder, 
-    private _peticionesHttp : PeticionesHttpService
+    private _peticionesHttp : PeticionesHttpService,
+    private _respuestaServer : RespuestaServerComponent
   ) {
     this.formularioCrearUsuario = this.form.group({
       usuario : ['', Validators.required],
@@ -54,7 +63,6 @@ export class CrearUsuarioComponent {
   }
 
   mostrarOcultarPassword() : void {
-    
     this.oculto = !this.oculto;
   }
 
@@ -77,9 +85,6 @@ export class CrearUsuarioComponent {
     }
   }
 
-  @ViewChild('input') input!: ElementRef<HTMLInputElement>;
-  valoresFiltrados: string[];
-
   filter(): void {
     const filterValue = this.input.nativeElement.value.toLowerCase();
     this.valoresFiltrados = this.opcionesSelect.filter(o => o.includes(filterValue));
@@ -91,12 +96,21 @@ export class CrearUsuarioComponent {
     }
 
     this._peticionesHttp.crearUsuario(this.formularioCrearUsuario).subscribe({
-      next : () => {
-
+      next : (data) => {
+        this.mostrarMensajeServer(data.message);
       },
-      error : () => {
-
+      error : (data) => {
+        this.mostrarMensajeServer(data.message);
       }
     });
+  }
+
+  mostrarMensajeServer(mensaje : String) : void {
+    this.mensajeServer = mensaje;
+    
+    setTimeout(
+      () => {
+        this.mensajeServer = '';
+      }, 3000);
   }
 }

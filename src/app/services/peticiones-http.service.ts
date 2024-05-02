@@ -15,16 +15,16 @@ export class PeticionesHttpService {
   ) { }
 
   public logueoUsuario(datosLogueo : FormGroup) : Observable<IDatosUsuario> {
-    return this._httpClient.post<IDatosUsuario>('localhost:8900/users', datosLogueo.value);
+    return this._httpClient.post<IDatosUsuario>('http://localhost:8900/users', datosLogueo.value);
   }
 
   public crearUsuario(datosUsuario : FormGroup) : Observable<IRespuestaServer> {
     let datosEnvio = {
-      user: datosUsuario.value.usuario,
+      userName: datosUsuario.value.usuario,
       password: datosUsuario.value.password,
       role: datosUsuario.value.tipoUsuario
     }
 
-    return this._httpClient.post<IRespuestaServer>('localhost:8900/users', datosEnvio);
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/users/register', datosEnvio);
   }
 }
