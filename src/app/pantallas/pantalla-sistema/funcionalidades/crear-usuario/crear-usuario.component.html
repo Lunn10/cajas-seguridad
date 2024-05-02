@@ -11,17 +11,17 @@
             <mat-form-field class="input-extendido">
                 <mat-label for="password">Contraseña</mat-label>
                 <input matInput id="password" [type]="oculto ? 'password' : 'text'" (change)="resetearCampoConfirmacion();" formControlName="password" >
-                    <button mat-icon-button matSuffix (click)="oculto = !oculto" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="oculto">
-                    <mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
+                    <button type="button" mat-icon-button matSuffix (click)="mostrarOcultarPassword();" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="oculto">
+                        <mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
                 <mat-error>Contraseña requerida</mat-error>
             </mat-form-field>
             <mat-form-field class="input-extendido">
                 <mat-label for="repetir-password">Repetir contraseña</mat-label>
                 <input matInput id="repetir-password" [type]="oculto ? 'password' : 'text'" formControlName="repetirPassword">
-                <button mat-icon-button matSuffix (click)="oculto = !oculto" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="oculto">
-                    <mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
+                    <button type="button" mat-icon-button matSuffix (click)="mostrarOcultarPassword();" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="oculto">
+                        <mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
                 <mat-error>
                     <span *ngIf="!formularioCrearUsuario?.get('repetirPassword')?.hasError('required') && formularioCrearUsuario?.get('repetirPassword')?.hasError('notEqual')">Las contraseñas no coinciden</span>
                     <span *ngIf="formularioCrearUsuario?.get('repetirPassword')?.hasError('required')">Confirmación de contraseña requerida</span>

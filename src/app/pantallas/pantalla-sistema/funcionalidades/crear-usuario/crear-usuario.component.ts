@@ -53,6 +53,11 @@ export class CrearUsuarioComponent {
     this.formularioCrearUsuario?.patchValue({repetirPassword: ""});
   }
 
+  mostrarOcultarPassword() : void {
+    
+    this.oculto = !this.oculto;
+  }
+
   passwordMatchValidator(control : FormControl) {
     let password : String = '';
     let repetirPassword : String = '';
