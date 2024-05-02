@@ -12,10 +12,11 @@ export const routes: Routes = [
     { path: '', component: PantallaInicioComponent },
     { path: 'administrar-sistema', component: PantallaSistemaComponent, children: [
         { path: 'crear-usuario', component: CrearUsuarioComponent },
+        { path: 'crear-usuario/:idUser', component: CrearUsuarioComponent },
         { path: 'lista-usuarios', component: ListaUsuariosComponent },
         { path: 'crear-tipo-usuario', component: CrearTipoUsuarioComponent },
         { path: 'lista-tipos-usuario', component: ListaTiposUsuarioComponent }
-        ] },
+    ] },
     { path: 'sistema-administracion', component: PantallaAdministracionComponent },
     { path: 'sistema-produccion', component: PantallaProduccionComponent },
     { path: '**', redirectTo: '', pathMatch: 'full' }

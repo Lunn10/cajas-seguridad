@@ -1,1 +1,12 @@
-<p>lista-usuarios works!</p>
+<app-encabezado titulo="Lista de usuarios" />
+<app-respuesta-server [mensaje]="mensajeServer" />
+
+<div class="contenido-pagina">
+    <app-tarjeta-usuario 
+        [usuario]="usuario" 
+        *ngFor="let usuario of listaUsuarios" 
+        class="contenedor-tarjeta-usuario"  
+        [ngClass]="{'usuario-activo' : usuario.active, 'usuario-inactivo' : !usuario.active}"  
+        (eventoEnviarRespuestaServer)="establecerRespuestaServer($event);"
+    />
+</div>

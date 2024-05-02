@@ -1,0 +1,19 @@
+<div class="contenedor-icono">
+    <mat-icon aria-hidden="false" fontIcon="perm_identity"></mat-icon>
+</div>
+<div class="contenedor-datos-usuario">
+    <div class="etiqueta-nombre-usuario">{{usuario.userName}}</div>
+    <div class="etiqueta-tipo-usuario">({{usuario.role}})</div>
+</div>
+<div class="contenedor-boton-accion">
+    <a [routerLink]="['../crear-usuario', usuario.idUser]">
+        <button mat-icon-button aria-label="Editar usuario">
+            <mat-icon aria-hidden="false" fontIcon="manage_accounts" ></mat-icon>
+        </button>
+    </a>
+</div>
+<div class="contenedor-boton-accion">
+    <button mat-icon-button aria-label="Dar de baja usuario" (click)="bajaUsuario(usuario.idUser)">
+        <mat-icon aria-hidden="false" fontIcon="person_remove"></mat-icon>
+    </button>
+</div>

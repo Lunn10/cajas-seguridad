@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
 import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
 import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -29,13 +30,10 @@ import { RespuestaServerComponent } from '../../../../components/respuesta-serve
     EncabezadoComponent,
     RespuestaServerComponent
   ],
-  providers: [
-    RespuestaServerComponent
-  ],
   templateUrl: './crear-usuario.component.html',
   styleUrl: './crear-usuario.component.scss'
 })
-export class CrearUsuarioComponent {
+export class CrearUsuarioComponent implements OnInit {
   oculto : boolean = true;
   formularioCrearUsuario : FormGroup;
   opcionesSelect : string[] = ['Administrador', 'Producción', 'Administración'];
@@ -43,10 +41,17 @@ export class CrearUsuarioComponent {
   mensajeServer : String = '';
   valoresFiltrados: string[];
 
+  datosUsuario = {
+    usuario: '',
+    password: '',
+    tipoUsuario: '',
+    idUser: 0
+  }
+
   constructor(
     private form : FormBuilder, 
     private _peticionesHttp : PeticionesHttpService,
-    private _respuestaServer : RespuestaServerComponent
+    private _route : ActivatedRoute
   ) {
     this.formularioCrearUsuario = this.form.group({
       usuario : ['', Validators.required],
@@ -56,6 +61,12 @@ export class CrearUsuarioComponent {
     })
     
     this.valoresFiltrados = this.opcionesSelect.slice()
+  }
+
+  ngOnInit() {
+    this._route.params.subscribe( params => {
+      this.datosUsuario.idUser = params['idUser'];
+    })
   }
 
   resetearCampoConfirmacion() : void {

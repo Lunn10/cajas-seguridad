@@ -18,6 +18,20 @@ export class PeticionesHttpService {
     return this._httpClient.post<IDatosUsuario>('http://localhost:8900/users', datosLogueo.value);
   }
 
+  public obtenerUsuarios() : Observable<IRespuestaServer> {
+    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/users/showusers');
+  }
+
+  public bajaUsuario(idUser : Number) : Observable<IRespuestaServer> {
+    let data = {
+      idUser: idUser
+    }
+
+    console.log(data);
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/users/downuser', data);
+  }
+
   public crearUsuario(datosUsuario : FormGroup) : Observable<IRespuestaServer> {
     let datosEnvio = {
       userName: datosUsuario.value.usuario,
