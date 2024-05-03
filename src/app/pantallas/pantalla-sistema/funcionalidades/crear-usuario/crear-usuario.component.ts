@@ -40,13 +40,7 @@ export class CrearUsuarioComponent implements OnInit {
   @ViewChild('input') input!: ElementRef<HTMLInputElement>;
   mensajeServer : String = '';
   valoresFiltrados: string[];
-
-  datosUsuario = {
-    usuario: '',
-    password: '',
-    tipoUsuario: '',
-    idUser: 0
-  }
+  idUsuario : Number = 0;
 
   constructor(
     private form : FormBuilder, 
@@ -54,6 +48,7 @@ export class CrearUsuarioComponent implements OnInit {
     private _route : ActivatedRoute
   ) {
     this.formularioCrearUsuario = this.form.group({
+      idUsuario: [this.idUsuario],
       usuario : ['', Validators.required],
       password : ['', Validators.required],
       repetirPassword : ['', [Validators.required, this.passwordMatchValidator.bind(this)] ],
@@ -64,8 +59,13 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.formularioCrearUsuario.reset();
+    this.formularioCrearUsuario?.patchValue({idUsuario: this.idUsuario});
+
     this._route.params.subscribe( params => {
-      this.datosUsuario.idUser = params['idUser'];
+      if(params['idUser']) {
+        this.obtenerUsuario(params['idUser']);
+      }
     })
   }
 
@@ -109,11 +109,39 @@ export class CrearUsuarioComponent implements OnInit {
     this._peticionesHttp.crearUsuario(this.formularioCrearUsuario).subscribe({
       next : (data) => {
         this.mostrarMensajeServer(data.message);
+
+        if(!data.error) {
+          this.formularioCrearUsuario.reset();
+        }
       },
       error : (data) => {
         this.mostrarMensajeServer(data.message);
       }
     });
+  }
+
+  obtenerUsuario(idUser : Number) {
+    this._peticionesHttp.obtenerUsuario(idUser).subscribe({
+      next: (data) => {
+        if(data.error) {
+          this.mostrarMensajeServer(data.message);
+          return;
+        }
+
+        let datosUsuario = data.data[0];
+
+        this.formularioCrearUsuario.setValue({
+          idUsuario: datosUsuario.idUser,
+          usuario: datosUsuario.userName,
+          password: '',
+          repetirPassword: '',
+          tipoUsuario: datosUsuario.role
+        })
+      },
+      error: (error) => {
+        this.mostrarMensajeServer(error.message);
+      }
+    })
   }
 
   mostrarMensajeServer(mensaje : String) : void {

@@ -13,7 +13,8 @@
     </a>
 </div>
 <div class="contenedor-boton-accion">
-    <button mat-icon-button aria-label="Dar de baja usuario" (click)="bajaUsuario(usuario.idUser)">
-        <mat-icon aria-hidden="false" fontIcon="person_remove"></mat-icon>
+    <button mat-icon-button (click)="cambiarEstadoUsuario(usuario.idUser, usuario.active)">
+        <mat-icon *ngIf="usuario.active" aria-hidden="false" fontIcon="person_off"></mat-icon>
+        <mat-icon *ngIf="!usuario.active" aria-hidden="false" fontIcon="person_check"></mat-icon>
     </button>
 </div>

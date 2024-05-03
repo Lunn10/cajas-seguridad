@@ -22,23 +22,43 @@ export class PeticionesHttpService {
     return this._httpClient.get<IRespuestaServer>('http://localhost:8900/users/showusers');
   }
 
-  public bajaUsuario(idUser : Number) : Observable<IRespuestaServer> {
+  public obtenerUsuario(idUser : Number) : Observable<IRespuestaServer> {
     let data = {
       idUser: idUser
     }
 
-    console.log(data);
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/users/showoneuser', data);
+  }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/users/downuser', data);
+  public cambiarEstadoUsuario(idUser : Number, activo : boolean) : Observable<IRespuestaServer> {
+    let data = {
+      idUser: idUser,
+      active: !activo
+    }
+
+    return this._httpClient.patch<IRespuestaServer>('http://localhost:8900/users/userstate', data);
   }
 
   public crearUsuario(datosUsuario : FormGroup) : Observable<IRespuestaServer> {
     let datosEnvio = {
+      idUser: datosUsuario.value.idUsuario,
       userName: datosUsuario.value.usuario,
       password: datosUsuario.value.password,
       role: datosUsuario.value.tipoUsuario
     }
 
     return this._httpClient.post<IRespuestaServer>('http://localhost:8900/users/register', datosEnvio);
+  }
+
+  public obtenerTiposUsuarios() : Observable<IRespuestaServer> {
+    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/users/showlisttypeusers');
+  }
+
+  public obtenerTipoUsuario(idTipo : Number) : Observable<IRespuestaServer> {
+    let data = {
+      idType: idTipo
+    }
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/users/showoneuser', data);
   }
 }

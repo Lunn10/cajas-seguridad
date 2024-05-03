@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-tarjeta-usuario',
   standalone: true,
   imports: [
+    NgIf,
     NgClass,
     MatIconModule,
     MatButtonModule,
@@ -25,7 +26,7 @@ export class TarjetaUsuarioComponent {
 
   @Input() usuario = {
     userName: '',
-    active: false,
+    active: true,
     role: '',
     idUser: 0,
     creationDate: ''
@@ -33,14 +34,18 @@ export class TarjetaUsuarioComponent {
 
   @Output() eventoEnviarRespuestaServer : EventEmitter<String> = new EventEmitter<String>();
 
-  bajaUsuario (idUser : Number) : void {
-    this._peticionesHttp.bajaUsuario(idUser).subscribe({
+  cambiarEstadoUsuario (idUser : Number, estadoActual : boolean) : void {
+    this._peticionesHttp.cambiarEstadoUsuario(idUser, estadoActual).subscribe({
       next: (data) => {
-        this.eventoEnviarRespuestaServer.emit(data.message);
+        this.mostrarMensajeInterfaz(data.message);
       },
       error: (error) => {
-        this.eventoEnviarRespuestaServer.emit(error.message);
+        this.mostrarMensajeInterfaz(error.message);
       }
     })
+  }
+
+  mostrarMensajeInterfaz(mensaje : String) : void {
+    this.eventoEnviarRespuestaServer.emit(mensaje);
   }
 }

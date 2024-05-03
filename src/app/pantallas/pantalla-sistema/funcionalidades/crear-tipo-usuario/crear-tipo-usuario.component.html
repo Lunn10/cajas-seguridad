@@ -1,0 +1,17 @@
+<app-encabezado titulo="Tipos de usuario" />
+<app-respuesta-server [mensaje]="mensajeServer" />
+
+<div class="contenedor-pagina">
+    <div class="contenedor-formulario">
+        <form [formGroup]="formularioCrearTipoUsuario" (ngSubmit)="crearTipoUsuario();">
+            <mat-form-field class="input-extendido">
+                <mat-label for="tipo-usuario">Tipo de usuario</mat-label>
+                <input matInput placeholder="Usuario" id="tipo-usuario" value="0" formControlName="tipoUsuario">
+                <mat-error>Tipo de usuario requerido</mat-error>
+            </mat-form-field>
+            <mat-card-actions>
+                <button class="input-extendido" mat-raised-button color="primary">Cargar tipo de usuario</button>
+            </mat-card-actions>
+        </form>
+    </div>
+</div>

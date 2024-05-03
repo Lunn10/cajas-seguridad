@@ -27,13 +27,17 @@ export class ListaUsuariosComponent implements AfterContentInit {
   mensajeServer : String = '';
 
   ngAfterContentInit() {
+    this.obtenerListaUsuarios();
+  }
+
+  obtenerListaUsuarios() : void {
+    console.log("Enviando formulario");
     this._peticionesHttp.obtenerUsuarios().subscribe({
       next : (data) => {
         if(data.error) {
           this.mensajeServer = data.message;
         } else {
           this.listaUsuarios = data.data;
-          console.log(data.data);
         }
       },
       error : (data) => {
@@ -44,5 +48,12 @@ export class ListaUsuariosComponent implements AfterContentInit {
 
   establecerRespuestaServer(respuesta : String) : void {
     this.mensajeServer = respuesta;
+    this.obtenerListaUsuarios();
+
+    setTimeout(
+      () => {
+        this.mensajeServer = ''
+        }, 3000
+    )
   }
 }

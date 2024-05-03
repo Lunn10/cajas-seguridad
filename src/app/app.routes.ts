@@ -15,6 +15,7 @@ export const routes: Routes = [
         { path: 'crear-usuario/:idUser', component: CrearUsuarioComponent },
         { path: 'lista-usuarios', component: ListaUsuariosComponent },
         { path: 'crear-tipo-usuario', component: CrearTipoUsuarioComponent },
+        { path: 'crear-tipo-usuario/:idType', component: CrearTipoUsuarioComponent },
         { path: 'lista-tipos-usuario', component: ListaTiposUsuarioComponent }
     ] },
     { path: 'sistema-administracion', component: PantallaAdministracionComponent },
