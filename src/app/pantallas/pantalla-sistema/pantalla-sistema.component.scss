@@ -5,3 +5,17 @@ body {
     max-height: 50vh !important;
     overflow-y: scroll;
 }
+
+    .contenedor-destino-rutas {
+        height: 92vh;
+        overflow-y: auto;
+        padding: 0;
+        box-sizing: border-box
+    }
+
+    .contenedor-menu-sistema {
+        position: fixed;
+        bottom: 0;  
+        width: 100%;  
+        height: 8vh; 
+    }

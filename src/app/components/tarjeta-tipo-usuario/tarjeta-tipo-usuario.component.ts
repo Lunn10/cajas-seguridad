@@ -3,6 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { PeticionesHttpService } from '../../services/peticiones-http.service';
 
 @Component({
   selector: 'app-tarjeta-tipo-usuario',
@@ -19,12 +20,14 @@ import { RouterLink } from '@angular/router';
 })
 export class TarjetaTipoUsuarioComponent {
 
+  constructor (
+    private _peticionesHttp : PeticionesHttpService
+  ) {}
+
   @Input() tipoUsuario = {
-    id: 0,
-    nombre: '',
+    idType: 0,
     active: false,
     role: '',
-    idUser: 0,
     creationDate: ''
   }
 
@@ -34,7 +37,14 @@ export class TarjetaTipoUsuarioComponent {
     this.eventoEnviarRespuestaServer.emit(mensaje);
   }
 
-  cambiarEstadoTipoUsuario(id : Number, activo : boolean) : void {
-
+  cambiarEstadoTipoUsuario(idTipoUsuario : Number, estadoActual : boolean) : void {
+    this._peticionesHttp.cambiarEstadoTipoUsuario(idTipoUsuario, estadoActual).subscribe({
+      next: (data) => {
+        this.mostrarMensajeInterfaz(data.message);
+      },
+      error: (error) => {
+        this.mostrarMensajeInterfaz(error.message);
+      }
+    })
   }
 }

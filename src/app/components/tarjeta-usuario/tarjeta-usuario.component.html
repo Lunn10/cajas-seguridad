@@ -6,7 +6,7 @@
     <div class="etiqueta-tipo-usuario">({{usuario.role}})</div>
 </div>
 <div class="contenedor-boton-accion">
-    <a [routerLink]="['../crear-usuario', usuario.idUser]">
+    <a [routerLink]="['../crear-usuario', usuario.idUser]" *ngIf="usuario.active">
         <button mat-icon-button aria-label="Editar usuario">
             <mat-icon aria-hidden="false" fontIcon="manage_accounts" ></mat-icon>
         </button>

@@ -1,18 +1,18 @@
 <div class="contenedor-icono">
-    <mat-icon aria-hidden="false" fontIcon="perm_identity"></mat-icon>
+    <mat-icon aria-hidden="false" fontIcon="group"></mat-icon>
 </div>
 <div class="contenedor-datos-usuario">
-    <div class="etiqueta-nombre-usuario">{{tipoUsuario}}</div>
+    <div class="etiqueta-nombre-usuario">{{tipoUsuario.role}}</div>
 </div>
 <div class="contenedor-boton-accion">
-    <a [routerLink]="['../crear-tipo-usuario', tipoUsuario.id]">
+    <a [routerLink]="['../crear-tipo-usuario', tipoUsuario.idType]" *ngIf="tipoUsuario.active">
         <button mat-icon-button aria-label="Editar usuario">
             <mat-icon aria-hidden="false" fontIcon="manage_accounts" ></mat-icon>
         </button>
     </a>
 </div>
 <div class="contenedor-boton-accion">
-    <button mat-icon-button aria-label="Dar de baja usuario" (click)="cambiarEstadoTipoUsuario(tipoUsuario.id, tipoUsuario.active)">
+    <button mat-icon-button aria-label="Dar de baja usuario" (click)="cambiarEstadoTipoUsuario(tipoUsuario.idType, tipoUsuario.active)">
         <mat-icon *ngIf="tipoUsuario.active" aria-hidden="false" fontIcon="group_off"></mat-icon>
         <mat-icon *ngIf="!tipoUsuario.active" aria-hidden="false" fontIcon="group_check"></mat-icon>
     </button>

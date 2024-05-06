@@ -28,6 +28,7 @@ import { MatCardModule } from '@angular/material/card';
 export class CrearTipoUsuarioComponent {
   mensajeServer : String = '';
   formularioCrearTipoUsuario : FormGroup;
+  idTipoUsuario : Number = 0;
 
   constructor(
     private form : FormBuilder, 
@@ -35,27 +36,49 @@ export class CrearTipoUsuarioComponent {
     private _route : ActivatedRoute
   ) {
     this.formularioCrearTipoUsuario = this.form.group({
+      idTipoUsuario : [this.idTipoUsuario],
       tipoUsuario : ['', Validators.required]
     })
   }
 
   ngOnInit() {
     this.formularioCrearTipoUsuario.reset();
+    this.formularioCrearTipoUsuario.patchValue({idTipoUsuario : this.idTipoUsuario});
 
     this._route.params.subscribe( params => {
-      if(params['idUser']) {
+      if(params['idType']) {
+        this.idTipoUsuario = params['idType'];
         this.obtenerTipoUsuario(params['idType']);
       }
     })
   }
 
   crearTipoUsuario() : void {
-    
+    if(!this.formularioCrearTipoUsuario.valid) {
+      return;
+    }
+
+    console.log(this.formularioCrearTipoUsuario);
+
+    this._peticionesHttp.crearTipoUsuario(this.formularioCrearTipoUsuario).subscribe({
+      next : (data) => {
+        this.mostrarMensajeServer(data.message);
+
+        if(!data.error) {
+          this.formularioCrearTipoUsuario.reset();
+          this.formularioCrearTipoUsuario.patchValue({idTipoUsuario : this.idTipoUsuario});
+        }
+      },
+      error : (data) => {
+        this.mostrarMensajeServer(data.message);
+      }
+    });
   }
 
   obtenerTipoUsuario(idType : Number) : void {
     this._peticionesHttp.obtenerTipoUsuario(idType).subscribe({
       next: (data) => {
+        console.log(data);
         if(data.error) {
           this.mostrarMensajeServer(data.message);
           return;
@@ -64,7 +87,8 @@ export class CrearTipoUsuarioComponent {
         let datosTipoUsuario = data.data[0];
 
         this.formularioCrearTipoUsuario.setValue({
-          tipoUsuario: datosTipoUsuario.type
+          idTipoUsuario: this.idTipoUsuario,
+          tipoUsuario: datosTipoUsuario.role
         })
       },
       error: (error) => {

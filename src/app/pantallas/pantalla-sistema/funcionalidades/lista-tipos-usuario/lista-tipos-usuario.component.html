@@ -2,8 +2,9 @@
 <app-respuesta-server [mensaje]="mensajeServer" />
 
 <app-tarjeta-tipo-usuario
-    *ngFor="let tipo_usuario of listaTipoUsuarios"
+    *ngFor="let tipoUsuario of listaTipoUsuarios"
+    [tipoUsuario]="tipoUsuario"
     class="contenedor-tarjeta-tipo-usuario"  
-    [ngClass]="{'usuario-tipo-activo' : tipo_usuario.active, 'usuario-tipo-inactivo' : !tipo_usuario.active}"  
+    [ngClass]="{'tipo-usuario-activo' : tipoUsuario.active, 'tipo-usuario-inactivo' : !tipoUsuario.active}"  
     (eventoEnviarRespuestaServer)="establecerRespuestaServer($event);"
 />
