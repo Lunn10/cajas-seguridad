@@ -1,3 +1,12 @@
+a {
+    color: #000000;
+    text-decoration: none;;
+}
+
+a:hover {
+    color: #194C68;
+}
+
 .menu-interno-sistema {
     margin: 0px;
     padding: 0px;
@@ -5,8 +14,28 @@
     bottom: 0;
     min-width: 100vw;
     min-height: 8vh;
-    background-color: greenyellow;
+    background-color: #FFFFFF;
+    border-top: 1px solid #E0E0E0;
     display: inline-flex;
     justify-content: space-around;
     align-items: center;
 }
+
+    .caja-opcion-menu {
+        height: 7vh;
+        cursor: pointer;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+
+        .contenedor-icono {
+            width: 100%;
+        }
+
+        .titulo-boton {
+            width: 100%;
+        }
