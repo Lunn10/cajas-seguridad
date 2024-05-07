@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormGroup } from '@angular/forms';
@@ -61,8 +61,14 @@ export class PeticionesHttpService {
     return this._httpClient.post<IRespuestaServer>('http://localhost:8900/users/registerTypeUser', datosEnvio);
   }
 
-  public obtenerTiposUsuarios() : Observable<IRespuestaServer> {
-    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/users/showlisttypeusers');
+  public obtenerTiposUsuarios(soloActivos : boolean = false) : Observable<IRespuestaServer> {
+    let parametros = new HttpParams();
+    
+    if(soloActivos) {
+      parametros = parametros.set('active', soloActivos.toString());
+    }
+
+    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/users/showlisttypeusers', { params : parametros });
   }
 
   public obtenerTipoUsuario(idTipo : Number) : Observable<IRespuestaServer> {

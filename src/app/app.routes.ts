@@ -7,6 +7,10 @@ import { CrearUsuarioComponent } from './pantallas/pantalla-sistema/funcionalida
 import { ListaUsuariosComponent } from './pantallas/pantalla-sistema/funcionalidades/lista-usuarios/lista-usuarios.component';
 import { ListaTiposUsuarioComponent } from './pantallas/pantalla-sistema/funcionalidades/lista-tipos-usuario/lista-tipos-usuario.component';
 import { CrearTipoUsuarioComponent } from './pantallas/pantalla-sistema/funcionalidades/crear-tipo-usuario/crear-tipo-usuario.component';
+import { CargarClienteComponent } from './pantallas/pantalla-administracion/clientes/cargar-cliente/cargar-cliente.component';
+import { ConsultarClienteComponent } from './pantallas/pantalla-administracion/clientes/consultar-cliente/consultar-cliente.component';
+import { ConsultarFacturaComponent } from './pantallas/pantalla-administracion/facturas/consultar-factura/consultar-factura.component';
+import { CargarFacturaComponent } from './pantallas/pantalla-administracion/facturas/cargar-factura/cargar-factura.component';
 
 export const routes: Routes = [
     { path: '', component: PantallaInicioComponent },
@@ -18,7 +22,12 @@ export const routes: Routes = [
         { path: 'crear-tipo-usuario/:idType', component: CrearTipoUsuarioComponent },
         { path: 'lista-tipos-usuario', component: ListaTiposUsuarioComponent }
     ] },
-    { path: 'sistema-administracion', component: PantallaAdministracionComponent },
+    { path: 'sistema-administracion', component: PantallaAdministracionComponent, children: [
+        { path: 'cargar-cliente', component: CargarClienteComponent },
+        { path: 'consultar-cliente', component: ConsultarClienteComponent },
+        { path: 'cargar-factura', component: CargarFacturaComponent },
+        { path: 'consultar-factura', component: ConsultarFacturaComponent }
+    ] },
     { path: 'sistema-produccion', component: PantallaProduccionComponent },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

@@ -2,7 +2,7 @@
     <mat-icon aria-hidden="false" fontIcon="group"></mat-icon>
 </div>
 <div class="contenedor-datos-usuario">
-    <div class="etiqueta-nombre-usuario">{{tipoUsuario.role}}</div>
+    <div class="etiqueta-nombre-usuario">{{tipoUsuario.role | titlecase}}</div>
 </div>
 <div class="contenedor-boton-accion">
     <a [routerLink]="['../crear-tipo-usuario', tipoUsuario.idType]" *ngIf="tipoUsuario.active">

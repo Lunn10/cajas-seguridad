@@ -1,11 +1,11 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatError, MatFormFieldModule} from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
@@ -17,6 +17,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-crear-usuario',
   standalone: true,
   imports: [
+    CommonModule,
     MatFormFieldModule, 
     MatInputModule, 
     MatButtonModule, 
@@ -25,8 +26,6 @@ import { ActivatedRoute } from '@angular/router';
     MatAutocompleteModule,
     MatCardModule, 
     ReactiveFormsModule, 
-    NgFor,
-    NgIf,
     EncabezadoComponent,
     RespuestaServerComponent
   ],
@@ -36,10 +35,10 @@ import { ActivatedRoute } from '@angular/router';
 export class CrearUsuarioComponent implements OnInit {
   oculto : boolean = true;
   formularioCrearUsuario : FormGroup;
-  opcionesSelect : string[] = ['Administrador', 'Producción', 'Administración'];
+  opcionesSelect : any[] = [];
+  valoresFiltrados: any[] = [];
   @ViewChild('input') input!: ElementRef<HTMLInputElement>;
   mensajeServer : String = '';
-  valoresFiltrados: string[];
   idUsuario : Number = 0;
 
   constructor(
@@ -47,6 +46,8 @@ export class CrearUsuarioComponent implements OnInit {
     private _peticionesHttp : PeticionesHttpService,
     private _route : ActivatedRoute
   ) {
+    this.obtenerListaTiposUsuario();
+
     this.formularioCrearUsuario = this.form.group({
       idUsuario: [this.idUsuario],
       usuario : ['', Validators.required],
@@ -54,8 +55,23 @@ export class CrearUsuarioComponent implements OnInit {
       repetirPassword : ['', [Validators.required, this.passwordMatchValidator.bind(this)] ],
       tipoUsuario : ['', Validators.required]
     })
-    
+
     this.valoresFiltrados = this.opcionesSelect.slice()
+  }
+
+  obtenerListaTiposUsuario() : void {
+    this._peticionesHttp.obtenerTiposUsuarios().subscribe({
+      next : (data) => {
+        if(data.error) {
+          this.mensajeServer = data.message;
+        } else {
+          this.opcionesSelect = data.data;
+        }
+      },
+      error : (data) => {
+        this.mensajeServer = data.message;
+      }
+    });
   }
 
   ngOnInit() {
@@ -98,7 +114,7 @@ export class CrearUsuarioComponent implements OnInit {
 
   filter(): void {
     const filterValue = this.input.nativeElement.value.toLowerCase();
-    this.valoresFiltrados = this.opcionesSelect.filter(o => o.includes(filterValue));
+    this.valoresFiltrados = this.opcionesSelect.filter(datosTipoUsuario => datosTipoUsuario.role.includes(filterValue));
   }
 
   crearUsuario() {

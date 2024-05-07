@@ -1,4 +1,4 @@
-import { NgClass, NgIf } from '@angular/common';
+import { CommonModule, NgClass, NgIf } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,8 +9,7 @@ import { PeticionesHttpService } from '../../services/peticiones-http.service';
   selector: 'app-tarjeta-tipo-usuario',
   standalone: true,
   imports: [
-    NgIf,
-    NgClass,
+    CommonModule,
     MatIconModule,
     MatButtonModule,
     RouterLink

@@ -31,8 +31,8 @@
                 <mat-label for="tipo-usuario">Tipo de usuario</mat-label>
                 <input #input type="text" id="tipo-usuario" placeholder="Seleccione uno" matInput formControlName="tipoUsuario" [matAutocomplete]="auto" (input)="filter()" (focus)="filter()">
                 <mat-autocomplete requireSelection #auto="matAutocomplete">
-                    @for (option of valoresFiltrados; track option) {
-                        <mat-option [value]="option">{{option}}</mat-option>
+                    @for (datosTipoUsuario of valoresFiltrados; track datosTipoUsuario) {
+                        <mat-option [value]="datosTipoUsuario.role">{{datosTipoUsuario.role | titlecase }}</mat-option>
                     }
                 </mat-autocomplete>
                 <mat-error>Tipo de usuario requerido</mat-error>

@@ -1,5 +1,5 @@
 export interface IOpcionesMenu {
-    titulo: String,
+    titulo: string,
     url : String,
     icono? : String,
     urlAssetIcono? : String

@@ -1,0 +1,12 @@
+<div class="contenedor-menu">
+    <div *ngFor="let opcionMenu of opcionesMenu" class="tarjeta-menu-inicio">
+        <a routerLink="{{opcionMenu.url}}">
+            <div class="contenedor-icono-menu">
+                <mat-icon *ngIf="opcionMenu.icono" aria-hidden="false" class="icono-extendido" aria-label="Example home icon" fontIcon="{{opcionMenu.icono}}"></mat-icon>
+            </div>
+            <div class="contenedor-titulo-menu">
+                {{opcionMenu.titulo | uppercase}}
+            </div>
+        </a>
+    </div>
+</div>

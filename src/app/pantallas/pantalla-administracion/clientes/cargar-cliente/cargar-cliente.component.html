@@ -1,0 +1,32 @@
+<app-encabezado titulo="Cargar cliente"/>
+<app-respuesta-server [mensaje]="mensajeServer"/>
+
+<div class="contenedor-pagina">
+    <div class="contenedor-formulario">
+        <form [formGroup]="formularioCargarCliente" (ngSubmit)="cargarCliente();">
+            <mat-form-field class="input-mediano">
+                <mat-label for="usuario">Nombre del cliente</mat-label>
+                <input matInput placeholder="Nombre del cliente" id="nombre-cliente" value="" formControlName="nombreCliente">
+                <mat-error>Debe indicar un nombre del cliente</mat-error>
+            </mat-form-field><mat-form-field class="input-mediano">
+                <mat-label for="usuario">Nombre de fantasía del cliente</mat-label>
+                <input matInput placeholder="Nombre de fantasía del cliente" id="nombre-factasia-cliente" value="" formControlName="nombreFantasiaCliente">
+                <mat-error>Debe indicar un nombre de fantasía del cliente</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label for="usuario">Dirección (calle)</mat-label>
+                <input matInput placeholder="Dirección del cliente" id="direccion-cliente" value="" formControlName="direccionCliente">
+                <mat-error>Debe indicar una dirección para el cliente</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label for="usuario">Dirección (número)</mat-label>
+                <input matInput placeholder="Número de dirección del cliente" id="numero-direccion-cliente" value="" formControlName="numeroDireccionCliente">
+                <mat-error>Debe indicar una dirección para el cliente</mat-error>
+            </mat-form-field>
+            <mat-card-actions>
+                <input type="hidden" value="" id="id-usuario" formControlName="idCliente">
+                <button class="input-extendido" mat-raised-button color="primary">Cargar cliente</button>
+            </mat-card-actions>
+        </form>
+    </div>
+</div>

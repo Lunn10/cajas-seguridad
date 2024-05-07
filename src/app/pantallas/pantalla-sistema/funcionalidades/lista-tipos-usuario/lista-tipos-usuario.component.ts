@@ -31,7 +31,7 @@ export class ListaTiposUsuarioComponent {
   }
 
   obtenerListaTiposUsuario() : void {
-    this._peticionesHttp.obtenerTiposUsuarios().subscribe({
+    this._peticionesHttp.obtenerTiposUsuarios(true).subscribe({
       next : (data) => {
         if(data.error) {
           this.mensajeServer = data.message;
