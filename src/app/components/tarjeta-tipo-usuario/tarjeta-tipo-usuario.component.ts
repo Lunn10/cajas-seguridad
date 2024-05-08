@@ -30,9 +30,9 @@ export class TarjetaTipoUsuarioComponent {
     creationDate: ''
   }
 
-  @Output() eventoEnviarRespuestaServer : EventEmitter<String> = new EventEmitter<String>();
+  @Output() eventoEnviarRespuestaServer : EventEmitter<string> = new EventEmitter<string>();
 
-  mostrarMensajeInterfaz(mensaje : String) : void {
+  mostrarMensajeInterfaz(mensaje : string) : void {
     this.eventoEnviarRespuestaServer.emit(mensaje);
   }
 

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
-import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -12,7 +11,6 @@ import { MatCardModule } from '@angular/material/card';
   standalone: true,
   imports: [
     EncabezadoComponent,
-    RespuestaServerComponent,
     ReactiveFormsModule,
     MatFormFieldModule, 
     MatInputModule, 

@@ -10,8 +10,8 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
 import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
-import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
 import { ActivatedRoute } from '@angular/router';
+import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -128,6 +128,13 @@ export class CrearUsuarioComponent implements OnInit {
 
         if(!data.error) {
           this.formularioCrearUsuario.reset();
+          
+          Object.keys(this.formularioCrearUsuario.controls).forEach(key => {
+            this.formularioCrearUsuario.get(key)?.markAsPristine();
+            this.formularioCrearUsuario.get(key)?.markAsUntouched();
+          });
+
+          this.formularioCrearUsuario?.patchValue({idUsuario: this.idUsuario});
         }
       },
       error : (data) => {
@@ -160,12 +167,7 @@ export class CrearUsuarioComponent implements OnInit {
     })
   }
 
-  mostrarMensajeServer(mensaje : String) : void {
-    this.mensajeServer = mensaje;
-    
-    setTimeout(
-      () => {
-        this.mensajeServer = '';
-      }, 3000);
+  mostrarMensajeServer(mensaje : string) : void {
+    this._peticionesHttp.setRespuestaServer(mensaje);
   }
 }

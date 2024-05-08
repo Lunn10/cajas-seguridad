@@ -32,7 +32,7 @@ export class TarjetaUsuarioComponent {
     creationDate: ''
   }
 
-  @Output() eventoEnviarRespuestaServer : EventEmitter<String> = new EventEmitter<String>();
+  @Output() eventoEnviarRespuestaServer : EventEmitter<string> = new EventEmitter<string>();
 
   cambiarEstadoUsuario (idUser : Number, estadoActual : boolean) : void {
     this._peticionesHttp.cambiarEstadoUsuario(idUser, estadoActual).subscribe({
@@ -45,7 +45,7 @@ export class TarjetaUsuarioComponent {
     })
   }
 
-  mostrarMensajeInterfaz(mensaje : String) : void {
+  mostrarMensajeInterfaz(mensaje : string) : void {
     this.eventoEnviarRespuestaServer.emit(mensaje);
   }
 }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { IDatosUsuario } from '../models/datos-usuario.model';
 import { IRespuestaServer } from '../models/respuesta-server.model'; 
@@ -13,6 +13,20 @@ export class PeticionesHttpService {
   constructor(
     private _httpClient : HttpClient
   ) { }
+
+  private respuestaServer = new BehaviorSubject<string>('');
+
+  public resetRespuestaServer() : void {
+    this.respuestaServer.next('');
+  }
+
+  public setRespuestaServer(respuesta : string) : void {
+    this.respuestaServer.next(respuesta);
+  }
+
+  public getRespuestaServer() : Observable<string> {
+    return this.respuestaServer.asObservable();
+  }
 
   public logueoUsuario(datosLogueo : FormGroup) : Observable<IDatosUsuario> {
     return this._httpClient.post<IDatosUsuario>('http://localhost:8900/users', datosLogueo.value);
@@ -55,8 +69,6 @@ export class PeticionesHttpService {
       idType: datosTipoUsuario.value.idTipoUsuario,
       role: datosTipoUsuario.value.tipoUsuario
     }
-
-    console.log(datosEnvio);
 
     return this._httpClient.post<IRespuestaServer>('http://localhost:8900/users/registerTypeUser', datosEnvio);
   }

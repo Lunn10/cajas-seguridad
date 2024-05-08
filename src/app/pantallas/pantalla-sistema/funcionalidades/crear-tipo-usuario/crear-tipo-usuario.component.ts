@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
-import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
@@ -8,6 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatError, MatFormFieldModule} from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
 
 @Component({
   selector: 'app-crear-tipo-usuario',
@@ -26,7 +26,7 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './crear-tipo-usuario.component.scss'
 })
 export class CrearTipoUsuarioComponent {
-  mensajeServer : String = '';
+  mensajeServer : string = '';
   formularioCrearTipoUsuario : FormGroup;
   idTipoUsuario : Number = 0;
 
@@ -58,16 +58,14 @@ export class CrearTipoUsuarioComponent {
       return;
     }
 
-    console.log(this.formularioCrearTipoUsuario);
-
     this._peticionesHttp.crearTipoUsuario(this.formularioCrearTipoUsuario).subscribe({
       next : (data) => {
-        this.mostrarMensajeServer(data.message);
-
         if(!data.error) {
           this.formularioCrearTipoUsuario.reset();
           this.formularioCrearTipoUsuario.patchValue({idTipoUsuario : this.idTipoUsuario});
         }
+
+        this.mostrarMensajeServer(data.message);
       },
       error : (data) => {
         this.mostrarMensajeServer(data.message);
@@ -78,7 +76,6 @@ export class CrearTipoUsuarioComponent {
   obtenerTipoUsuario(idType : Number) : void {
     this._peticionesHttp.obtenerTipoUsuario(idType).subscribe({
       next: (data) => {
-        console.log(data);
         if(data.error) {
           this.mostrarMensajeServer(data.message);
           return;
@@ -97,12 +94,7 @@ export class CrearTipoUsuarioComponent {
     })
   }
 
-  mostrarMensajeServer(mensaje : String) : void {
-    this.mensajeServer = mensaje;
-    
-    setTimeout(
-      () => {
-        this.mensajeServer = '';
-      }, 3000);
+  mostrarMensajeServer(mensaje : string) : void {
+    this._peticionesHttp.setRespuestaServer(mensaje);
   }
 }
