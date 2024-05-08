@@ -2,30 +2,65 @@
 
 <div class="contenedor-pagina">
     <div class="contenedor-formulario">
-        <form [formGroup]="formularioCargarCliente" (ngSubmit)="cargarCliente();">
-            <mat-form-field class="input-mediano">
-                <mat-label for="usuario">Nombre del cliente</mat-label>
-                <input matInput placeholder="Nombre del cliente" id="nombre-cliente" value="" formControlName="nombreCliente">
-                <mat-error>Debe indicar un nombre del cliente</mat-error>
-            </mat-form-field><mat-form-field class="input-mediano">
-                <mat-label for="usuario">Nombre de fantasía del cliente</mat-label>
-                <input matInput placeholder="Nombre de fantasía del cliente" id="nombre-factasia-cliente" value="" formControlName="nombreFantasiaCliente">
-                <mat-error>Debe indicar un nombre de fantasía del cliente</mat-error>
-            </mat-form-field>
-            <mat-form-field class="input-mediano">
-                <mat-label for="usuario">Dirección (calle)</mat-label>
-                <input matInput placeholder="Dirección del cliente" id="direccion-cliente" value="" formControlName="direccionCliente">
-                <mat-error>Debe indicar una dirección para el cliente</mat-error>
-            </mat-form-field>
-            <mat-form-field class="input-mediano">
-                <mat-label for="usuario">Dirección (número)</mat-label>
-                <input matInput placeholder="Número de dirección del cliente" id="numero-direccion-cliente" value="" formControlName="numeroDireccionCliente">
-                <mat-error>Debe indicar una dirección para el cliente</mat-error>
-            </mat-form-field>
-            <mat-card-actions>
-                <input type="hidden" value="" id="id-usuario" formControlName="idCliente">
-                <button class="input-extendido" mat-raised-button color="primary">Cargar cliente</button>
-            </mat-card-actions>
-        </form>
+        <mat-stepper [linear]="false" #stepper orientation="vertical">
+            <form [formGroup]="formularioCargarCliente" (ngSubmit)="cargarCliente();">
+                <mat-step label="Datos cliente">
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="usuario">Nombre del cliente</mat-label>
+                        <input matInput placeholder="Nombre del cliente" id="nombre-cliente" value="" formControlName="nombreCliente">
+                        <mat-error>Debe indicar un nombre del cliente</mat-error>
+                    </mat-form-field><mat-form-field class="input-mediano">
+                        <mat-label for="usuario">Nombre de fantasía del cliente</mat-label>
+                        <input matInput placeholder="Nombre de fantasía del cliente" id="nombre-factasia-cliente" value="" formControlName="nombreFantasia">
+                        <mat-error>Debe indicar un nombre de fantasía del cliente</mat-error>
+                    </mat-form-field>
+                </mat-step>
+                <mat-step label="Datos ubicación">
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="usuario">Dirección (calle)</mat-label>
+                        <input matInput placeholder="Dirección del cliente" id="direccion-cliente" value="" formControlName="direccion">
+                        <mat-error>Debe indicar una dirección para el cliente</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="usuario">Dirección (número)</mat-label>
+                        <input matInput placeholder="Número de dirección del cliente" id="numero-direccion-cliente" value="" formControlName="numeroDireccion">
+                        <mat-error>Debe indicar una dirección para el cliente</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="tipo-usuario">Provincia</mat-label>
+                        <input #inputProvincia type="text" id="tipo-usuario" placeholder="Seleccione una provincia" matInput formControlName="provincia" [matAutocomplete]="auto" (input)="filter('provincias')" (focus)="filter('provincias')">
+                        <mat-autocomplete requireSelection #auto="matAutocomplete">
+                            @for (datosProvincia of valoresFiltradosProvincias; track datosProvincia) {
+                                <mat-option [value]="datosProvincia.nombre">{{datosProvincia.nombre | titlecase }}</mat-option>
+                            }
+                        </mat-autocomplete>
+                        <mat-error>Debe indicar la provincia</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="usuario">Código postal</mat-label>
+                        <input matInput placeholder="Código postal del cliente" id="codigo-postal-cliente" value="" formControlName="codigoPostal">
+                        <mat-error>Debe indicar el código postal</mat-error>
+                    </mat-form-field>
+                </mat-step>
+                <mat-step label="Datos tributarios">
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="tipo-iva">IVA</mat-label>
+                        <input #inputIva type="text" id="tipo-iva" placeholder="Seleccione el tipo de iva" matInput formControlName="iva" [matAutocomplete]="auto" (input)="filter('iva')" (focus)="filter('iva')">
+                        <mat-autocomplete requireSelection #auto="matAutocomplete">
+                            @for (datosTipoIVA of valoresFiltradosTipoIVA; track datosTipoIVA) {
+                                <mat-option [value]="datosTipoIVA.nombre">{{datosTipoIVA.nombre | titlecase }}</mat-option>
+                            }
+                        </mat-autocomplete>
+                        <mat-error>Debe indicar el tipo de IVA</mat-error>
+                    </mat-form-field>
+                </mat-step>
+                <mat-step label="Confirmar formulario">
+                    <mat-card-actions>
+                        <input type="hidden" value="" id="id-usuario" formControlName="idCliente">
+                        <button class="input-extendido" mat-raised-button color="primary">Cargar cliente</button>
+                    </mat-card-actions>
+                </mat-step>                
+            </form>
+        </mat-stepper>
     </div>
 </div>

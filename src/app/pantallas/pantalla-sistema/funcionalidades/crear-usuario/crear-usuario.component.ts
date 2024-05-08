@@ -38,7 +38,6 @@ export class CrearUsuarioComponent implements OnInit {
   opcionesSelect : any[] = [];
   valoresFiltrados: any[] = [];
   @ViewChild('input') input!: ElementRef<HTMLInputElement>;
-  mensajeServer : String = '';
   idUsuario : Number = 0;
 
   constructor(
@@ -63,13 +62,13 @@ export class CrearUsuarioComponent implements OnInit {
     this._peticionesHttp.obtenerTiposUsuarios().subscribe({
       next : (data) => {
         if(data.error) {
-          this.mensajeServer = data.message;
+          this.mostrarMensajeServer(data.message);
         } else {
           this.opcionesSelect = data.data;
         }
       },
       error : (data) => {
-        this.mensajeServer = data.message;
+        this.mostrarMensajeServer(data.message);
       }
     });
   }
@@ -128,12 +127,6 @@ export class CrearUsuarioComponent implements OnInit {
 
         if(!data.error) {
           this.formularioCrearUsuario.reset();
-          
-          Object.keys(this.formularioCrearUsuario.controls).forEach(key => {
-            this.formularioCrearUsuario.get(key)?.markAsPristine();
-            this.formularioCrearUsuario.get(key)?.markAsUntouched();
-          });
-
           this.formularioCrearUsuario?.patchValue({idUsuario: this.idUsuario});
         }
       },
