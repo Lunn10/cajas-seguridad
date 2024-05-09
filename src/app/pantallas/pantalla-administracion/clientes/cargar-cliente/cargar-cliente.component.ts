@@ -30,8 +30,7 @@ export class CargarClienteComponent {
   formularioCargarCliente: FormGroup;
   mensajeServer : String = '';
   idCliente : Number = 0;
-  opcionesSelectProvincias : any[] = [];
-  valoresFiltradosProvincias : any[] = [
+  opcionesSelectProvincias : any[] = [
     {
       id: 1,
       nombre: 'buenos aires'
@@ -40,6 +39,7 @@ export class CargarClienteComponent {
       nombre: 'capital federal'
     }
   ];
+  valoresFiltradosProvincias : any[] = [];
   opcionesSelectTipoIVA : any[] = [
     {
       id: 1,
@@ -73,12 +73,16 @@ export class CargarClienteComponent {
       numeroDireccion: ['', Validators.required],
       provincia: ['', Validators.required],
       codigoPostal: ['', Validators.required],
-      iva: ['', Validators.required]
+      cuit: ['', Validators.required],
+      iva: ['', Validators.required],
+      transporte: [''],
+      observacionesTransporte: ['']
     })
   }
 
   filter(filtro : string ): void {
     if(filtro == 'provincias') {
+      console.log(this.inputProvincia);
       const valorFiltradoProvincias = this.inputProvincia.nativeElement.value.toLowerCase();
       this.valoresFiltradosProvincias = this.opcionesSelectProvincias.filter(
         datosProvincia => datosProvincia.nombre.includes(valorFiltradoProvincias)

@@ -9,7 +9,8 @@
                         <mat-label for="usuario">Nombre del cliente</mat-label>
                         <input matInput placeholder="Nombre del cliente" id="nombre-cliente" value="" formControlName="nombreCliente">
                         <mat-error>Debe indicar un nombre del cliente</mat-error>
-                    </mat-form-field><mat-form-field class="input-mediano">
+                    </mat-form-field>
+                    <mat-form-field class="input-mediano">
                         <mat-label for="usuario">Nombre de fantasía del cliente</mat-label>
                         <input matInput placeholder="Nombre de fantasía del cliente" id="nombre-factasia-cliente" value="" formControlName="nombreFantasia">
                         <mat-error>Debe indicar un nombre de fantasía del cliente</mat-error>
@@ -28,8 +29,8 @@
                     </mat-form-field>
                     <mat-form-field class="input-mediano">
                         <mat-label for="tipo-usuario">Provincia</mat-label>
-                        <input #inputProvincia type="text" id="tipo-usuario" placeholder="Seleccione una provincia" matInput formControlName="provincia" [matAutocomplete]="auto" (input)="filter('provincias')" (focus)="filter('provincias')">
-                        <mat-autocomplete requireSelection #auto="matAutocomplete">
+                        <input #inputProvincia type="text" id="tipo-usuario" placeholder="Seleccione una provincia" matInput formControlName="provincia" [matAutocomplete]="autocompletarProvincias" (input)="filter('provincias')" (focus)="filter('provincias')">
+                        <mat-autocomplete requireSelection #autocompletarProvincias="matAutocomplete">
                             @for (datosProvincia of valoresFiltradosProvincias; track datosProvincia) {
                                 <mat-option [value]="datosProvincia.nombre">{{datosProvincia.nombre | titlecase }}</mat-option>
                             }
@@ -44,15 +45,35 @@
                 </mat-step>
                 <mat-step label="Datos tributarios">
                     <mat-form-field class="input-mediano">
-                        <mat-label for="tipo-iva">IVA</mat-label>
-                        <input #inputIva type="text" id="tipo-iva" placeholder="Seleccione el tipo de iva" matInput formControlName="iva" [matAutocomplete]="auto" (input)="filter('iva')" (focus)="filter('iva')">
-                        <mat-autocomplete requireSelection #auto="matAutocomplete">
+                        <mat-label for="cuit">Cuit</mat-label>
+                        <input matInput placeholder="CUIT del cliente" id="cuit" value="" formControlName="cuit">
+                        <mat-error>Debe indicar el CUIT</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="tipo-iva">Tipo de IVA</mat-label>
+                        <input #inputIva type="text" id="tipo-iva" placeholder="Seleccione el tipo de iva" matInput formControlName="iva" [matAutocomplete]="autocompletarIva" (input)="filter('iva')" (focus)="filter('iva')">
+                        <mat-autocomplete requireSelection #autocompletarIva="matAutocomplete">
                             @for (datosTipoIVA of valoresFiltradosTipoIVA; track datosTipoIVA) {
                                 <mat-option [value]="datosTipoIVA.nombre">{{datosTipoIVA.nombre | titlecase }}</mat-option>
                             }
                         </mat-autocomplete>
                         <mat-error>Debe indicar el tipo de IVA</mat-error>
                     </mat-form-field>
+                </mat-step>
+                <mat-step label="Datos transporte">
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="transporte">Transporte</mat-label>
+                        <input matInput placeholder="Transporte del cliente" id="transporte" value="" formControlName="transporte">
+                        <mat-error>Debe indicar el transporte</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="observaciones-transporte">Observaciones</mat-label>
+                        <input matInput placeholder="Observaciones del transporte" id="observaciones-transporte" value="" formControlName="observacionesTransporte">
+                        <mat-error>Debe indicar el transporte</mat-error>
+                    </mat-form-field>
+                </mat-step>
+                <mat-step label="Datos contacto">
+                    
                 </mat-step>
                 <mat-step label="Confirmar formulario">
                     <mat-card-actions>
