@@ -99,4 +99,25 @@ export class PeticionesHttpService {
 
     return this._httpClient.patch<IRespuestaServer>('http://localhost:8900/users/usertypestate', data);
   }
+
+  public crearCliente(datosCliente : FormGroup) : Observable<IRespuestaServer> {
+    let data = {
+      idCliente : datosCliente.value.idCliente,
+      nombreCliente: datosCliente.value.nombreCliente,
+      nombreFantasia: datosCliente.value.nombreFantasia,
+      direccion: datosCliente.value.direccion,
+      numeroDireccion: datosCliente.value.numeroDireccion,
+      provincia: datosCliente.value.provincia,
+      codigoPostal: datosCliente.value.codigoPostal,
+      cuit: datosCliente.value.cuit,
+      iva: datosCliente.value.iva,
+      transporte: datosCliente.value.transporte,
+      observacionesTransporte: datosCliente.value.observacionesTransporte,
+      contactos: datosCliente.value.contactos
+    }
+
+    console.log(data);
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/client/create', data)
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, NgModule, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
@@ -9,6 +9,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
 
 @Component({
   selector: 'app-cargar-cliente',
@@ -23,7 +25,8 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule,
     MatStepperModule,
     MatAutocompleteModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
   templateUrl: './cargar-cliente.component.html',
   styleUrl: './cargar-cliente.component.scss'
@@ -67,7 +70,8 @@ export class CargarClienteComponent implements OnInit {
   columnasTablaContacto: string[] = ['nombre', 'telefono', 'celular', 'email'];
 
   constructor (
-    private form : FormBuilder 
+    private form : FormBuilder,
+    private _peticionesHttp : PeticionesHttpService
   ) {
     this.formularioCargarCliente = this.form.group({
       idCliente: [this.idCliente],
@@ -83,33 +87,33 @@ export class CargarClienteComponent implements OnInit {
       observacionesTransporte: [''],
       contactos: this.form.array([])
     })
-
-    this.agregarContacto();
-    this.agregarContacto();
-    this.agregarContacto();
-    this.agregarContacto();
-  }
-
-  ngOnInit() {
-    
   }
 
   get contactos(): FormArray {
     return this.formularioCargarCliente.get('contactos') as FormArray;
   }
 
+  ngOnInit(): void {
+    this.agregarContacto();
+  }
+
   agregarContacto(): void {
     this.contactos.push(this.crearFormGroupContacto());
-    console.log(this.formularioCargarCliente);
   }
 
   eliminarContacto(index: number): void {
     this.contactos.removeAt(index);
+
+    if(this.contactos.length == 0) {
+      this.agregarContacto();
+    }
+
+    this.verificarAgregarFilas();
   }
 
   private crearFormGroupContacto(): FormGroup {
     return this.form.group({
-      nombre: ['', Validators.required],
+      nombre: [''],
       telefono: [''],
       email: ['', Validators.email]
     });
@@ -117,7 +121,6 @@ export class CargarClienteComponent implements OnInit {
 
   filter(filtro : string ): void {
     if(filtro == 'provincias') {
-      console.log(this.inputProvincia);
       const valorFiltradoProvincias = this.inputProvincia.nativeElement.value.toLowerCase();
       this.valoresFiltradosProvincias = this.opcionesSelectProvincias.filter(
         datosProvincia => datosProvincia.nombre.includes(valorFiltradoProvincias)
@@ -130,7 +133,35 @@ export class CargarClienteComponent implements OnInit {
     }
   }
 
+  verificarAgregarFilas() {
+    let agregarContacto : boolean = true;
+    
+    this.contactos.controls.forEach(contacto => {
+      if(contacto.get('nombre')?.value == '') {
+        agregarContacto = false;
+        return;
+      }
+    })
+
+    if(agregarContacto) {
+      this.agregarContacto();
+    }
+  }
+
   cargarCliente() {
-    console.log(this.formularioCargarCliente);
+    if(!this.formularioCargarCliente.valid) {
+      return;
+    }
+
+    this._peticionesHttp.crearCliente(this.formularioCargarCliente).subscribe({
+      next: (data) => {
+        if(data.error) {
+          this._peticionesHttp.setRespuestaServer(data.message);
+        }
+      },
+      error: (error) => {
+        this._peticionesHttp.setRespuestaServer(error.message);
+      }
+    })
   }
 }
