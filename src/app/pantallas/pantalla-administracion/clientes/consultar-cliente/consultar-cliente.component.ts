@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-consultar-cliente',
@@ -24,7 +25,8 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ],
   templateUrl: './consultar-cliente.component.html',
   styleUrl: './consultar-cliente.component.scss'
@@ -33,6 +35,7 @@ export class ConsultarClienteComponent {
   opcionesSelectClientes : any[] = [];
   valoresFiltradosClientes : any[] = [];
   formularioConsultarCliente : FormGroup;
+  datosCliente : any = null;
   @ViewChild('inputCliente') inputCliente!: ElementRef<HTMLInputElement>;
 
   constructor (
@@ -43,7 +46,7 @@ export class ConsultarClienteComponent {
     this.valoresFiltradosClientes = this.opcionesSelectClientes.slice();
 
     this.formularioConsultarCliente = this.form.group({
-      idCliente : ['', Validators.required]
+      idCliente : ['']
     })
   }
 
@@ -67,7 +70,7 @@ export class ConsultarClienteComponent {
           this._peticionesHttp.setRespuestaServer(data.message);
         }
 
-        console.log(data.data);
+        this.datosCliente = data.data;
       },
       error: (error) => {
         this._peticionesHttp.setRespuestaServer(error.message);

@@ -17,7 +17,7 @@ export class PantallaAdministracionComponent {
   opcionesMenu : IOpcionesMenu[] = [
     {
       titulo: 'Clientes',
-      url: 'cargar-cliente',
+      url: 'consultar-cliente',
       icono: 'storefront'
     },
     {

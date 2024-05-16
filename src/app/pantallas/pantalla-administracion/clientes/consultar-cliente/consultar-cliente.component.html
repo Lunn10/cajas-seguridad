@@ -1,25 +1,25 @@
-<app-encabezado titulo="Cargar cliente"/>
+<app-encabezado titulo="Consultar cliente"/>
 <app-respuesta-server/>
 
 <div class="contenedor-pagina">
-    <form [formGroup]="formularioConsultarCliente" class="contenedor-formulario" (ngSubmit)="obtenerDatosCliente()">
+    <form [formGroup]="formularioConsultarCliente" class="contenedor-formulario">
         <mat-form-field class="input-mediano">
             <mat-label for="cliente">Cliente</mat-label>
-            <mat-select>
+            <mat-select (selectionChange)="obtenerDatosCliente()" formControlName="idCliente">
                 <input matInput id="cuadro-usuario" class="input-interno-select" #inputCliente placeholder="Buscar..." (input)="filtrar()">
                 <mat-option *ngFor="let datosCliente of valoresFiltradosClientes" [value]="datosCliente.id">{{ datosCliente.clientName }}</mat-option>
             </mat-select>
-            
-            <!--input #inputCliente type="text" id="cliente" placeholder="Seleccione un cliente" matInput formControlName="idCliente" [matAutocomplete]="autocompletarCliente" (input)="filtrar()" (focus)="filtrar()">
-            <mat-autocomplete requireSelection #autocompletarCliente="matAutocomplete">
-                @for (datosCliente of valoresFiltradosClientes; track datosCliente) {
-                    <mat-option [value]="datosCliente.clientName">{{datosCliente.clientName | titlecase }}</mat-option>
-                }
-            </mat-autocomplete>
-            <mat-error>Debe indicar el cliente a consultar</mat-error -->
         </mat-form-field>
-        <mat-card-actions>
-            <button class="input-mediano" mat-raised-button color="primary">Consultar cliente</button>
-        </mat-card-actions>
     </form>
+
+    <div class="contenedor-ficha-cliente" *ngIf="datosCliente" >
+        <div class="seccion-nombre-cliente">
+            <div class="contenedor-nombre-cliente">{{datosCliente.clientName}} </div>
+            <div class="contenedor-nombre-fantasia">({{datosCliente.fantasyName}})</div>
+        </div>
+        <div class="contenedor-datos-direccion">
+            <mat-icon aria-hidden="false" fontIcon="home"></mat-icon>
+            {{datosCliente.streetName}} {{datosCliente.streetName}} - {{datosCliente.stateName}} ({{datosCliente.cpNumber}}) 
+        </div>
+    </div>
 </div>
