@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { IDatosUsuario } from '../models/datos-usuario.model';
-import { IRespuestaServer } from '../models/respuesta-server.model'; 
+import { IRespuestaServer, IRespuestaServerSimple } from '../models/respuesta-server.model'; 
 
 @Injectable({
   providedIn: 'root'
@@ -116,8 +116,26 @@ export class PeticionesHttpService {
       contactos: datosCliente.value.contactos
     }
 
-    console.log(data);
-
     return this._httpClient.post<IRespuestaServer>('http://localhost:8900/client/create', data)
+  }
+
+  public obtenerCliente(idCliente : Number) : Observable<IRespuestaServerSimple> {
+    let data = {
+      id : idCliente
+    }
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/client/getclient', data);
+  }
+
+  public listaClientes() : Observable<IRespuestaServer> {
+    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/client/clientlist');
+  }
+
+  public obtenerTiposIVA() : Observable<IRespuestaServer> {
+    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/client/ivatypes');
+  }
+
+  public obtenerProvincias() : Observable<IRespuestaServer> {
+    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/client/statelist');
   }
 }

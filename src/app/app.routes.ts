@@ -24,6 +24,7 @@ export const routes: Routes = [
     ] },
     { path: 'sistema-administracion', component: PantallaAdministracionComponent, children: [
         { path: 'cargar-cliente', component: CargarClienteComponent },
+        { path: 'cargar-cliente/:id', component: CargarClienteComponent },
         { path: 'consultar-cliente', component: ConsultarClienteComponent },
         { path: 'cargar-factura', component: CargarFacturaComponent },
         { path: 'consultar-factura', component: ConsultarFacturaComponent }

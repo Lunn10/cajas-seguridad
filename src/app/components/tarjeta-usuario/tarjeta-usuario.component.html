@@ -6,14 +6,14 @@
     <div class="etiqueta-tipo-usuario">({{usuario.role}})</div>
 </div>
 <div class="contenedor-boton-accion">
-    <a [routerLink]="['../crear-usuario', usuario.idUser]" *ngIf="usuario.active">
+    <a [routerLink]="['../crear-usuario', usuario.id]" *ngIf="usuario.active">
         <button mat-icon-button aria-label="Editar usuario">
             <mat-icon aria-hidden="false" fontIcon="manage_accounts" ></mat-icon>
         </button>
     </a>
 </div>
 <div class="contenedor-boton-accion">
-    <button mat-icon-button (click)="cambiarEstadoUsuario(usuario.idUser, usuario.active)">
+    <button mat-icon-button (click)="cambiarEstadoUsuario(usuario.id, usuario.active)">
         <mat-icon *ngIf="usuario.active" aria-hidden="false" fontIcon="person_off"></mat-icon>
         <mat-icon *ngIf="!usuario.active" aria-hidden="false" fontIcon="person_check"></mat-icon>
     </button>

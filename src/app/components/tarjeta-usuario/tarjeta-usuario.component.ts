@@ -28,7 +28,7 @@ export class TarjetaUsuarioComponent {
     userName: '',
     active: true,
     role: '',
-    idUser: 0,
+    id: 0,
     creationDate: ''
   }
 

@@ -3,3 +3,9 @@ export interface IRespuestaServer {
     message : string;
     data: any[]
 }
+
+export interface IRespuestaServerSimple {
+    error : boolean;
+    message : string;
+    data: any
+}

@@ -1,6 +1,5 @@
 <app-encabezado titulo="Cargar cliente"/>
-
-
+<app-respuesta-server/>
 
 <div class="contenedor-pagina">
     <div class="contenedor-formulario">
@@ -34,7 +33,7 @@
                         <input #inputProvincia type="text" id="tipo-usuario" placeholder="Seleccione una provincia" matInput formControlName="provincia" [matAutocomplete]="autocompletarProvincias" (input)="filter('provincias')" (focus)="filter('provincias')">
                         <mat-autocomplete requireSelection #autocompletarProvincias="matAutocomplete">
                             @for (datosProvincia of valoresFiltradosProvincias; track datosProvincia) {
-                                <mat-option [value]="datosProvincia.nombre">{{datosProvincia.nombre | titlecase }}</mat-option>
+                                <mat-option [value]="datosProvincia.stateName">{{datosProvincia.stateName | titlecase }}</mat-option>
                             }
                         </mat-autocomplete>
                         <mat-error>Debe indicar la provincia</mat-error>
@@ -56,7 +55,7 @@
                         <input #inputIva type="text" id="tipo-iva" placeholder="Seleccione el tipo de iva" matInput formControlName="iva" [matAutocomplete]="autocompletarIva" (input)="filter('iva')" (focus)="filter('iva')">
                         <mat-autocomplete requireSelection #autocompletarIva="matAutocomplete">
                             @for (datosTipoIVA of valoresFiltradosTipoIVA; track datosTipoIVA) {
-                                <mat-option [value]="datosTipoIVA.nombre">{{datosTipoIVA.nombre | titlecase }}</mat-option>
+                                <mat-option [value]="datosTipoIVA.typeName">{{datosTipoIVA.typeName | titlecase }}</mat-option>
                             }
                         </mat-autocomplete>
                         <mat-error>Debe indicar el tipo de IVA</mat-error>

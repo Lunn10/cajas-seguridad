@@ -36,6 +36,7 @@ export class ListaTiposUsuarioComponent {
           this.mostrarMensajeServer(data.message);
         } else {
           this.listaTipoUsuarios = data.data;
+          console.log(this.listaTipoUsuarios);
         }
       },
       error : (data) => {

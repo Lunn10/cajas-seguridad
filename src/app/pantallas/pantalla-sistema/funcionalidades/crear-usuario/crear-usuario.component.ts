@@ -147,7 +147,7 @@ export class CrearUsuarioComponent implements OnInit {
         let datosUsuario = data.data[0];
 
         this.formularioCrearUsuario.setValue({
-          idUsuario: datosUsuario.idUser,
+          idUsuario: datosUsuario.id,
           usuario: datosUsuario.userName,
           password: '',
           repetirPassword: '',

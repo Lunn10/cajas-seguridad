@@ -24,7 +24,7 @@ export class TarjetaTipoUsuarioComponent {
   ) {}
 
   @Input() tipoUsuario = {
-    idType: 0,
+    id: 0,
     active: false,
     role: '',
     creationDate: ''

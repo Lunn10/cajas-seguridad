@@ -1,0 +1,21 @@
+.contenedor-pagina {
+    display: flex !important;
+    flex-direction: column !important;
+    align-content: center !important;
+    align-items: center;
+}
+
+    .contenedor-formulario {
+        width: 80%;
+        text-align: center;
+    }
+
+        .input-mediano {
+            width: 48%;
+            margin: 1%;
+        }
+
+            .input-interno-select {
+                width: 99.5%;
+                border: solid 1px blue !important;
+            }
