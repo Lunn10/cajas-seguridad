@@ -13,13 +13,58 @@
     </form>
 
     <div class="contenedor-ficha-cliente" *ngIf="datosCliente" >
-        <div class="seccion-nombre-cliente">
-            <div class="contenedor-nombre-cliente">{{datosCliente.clientName}} </div>
-            <div class="contenedor-nombre-fantasia">({{datosCliente.fantasyName}})</div>
-        </div>
-        <div class="contenedor-datos-direccion">
-            <mat-icon aria-hidden="false" fontIcon="home"></mat-icon>
-            {{datosCliente.streetName}} {{datosCliente.streetName}} - {{datosCliente.stateName}} ({{datosCliente.cpNumber}}) 
+        <div class="detalles-contacto">
+            <div class="detalles-cliente">
+              <div class="detalle">
+                <mat-icon>person</mat-icon>
+                <span class="detalle-resaltado">{{ datosCliente.clientName }}</span>
+              </div>
+              <div class="detalle">
+                <mat-icon>business</mat-icon>
+                <span>{{ datosCliente.fantasyName }}</span>
+              </div>
+              <div class="detalle">
+                <span>CUIT: {{ datosCliente.cuitNumber }}</span>
+              </div>
+              <div class="detalle">
+                <span>Tipo de IVA: {{ datosCliente.ivaType }}</span>
+              </div>
+            </div>
+          
+            <!-- Detalles de la Dirección -->
+            <div class="detalles-direccion">
+              <div class="detalle">
+                <mat-icon>location_on</mat-icon>
+                <span>{{ datosCliente.streetName | titlecase }} {{ datosCliente.streetNumber }}, {{ datosCliente.stateName | titlecase }}, CP {{ datosCliente.cpNumber }}</span>
+              </div>
+            </div>
+          
+            <!-- Detalles del Transporte -->
+            <div class="detalles-transporte" *ngIf="datosCliente.transportData.name">
+              <div class="detalle">
+                <mat-icon>local_shipping</mat-icon>
+                <span>{{ datosCliente.transportData.name | titlecase }}</span>
+              </div>
+              <div class="detalle">
+                <mat-icon>comment</mat-icon>
+                <span>{{ datosCliente.transportData.observations | titlecase }}</span>
+              </div>
+            </div>
+            <div *ngFor="let contacto of datosCliente.contactData" class="tarjeta-contacto">
+                <mat-icon class="avatar">person</mat-icon>
+                <div class="informacion-contacto">
+                    <div class="nombre">{{ contacto.nombre | uppercase }}</div>
+                    <div class="telefono">
+                    <mat-icon>smartphone</mat-icon>
+                    {{ contacto.telefono }}
+                    <mat-icon class="whatsapp">whatsapp</mat-icon>
+                    </div>
+                    <div class="email">
+                    <mat-icon>email</mat-icon>
+                    {{ contacto.email }}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

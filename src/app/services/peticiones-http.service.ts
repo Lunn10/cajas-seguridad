@@ -101,6 +101,15 @@ export class PeticionesHttpService {
   }
 
   public crearCliente(datosCliente : FormGroup) : Observable<IRespuestaServer> {
+    const contactosArray : any[] = datosCliente.get('contactos')?.value;
+    let contactosFiltrados : any [] = [];
+    
+    contactosArray.forEach(contacto => {
+      if(contacto.nombre && (contacto.telefono || contacto.email)) {
+        contactosFiltrados.push(contacto);
+      }
+    });
+
     let data = {
       idCliente : datosCliente.value.idCliente,
       nombreCliente: datosCliente.value.nombreCliente,
@@ -113,7 +122,7 @@ export class PeticionesHttpService {
       iva: datosCliente.value.iva,
       transporte: datosCliente.value.transporte,
       observacionesTransporte: datosCliente.value.observacionesTransporte,
-      contactos: datosCliente.value.contactos
+      contactos: contactosFiltrados
     }
 
     return this._httpClient.post<IRespuestaServer>('http://localhost:8900/client/create', data)
