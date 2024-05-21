@@ -17,17 +17,17 @@
             <div class="detalles-cliente">
               <div class="detalle">
                 <mat-icon>person</mat-icon>
-                <span class="detalle-resaltado">{{ datosCliente.clientName }}</span>
+                <span class="detalle-resaltado">{{ datosCliente.clientName | uppercase }}</span>
               </div>
               <div class="detalle">
                 <mat-icon>business</mat-icon>
-                <span>{{ datosCliente.fantasyName }}</span>
+                <span>{{ datosCliente.fantasyName | titlecase}}</span>
               </div>
               <div class="detalle">
                 <span>CUIT: {{ datosCliente.cuitNumber }}</span>
               </div>
               <div class="detalle">
-                <span>Tipo de IVA: {{ datosCliente.ivaType }}</span>
+                <span>Tipo de IVA: {{ datosCliente.ivaType | titlecase }}</span>
               </div>
             </div>
           
