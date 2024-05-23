@@ -1,1 +1,48 @@
-<p>cargar-articulo works!</p>
+<app-encabezado titulo="Cargar artículo" />
+<app-respuesta-server/>
+
+<div class="contenedor-pagina">
+    <div class="contenedor-formulario">
+        <form [formGroup]="formularioCargarArticulo" (ngSubmit)="cargarArticulo();">
+            <mat-stepper orientation="vertical" #stepper>
+                <mat-step label="Artículo">
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="nombre-articulo">Nombre de artículo</mat-label>
+                        <input matInput placeholder="Nombre del artículo" formControlName="nombreArticulo" id="nombre-articulo">
+                        <mat-error>Debe indicar un nombre de artículo</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="nombre-anterior">Nombre anterior</mat-label>
+                        <input matInput placeholder="Nombre anterior" formControlName="nombreAnterior" id="nombre-anterior">
+                        <mat-error>Debe indicar el nombre anterior del artículo</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="input-mediano">
+                        <mat-label>Descripción</mat-label>
+                        <input matInput placeholder="Descripción artículo" formControlName="descripcion">
+                        <mat-error>Debe indicar una descripción</mat-error>
+                    </mat-form-field>
+                </mat-step>
+                <mat-step label="Medidas">
+                    <mat-form-field class="input-corto">
+                        <mat-label for="ancho">Ancho</mat-label>
+                        <input matInput placeholder="Ancho de la caja" formControlName="ancho" id="ancho">
+                    </mat-form-field>
+                    <mat-form-field class="input-corto">
+                        <mat-label for="alto">Alto</mat-label>
+                        <input matInput placeholder="Alto de la caja" formControlName="alto" id="alto">
+                    </mat-form-field>
+                    <mat-form-field class="input-corto">
+                        <mat-label for="profundidad">Profundidad</mat-label>
+                        <input matInput placeholder="Profundidad de la caja" id="profundidad" formControlName="profundidad">
+                    </mat-form-field>
+                </mat-step>
+                <mat-step label="Confirmar">
+                    <mat-card-actions>
+                        <input type="hidden" value="" id="id-articulo" formControlName="idArticulo">
+                        <button class="input-extendido" mat-raised-button color="primary">Cargar artículo</button>
+                    </mat-card-actions>
+                </mat-step>
+            </mat-stepper>
+        </form>
+    </div>
+</div>

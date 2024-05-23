@@ -34,7 +34,8 @@ export const routes: Routes = [
     ] },
     { path: 'sistema-pedidos', component: PantallaPedidosComponent, children: [
         { path: 'lista-articulos', component: ConsultarArticuloComponent },
-        { path: 'cargar-articulo', component: CargarArticuloComponent }
+        { path: 'cargar-articulo', component: CargarArticuloComponent },
+        { path: 'cargar-articulo/:id', component: CargarArticuloComponent }
     ] },
     { path: 'sistema-produccion', component: PantallaProduccionComponent },
     { path: '**', redirectTo: '', pathMatch: 'full' }

@@ -102,8 +102,30 @@
                 color: #555;
                 margin-bottom: 3px;
             }
+
+            .mensaje {
+                margin-left: 10px;
+                color: #000000;
+            }
             
             .telefono mat-icon,
             .email mat-icon {
                 margin-right: 5px;
+            }
+
+            .encabezado-ficha {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            
+            .titulo-ficha {
+                font-size: 1.5em;
+                margin: 0;
+            }
+            
+            .botones-encabezado button[mat-icon-button] {
+                margin-left: 10px;
+                color: #000;
             }

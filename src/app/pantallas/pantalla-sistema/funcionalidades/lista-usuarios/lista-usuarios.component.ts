@@ -24,7 +24,6 @@ export class ListaUsuariosComponent implements AfterContentInit {
   ) { }
 
   listaUsuarios : any[] = [];
-  mensajeServer : String = '';
 
   ngAfterContentInit() {
     this.obtenerListaUsuarios();

@@ -1,5 +1,6 @@
 <app-encabezado titulo="Consultar cliente"/>
 <app-respuesta-server/>
+<app-boton-cargar [direccion]="'../cargar-cliente'" />
 
 <div class="contenedor-pagina">
     <form [formGroup]="formularioConsultarCliente" class="contenedor-formulario">
@@ -7,12 +8,27 @@
             <mat-label for="cliente">Cliente</mat-label>
             <mat-select (selectionChange)="obtenerDatosCliente()" formControlName="idCliente">
                 <input matInput id="cuadro-usuario" class="input-interno-select" #inputCliente placeholder="Buscar..." (input)="filtrar()">
-                <mat-option *ngFor="let datosCliente of valoresFiltradosClientes" [value]="datosCliente.id">{{ datosCliente.clientName }}</mat-option>
+                <mat-option *ngFor="let datosCliente of valoresFiltradosClientes" [value]="datosCliente.id">{{ datosCliente.clientName | titlecase }}</mat-option>
             </mat-select>
         </mat-form-field>
     </form>
 
     <div class="contenedor-ficha-cliente" *ngIf="datosCliente" >
+        <div class="encabezado-ficha">
+            <h2 class="titulo-ficha">{{datosCliente.clientName | uppercase}} </h2>
+            <div class="botones-encabezado">
+              <a [routerLink]="['../cargar-cliente/', datosCliente.id]">
+                <button mat-icon-button>
+                    <mat-icon>edit</mat-icon>
+                </button>
+              </a>
+              <button mat-icon-button (click)="cambiarEstadoCliente(datosCliente.id, datosCliente.active);">
+                  <mat-icon *ngIf="datosCliente.active">person_remove</mat-icon>
+                  <mat-icon *ngIf="!datosCliente.active">person_add</mat-icon>
+              </button>
+            </div>
+        </div>
+
         <div class="detalles-contacto">
             <div class="detalles-cliente">
               <div class="detalle">
@@ -31,11 +47,10 @@
               </div>
             </div>
           
-            <!-- Detalles de la Dirección -->
             <div class="detalles-direccion">
               <div class="detalle">
                 <mat-icon>location_on</mat-icon>
-                <span>{{ datosCliente.streetName | titlecase }} {{ datosCliente.streetNumber }}, {{ datosCliente.stateName | titlecase }}, CP {{ datosCliente.cpNumber }}</span>
+                <span>{{ datosCliente.streetName | titlecase }} {{ datosCliente.streetNumber }}, {{ datosCliente.location | titlecase }}, {{ datosCliente.stateName | titlecase }}, CP {{ datosCliente.cpNumber }}</span>
               </div>
             </div>
           
@@ -54,14 +69,17 @@
                 <mat-icon class="avatar">person</mat-icon>
                 <div class="informacion-contacto">
                     <div class="nombre">{{ contacto.nombre | uppercase }}</div>
-                    <div class="telefono">
-                    <mat-icon>smartphone</mat-icon>
-                    {{ contacto.telefono }}
-                    <mat-icon class="whatsapp">whatsapp</mat-icon>
+                    <div class="telefono" *ngIf="contacto.telefono">
+                      <mat-icon>phone</mat-icon> {{ contacto.telefono }}
                     </div>
-                    <div class="email">
-                    <mat-icon>email</mat-icon>
-                    {{ contacto.email }}
+                    <div class="telefono" *ngIf="contacto.celular">
+                      <mat-icon>smartphone</mat-icon> {{ contacto.celular }}
+                      <a href="https://wa.me/{{contacto.telefono}} " target="_blank" title="Enviar Whatsapp">
+                        <mat-icon class="mensaje">send</mat-icon>
+                      </a>
+                    </div>
+                    <div class="email" *ngIf="contacto.email">
+                      <mat-icon>email</mat-icon> {{ contacto.email }}
                     </div>
                 </div>
             </div>

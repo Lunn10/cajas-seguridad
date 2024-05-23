@@ -3,8 +3,8 @@
 
 <div class="contenido-pagina">
     <app-tarjeta-usuario 
-        [usuario]="usuario" 
         *ngFor="let usuario of listaUsuarios" 
+        [usuario]="usuario" 
         class="contenedor-tarjeta-usuario"  
         [ngClass]="{'usuario-activo' : usuario.active, 'usuario-inactivo' : !usuario.active}"  
         (eventoEnviarRespuestaServer)="establecerRespuestaServer($event);"

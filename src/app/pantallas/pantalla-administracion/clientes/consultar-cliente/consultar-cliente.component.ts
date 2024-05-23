@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { BotonCargarComponent } from '../../../../components/boton-cargar/boton-cargar.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-consultar-cliente',
@@ -18,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     EncabezadoComponent,
     RespuestaServerComponent,
+    BotonCargarComponent,
     CommonModule,
     MatInputModule,
     MatFormFieldModule,
@@ -26,7 +29,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    RouterLink
   ],
   templateUrl: './consultar-cliente.component.html',
   styleUrl: './consultar-cliente.component.scss'
@@ -43,7 +47,6 @@ export class ConsultarClienteComponent {
     private _peticionesHttp : PeticionesHttpService
   ) {
     this.obtenerListaClientes();
-    this.valoresFiltradosClientes = this.opcionesSelectClientes.slice();
 
     this.formularioConsultarCliente = this.form.group({
       idCliente : ['']
@@ -78,6 +81,21 @@ export class ConsultarClienteComponent {
     })
   }
 
+  cambiarEstadoCliente(idCliente : number, estado : boolean) : void {
+    this._peticionesHttp.cambiarEstadoCliente(idCliente, estado).subscribe({
+      next : (data) => {
+        this.obtenerDatosCliente();
+        
+        if(data.error) {
+          this._peticionesHttp.setRespuestaServer(data.message);
+        }
+      },
+      error : (data) => {
+        this._peticionesHttp.setRespuestaServer(data.message);
+      }
+    })
+  }
+
   obtenerListaClientes() : void {
     this._peticionesHttp.listaClientes().subscribe({
       next : (data) => {
@@ -85,6 +103,7 @@ export class ConsultarClienteComponent {
           this._peticionesHttp.setRespuestaServer(data.message);
         } else {
           this.opcionesSelectClientes = data.data;
+          this.valoresFiltradosClientes = this.opcionesSelectClientes.slice();
         }
       },
       error : (data) => {

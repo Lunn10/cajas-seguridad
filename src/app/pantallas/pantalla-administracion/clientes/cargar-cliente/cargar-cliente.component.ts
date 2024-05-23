@@ -59,6 +59,7 @@ export class CargarClienteComponent implements OnInit {
       nombreFantasia: ['', Validators.required],
       direccion: ['', Validators.required],
       numeroDireccion: ['', Validators.required],
+      localidad: ['', Validators.required],
       provincia: ['', Validators.required],
       codigoPostal: ['', Validators.required],
       cuit: ['', Validators.required],
@@ -104,6 +105,7 @@ export class CargarClienteComponent implements OnInit {
     return this.form.group({
       nombre: [''],
       telefono: [''],
+      celular: [''],
       email: ['', Validators.email]
     });
   }
@@ -197,10 +199,11 @@ export class CargarClienteComponent implements OnInit {
           let datosCliente = data.data;
           let datosContactos : any[] = [];
 
-          datosCliente.contactData.forEach((contacto: { nombre: string; telefono: string; email: string; }) => {
+          datosCliente.contactData.forEach((contacto: { nombre: string; telefono: string; celular: string; email: string; }) => {
             let datoContacto = {
               nombre : contacto.nombre,
               telefono : contacto.telefono,
+              celular : contacto.celular,
               email : contacto.email
             }
 
@@ -213,6 +216,7 @@ export class CargarClienteComponent implements OnInit {
             nombreFantasia: datosCliente.fantasyName,
             direccion: datosCliente.streetName,
             numeroDireccion: datosCliente.streetNumber,
+            localidad: datosCliente.location,
             provincia: datosCliente.stateName,
             codigoPostal: datosCliente.cpNumber,
             cuit: datosCliente.cuitNumber,

@@ -33,10 +33,14 @@ export class PantallaInicioComponent {
       icono: 'receipt_long'
     },
     {
+      titulo: 'Pedidos',
+      url: 'sistema-pedidos',
+      icono: 'local_shipping'
+    },
+    {
       titulo: 'Mensajería',
       url: '',
       icono: 'forum'
-    },
-
+    }
   ]
 }

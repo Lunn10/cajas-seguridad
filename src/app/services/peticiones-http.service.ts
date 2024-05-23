@@ -116,6 +116,7 @@ export class PeticionesHttpService {
       nombreFantasia: datosCliente.value.nombreFantasia,
       direccion: datosCliente.value.direccion,
       numeroDireccion: datosCliente.value.numeroDireccion,
+      localidad: datosCliente.value.localidad,
       provincia: datosCliente.value.provincia,
       codigoPostal: datosCliente.value.codigoPostal,
       cuit: datosCliente.value.cuit,
@@ -140,11 +141,55 @@ export class PeticionesHttpService {
     return this._httpClient.get<IRespuestaServer>('http://localhost:8900/client/clientlist');
   }
 
+  public cambiarEstadoCliente(idCliente : number, estado : boolean) : Observable<IRespuestaServer> {
+    let data = {
+      idCliente : idCliente,
+      estado : !estado
+    };
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/client/changestatus', data);
+  }
+
   public obtenerTiposIVA() : Observable<IRespuestaServer> {
     return this._httpClient.get<IRespuestaServer>('http://localhost:8900/client/ivatypes');
   }
 
   public obtenerProvincias() : Observable<IRespuestaServer> {
     return this._httpClient.get<IRespuestaServer>('http://localhost:8900/client/statelist');
+  }
+
+  public crearArticulo(datosArticulo : FormGroup) : Observable<IRespuestaServer> {
+    let data = {
+      idArticulo: datosArticulo.value.idArticulo,
+      nombreArticulo: datosArticulo.value.nombreArticulo,
+      nombreAnterior: datosArticulo.value.nombreAnterior,
+      descripcion: datosArticulo.value.descripcion,
+      ancho: datosArticulo.value.ancho,
+      alto: datosArticulo.value.alto,
+      profundidad: datosArticulo.value.profundidad
+    };
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/create', data)
+  }
+
+  public obtenerArticulo(idArticulo : Number) : Observable<IRespuestaServerSimple> {
+    let data = {
+      idArticulo: idArticulo
+    }
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/getarticle', data);
+  }
+
+  public listaArticulos() : Observable<IRespuestaServer> {
+    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/article/list');
+  }
+
+  public cambiarEstadoArticulo(idArticulo : number, estado : boolean) : Observable<IRespuestaServerSimple> {
+    let data = {
+      idArticulo: idArticulo,
+      estado : !estado
+    }
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/changestatus', data);
   }
 }
