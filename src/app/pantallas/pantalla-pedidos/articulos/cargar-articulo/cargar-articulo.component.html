@@ -21,6 +21,10 @@
                         <input matInput placeholder="Descripción artículo" formControlName="descripcion">
                         <mat-error>Debe indicar una descripción</mat-error>
                     </mat-form-field>
+                    <mat-radio-group aria-label="Tipo" class="input-mediano" formControlName="tipoArticulo">
+                        <mat-radio-button value="ACCESORIO" >Accesorio</mat-radio-button>
+                        <mat-radio-button value="ARTICULO">Artículo</mat-radio-button>
+                    </mat-radio-group>
                 </mat-step>
                 <mat-step label="Medidas">
                     <mat-form-field class="input-corto">

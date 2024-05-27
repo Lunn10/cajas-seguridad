@@ -163,6 +163,7 @@ export class PeticionesHttpService {
       idArticulo: datosArticulo.value.idArticulo,
       nombreArticulo: datosArticulo.value.nombreArticulo,
       nombreAnterior: datosArticulo.value.nombreAnterior,
+      tipoArticulo: datosArticulo.value.tipoArticulo,
       descripcion: datosArticulo.value.descripcion,
       ancho: datosArticulo.value.ancho,
       alto: datosArticulo.value.alto,

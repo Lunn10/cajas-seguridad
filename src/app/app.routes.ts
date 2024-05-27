@@ -14,6 +14,8 @@ import { CargarFacturaComponent } from './pantallas/pantalla-administracion/fact
 import { PantallaPedidosComponent } from './pantallas/pantalla-pedidos/pantalla-pedidos.component';
 import { ConsultarArticuloComponent } from './pantallas/pantalla-pedidos/articulos/consultar-articulo/consultar-articulo.component';
 import { CargarArticuloComponent } from './pantallas/pantalla-pedidos/articulos/cargar-articulo/cargar-articulo.component';
+import { CargarPedidoComponent } from './pantallas/pantalla-pedidos/pedidos/cargar-pedido/cargar-pedido.component';
+import { ConsultarPedidosComponent } from './pantallas/pantalla-pedidos/pedidos/consultar-pedidos/consultar-pedidos.component';
 
 export const routes: Routes = [
     { path: '', component: PantallaInicioComponent },
@@ -35,7 +37,10 @@ export const routes: Routes = [
     { path: 'sistema-pedidos', component: PantallaPedidosComponent, children: [
         { path: 'lista-articulos', component: ConsultarArticuloComponent },
         { path: 'cargar-articulo', component: CargarArticuloComponent },
-        { path: 'cargar-articulo/:id', component: CargarArticuloComponent }
+        { path: 'cargar-articulo/:id', component: CargarArticuloComponent },
+        { path: 'consultar-pedidos', component: ConsultarPedidosComponent },
+        { path: 'cargar-pedido', component: CargarPedidoComponent },
+        { path: 'cargar-pedido/:id', component: CargarPedidoComponent }
     ] },
     { path: 'sistema-produccion', component: PantallaProduccionComponent },
     { path: '**', redirectTo: '', pathMatch: 'full' }

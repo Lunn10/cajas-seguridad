@@ -1,0 +1,371 @@
+{"id":1,"clientName":"MIRALEJOS S.A.C.I.F.I.A.","fantasyName":"MIRALEJOS S.A.C.I.F.I.A.","cuitNumber":"30577350813","ivaType":"RESPONSABLE INSCRIPTO","streetName":"RUTA 210 KM. 56", "location": "DOMSELAAR", "stateName":"BUENOS AIRES","cpNumber":"1984","transportData":{"name":"","observations":""},"contactData":[{"nombre":"SECTOR COBRANZAS GISELA CASTILLO","telefono":"02225-491801 4293-9999\/9998","celular":"0","email":"MPINTO@SAPUCAI.COM.AR"},{"nombre":"SECTOR COBRANZA","telefono":"0","celular":"0","email":"PROVEEDORES@SAPUCAI.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}},
+
+
+{"id":2,"clientName":"JAUREGUY S.A","fantasyName":"JAUREGUY S.A","cuitNumber":"30.072101843.3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"TOKIO", "streetNumber": "2816", "location": "ISIDRO CASANOVA", "stateName":"BUENOS AIRES","cpNumber":"0","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}},
+
+
+{"id":3,"clientName":"LACTOCREM S.A","fantasyName":"LACTOCREM S.A","cuitNumber":"30.58301483.3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"PEDRO LOZANO", "streetNumber": "3723", "location": "CAPITAL FEDERAL","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1417","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}},
+
+
+{"id":4,"clientName":"GASITAL S.A.","fantasyName":"GASITAL S.A.","cuitNumber":"30.65055713.8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"JOSE MARTI 2919 - CAPITAL FEDERAL","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1437","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":5,"clientName":"ATILIO ETCHELAR Y CIA.","fantasyName":"ATILIO ETCHELAR Y CIA.","cuitNumber":"30.61336566.0","ivaType":"RESPONSABLE INSCRIPTO","streetName":"RUTA 3 KM. 36,800","stateName":"BUENOS AIRES","cpNumber":"1759","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":6,"clientName":"ISIDRO PEDRO MONGE S.R.L.","fantasyName":"ISIDRO PEDRO MONGE S.R.L.","cuitNumber":"30-53153003-5","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CASACUBERTA 1840 - CASTELAR","stateName":"BUENOS AIRES","cpNumber":"1708","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":7,"clientName":"SATRO S.A.","fantasyName":"SATRO S.A.","cuitNumber":"30.64708519.5","ivaType":"RESPONSABLE INSCRIPTO","streetName":"INDEPENDENCIA 1141 - MORENO","stateName":"BUENOS AIRES","cpNumber":"1744","transportData":{"name":"","observations":""},"contactData":[{"nombre":"CRISTIAN PAGOS","telefono":"","celular":"+549-1123550686","email":"MGALLARDO@SATRO.COM.AR"},{"nombre":"A","telefono":"","celular":"","email":"EAGUIRRE@SATRO.COM.AR"},{"nombre":"V","telefono":"","celular":"","email":"INFO@SATRO.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":8,"clientName":"BUENOS AYRES REFRESCOS SA DE TRANSPORTES","fantasyName":"BUENOS AYRES REFRESCOS SA DE TRANSPORTES","cuitNumber":"30.64618650.8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CALIFORNIA 2385 - CAPITAL FEDERAL","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1289","transportData":{"name":"","observations":"NUEVA DIRECCI?N: VIAMONTE 640 PISO 6. MICROCENTRO."},"contactData":[{"nombre":"LAURA (PAGOS BS AS)","telefono":"4325-5008","celular":"","email":"KRAMIREZ@BARSAT.COM.AR"},{"nombre":"CINTIA PAGOS CAMINO DE CINTURA","telefono":"4693-4749","celular":"CAMINO DE CINTURA 7300 NAVE 4 ENTREGA ROJAS CINTI","email":"CROJAS@BARSAT.COM.AR"},{"nombre":"PAGOS","telefono":"4693-2862\/2389 MAIL","celular":"","email":""},{"nombre":"MARIA BELEN PAGOS","telefono":"4325-5008","celular":"INT. 138 CAMINO DE CINTURA","email":""},{"nombre":"WASAP NUEVOOOOOOOO","telefono":"+5491141589448","celular":"","email":""},{"nombre":"MAURO TASSONE PAGOS 2024","telefono":"","celular":"","email":"MTASSONE@BARSAT.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":9,"clientName":"SU GAS S.A.","fantasyName":"SU GAS S.A.","cuitNumber":"30.64677004.8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ALSINA 960 1O. P G - CAP. FED.","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"0","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":10,"clientName":"ELIBERTO GIRON","fantasyName":"ELIBERTO GIRON","cuitNumber":"20.17220314.1","ivaType":"RESPONSABLE INSCRIPTO","streetName":"OBARRIO 834 - AVELLANEDA","stateName":"BUENOS AIRES","cpNumber":"0","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":11,"clientName":"B Y B GAS","fantasyName":"B Y B GAS","cuitNumber":"30-70772812-0","ivaType":"RESPONSABLE INSCRIPTO","streetName":"PEDRO LE?N GALLO 4193","stateName":"BUENOS AIRES","cpNumber":"1754","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":12,"clientName":"DISTRIBUIDORA DON JUAN S.R.L.","fantasyName":"DISTRIBUIDORA DON JUAN S.R.L.","cuitNumber":"30.63251892.3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"RAMON FALCON 3883","stateName":"BUENOS AIRES","cpNumber":"1754","transportData":{"name":"","observations":""},"contactData":[{"nombre":"-","telefono":"4461-6400","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":13,"clientName":"AVICOLA CASTILLO S.R.L.","fantasyName":"AVICOLA CASTILLO S.R.L.","cuitNumber":"30-65464139-7","ivaType":"RESPONSABLE INSCRIPTO","streetName":"PASAJE DESEADO 5223 - CAPITAL FEDERAL","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1414","transportData":{"name":"","observations":""},"contactData":[{"nombre":"","telefono":"4625-2096\/2059","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":14,"clientName":"AGUS GAS S.A.","fantasyName":"AGUS GAS S.A.","cuitNumber":"30-70343760-1","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. GRAL. PAZ EDF.72 PISO 10 DTO.B - VILLA CELINA","stateName":"BUENOS AIRES","cpNumber":"1772","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":15,"clientName":"CA?UELAS GAS S.A.","fantasyName":"CA?UELAS GAS S.A.","cuitNumber":"30-63718290-7","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CERRITO 836 6 PISO DEP. 1","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1010","transportData":{"name":"","observations":""},"contactData":[{"nombre":"SERGIO IBA?EZ 1561794728","telefono":"02226-432000","celular":"","email":"COMPRASTECNICA@EXTRAGAS.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":16,"clientName":"TRANSPORTE VA. BALLESTER S.A. LINEA 237","fantasyName":"TRANSPORTE VA. BALLESTER S.A. LINEA 237","cuitNumber":"33-54635117-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CALLE 93 NO. 8698 - JOSE LEON SUAREZ","stateName":"BUENOS AIRES","cpNumber":"","transportData":{"name":"","observations":""},"contactData":[{"nombre":"","telefono":"4729-7641\/4720-2020","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":17,"clientName":"COOP. AGR. GAN. DE MORTEROS LTDA.","fantasyName":"COOP. AGR. GAN. DE MORTEROS LTDA.","cuitNumber":"30-50812749-5","ivaType":"RESPONSABLE INSCRIPTO","streetName":"LIBERTADOR 601 - MORTEROS - CORDOBA","stateName":"C?RDOBA","cpNumber":"2421","transportData":{"name":"CAROSSIO","observations":""},"contactData":[{"nombre":"*","telefono":"03562-422127\/422157","celular":"","email":"CORRALONCAGM@GMAIL.COM"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":18,"clientName":"NEW GAS DE HIDALGO ESTEBAN JESUS","fantasyName":"NEW GAS DE HIDALGO ESTEBAN JESUS","cuitNumber":"30-68593843-6","ivaType":"RESPONSABLE INSCRIPTO","streetName":"SAN MARTIN 1829 - 9 DE ABRIL.","stateName":"BUENOS AIRES","cpNumber":"1839","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":19,"clientName":"DISTRIBUIDORA SERVINAR S.R.L","fantasyName":"DISTRIBUIDORA SERVINAR S.R.L","cuitNumber":"30-70393833-3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"REMEDIOS 6005","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1440","transportData":{"name":"","observations":""},"contactData":[{"nombre":"SERVIMAR","telefono":"5263-0668 INTERNO 102","celular":"","email":"MARTIN.DELRIO@SERVIMARSRL.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":20,"clientName":"SOLACOM S.A.","fantasyName":"SOLACOM S.A.","cuitNumber":"30-69728943-3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"MONTEVERDE ESQ. 893 - SOLANO","stateName":"BUENOS AIRES","cpNumber":"1881","transportData":{"name":"","observations":""},"contactData":[{"nombre":".","telefono":"","celular":"","email":"SOLACOMSA@GMAIL.COM"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":21,"clientName":"CEGEK S.R.L","fantasyName":"CEGEK S.R.L","cuitNumber":"30-68577768-8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. BELGRANO 2455 - DON TORCUATO","stateName":"BUENOS AIRES","cpNumber":"1611","transportData":{"name":"","observations":""},"contactData":[{"nombre":"","telefono":"4727-1800","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":22,"clientName":"RICARDO NINI S.A.","fantasyName":"RICARDO NINI S.A.","cuitNumber":"30-56557475-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. 520 E\/23 Y 25 - LA PLATA","stateName":"BUENOS AIRES","cpNumber":"1900","transportData":{"name":"","observations":""},"contactData":[{"nombre":"CARMELO","telefono":"0221-4794848","celular":"0221-155991584 CARMELO","email":"PAGOS@NINI.COM.AR"},{"nombre":"FACTURACION","telefono":"","celular":"0221-508-5820","email":""},{"nombre":"FACTURACION2","telefono":"","celular":"","email":"FACTURASNP@NINI.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":23,"clientName":"POR SABOR NATURAL S.A.","fantasyName":"POR SABOR NATURAL S.A.","cuitNumber":"30-69968002-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"SOLIS 912 PISO 5 DTO. 20 - CAP. FED.","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1078","transportData":{"name":"","observations":""},"contactData":[{"nombre":"H","telefono":"4304-9861\/4305-5115","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":24,"clientName":"JULIO BRUNI S.A.","fantasyName":"JULIO BRUNI S.A.","cuitNumber":"33-68350501-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"BEAUCHEFF Y FULTON - PABLO NOGUES","stateName":"BUENOS AIRES","cpNumber":"1613","transportData":{"name":"","observations":""},"contactData":[{"nombre":"A. SACO","telefono":"4463-2001","celular":"","email":"ADMINISTRACION@JULIOBRUNISA.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":25,"clientName":"ATILIO ETCHELAR S.A.","fantasyName":"ATILIO ETCHELAR S.A.","cuitNumber":"30-68840192-1","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ESPORA 111 P.2 DT.6","stateName":"BUENOS AIRES","cpNumber":"0","transportData":{"name":"","observations":""},"contactData":[{"nombre":"-","telefono":"02202-440026\/669-5050","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":26,"clientName":"NEW GAS S.A","fantasyName":"NEW GAS S.A","cuitNumber":"30-70835427-5","ivaType":"RESPONSABLE INSCRIPTO","streetName":"LUIS IRIBARNE 1829 - 9 DE ABRIL - BS. AS","stateName":"BUENOS AIRES","cpNumber":"1839","transportData":{"name":"","observations":""},"contactData":[{"nombre":"*","telefono":"4693-2100","celular":"","email":"NEWGAS@NEWGAS.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":27,"clientName":"DOLORES GAS SA","fantasyName":"DOLORES GAS SA","cuitNumber":"30-68622628-6","ivaType":"RESPONSABLE INSCRIPTO","streetName":"HIPOLITO IRIGOYEN 1628 P. 10 CAP. FED.","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1110","transportData":{"name":"","observations":""},"contactData":[{"nombre":"-","telefono":"4384-5875","celular":"","email":"RECEPCION@DOLORESGAS.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":28,"clientName":"CIA. DISTRIBUIDORA ARGENTINA S.A.","fantasyName":"CIA. DISTRIBUIDORA ARGENTINA S.A.","cuitNumber":"33-54785485-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. SANTA ROSA 2250 - ITUZAINGO","stateName":"BUENOS AIRES","cpNumber":"1714","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":29,"clientName":"ALBERTO CABA","fantasyName":"ALBERTO CABA","cuitNumber":"20-04310654-7","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ESCALADA 435","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1000","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":30,"clientName":"EXPRESS BEER S.A.","fantasyName":"EXPRESS BEER S.A.","cuitNumber":"30-70808816-8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CNEL. BONORINO 3636 - CAP. FED.","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1437","transportData":{"name":"","observations":""},"contactData":[{"nombre":"LEANDRO 1550986132","telefono":"4918-3777\/1177","celular":"","email":"MATIAS.CABRERA@EXPRESS-LOGISTICA.COM"},{"nombre":"AA","telefono":"","celular":"","email":""},{"nombre":"A","telefono":"","celular":"","email":""},{"nombre":"B","telefono":"","celular":"","email":""},{"nombre":"CAMINO DE CINTURA 9 DE ABRIL","telefono":"3754-1829 FABIAN O ALEX","celular":"","email":""},{"nombre":"RECLAMO PAGOS POR MAIL","telefono":"","celular":"","email":"ADMINISTRACION.1@EXPRESSBEERSA.COM \/\/\/\/\/ TALLER@EXPRESS-LOGISTICA.COM"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":31,"clientName":"AKITOM S.A.","fantasyName":"AKITOM S.A.","cuitNumber":"30-67984905-7","ivaType":"RESPONSABLE INSCRIPTO","streetName":"COL. GAONA 6662 Y GUATEMALA - MORENO","stateName":"BUENOS AIRES","cpNumber":"0","transportData":{"name":"","observations":""},"contactData":[{"nombre":"*","telefono":"0237-4680800","celular":"","email":"AKITOM@AKITOM.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":32,"clientName":"LOGISTICA LUGANO S.A.","fantasyName":"LOGISTICA LUGANO S.A.","cuitNumber":"33-70846349-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"OLIDEN 4053 -CAPITAL FEDERAL","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1439","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":33,"clientName":"TRANSPORTES FURLONG S.A.","fantasyName":"TRANSPORTES FURLONG S.A.","cuitNumber":"30-51907152-1","ivaType":"RESPONSABLE INSCRIPTO","streetName":"PANAMERICANA KM. 35500 - GRAL. PACHECO","stateName":"BUENOS AIRES","cpNumber":"1617","transportData":{"name":"","observations":""},"contactData":[{"nombre":"-","telefono":"03327-440179 DIA LUNES Y MIERCOLES","celular":"","email":"SFRANKE@TRANSFURLONG.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":34,"clientName":"OESTE CENTRO DE DISTRIBUCION S.A.","fantasyName":"OESTE CENTRO DE DISTRIBUCION S.A.","cuitNumber":"30-54129441-0","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. EVA PERON 4150","stateName":"BUENOS AIRES","cpNumber":"1708","transportData":{"name":"","observations":""},"contactData":[{"nombre":"RUBEN\/CRISTINA","telefono":"4697-0340","celular":"","email":"ADMIN@ZUBILLAGA.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":35,"clientName":"TASA LOGISTICA S.A.","fantasyName":"TASA LOGISTICA S.A.","cuitNumber":"30-62914545-8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"DARDO ROCHA 2934 - SAN ISIDRO","stateName":"BUENOS AIRES","cpNumber":"1640","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":36,"clientName":"BARRACAS LOGISTICA S.A.","fantasyName":"BARRACAS LOGISTICA S.A.","cuitNumber":"30-70885711-0","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ALEM 424 3 PISO - CAP. FED.","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1003","transportData":{"name":"","observations":"BUENOS AYRES REFRESCOS"},"contactData":[{"nombre":"WASAP BARRACAS LOGISTICA-BARLOG -BUENOS AYRES REFR","telefono":"+5491141589448","celular":"","email":"JROLDAN@BARSAT.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":37,"clientName":"ADDI TRANSPORTES SRL","fantasyName":"ADDI TRANSPORTES SRL","cuitNumber":"30-70845883-6","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CAMACUA 2335 - SAN JUSTO","stateName":"BUENOS AIRES","cpNumber":"1754","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":38,"clientName":"TRANSPORTE CONSTANZO SRL","fantasyName":"TRANSPORTE CONSTANZO SRL","cuitNumber":"30-70950947-7","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CNEL CARDENAS 3088","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1440","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":39,"clientName":"MIX DISTRIBUCION","fantasyName":"MIX DISTRIBUCION","cuitNumber":"33-70928095-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AIZPUR?A 2885 (CAP. FED.)","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1431","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":40,"clientName":"ADAKA S.A.","fantasyName":"ADAKA S.A.","cuitNumber":"30-70816888-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. ROSALES 597 - EL PALOMAR","stateName":"BUENOS AIRES","cpNumber":"0","transportData":{"name":"","observations":""},"contactData":[{"nombre":"-","telefono":"4843-0044","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":41,"clientName":"PESTARINO S.A.","fantasyName":"PESTARINO S.A.","cuitNumber":"30-57590606-7","ivaType":"RESPONSABLE INSCRIPTO","streetName":"32 ESQ. 28 1647NOROESTE CALLE 50 - LA PLATA","stateName":"BUENOS AIRES","cpNumber":"1900","transportData":{"name":"","observations":""},"contactData":[{"nombre":"ALFREDO","telefono":"0221- 154636864","celular":"","email":"INFO@BOULEVARD-SA.COM.AR"},{"nombre":"JORGE GUZMAN","telefono":"","celular":"","email":"SISTEMAS@BOULEVARD-SA.COM.AR"},{"nombre":"FELIPE PESTARINO","telefono":"0221-155371867","celular":"","email":"FBORDAGARAY@BOULEVARD-SA.COM.AR"},{"nombre":"****","telefono":"02214706716","celular":"INT 109","email":"LOGISTICA@BOULEVARD-SA.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":42,"clientName":"COMPA?IA DISTRIBUIDORA Y LOGISTA S.A.","fantasyName":"COMPA?IA DISTRIBUIDORA Y LOGISTA S.A.","cuitNumber":"30-70781613-5","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CORRIENTES 1749 P.9 D.34","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1042","transportData":{"name":"","observations":""},"contactData":[{"nombre":"Q","telefono":"4554-1555","celular":"15-55622462","email":"MMONTIEL@CODYLSA.COM.AR"},{"nombre":"MIGUEL GENTILE","telefono":"","celular":"15-57499952","email":""},{"nombre":"ALBERTO GONZALEZ","telefono":"","celular":"15-57499951","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":43,"clientName":"PALACIOS ANGEL ARIEL","fantasyName":"PALACIOS ANGEL ARIEL","cuitNumber":"20-27928451-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"PERIBEBUY 2968 - LA TABLADA","stateName":"BUENOS AIRES","cpNumber":"1766","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":44,"clientName":"TRASPORTE AVALOS S.A","fantasyName":"TRASPORTE AVALOS S.A","cuitNumber":"33-70299230-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"PAZ SOLDAN 4570 CAP FED","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1427","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":45,"clientName":"LUJAN PAT SRL","fantasyName":"LUJAN PAT SRL","cuitNumber":"30-63517460-5","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ITUZAINGO 1235 LUJAN","stateName":"BUENOS AIRES","cpNumber":"6700","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":46,"clientName":"AVICOLA EL 24 SRL","fantasyName":"AVICOLA EL 24 SRL","cuitNumber":"30-70940345-8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"J.M. ROSAS 8964 - ISIDRO CASANOCA","stateName":"BUENOS AIRES","cpNumber":"1765","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":47,"clientName":"TRANSPORTES ANEXO S.A.","fantasyName":"TRANSPORTES ANEXO S.A.","cuitNumber":"30-71082654-0","ivaType":"RESPONSABLE INSCRIPTO","streetName":"FIGUEROA ALCORTA 1887 V. LUZURIAGA","stateName":"BUENOS AIRES","cpNumber":"1754","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":48,"clientName":"BEBIDAS DEL LAGO S.A.","fantasyName":"BEBIDAS DEL LAGO S.A.","cuitNumber":"30-71003686-8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"RUTA NAC 40 Y PJE GUTIERREZ - SAN CARLOS BARILOCHE","stateName":"R?O NEGRO","cpNumber":"6400","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":49,"clientName":"LOGISTICA VIRREY DEL PINO SRL","fantasyName":"LOGISTICA VIRREY DEL PINO SRL","cuitNumber":"30-70973566-3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"EL PESCADOR 187","stateName":"BUENOS AIRES","cpNumber":"1742","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":50,"clientName":"REPRESENTACIONES Y DISTRIBUCIONES PANAMERICANA SA","fantasyName":"REPRESENTACIONES Y DISTRIBUCIONES PANAMERICANA SA","cuitNumber":"30-70935279-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"PTE. ARTURO ILLIA 4842","stateName":"BUENOS AIRES","cpNumber":"1613","transportData":{"name":"","observations":""},"contactData":[{"nombre":".","telefono":"4664-2091","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":51,"clientName":"MIX DISTRIBUCION SA","fantasyName":"MIX DISTRIBUCION SA","cuitNumber":"33-70928095-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AIZPUR?A 2885 (CAP. FED.)","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1431","transportData":{"name":"","observations":""},"contactData":[{"nombre":"CRISTIAN","telefono":"4574-2276","celular":"11 2293-7330","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":52,"clientName":"FABRICA DE CARROCERIAS LOS CUATRO ASES SA","fantasyName":"FABRICA DE CARROCERIAS LOS CUATRO ASES SA","cuitNumber":"33-54956090-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CNO DE CINTURA KM 17 - BO 6930 - 9 DE ABRIL - BUENOS AIRES","stateName":"BUENOS AIRES","cpNumber":"1776","transportData":{"name":"","observations":""},"contactData":[{"nombre":"-","telefono":"4693-0388","celular":"","email":"CARROCERIAS@LOSCUATROA.COM.AR"},{"nombre":"--","telefono":"4693-0387","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":53,"clientName":"GIOMON AGENCIA DE INVESTIGACIONES PRIVADAS S.R.L.","fantasyName":"GIOMON AGENCIA DE INVESTIGACIONES PRIVADAS S.R.L.","cuitNumber":"30-61128895-2","ivaType":"RESPONSABLE INSCRIPTO","streetName":"PTE PERON 8940 - ITUZAINGO","stateName":"BUENOS AIRES","cpNumber":"1740","transportData":{"name":"","observations":""},"contactData":[{"nombre":"ALEJANDRA DRESSEL","telefono":"4481-5050\/5111\/5002 INT. 118","celular":"15-69928547","email":"ALEJANDRA.D@GIOMON.COM"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":54,"clientName":"EMPRESA DE TRANSPORTE TRANSPORTAVE SRL","fantasyName":"EMPRESA DE TRANSPORTE TRANSPORTAVE SRL","cuitNumber":"30-70995289-3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"FLORIDA 520 9 06 DTO. 609","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1005","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":55,"clientName":"SOC. IND. DE PROD. ALIMENTICIOS SRL (SIPA)","fantasyName":"SOC. IND. DE PROD. ALIMENTICIOS SRL (SIPA)","cuitNumber":"30-55096083-0","ivaType":"RESPONSABLE INSCRIPTO","streetName":"BARRAGAN 731 - CIUDADELA","stateName":"BUENOS AIRES","cpNumber":"1702","transportData":{"name":"","observations":""},"contactData":[{"nombre":"ALFREDO","telefono":"1544976655","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":56,"clientName":"ENERGIA POSITIVA SA","fantasyName":"ENERGIA POSITIVA SA","cuitNumber":"30-71118666-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"SANTOS VEGA 1814","stateName":"BUENOS AIRES","cpNumber":"1776","transportData":{"name":"","observations":""},"contactData":[{"nombre":"ANDRES","telefono":"4693-4433","celular":"1534209339","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":57,"clientName":"AVICOLA LOS PINOS","fantasyName":"AVICOLA LOS PINOS","cuitNumber":"33-61067493-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ARANA 1401 TANDIL","stateName":"BUENOS AIRES","cpNumber":"7000","transportData":{"name":"","observations":""},"contactData":[{"nombre":"A","telefono":"02293-15622125","celular":"","email":"AVLOSPINOS@GMAIL.COM"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":58,"clientName":"RUTIGAS S.A.","fantasyName":"RUTIGAS S.A.","cuitNumber":"30-71079955-1","ivaType":"RESPONSABLE INSCRIPTO","streetName":"44 Y 182 N? 4342 - LA PLATA","stateName":"BUENOS AIRES","cpNumber":"1900","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":59,"clientName":"ROSSI EUGENIO ALBERTO","fantasyName":"ROSSI EUGENIO ALBERTO","cuitNumber":"20-10180980-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"REP. O. DEL URUGUAY 2988","stateName":"BUENOS AIRES","cpNumber":"1770","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":60,"clientName":"TRANSPORTES FLECAR SA","fantasyName":"TRANSPORTES FLECAR SA","cuitNumber":"30-62416980-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. GRAL LAS HERAS 2152 PISO 2 DEPTO C","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1127","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":61,"clientName":"ESTACION DE SERVICIO ECHEVERRIA E HIJOS SRL","fantasyName":"ESTACION DE SERVICIO ECHEVERRIA E HIJOS SRL","cuitNumber":"30-70985900-1","ivaType":"RESPONSABLE INSCRIPTO","streetName":"BAEZ ESQ. SENGUEL","stateName":"BUENOS AIRES","cpNumber":"1759","transportData":{"name":"","observations":""},"contactData":[{"nombre":"D","telefono":"1545773969","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":62,"clientName":"BARLOG SA","fantasyName":"BARLOG SA","cuitNumber":"30-71153017-3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"LEANDRO N. ALEM 424 (PISO:3 DPTO:304)","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1003","transportData":{"name":"","observations":""},"contactData":[{"nombre":"WASAP BARLOG-BUENOS AYRES REFRESCOS-BARCAS LOGIST","telefono":"+5491141589448","celular":"","email":"JROLDAN@BARSAT.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":63,"clientName":"DISTRIBUIDORA DE CERVEZA DISTRI CER SA","fantasyName":"DISTRIBUIDORA DE CERVEZA DISTRI CER SA","cuitNumber":"30-68017118-8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV.J. M. DE ROSAS 18650 -G. CATAN","stateName":"BUENOS AIRES","cpNumber":"1759","transportData":{"name":"","observations":""},"contactData":[{"nombre":"JUAN","telefono":"","celular":"","email":"ADMINISTRACION@DISTRICER-SA.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":64,"clientName":"ALIMENTOS EXPRESS S.A.","fantasyName":"ALIMENTOS EXPRESS S.A.","cuitNumber":"30-71421195-8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ROMERO 84 - LUJAN","stateName":"BUENOS AIRES","cpNumber":"6700","transportData":{"name":"","observations":""},"contactData":[{"nombre":"0","telefono":"0","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":65,"clientName":"DISTRIBUIDORA DEL VALLE S.A.","fantasyName":"DISTRIBUIDORA DEL VALLE S.A.","cuitNumber":"30-65960484-8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. EVA PERON 1780 - TRELEW","stateName":"CHUBUT","cpNumber":"9100","transportData":{"name":"","observations":""},"contactData":[{"nombre":"--","telefono":"(280) 442-5131","celular":"","email":"ADRIANA.KLASMAN@DISDELVALLE.COM.AR"},{"nombre":"-","telefono":"(280) 442-0324","celular":"","email":"VICTORIA.IBARRA@DISDELVALLE.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":66,"clientName":"JORGE NEMAN S.A.","fantasyName":"JORGE NEMAN S.A.","cuitNumber":"30-55928467-6","ivaType":"RESPONSABLE INSCRIPTO","streetName":"HIPOLITO YRIGOYEN 4383 - CRO. RIVADAVIA","stateName":"CHUBUT","cpNumber":"9000","transportData":{"name":"","observations":""},"contactData":[{"nombre":"-","telefono":"0297-4481-782","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":67,"clientName":"AVICOLA FRANGO S.A.","fantasyName":"AVICOLA FRANGO S.A.","cuitNumber":"30-70778054-8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. SAN MARTIN 2201 - A. BROWN","stateName":"BUENOS AIRES","cpNumber":"1846","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":68,"clientName":"MONTERO DANIEL FERNANDO","fantasyName":"MONTERO DANIEL FERNANDO","cuitNumber":"20-18324144-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CERRITO 1893","stateName":"BUENOS AIRES","cpNumber":"1752","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":69,"clientName":"COMPA?IA DISTRIBUIDORA DE BEBIDAS S. A.","fantasyName":"COMPA?IA DISTRIBUIDORA DE BEBIDAS S. A.","cuitNumber":"33-70794561-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"SENILLOSA 59 PISO:8 DPTO:C","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1424","transportData":{"name":"","observations":"ZUBILLAGA"},"contactData":[{"nombre":"ZUBILLAGA","telefono":"","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":70,"clientName":"MONTIEL DISTRIBUCIONES SRL","fantasyName":"MONTIEL DISTRIBUCIONES SRL","cuitNumber":"30-71186931-6","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. DIRECTORIO 4770","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1407","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":71,"clientName":"BEBIDAS DEL MAR S.A.","fantasyName":"BEBIDAS DEL MAR S.A.","cuitNumber":"30-70885728-5","ivaType":"RESPONSABLE INSCRIPTO","streetName":"OLAZABAL 482 - ITUZAINGO","stateName":"BUENOS AIRES","cpNumber":"1714","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":72,"clientName":"PUERTA DEL SUR S.A.","fantasyName":"PUERTA DEL SUR S.A.","cuitNumber":"30-63597284-6","ivaType":"RESPONSABLE INSCRIPTO","streetName":"RUTA 3 KM. 696 - BAHIA BLANCA","stateName":"BUENOS AIRES","cpNumber":"8000","transportData":{"name":"","observations":""},"contactData":[{"nombre":"-","telefono":"0291-455-9805","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":73,"clientName":"AVINAR SRL","fantasyName":"AVINAR SRL","cuitNumber":"30-70925369-3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"BELGRANO 185 - MORENO","stateName":"BUENOS AIRES","cpNumber":"1744","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":74,"clientName":"NORIA EXPRESS S.R.L.","fantasyName":"NORIA EXPRESS S.R.L.","cuitNumber":"30-71096570-2","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. LEANDRO N. ALEM 424 P3 DTO 304","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1003","transportData":{"name":"","observations":""},"contactData":[{"nombre":"ANDREA FISSORE PAGOS","telefono":"","celular":"","email":"AFISSORE@BARSAT.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":75,"clientName":"ALIBUE SA","fantasyName":"ALIBUE SA","cuitNumber":"33-61698910-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"INT. MANNY 791 - GRAL. RODR?GUEZ","stateName":"BUENOS AIRES","cpNumber":"1748","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":76,"clientName":"GUTIERREZ SERGIO ANDRES","fantasyName":"GUTIERREZ SERGIO ANDRES","cuitNumber":"20252986627","ivaType":"RESPONSABLE INSCRIPTO","streetName":"PADILLA 345","stateName":"BUENOS AIRES","cpNumber":"1688","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":77,"clientName":"MARTINEZ ERNESTO HORACIO","fantasyName":"MARTINEZ ERNESTO HORACIO","cuitNumber":"20-08479207-2","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ROMEO 950","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1437","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":78,"clientName":"RUTAS DEL OESTE SA","fantasyName":"RUTAS DEL OESTE SA","cuitNumber":"30-71031983-5","ivaType":"RESPONSABLE INSCRIPTO","streetName":"J. B. ANCHORDOQUI 1557 - SANTOS LUGARES","stateName":"BUENOS AIRES","cpNumber":"1676","transportData":{"name":"","observations":""},"contactData":[{"nombre":"LILIANA BARBOZA","telefono":"4654-9473","celular":"1164292723","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":79,"clientName":"TRANSPORTES LA MATTINA SRL","fantasyName":"TRANSPORTES LA MATTINA SRL","cuitNumber":"30-71230704-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ALSINA 142 PISO:2 RAMOS MEJIA","stateName":"BUENOS AIRES","cpNumber":"1704","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":80,"clientName":"ALIMENTOS DEL LAGO SRL","fantasyName":"ALIMENTOS DEL LAGO SRL","cuitNumber":"30-71519243-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"MITRE 660 - SAN CARLOS DE BARILOCHE","stateName":"R?O NEGRO","cpNumber":"8400","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":81,"clientName":"LOGISTICA Y DISTRIBUCION LA CANDELARIA S A","fantasyName":"LOGISTICA Y DISTRIBUCION LA CANDELARIA S A","cuitNumber":"30-70835095-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"DINAMARCA 1872 - EL PALOMAR","stateName":"BUENOS AIRES","cpNumber":"1684","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":82,"clientName":"REFRES NOW S.A.","fantasyName":"REFRES NOW S.A.","cuitNumber":"30-70866873-3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ESTADOS UNIDOS 972 PISO:10 DPTO:C","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1101","transportData":{"name":"","observations":"MANAOS"},"contactData":[{"nombre":"BETINA GAIT?N","telefono":"4690 2239 \/ 5712","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":83,"clientName":"CENTRO LOG?STICO SUR SRL","fantasyName":"CENTRO LOG?STICO SUR SRL","cuitNumber":"30-71206533-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"URIARTE 570 - BANFIELD","stateName":"BUENOS AIRES","cpNumber":"1828","transportData":{"name":"","observations":""},"contactData":[{"nombre":"CRISTINA CIGOY","telefono":"4242-5015","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":84,"clientName":"TRANSPORTES INTEGRALES GOMEZ SRL","fantasyName":"TRANSPORTES INTEGRALES GOMEZ SRL","cuitNumber":"30-57868455-3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"GALILEO 2465 PISO 9 DPTO A","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1425","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":85,"clientName":"MICELI TERESA","fantasyName":"MICELI TERESA","cuitNumber":"23-93899387-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"LAS HERAS 3595","stateName":"BUENOS AIRES","cpNumber":"1752","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":86,"clientName":"LLOSA MIGUEL MARIANO","fantasyName":"LLOSA MIGUEL MARIANO","cuitNumber":"20-22822942-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV SAN MARTIN 1221 - VIRASORO","stateName":"CORRIENTES","cpNumber":"3342","transportData":{"name":"CENTRAL ARGENTINO","observations":""},"contactData":[{"nombre":"MARIANO","telefono":"","celular":"03756-15-430673","email":"MARIANO.LLOSA@GMAIL.COM"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":87,"clientName":"ARTERO SRL","fantasyName":"ARTERO SRL","cuitNumber":"30667308751","ivaType":"RESPONSABLE INSCRIPTO","streetName":"COLON 902 - TANDIL","stateName":"BUENOS AIRES","cpNumber":"7000","transportData":{"name":"","observations":""},"contactData":[{"nombre":".","telefono":"(249) - 15- 4622248","celular":"","email":"AVLOSPINOS@SPEEDY.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":88,"clientName":"PILARES COMPA?IA ALIMENTICIA SA","fantasyName":"PILARES COMPA?IA ALIMENTICIA SA","cuitNumber":"30-71137523-2","ivaType":"RESPONSABLE INSCRIPTO","streetName":"PTE. FRONDIZI 2911 - PQUE. IND. PILAR","stateName":"BUENOS AIRES","cpNumber":"1629","transportData":{"name":"","observations":""},"contactData":[{"nombre":"-","telefono":"02322-670344\/670365","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":89,"clientName":"MARINA MAPACA S.A.","fantasyName":"MARINA MAPACA S.A.","cuitNumber":"30-71226141-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"OLIDEN 953","stateName":"BUENOS AIRES","cpNumber":"1832","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":90,"clientName":"NUTRECO ALIMENTOS S A","fantasyName":"NUTRECO ALIMENTOS S A","cuitNumber":"30-67221680-6","ivaType":"RESPONSABLE INSCRIPTO","streetName":"JENSEN 899 - SAN RAFAEL","stateName":"MENDOZA","cpNumber":"5600","transportData":{"name":"","observations":""},"contactData":[{"nombre":"B","telefono":"4668-2435\/2438","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":91,"clientName":"COMPA?IA DISTRIBUIDORA ARGENTINA S.A.","fantasyName":"COMPA?IA DISTRIBUIDORA ARGENTINA S.A.","cuitNumber":"33-54785485-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV STA ROSA 2250 - ITUZAINGO","stateName":"BUENOS AIRES","cpNumber":"1714","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":92,"clientName":"COSSO LILIANA BEATRIZ","fantasyName":"COSSO LILIANA BEATRIZ","cuitNumber":"27-13741748-6","ivaType":"RESPONSABLE INSCRIPTO","streetName":"QUEVEDO 3258","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1417","transportData":{"name":"","observations":""},"contactData":[{"nombre":"L","telefono":"1564778109","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":93,"clientName":"ROMANO MARIANO ADRIAN","fantasyName":"ROMANO MARIANO ADRIAN","cuitNumber":"20-21131450-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AVENIDA DE LOS INCAS 4264 P.1 DTO. E","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1427","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":94,"clientName":"DISTRIBUIDORA RUTA 5 S.A.","fantasyName":"DISTRIBUIDORA RUTA 5","cuitNumber":"33-70828434-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV BME MITRE 1686 - PASO DEL REY","stateName":"BUENOS AIRES","cpNumber":"1742","transportData":{"name":"","observations":""},"contactData":[{"nombre":"YANINA","telefono":"6597-8465","celular":"11-6474-6904","email":"LILIANA.AGUERO@DISTRIBUIDORARUTA5.COM"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":95,"clientName":"NORIA EXPRESS S.R,L.","fantasyName":"NORIA EXPRESS S.R,L.","cuitNumber":"30710965702","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. LEANDRO N. ALEM 424 PISO:3 DPTO:304","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1003","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":96,"clientName":"SIMONETTI DARIO DAMIAN","fantasyName":"SIMONETTI DARIO DAMIAN","cuitNumber":"23-27281346-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. JORGE NEWBERY 533 - LAS FLORES","stateName":"BUENOS AIRES","cpNumber":"7200","transportData":{"name":"","observations":""},"contactData":[{"nombre":"DARIO","telefono":"0224-4450008","celular":"","email":"FORRAJERIALIDER@YAHOO.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":97,"clientName":"GRANJA OLINDO SRL","fantasyName":"GRANJA OLINDO SRL","cuitNumber":"30-70949181-0","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ZULOAGA 127 LANUS","stateName":"BUENOS AIRES","cpNumber":"1824","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":98,"clientName":"BAIRES DISTRIBUCIONES SUR S.A.","fantasyName":"BAIRES DISTRIBUCIONES","cuitNumber":"30714089877","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. CORRIENTES 2589 PISO:6 DPTO:32","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1046","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":99,"clientName":"NORTEC INSUMOS S.R.L.","fantasyName":"NORTEC INSUMOS","cuitNumber":"30714964743","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. HIPOLITO IRIGOYEN 1474","stateName":"BUENOS AIRES","cpNumber":"1640","transportData":{"name":"","observations":""},"contactData":[{"nombre":"ANTONELLA","telefono":"4792-5054","celular":"","email":"VENTAS@NORTEC-INSUMOS.COM.AR"}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":100,"clientName":"TRUCKERDRIVE S.A.","fantasyName":"TRUCKERDRIVE","cuitNumber":"30-71423217-3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"SAN CLEMENTE DEL TUYU 1400","stateName":"BUENOS AIRES","cpNumber":"1839","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":101,"clientName":"JB SERVICIOS Y COMBUSTIBLES S.A.","fantasyName":"JB SERVICIOS Y COMBUSTIBLES","cuitNumber":"30709498106","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. CROVARA 4635","stateName":"BUENOS AIRES","cpNumber":"1766","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":102,"clientName":"GABRIEL CORRALES","fantasyName":"GABRIEL CORRALES","cuitNumber":"20355388671","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CIRC.3 SEC. 1 CASA 1 0 M:4","stateName":"BUENOS AIRES","cpNumber":"1778","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":103,"clientName":"LOGISTICA LOS ROBLES ANDINOS S.A.","fantasyName":"LOS ROBLES ANDINOS","cuitNumber":"30715320718","ivaType":"RESPONSABLE INSCRIPTO","streetName":"SOMELLERA 302","stateName":"BUENOS AIRES","cpNumber":"1754","transportData":{"name":"","observations":""},"contactData":[{"nombre":"NICOLAS","telefono":"15-3174-3501","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":104,"clientName":"ALERZAL SA","fantasyName":"ALERZAL","cuitNumber":"30708980079","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. FOREST 1530","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1430","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":105,"clientName":"TRANSPORTE Y DISTRIBUCION URBANA SA","fantasyName":"TRANSPORTE Y DISTRIBUCION URBANA SA","cuitNumber":"33-70993237-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CORRIENTES AV. 1749 PISO:09 DPTO:34","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1042","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":106,"clientName":"T24 SA","fantasyName":"T24 SA","cuitNumber":"30-70925771-0","ivaType":"RESPONSABLE INSCRIPTO","streetName":"MORENO 1355","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1091","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":107,"clientName":"CAMARA DE INDUSTRIA Y COMERCIO","fantasyName":"CICM","cuitNumber":"30-56466612-9","ivaType":"CONSUMIDOR FINAL","streetName":"ENTRE RIOS 3026","stateName":"BUENOS AIRES","cpNumber":"1754","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":108,"clientName":"DISTRIBUIDORA DE PRODUCTOS ALIMENTICIOS EL SOL S.R","fantasyName":"DISTRIBUIDORA DE PRODUCTOS ALIMENTICIOS EL SOL S.R","cuitNumber":"30-70843871-1","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ECUADOR 3000","stateName":"BUENOS AIRES","cpNumber":"1651","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":109,"clientName":"NEWNESS S R L","fantasyName":"NEWNESS S R L","cuitNumber":"30-65417270-2","ivaType":"RESPONSABLE INSCRIPTO","streetName":"LAVALLE 1473 PISO:4 DPTO:403","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1048","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":110,"clientName":"DISTRIBUCION Y LOGISTICA DE LOS ANDES SA","fantasyName":"DISTRIBUCION Y LOGISTICA DE LOS ANDES SA","cuitNumber":"33-71491570-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"25 DE MAYO 647 - MENDOZA","stateName":"MENDOZA","cpNumber":"5500","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":111,"clientName":"VIENTOS DE LA PATAGONIA S.A.","fantasyName":"VIENTOS DE LA PATAGONIA S.A.","cuitNumber":"30-71433439-1","ivaType":"RESPONSABLE INSCRIPTO","streetName":"GOBERNADOR GREGORES 1109","stateName":"SANTA CRUZ","cpNumber":"9011","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":112,"clientName":"BARRIA JUAN SEBASTIAN","fantasyName":"BARRIA JUAN SEBASTIAN","cuitNumber":"20-28876076-5","ivaType":"RESPONSABLE INSCRIPTO","streetName":"25 DE MAYO 1017","stateName":"BUENOS AIRES","cpNumber":"1846","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":113,"clientName":"FERRARI WALTER ORESTE Y BARRIA JUAN SEBASTIAN SOC","fantasyName":"FERRARI WALTER ORESTE Y BARRIA JUAN SEBASTIAN SOCIEDAD SIMPLE","cuitNumber":"30-71622959-5","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AV. MONTEVERDE 4393","stateName":"BUENOS AIRES","cpNumber":"1852","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":114,"clientName":"DINRO SA","fantasyName":"DINRO SA","cuitNumber":"30-70988760-9","ivaType":"RESPONSABLE INSCRIPTO","streetName":"828 2024","stateName":"BUENOS AIRES","cpNumber":"1881","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":115,"clientName":"JOAQUIN RAMON CRESPO","fantasyName":"JOAQUIN RAMON CRESPO","cuitNumber":"20-17256267-2","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ALFONSINA STORNI 681","stateName":"BUENOS AIRES","cpNumber":"1980","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":116,"clientName":"GIANFELICE EDGARDO Y SOTELO NADIA SH","fantasyName":"GIANFELICE EDGARDO Y SOTELO NADIA SH","cuitNumber":"30-71113978-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CALLE 522 2432","stateName":"BUENOS AIRES","cpNumber":"1900","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":117,"clientName":"FULL GAS S.A.","fantasyName":"FULL GAS S.A.","cuitNumber":"30-70813056-3","ivaType":"RESPONSABLE INSCRIPTO","streetName":"RUTA 5 KM 50500","stateName":"BUENOS AIRES","cpNumber":"1748","transportData":{"name":"","observations":""},"contactData":[{"nombre":"-","telefono":"0237-484-0119","celular":"","email":""}],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":118,"clientName":"ESTACION RAMOS S.A.","fantasyName":"ESTACION RAMOS S.A.","cuitNumber":"30-71591797-8","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AVDA. DE MAYO 1601","stateName":"BUENOS AIRES","cpNumber":"1704","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":119,"clientName":"CASHALO DISTRIBUCIONES S.R.L.","fantasyName":"CASHALO DISTRIBUCIONES S.R.L.","cuitNumber":"30-71510486-1","ivaType":"RESPONSABLE INSCRIPTO","streetName":"RUTA 1001 3645","stateName":"BUENOS AIRES","cpNumber":"2930","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":120,"clientName":"NICOLAS VENTANA PALACIOS","fantasyName":"NICOLAS VENTANA PALACIOS","cuitNumber":"20-30162943-6","ivaType":"RESPONSABLE INSCRIPTO","streetName":"J J DIAZ 1175 - SAN ISIDRO","stateName":"BUENOS AIRES","cpNumber":"1642","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":121,"clientName":"DISTRIBUIDORA ECHEVERRIA S.A.","fantasyName":"DISTRIBUIDORA ECHEVERRIA S.A.","cuitNumber":"30-71229116-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"AVENIDA EVA PERON 2673","stateName":"BUENOS AIRES","cpNumber":"1708","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":122,"clientName":"PRODOVO S.A.","fantasyName":"PRODOVO S.A.","cuitNumber":"30-71587512-4","ivaType":"RESPONSABLE INSCRIPTO","streetName":"RUTA 2 KM 44500 - ABASTO","stateName":"BUENOS AIRES","cpNumber":"1903","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":123,"clientName":"FRESCO PEZ SA","fantasyName":"FRESCO PEZ SA","cuitNumber":"30-70823399-0","ivaType":"RESPONSABLE INSCRIPTO","streetName":"CORRIENTES AV. 1386 PISO 9 DPTO 911","stateName":"BUENOS AIRES","cpNumber":"1043","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+
+
+{"id":124,"clientName":"TENLOG S.A.","fantasyName":"TENLOG S.A.","cuitNumber":"30-71570191-6","ivaType":"RESPONSABLE INSCRIPTO","streetName":"ALEM LEANDRO N. AV. 424 PISO:3 DPTO:304","stateName":"CIUDAD AUTÓNOMA DE BUENOS AIRES","cpNumber":"1003","transportData":{"name":"","observations":""},"contactData":[],"creationData":{"date":"24\/05\/2024 13:24:02","responsible":"nahuel"}}
+

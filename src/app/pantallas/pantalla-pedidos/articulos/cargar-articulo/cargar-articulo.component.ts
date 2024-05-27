@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatStep, MatStepperModule } from '@angular/material/stepper';
 import { ActivatedRoute } from '@angular/router';
@@ -22,7 +23,8 @@ import { ActivatedRoute } from '@angular/router';
     MatFormFieldModule,
     MatCardModule,
     MatStepperModule,
-    MatStep
+    MatStep,
+    MatRadioModule 
   ],
   templateUrl: './cargar-articulo.component.html',
   styleUrl: './cargar-articulo.component.scss'
@@ -43,7 +45,8 @@ export class CargarArticuloComponent {
       descripcion: ['', Validators.required],
       ancho: [0],
       alto: [0],
-      profundidad: [0]
+      profundidad: [0],
+      tipoArticulo: ['ARTICULO', Validators.required]
     })
   }
 
@@ -72,7 +75,8 @@ export class CargarArticuloComponent {
           descripcion: datosArticulo.descripcion,
           ancho: datosArticulo.medidas.ancho,
           alto: datosArticulo.medidas.alto,
-          profundidad: datosArticulo.medidas.profundidad
+          profundidad: datosArticulo.medidas.profundidad,
+          tipoArticulo: datosArticulo.tipoArticulo
         })
       },
       error: (error) => {
