@@ -10,6 +10,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatStep, MatStepperModule } from '@angular/material/stepper';
 import { ActivatedRoute } from '@angular/router';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-cargar-articulo',
@@ -24,7 +25,8 @@ import { ActivatedRoute } from '@angular/router';
     MatCardModule,
     MatStepperModule,
     MatStep,
-    MatRadioModule 
+    MatRadioModule,
+    MatTabsModule
   ],
   templateUrl: './cargar-articulo.component.html',
   styleUrl: './cargar-articulo.component.scss'
@@ -45,8 +47,7 @@ export class CargarArticuloComponent {
       descripcion: ['', Validators.required],
       ancho: [0],
       alto: [0],
-      profundidad: [0],
-      tipoArticulo: ['ARTICULO', Validators.required]
+      profundidad: [0]
     })
   }
 
