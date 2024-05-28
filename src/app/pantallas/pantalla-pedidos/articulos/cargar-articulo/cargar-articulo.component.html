@@ -48,10 +48,46 @@
                 </form>
             </mat-tab>
             <mat-tab label="Accesorio">
-
+                <form [formGroup]="formularioCargarAccesorio" (ngSubmit)="cargarAccesorio()">
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="nombre-acceesorio">Nombre del accesorio</mat-label>
+                        <input matInput placeholder="Nombre del accesorio" formControlName="nombreAccesorio" id="nombre-acceesorio">
+                        <mat-error>Debe indicar un nombre para el accesorio</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="descripcion">Descripción</mat-label>
+                        <input matInput placeholder="Descripción del accesorio" formControlName="descripcion" id="descripcion">
+                        <mat-error>Debe indicar una descripción</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="input-mediano">
+                        <mat-label>Disponible para</mat-label>
+                        <mat-select formControlName="articulos" multiple>
+                            @for (articulo of listaArticulos; track articulo) {
+                                <mat-option [value]="articulo.id">{{articulo.nombre}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-card-actions>
+                        <button class="input-extendido" mat-raised-button color="primary">Cargar accesorio</button>
+                    </mat-card-actions>
+                </form>
             </mat-tab>
             <mat-tab label="Servicio">
-
+                <form [formGroup]="formularioCargarServicio" (ngSubmit)="cargarServicio()">
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="nombre-servicio">Nombre del servicio</mat-label>
+                        <input matInput placeholder="Nombre del servicio" formControlName="nombreServicio" id="nombre-servicio">
+                        <mat-error>Debe indicar un nombre para el servicio</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="input-mediano">
+                        <mat-label for="descripcion">Descripción</mat-label>
+                        <input matInput placeholder="Descripción del accesorio" formControlName="descripcion" id="descripcion">
+                        <mat-error>Debe indicar una descripción</mat-error>
+                    </mat-form-field>
+                    <mat-card-actions>
+                        <button class="input-extendido" mat-raised-button color="primary">Cargar servicio</button>
+                    </mat-card-actions>
+                </form>
             </mat-tab>
         </mat-tab-group>
     </div>

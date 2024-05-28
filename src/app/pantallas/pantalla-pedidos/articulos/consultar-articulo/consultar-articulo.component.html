@@ -5,8 +5,6 @@
     <app-tarjeta-articulo 
         *ngFor="let articulo of listaArticulos"
         [articulo]="articulo"
-        class="contenedor-tarjeta-articulo" 
-        [ngClass]="{'articulo-activo' : articulo.active, 'articulo-inactivo' : !articulo.active}"  
         (eventoEnviarRespuestaServer)="establecerRespuestaServer($event);"
     />
 

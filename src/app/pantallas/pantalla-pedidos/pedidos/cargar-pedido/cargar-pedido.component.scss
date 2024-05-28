@@ -24,3 +24,20 @@
             width: 30%;
             margin: 1vh;
         }
+    
+    .contenedor-articulos {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .tarjeta-articulo {
+            width: 50%;
+        }
+
+        .tarjeta-cargar-articulo {
+            width: 45%;
+            margin: 1%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }

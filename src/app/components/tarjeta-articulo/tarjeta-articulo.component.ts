@@ -26,6 +26,8 @@ export class TarjetaArticuloComponent {
     nombre: '',
     nombreAnterior: '',
     descripcion: '',
+    tipoArticulo: '',
+    relacionArticulos: [],
     medidas: {
       ancho: 0,
       alto: 0,

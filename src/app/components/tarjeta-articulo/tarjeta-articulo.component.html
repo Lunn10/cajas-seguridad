@@ -1,21 +1,31 @@
-<div class="datos-articulo">
-    <div class="contenedor-nombre-articulo">{{articulo.nombre}}</div>
-    <div class="contenedor-nombre-anterior">{{articulo.nombreAnterior}}</div>
-    <div class="contenedor-descripcion">{{articulo.descripcion}}</div>
-    <div class="contenedor-medidas">Alto: {{articulo.medidas.alto}} x Ancho: {{articulo.medidas.ancho}} x Profundidad: {{articulo.medidas.profundidad}} </div>
-</div>
-<div class="botones-accion">
-    <div class="contenedor-boton">
-        <a [routerLink]="['../cargar-articulo', articulo.id]" *ngIf="articulo.active">    
-            <button mat-icon-button>
-                <mat-icon>edit_note</mat-icon>
-            </button>
-        </a>
+<div class="tarjeta-articulo" [ngClass]="{'articulo-activo' : articulo.active, 'articulo-inactivo' : !articulo.active}"  >
+    <div class="contenedor-tipo-articulo" [ngClass]="{
+        'tipo-articulo': articulo.tipoArticulo === 'ARTICULO',
+        'tipo-accesorio': articulo.tipoArticulo === 'ACCESORIO',
+        'tipo-servicio': articulo.tipoArticulo === 'SERVICIO'
+    }" > {{articulo.tipoArticulo}}</div>
+    <div class="contenedor-datos-articulo">
+        <div class="datos-articulo">
+            <div class="contenedor-nombre-articulo">{{articulo.nombre}}</div>
+            <div *ngIf="articulo.nombreAnterior" class="contenedor-nombre-anterior">{{articulo.nombreAnterior}}</div>
+            <div class="contenedor-descripcion">{{articulo.descripcion}}</div>
+            <div *ngIf="articulo.medidas" class="contenedor-medidas">Alto: {{articulo.medidas.alto}} x Ancho: {{articulo.medidas.ancho}} x Profundidad: {{articulo.medidas.profundidad}} </div>
+        </div>
+        <div class="botones-accion">
+            <div class="contenedor-boton">
+                <a [routerLink]="['../cargar-articulo', articulo.id]" *ngIf="articulo.active">    
+                    <button mat-icon-button>
+                        <mat-icon>edit_note</mat-icon>
+                    </button>
+                </a>
+            </div>
+            <div class="contenedor-boton">
+                <button mat-icon-button (click)="cambiarEstadoArticulo(articulo.id, articulo.active)">
+                    <mat-icon *ngIf="articulo.active">block</mat-icon>
+                    <mat-icon *ngIf="!articulo.active">check</mat-icon>
+                </button>
+            </div>
+        </div>
     </div>
-    <div class="contenedor-boton">
-        <button mat-icon-button (click)="cambiarEstadoArticulo(articulo.id, articulo.active)">
-            <mat-icon *ngIf="articulo.active">block</mat-icon>
-            <mat-icon *ngIf="!articulo.active">check</mat-icon>
-        </button>
-    </div>
 </div>
+

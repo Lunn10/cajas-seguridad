@@ -158,6 +158,21 @@ export class PeticionesHttpService {
     return this._httpClient.get<IRespuestaServer>('http://localhost:8900/client/statelist');
   }
 
+  public crear(datosArticulo : FormGroup) : Observable<IRespuestaServer> {
+    let data = {
+      idArticulo: datosArticulo.value.idArticulo,
+      nombreArticulo: datosArticulo.value.nombreArticulo,
+      nombreAnterior: datosArticulo.value.nombreAnterior,
+      tipoArticulo: datosArticulo.value.tipoArticulo,
+      descripcion: datosArticulo.value.descripcion,
+      ancho: datosArticulo.value.ancho,
+      alto: datosArticulo.value.alto,
+      profundidad: datosArticulo.value.profundidad
+    };
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/create', data)
+  }
+
   public crearArticulo(datosArticulo : FormGroup) : Observable<IRespuestaServer> {
     let data = {
       idArticulo: datosArticulo.value.idArticulo,
@@ -173,6 +188,29 @@ export class PeticionesHttpService {
     return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/create', data)
   }
 
+  public crearAccesorio(datosArticulo : FormGroup) : Observable<IRespuestaServer> {
+    let data = {
+      idArticulo: datosArticulo.value.idAccesorio,
+      nombreArticulo: datosArticulo.value.nombreAccesorio,
+      tipoArticulo: datosArticulo.value.tipoArticulo,
+      descripcion: datosArticulo.value.descripcion,
+      relacionesArticulos: datosArticulo.value.articulos
+    };
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/createaccesory', data)
+  }
+
+  public crearServicio(datosArticulo : FormGroup) : Observable<IRespuestaServer> {
+    let data = {
+      idArticulo: datosArticulo.value.idServicio,
+      nombreArticulo: datosArticulo.value.nombreServicio,
+      tipoArticulo: datosArticulo.value.tipoArticulo,
+      descripcion: datosArticulo.value.descripcion
+    };
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/createservice', data)
+  }
+
   public obtenerArticulo(idArticulo : Number) : Observable<IRespuestaServerSimple> {
     let data = {
       idArticulo: idArticulo
@@ -183,6 +221,14 @@ export class PeticionesHttpService {
 
   public listaArticulos() : Observable<IRespuestaServer> {
     return this._httpClient.get<IRespuestaServer>('http://localhost:8900/article/list');
+  }
+
+  public listaAccesorios(idArticulo : number) : Observable<IRespuestaServer> {
+    let data = {
+      idArticulo: idArticulo
+    }
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/getaccesoriesarticles', data);
   }
 
   public cambiarEstadoArticulo(idArticulo : number, estado : boolean) : Observable<IRespuestaServerSimple> {
