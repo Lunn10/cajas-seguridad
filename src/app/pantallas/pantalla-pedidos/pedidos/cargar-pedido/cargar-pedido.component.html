@@ -3,7 +3,7 @@
 
 <div class="contenedor-pagina">
     <div class="contenedor-formulario">
-        <form [formGroup]="formularioCargarPedido">
+        <form [formGroup]="formularioCargarPedido" (ngSubmit)="cargarPedido();">
             <mat-stepper [linear]="true" #stepper>
                 <mat-step label="Datos del pedido">
                     <mat-form-field class="input-mediano">
@@ -53,7 +53,7 @@
                                     <input matInput placeholder="Cantidad" id="cantidad" value="" formControlName="cantidad">
                                 </mat-form-field>
                                 <div *ngIf="mostrarAccesorios(articuloCargado.value.articulo)">
-                                    <mat-checkbox value="2">Accesorio 2</mat-checkbox>
+                                    <mat-checkbox *ngFor="let accesoriosArticulo of articuloActual(articuloCargado.value.articulo)" formControlName="accesorios" value="accesoriosArticulo.id">{{accesoriosArticulo.nombre}}</mat-checkbox>
                                 </div>
                             </div>
                         </ng-container>
@@ -64,6 +64,11 @@
                             <mat-icon aria-hidden="false">skip_previous</mat-icon>
                         </button>
                     </div>
+                </mat-step>
+                <mat-step label="Confirmar pedido">
+                    <mat-card-actions>
+                        <button class="input-extendido" mat-raised-button color="primary">Cargar pedido</button>
+                    </mat-card-actions>
                 </mat-step>
             </mat-stepper>
         </form>

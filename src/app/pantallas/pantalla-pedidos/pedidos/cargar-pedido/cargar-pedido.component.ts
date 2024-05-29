@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-cargar-pedido',
@@ -28,7 +29,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatCardModule
   ],
   templateUrl: './cargar-pedido.component.html',
   styleUrl: './cargar-pedido.component.scss'
@@ -67,25 +69,6 @@ export class CargarPedidoComponent implements OnInit {
   mostrarAccesorios(articuloId: number): boolean {
     const articulo = this.listaArticulos.find(articulo => articulo.id === articuloId);
     return articulo && articulo.tipoArticulo === 'ARTICULO';
-/*
-    let listaAccesorios : any[] = [];
-    
-    this._peticionesHttp.listaAccesorios(articuloId).subscribe({
-      next : (data) => {
-        if(data.error) {
-          this._peticionesHttp.setRespuestaServer(data.message);
-        } else {
-          console.log(data);
-
-          listaAccesorios = data.data;
-        }
-      },
-      error : (data) => {
-        this._peticionesHttp.setRespuestaServer(data.message);
-      }
-    })
-
-    return listaAccesorios;*/
   }
 
   verificarAccesoriosArticulo(index : number) {
@@ -120,12 +103,18 @@ export class CargarPedidoComponent implements OnInit {
   private crearFormGroupArticulo(): FormGroup {
     return this.form.group({
       articulo: [0],
-      cantidad: [0]
+      cantidad: [0],
+      accesorios: this.form.array([])
     });
   }
 
   get articulosCargados(): FormArray {
     return this.formularioCargarPedido.get('articulosCargados') as FormArray;
+  }
+
+  articuloActual(idArticulo : number) : any[] {
+    const articuloSeleccionado = this.listaArticulos.find(articulo => articulo.id === idArticulo);
+    return articuloSeleccionado.accesorios;
   }
 
   obtenerListaClientes() : void {
@@ -161,11 +150,31 @@ export class CargarPedidoComponent implements OnInit {
           this._peticionesHttp.setRespuestaServer(data.message);
         }
 
-        this.listaArticulos = data.data;
+        let listaArticulos = data.data;
+
+        listaArticulos.forEach(datosArticulo => {
+          datosArticulo.accesorios = [];
+
+          if(datosArticulo.relacionesArticulos) {
+            datosArticulo.relacionesArticulos.forEach((idArticuloRelacion : number) => {
+              let articuloRelacionado = listaArticulos.find(articulo => articulo.id === idArticuloRelacion);
+
+              if (articuloRelacionado) {
+                articuloRelacionado.accesorios.push(datosArticulo); 
+              }
+            });
+          }
+        });
+
+        this.listaArticulos = listaArticulos;
       },
       error: (error) => {
         this._peticionesHttp.setRespuestaServer(error.message);
       }
     })
+  }
+
+  cargarPedido() {
+    console.log(this.formularioCargarPedido);
   }
 }
