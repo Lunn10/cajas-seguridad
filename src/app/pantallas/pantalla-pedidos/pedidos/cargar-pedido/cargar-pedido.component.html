@@ -42,10 +42,9 @@
                                 <mat-form-field class="input-extendido">
                                     <mat-label>Artículo</mat-label>
                                     <mat-select formControlName="articulo" (selectionChange)="verificarAccesoriosArticulo(i)" >
-                                    <mat-option value=""></mat-option>
-                                    @for (articulo of listaArticulos; track articulo) {
-                                        <mat-option [value]="articulo.id">{{articulo.nombre}}</mat-option>
-                                    }
+                                        @for (articulo of listaArticulos; track articulo) {
+                                            <mat-option [value]="articulo.id">{{articulo.nombre}}</mat-option>
+                                        }
                                     </mat-select>
                                 </mat-form-field>
                                 <mat-form-field class="input-extendido">
@@ -53,7 +52,11 @@
                                     <input matInput placeholder="Cantidad" id="cantidad" value="" formControlName="cantidad">
                                 </mat-form-field>
                                 <div *ngIf="mostrarAccesorios(articuloCargado.value.articulo)">
-                                    <mat-checkbox *ngFor="let accesoriosArticulo of articuloActual(articuloCargado.value.articulo)" formControlName="accesorios" value="accesoriosArticulo.id">{{accesoriosArticulo.nombre}}</mat-checkbox>
+                                    <div formArrayName="accesorios">
+                                        <div *ngFor="let accesorio of obtenerAccesoriosActuales(articuloCargado).controls; let j=index">
+                                            <mat-checkbox formControlName="{{j}}">{{accesorio.value.nombre}}</mat-checkbox>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </ng-container>

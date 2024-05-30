@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
 import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -66,19 +66,52 @@ export class CargarPedidoComponent implements OnInit {
     this.agregarArticulo();
   }
 
+  private crearFormGroupArticulo(): FormGroup {
+    return this.form.group({
+      articulo: [0],
+      cantidad: [0],
+      accesorios: this.form.array([])
+    });
+  }
+
+  get articulosCargados(): FormArray {
+    return this.formularioCargarPedido.get('articulosCargados') as FormArray;
+  }
+
   mostrarAccesorios(articuloId: number): boolean {
     const articulo = this.listaArticulos.find(articulo => articulo.id === articuloId);
     return articulo && articulo.tipoArticulo === 'ARTICULO';
   }
 
   verificarAccesoriosArticulo(index : number) {
-    const tipoArticuloSeleccionado = this.listaArticulos.find( 
-      articulo => articulo.id === this.articulosCargados.controls[index].get('articulo')?.value
-    )?.tipoArticulo;
+    const articuloFormGroup = (this.formularioCargarPedido.get('articulosCargados') as FormArray).at(index);
+    const articuloId = articuloFormGroup.value.articulo;
+    const accesoriosFormArray = articuloFormGroup.get('accesorios') as FormArray;
+    const nuevosAccesorios = this.agregarAccesorios(articuloId);
+
+    accesoriosFormArray.clear();
+    nuevosAccesorios.controls.forEach(control => {
+      accesoriosFormArray.push(control);
+    });
     
-    this.mostrarAccesoriosArticulo[index] = tipoArticuloSeleccionado === 'ARTICULO';
+    console.log(this.formularioCargarPedido);
 
     this.verificarAgregarArticulo();
+  }
+
+  agregarAccesorios(articuloId: number) {
+    const accesoriosArray = this.form.array([]);
+
+    const articuloSeleccionado = this.listaArticulos.find(articulo => articulo.id === articuloId);
+
+
+    const accesorios = articuloSeleccionado.accesorios || [];
+
+    accesorios.forEach(() => {
+      accesoriosArray.push(this.form.control(false));
+    });
+
+    return accesoriosArray;
   }
 
   verificarAgregarArticulo() {
@@ -100,16 +133,8 @@ export class CargarPedidoComponent implements OnInit {
     this.articulosCargados.push(this.crearFormGroupArticulo());
   }
 
-  private crearFormGroupArticulo(): FormGroup {
-    return this.form.group({
-      articulo: [0],
-      cantidad: [0],
-      accesorios: this.form.array([])
-    });
-  }
-
-  get articulosCargados(): FormArray {
-    return this.formularioCargarPedido.get('articulosCargados') as FormArray;
+  obtenerAccesoriosActuales(articuloActual : AbstractControl) : FormArray {
+    return articuloActual.get('accesorios') as FormArray;
   }
 
   articuloActual(idArticulo : number) : any[] {
