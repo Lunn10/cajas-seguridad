@@ -87,31 +87,21 @@ export class CargarPedidoComponent implements OnInit {
     const articuloFormGroup = (this.formularioCargarPedido.get('articulosCargados') as FormArray).at(index);
     const articuloId = articuloFormGroup.value.articulo;
     const accesoriosFormArray = articuloFormGroup.get('accesorios') as FormArray;
-    const nuevosAccesorios = this.agregarAccesorios(articuloId);
+    const articuloSeleccionado = this.listaArticulos.find(articulo => articulo.id === articuloId);
 
     accesoriosFormArray.clear();
-    nuevosAccesorios.controls.forEach(control => {
-      accesoriosFormArray.push(control);
+    articuloSeleccionado.accesorios.forEach((accesorio: any) => {
+      accesoriosFormArray.push(this.crearAccesorio(accesorio));      
     });
-    
-    console.log(this.formularioCargarPedido);
-
     this.verificarAgregarArticulo();
   }
 
-  agregarAccesorios(articuloId: number) {
-    const accesoriosArray = this.form.array([]);
-
-    const articuloSeleccionado = this.listaArticulos.find(articulo => articulo.id === articuloId);
-
-
-    const accesorios = articuloSeleccionado.accesorios || [];
-
-    accesorios.forEach(() => {
-      accesoriosArray.push(this.form.control(false));
+  crearAccesorio(accesorio : any): FormGroup {
+    return this.form.group({
+      nombre: [accesorio.nombre, Validators.required],
+      id: [accesorio.id, Validators.required],
+      estado: [false]
     });
-
-    return accesoriosArray;
   }
 
   verificarAgregarArticulo() {
@@ -200,6 +190,22 @@ export class CargarPedidoComponent implements OnInit {
   }
 
   cargarPedido() {
+    if(!this.formularioCargarPedido.valid) {
+
+    }
+
     console.log(this.formularioCargarPedido);
+
+    this._peticionesHttp.cargarPedido(this.formularioCargarPedido).subscribe({
+      next: (data) => {
+        if(data.error) {
+          this._peticionesHttp.setRespuestaServer(data.message);
+        }
+
+      },
+      error: (error) => {
+        this._peticionesHttp.setRespuestaServer(error.message);
+      }
+    })
   }
 }

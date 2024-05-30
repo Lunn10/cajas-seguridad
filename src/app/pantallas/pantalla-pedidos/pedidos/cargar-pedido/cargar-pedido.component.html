@@ -53,8 +53,8 @@
                                 </mat-form-field>
                                 <div *ngIf="mostrarAccesorios(articuloCargado.value.articulo)">
                                     <div formArrayName="accesorios">
-                                        <div *ngFor="let accesorio of obtenerAccesoriosActuales(articuloCargado).controls; let j=index">
-                                            <mat-checkbox formControlName="{{j}}">{{accesorio.value.nombre}}</mat-checkbox>
+                                        <div *ngFor="let accesorio of obtenerAccesoriosActuales(articuloCargado).controls; let j=index" [formGroupName]="j">
+                                            <mat-checkbox formControlName="estado">{{accesorio.value.nombre}}</mat-checkbox>
                                         </div>
                                     </div>
                                 </div>

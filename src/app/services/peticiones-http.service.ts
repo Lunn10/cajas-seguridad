@@ -239,4 +239,51 @@ export class PeticionesHttpService {
 
     return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/changestatus', data);
   }
+
+  public cargarPedido(datosPedido : FormGroup) : Observable<IRespuestaServer> {
+    let data : { 
+                  idPedido: number; 
+                  idCliente: number; 
+                  observaciones: string; 
+                  transporte: string; 
+                  observacionesTransporte: string; 
+                  articulos: any[] } = {
+      idPedido: datosPedido.value.idPedido,
+      idCliente: datosPedido.value.cliente,
+      observaciones: datosPedido.value.observaciones,
+      transporte: datosPedido.value.transporte,
+      observacionesTransporte: datosPedido.value.observacionesTransporte,
+      articulos: []
+    };
+    
+    datosPedido.value.articulosCargados.forEach((datosArticulo: { articulo: any; cantidad: number; accesorios: any[] }) => {
+      let articuloAgregar : {
+        id: number,
+        cantidad: number,
+        accesorios: number[]
+      } = {
+        id: datosArticulo.articulo,
+        cantidad: datosArticulo.cantidad,
+        accesorios: []
+      }
+
+      let accesorios : number[] = [];
+
+      datosArticulo.accesorios.forEach((datosAccesorio: {id: number; estado: boolean}) => {
+        if(datosAccesorio.estado == true) {
+          accesorios.push(datosAccesorio.id);
+        }
+      });
+
+      articuloAgregar.accesorios = accesorios;
+
+      if(articuloAgregar.id == 0 || articuloAgregar.cantidad == 0) {
+        return;
+      }
+
+      data.articulos.push(articuloAgregar);
+    });
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/order/createorder', data);
+  }
 }
