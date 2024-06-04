@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cargar-pedido',
@@ -47,7 +48,8 @@ export class CargarPedidoComponent implements OnInit {
 
   constructor(
     private form : FormBuilder,
-    private _peticionesHttp : PeticionesHttpService
+    private _peticionesHttp : PeticionesHttpService,
+    private _route : ActivatedRoute
   ) {
     this.formularioCargarPedido = this.form.group({
       idPedido : [this.idPedido],
@@ -62,7 +64,16 @@ export class CargarPedidoComponent implements OnInit {
     this.obtenerArticulos();
   }
 
-  ngOnInit() : void {
+  
+
+  ngOnInit() {
+    this._route.params.subscribe( params => {
+      if(params['id']) {
+        this.idPedido = params['id'];
+        this.obtenerPedido(params['id']);
+      }
+    })
+
     this.agregarArticulo();
   }
 
@@ -93,14 +104,15 @@ export class CargarPedidoComponent implements OnInit {
     articuloSeleccionado.accesorios.forEach((accesorio: any) => {
       accesoriosFormArray.push(this.crearAccesorio(accesorio));      
     });
+  
     this.verificarAgregarArticulo();
   }
 
-  crearAccesorio(accesorio : any): FormGroup {
+  crearAccesorio(accesorio : any, estadoPorDefecto : boolean = false): FormGroup {
     return this.form.group({
       nombre: [accesorio.nombre, Validators.required],
       id: [accesorio.id, Validators.required],
-      estado: [false]
+      estado: [estadoPorDefecto]
     });
   }
 
@@ -191,17 +203,76 @@ export class CargarPedidoComponent implements OnInit {
 
   cargarPedido() {
     if(!this.formularioCargarPedido.valid) {
-
+      return;
     }
-
-    console.log(this.formularioCargarPedido);
 
     this._peticionesHttp.cargarPedido(this.formularioCargarPedido).subscribe({
       next: (data) => {
+        if(!data.error) {
+          this.formularioCargarPedido.reset();
+        }
+        
+        this._peticionesHttp.setRespuestaServer(data.message);
+      },
+      error: (error) => {
+        this._peticionesHttp.setRespuestaServer(error.message);
+      }
+    })
+  }
+
+  obtenerPedido(idPedido : number) {
+    this._peticionesHttp.obtenerPedido(idPedido).subscribe({
+      next: (data) => {
         if(data.error) {
           this._peticionesHttp.setRespuestaServer(data.message);
+          return;
         }
 
+        let datosPedido = data.data;
+        let articulosPedidos : any[] = [];
+        
+        const datosCliente = this.opcionesSelectClientes.find(datosCliente => datosPedido.idCliente === datosCliente.id);
+
+        this.formularioCargarPedido.patchValue({
+          idPedido: this.idPedido,
+          cliente: datosCliente.clientName,
+          observaciones: datosPedido.observaciones,
+          transporte: datosPedido.transporte,
+          observacionesTransporte: datosPedido.observacionesTransporte,
+          articulosCargados: articulosPedidos.slice()
+        })
+
+        const articulosCargadosArray = this.formularioCargarPedido.get('articulosCargados') as FormArray;
+        articulosCargadosArray.clear();
+
+        datosPedido.articulos.forEach((articuloPedido : {idArticulo : number; cantidad: number; accesorios : number[]}) => {
+          const articuloFormGroup = this.crearFormGroupArticulo();
+          const datosArticulo = this.listaArticulos.find(datosArticulo => datosArticulo.id == articuloPedido.idArticulo);
+
+          articuloFormGroup.patchValue({
+            articulo: articuloPedido.idArticulo,
+            cantidad: articuloPedido.cantidad
+          });
+
+          const accesoriosSeleccionados = articuloPedido.accesorios;
+        
+          datosArticulo.accesorios.forEach((accesorioDisponible: any) => {
+            const accesoriosFormArray = articuloFormGroup.get('accesorios') as FormArray;
+            let datosAccesorio = this.listaArticulos.find(datosAccesorio => datosAccesorio.id === accesorioDisponible.id);
+        
+            const accesorioSeleccionado = accesoriosSeleccionados.find(idAccesorio => idAccesorio === datosAccesorio.id);
+        
+            if (!accesorioSeleccionado) {
+              accesoriosFormArray.push(this.crearAccesorio(datosAccesorio, false));
+            } else {
+              accesoriosFormArray.push(this.crearAccesorio(datosAccesorio, true));
+            }
+          });
+
+          articulosCargadosArray.push(articuloFormGroup);
+        });
+
+        this.verificarAgregarArticulo();
       },
       error: (error) => {
         this._peticionesHttp.setRespuestaServer(error.message);

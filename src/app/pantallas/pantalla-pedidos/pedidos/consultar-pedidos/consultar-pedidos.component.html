@@ -1,1 +1,70 @@
-<p>consultar-pedidos works!</p>
+<app-encabezado titulo="Consultar pedidos"/>
+<app-respuesta-server/>
+<app-boton-cargar [direccion]="'../cargar-pedido'" />
+
+<div class="contenedor-pagina">
+    <div class="contenedor-formulario">
+        <form [formGroup]="formularioConsultarPedidos" (ngSubmit)="consultarPedidos();">
+            <mat-form-field class="input-mediano">
+                <mat-label for="id-pedido">Número de pedido</mat-label>
+                <input matInput placeholder="Número de pedido" id="id-pedido" value="" formControlName="idPedido">
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label for="cliente">Cliente</mat-label>
+                <input #inputCliente type="text" id="cliente" placeholder="Seleccione el cliente" matInput formControlName="cliente" [matAutocomplete]="autocompletarCliente" (input)="filter('cliente')" (focus)="filter('cliente')">
+                <mat-autocomplete requireSelection #autocompletarCliente="matAutocomplete">
+                    @for (datosCliente of valoresFiltradosClientes; track datosCliente) {
+                        <mat-option [value]="datosCliente.clientName">{{datosCliente.clientName | titlecase }}</mat-option>
+                    }
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label for="articulo">Artículo</mat-label>
+                <input #inputArticulo type="text" id="articulo" placeholder="Seleccione el artículo" matInput formControlName="articulo" [matAutocomplete]="autocompletarArticulo" (input)="filter('articulo')" (focus)="filter('articulo')">
+                <mat-autocomplete requireSelection #autocompletarArticulo="matAutocomplete">
+                    @for (datosArticulo of valoresFiltradosArticulos; track datosArticulo) {
+                        <mat-option [value]="datosArticulo.nombre">{{datosArticulo.nombre | titlecase }}</mat-option>
+                    }
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label for="estado">Estado del pedido</mat-label>
+                <mat-select formControlName="estado" id="estado">
+                    <input matInput id="cuadro-usuario" class="input-interno-select" #inputEstado placeholder="Buscar..." (input)="filter('estado')">
+                    <mat-option *ngFor="let tipoEstado of valoresFiltradosTipoEstado" [value]="tipoEstado">{{ tipoEstado | titlecase }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label>Fecha del pedido</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Desde" formControlName="fechaPedidoDesde">
+                  <input matEndDate placeholder="Hasta" formControlName="fechaPedidoHasta">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+            <mat-card-actions>
+                <button class="input-extendido" mat-raised-button color="primary">Consultar pedidos</button>
+            </mat-card-actions>
+        </form>
+        <div *ngFor="let pedido of listaPedidos" class="pedido-card">
+            <div class="pedido-header">
+              <span><mat-icon>shopping_cart</mat-icon> Pedido {{ pedido.id }}</span>
+              <span><mat-icon>assignment</mat-icon> {{ pedido.estadoPedido }}</span>
+            </div>
+            <div class="pedido-info">
+              <p><mat-icon>person</mat-icon> Cliente: {{ pedido.idCliente }}</p>
+              <p><mat-icon>event</mat-icon> Fecha del Pedido: {{ pedido.fechaPedido | date:'dd/MM/yyyy HH:mm:ss' }}</p>
+              <p><mat-icon>comment</mat-icon> Observaciones: {{ pedido.observaciones }}</p>
+              <p><mat-icon>local_shipping</mat-icon> Transporte: {{ pedido.transporte }}</p>
+              <p><mat-icon>speaker_notes</mat-icon> Observaciones Transporte: {{ pedido.observacionesTransporte }}</p>
+              <p><mat-icon>list</mat-icon> Artículos:</p>
+              <ul>
+                <li *ngFor="let articulo of pedido.articulos">
+                  <mat-icon>inventory</mat-icon> {{ articulo.nombre }} - Cantidad: {{ articulo.cantidad }}
+                </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+</div>

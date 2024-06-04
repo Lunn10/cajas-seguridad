@@ -39,7 +39,7 @@
                     <div class="contenedor-articulos">
                         <ng-container formArrayName="articulosCargados">
                             <div class="tarjeta-cargar-articulo" *ngFor="let articuloCargado of articulosCargados.controls; let i = index" [formGroupName]="i">
-                                <mat-form-field class="input-extendido">
+                                <mat-form-field class="input-mediano">
                                     <mat-label>Artículo</mat-label>
                                     <mat-select formControlName="articulo" (selectionChange)="verificarAccesoriosArticulo(i)" >
                                         @for (articulo of listaArticulos; track articulo) {
@@ -47,11 +47,11 @@
                                         }
                                     </mat-select>
                                 </mat-form-field>
-                                <mat-form-field class="input-extendido">
+                                <mat-form-field class="input-mediano">
                                     <mat-label for="cantidad">Cantidad</mat-label>
                                     <input matInput placeholder="Cantidad" id="cantidad" value="" formControlName="cantidad">
                                 </mat-form-field>
-                                <div *ngIf="mostrarAccesorios(articuloCargado.value.articulo)">
+                                <div *ngIf="mostrarAccesorios(articuloCargado.value.articulo)" class="input-mediano">
                                     <div formArrayName="accesorios">
                                         <div *ngFor="let accesorio of obtenerAccesoriosActuales(articuloCargado).controls; let j=index" [formGroupName]="j">
                                             <mat-checkbox formControlName="estado">{{accesorio.value.nombre}}</mat-checkbox>

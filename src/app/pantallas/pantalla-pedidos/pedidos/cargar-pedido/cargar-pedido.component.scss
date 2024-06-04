@@ -27,7 +27,7 @@
     
     .contenedor-articulos {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
     }
 
         .tarjeta-articulo {
@@ -35,9 +35,12 @@
         }
 
         .tarjeta-cargar-articulo {
-            width: 45%;
+            width: 100%;
             margin: 1%;
             padding: 10px;
             border-radius: 10px;
             border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
         }

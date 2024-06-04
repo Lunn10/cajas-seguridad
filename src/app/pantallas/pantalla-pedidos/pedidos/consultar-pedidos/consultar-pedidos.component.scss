@@ -1,0 +1,62 @@
+.contenedor-pagina {
+    display: flex !important;
+    flex-direction: column !important;
+    align-content: center !important;
+    align-items: center;
+}
+
+    .contenedor-formulario {
+        width: 80%;
+        text-align: center;
+    }
+
+        .input-extendido {
+            width: 90%;
+            margin-bottom: 1vh;
+        }
+
+        .input-mediano {
+            width: 45%;
+            margin: 1vh;
+        }
+
+        .pedido-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #FFFFFF;
+          }
+          
+          .pedido-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+          }
+          
+          .pedido-header span {
+            display: flex;
+            align-items: center;
+          }
+          
+          .pedido-info p {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+          }
+          
+          .pedido-info ul {
+            list-style: none;
+            padding: 0;
+          }
+          
+          .pedido-info ul li {
+            margin-left: 30px;
+          }
+          
+          .mat-icon {
+            margin-right: 10px;
+            font-size: 20px;
+          }
+          

@@ -242,12 +242,12 @@ export class PeticionesHttpService {
 
   public cargarPedido(datosPedido : FormGroup) : Observable<IRespuestaServer> {
     let data : { 
-                  idPedido: number; 
-                  idCliente: number; 
-                  observaciones: string; 
-                  transporte: string; 
-                  observacionesTransporte: string; 
-                  articulos: any[] } = {
+      idPedido: number; 
+      idCliente: number; 
+      observaciones: string; 
+      transporte: string; 
+      observacionesTransporte: string; 
+      articulos: any[] } = {
       idPedido: datosPedido.value.idPedido,
       idCliente: datosPedido.value.cliente,
       observaciones: datosPedido.value.observaciones,
@@ -258,11 +258,11 @@ export class PeticionesHttpService {
     
     datosPedido.value.articulosCargados.forEach((datosArticulo: { articulo: any; cantidad: number; accesorios: any[] }) => {
       let articuloAgregar : {
-        id: number,
+        idArticulo: number,
         cantidad: number,
         accesorios: number[]
       } = {
-        id: datosArticulo.articulo,
+        idArticulo: datosArticulo.articulo,
         cantidad: datosArticulo.cantidad,
         accesorios: []
       }
@@ -277,7 +277,7 @@ export class PeticionesHttpService {
 
       articuloAgregar.accesorios = accesorios;
 
-      if(articuloAgregar.id == 0 || articuloAgregar.cantidad == 0) {
+      if(articuloAgregar.idArticulo == 0 || articuloAgregar.cantidad == 0) {
         return;
       }
 
@@ -285,5 +285,26 @@ export class PeticionesHttpService {
     });
 
     return this._httpClient.post<IRespuestaServer>('http://localhost:8900/order/createorder', data);
+  }
+
+  public obtenerPedido(idPedido : number) : Observable<IRespuestaServerSimple> {
+    let data = {
+      idPedido: idPedido
+    }
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/order/get', data);
+  }
+
+  public obtenerPedidos(filtros : FormGroup) : Observable<IRespuestaServer> {
+    let data = {
+      idPedido: filtros.value.idPedido,
+      fechaPedidoDesde: filtros.value.fechaPedidoDesde,
+      fechaPedidoHasta: filtros.value.fechaPedidoHasta,
+      estado: filtros.value.estado,
+      cliente: filtros.value.cliente,
+      articulo: filtros.value.articulo
+    }
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/order/getorders', data);
   }
 }
