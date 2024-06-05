@@ -223,6 +223,10 @@ export class PeticionesHttpService {
     return this._httpClient.get<IRespuestaServer>('http://localhost:8900/article/list');
   }
 
+  public listaArticulosConPrecios() : Observable<IRespuestaServer> {
+    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/article/listwithprices');
+  }
+
   public listaAccesorios(idArticulo : number) : Observable<IRespuestaServer> {
     let data = {
       idArticulo: idArticulo

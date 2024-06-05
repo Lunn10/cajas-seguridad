@@ -43,7 +43,7 @@ export class ConsultarPedidosComponent {
   valoresFiltradosClientes : any[] = [];
   opcionesSelectArticulos : any[] = [];
   valoresFiltradosArticulos : any[] = [];
-  opcionesSelectTipoEstado : any[] = ['PENDIENTE', 'CUMPLIDO', 'ANULADO', 'NO CONFIRMADO'];
+  opcionesSelectTipoEstado : any[] = ['TODOS', 'PENDIENTE', 'CUMPLIDO', 'ANULADO', 'NO CONFIRMADO'];
   valoresFiltradosTipoEstado : any[] = [];
   @ViewChild('inputCliente') inputCliente!: ElementRef<HTMLInputElement>;
   @ViewChild('inputArticulo') inputArticulo!: ElementRef<HTMLInputElement>;
@@ -100,6 +100,21 @@ export class ConsultarPedidosComponent {
         this._peticionesHttp.setRespuestaServer(error.message);
       }
     })
+  }
+
+  claseSegunEstadoPedido(estado: string): string {
+    switch (estado) {
+        case 'PENDIENTE':
+            return 'estado-pendiente';
+        case 'CUMPLIDO':
+            return 'estado-cumplido';
+        case 'ANULADO':
+            return 'estado-anulado';
+        case 'NO CONFIRMADO':
+            return 'estado-no-confirmado';
+        default:
+            return '';
+    }
   }
 
   filter(filtro : string ): void {

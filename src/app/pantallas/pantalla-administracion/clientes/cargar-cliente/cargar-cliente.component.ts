@@ -13,7 +13,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
 import { ActivatedRoute } from '@angular/router';
 import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
-import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-cargar-cliente',

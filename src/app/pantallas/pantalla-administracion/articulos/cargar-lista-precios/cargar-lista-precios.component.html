@@ -1,0 +1,30 @@
+<app-encabezado titulo="Cargar lista de precios"/>
+<app-respuesta-server/>
+
+
+
+<div class="contenedor-pagina">
+    <div class="contenedor-formulario">
+        <form  >
+            <div class="contenedor-lista-articulos">
+                <div *ngFor="let articulo of listaArticulos" class="contenedor-articulo">
+                    <div class="contenedor-nombre-articulo">
+                        {{articulo.nombre | uppercase}}
+                    </div>
+                    <div class="contenedor-descripcion">
+                        {{articulo.descripcion | uppercase}}
+                    </div>
+                    <div class="contenedor-precio-anterior">
+                        {{articulo.precio | currency}}
+                    </div>
+                    <div class="contenedor-nuevo-precio">
+                        <input type="text" class="input-precio">
+                    </div>
+                </div>
+            </div>
+            <mat-card-actions class="contenedor-boton-cargar">
+                <button class="input-extendido" mat-raised-button color="primary">Cargar</button>
+            </mat-card-actions>
+        </form>
+    </div>
+</div>

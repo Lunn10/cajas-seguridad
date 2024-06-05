@@ -48,12 +48,12 @@
             </mat-card-actions>
         </form>
         <div *ngFor="let pedido of listaPedidos" class="pedido-card">
-            <div class="pedido-header">
+            <div class="pedido-header" [ngClass]="claseSegunEstadoPedido(pedido.estadoPedido)" >
               <span><mat-icon>shopping_cart</mat-icon> Pedido {{ pedido.id }}</span>
               <span><mat-icon>assignment</mat-icon> {{ pedido.estadoPedido }}</span>
             </div>
             <div class="pedido-info">
-              <p><mat-icon>person</mat-icon> Cliente: {{ pedido.idCliente }}</p>
+              <p><mat-icon>person</mat-icon> Cliente: {{ pedido.nombreCliente }}</p>
               <p><mat-icon>event</mat-icon> Fecha del Pedido: {{ pedido.fechaPedido | date:'dd/MM/yyyy HH:mm:ss' }}</p>
               <p><mat-icon>comment</mat-icon> Observaciones: {{ pedido.observaciones }}</p>
               <p><mat-icon>local_shipping</mat-icon> Transporte: {{ pedido.transporte }}</p>
@@ -61,7 +61,12 @@
               <p><mat-icon>list</mat-icon> Artículos:</p>
               <ul>
                 <li *ngFor="let articulo of pedido.articulos">
-                  <mat-icon>inventory</mat-icon> {{ articulo.nombre }} - Cantidad: {{ articulo.cantidad }}
+                    <div class="articulo-info">
+                        <span>{{ articulo.nombre }}</span>
+                        <span>Cantidad: {{ articulo.cantidad }}</span>
+                        <span>Cantidad Entregada: {{ articulo.cantidadEntregada }}</span>
+                        <span>Fecha de Entrega: {{ articulo.fechaEntrega | date:'dd/MM/yyyy HH:mm:ss' }}</span>
+                    </div>
                 </li>
               </ul>
             </div>

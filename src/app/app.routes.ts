@@ -16,6 +16,8 @@ import { ConsultarArticuloComponent } from './pantallas/pantalla-pedidos/articul
 import { CargarArticuloComponent } from './pantallas/pantalla-pedidos/articulos/cargar-articulo/cargar-articulo.component';
 import { CargarPedidoComponent } from './pantallas/pantalla-pedidos/pedidos/cargar-pedido/cargar-pedido.component';
 import { ConsultarPedidosComponent } from './pantallas/pantalla-pedidos/pedidos/consultar-pedidos/consultar-pedidos.component';
+import { ConsultarListaPreciosComponent } from './pantallas/pantalla-administracion/articulos/consultar-lista-precios/consultar-lista-precios.component';
+import { CargarListaPreciosComponent } from './pantallas/pantalla-administracion/articulos/cargar-lista-precios/cargar-lista-precios.component';
 
 export const routes: Routes = [
     { path: '', component: PantallaInicioComponent },
@@ -32,7 +34,10 @@ export const routes: Routes = [
         { path: 'cargar-cliente/:id', component: CargarClienteComponent },
         { path: 'consultar-cliente', component: ConsultarClienteComponent },
         { path: 'cargar-factura', component: CargarFacturaComponent },
-        { path: 'consultar-factura', component: ConsultarFacturaComponent }
+        { path: 'consultar-factura', component: ConsultarFacturaComponent },
+        { path: 'cargar-lista-precios', component: CargarListaPreciosComponent },
+        { path: 'cargar-lista-precios/:id', component: CargarListaPreciosComponent },
+        { path: 'consultar-lista-precios', component: ConsultarListaPreciosComponent },
     ] },
     { path: 'sistema-pedidos', component: PantallaPedidosComponent, children: [
         { path: 'lista-articulos', component: ConsultarArticuloComponent },

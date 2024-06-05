@@ -21,6 +21,11 @@ export class PantallaAdministracionComponent {
       icono: 'storefront'
     },
     {
+      titulo: 'Lista de precios',
+      url: 'cargar-lista-precios',
+      icono: 'attach_money'
+    },
+    {
       titulo: 'Facturación',
       url: 'cargar-factura',
       icono: 'print_of_sale'

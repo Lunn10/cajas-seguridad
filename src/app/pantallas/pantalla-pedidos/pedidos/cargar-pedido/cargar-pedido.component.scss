@@ -37,10 +37,18 @@
         .tarjeta-cargar-articulo {
             width: 100%;
             margin: 1%;
-            padding: 10px;
+            padding: 40px 10px 10px 10px;
             border-radius: 10px;
             border: 1px solid #ccc;
             display: flex;
             align-items: center;
+            position: relative;
             justify-content: space-around;
         }
+
+            .boton-eliminar {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                color: #000000;
+            }

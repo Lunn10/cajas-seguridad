@@ -39,6 +39,9 @@
                     <div class="contenedor-articulos">
                         <ng-container formArrayName="articulosCargados">
                             <div class="tarjeta-cargar-articulo" *ngFor="let articuloCargado of articulosCargados.controls; let i = index" [formGroupName]="i">
+                                <button mat-icon-button color="warn" class="boton-eliminar" (click)="eliminarArticulo(i)">
+                                    <mat-icon>clear</mat-icon>
+                                </button>
                                 <mat-form-field class="input-mediano">
                                     <mat-label>Artículo</mat-label>
                                     <mat-select formControlName="articulo" (selectionChange)="verificarAccesoriosArticulo(i)" >

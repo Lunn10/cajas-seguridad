@@ -116,6 +116,16 @@ export class CargarPedidoComponent implements OnInit {
     });
   }
 
+  eliminarArticulo(indice : number) {
+    this.articulosCargados.removeAt(indice);
+
+    if(this.articulosCargados.length == 0) {
+      this.agregarArticulo();
+    }
+
+    this.verificarAgregarArticulo();
+  }
+
   verificarAgregarArticulo() {
     let agregarArticulo : boolean = true;
     
