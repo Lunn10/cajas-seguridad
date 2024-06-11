@@ -22,7 +22,7 @@ export class PantallaAdministracionComponent {
     },
     {
       titulo: 'Lista de precios',
-      url: 'cargar-lista-precios',
+      url: 'consultar-lista-precios',
       icono: 'attach_money'
     },
     {

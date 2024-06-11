@@ -1,26 +1,37 @@
 <app-encabezado titulo="Cargar lista de precios"/>
 <app-respuesta-server/>
 
-
-
 <div class="contenedor-pagina">
     <div class="contenedor-formulario">
-        <form  >
+        <form [formGroup]="formularioCargarListaPrecios" (ngSubmit)="cargarListaPrecios();" >
+            <mat-form-field class="input-mediano">
+                <mat-label for="observaciones">Observaciones</mat-label>
+                <input matInput placeholder="Observaciones" id="observaciones" value="" formControlName="observaciones">
+            </mat-form-field>
+
+            <mat-form-field class="input-mediano">
+                <mat-label for="porcentaje-aumento">Porcentaje de aumento</mat-label>
+                <input matInput placeholder="Porcentaje de aumento" id="porcentaje-aumento" pattern="[0-9]*" value="" formControlName="porcentajeAumento">
+                <mat-error>Debe indicar un valor numérico</mat-error>
+            </mat-form-field>
+
             <div class="contenedor-lista-articulos">
-                <div *ngFor="let articulo of listaArticulos" class="contenedor-articulo">
-                    <div class="contenedor-nombre-articulo">
-                        {{articulo.nombre | uppercase}}
+                <ng-container formArrayName="articulos">
+                    <div *ngFor="let articulo of articulos.controls; let i = index" [formGroupName]="i" class="contenedor-articulo">
+                        <div class="contenedor-nombre-articulo">
+                            {{articulo.value.nombre | uppercase}}
+                        </div>
+                        <div class="contenedor-descripcion">
+                            {{articulo.value.descripcion | uppercase}}
+                        </div>
+                        <div class="contenedor-precio-anterior">
+                            {{articulo.value.precio | currency}}
+                        </div>
+                        <div class="contenedor-nuevo-precio">
+                            <input type="text" class="input-precio" formControlName="precioActual">
+                        </div>
                     </div>
-                    <div class="contenedor-descripcion">
-                        {{articulo.descripcion | uppercase}}
-                    </div>
-                    <div class="contenedor-precio-anterior">
-                        {{articulo.precio | currency}}
-                    </div>
-                    <div class="contenedor-nuevo-precio">
-                        <input type="text" class="input-precio">
-                    </div>
-                </div>
+                </ng-container>
             </div>
             <mat-card-actions class="contenedor-boton-cargar">
                 <button class="input-extendido" mat-raised-button color="primary">Cargar</button>

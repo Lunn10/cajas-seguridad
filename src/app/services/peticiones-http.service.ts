@@ -223,8 +223,12 @@ export class PeticionesHttpService {
     return this._httpClient.get<IRespuestaServer>('http://localhost:8900/article/list');
   }
 
-  public listaArticulosConPrecios() : Observable<IRespuestaServer> {
-    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/article/listwithprices');
+  public listaArticulosConPrecios(idLista : number) : Observable<IRespuestaServer> {
+    let data = {
+      id: idLista
+    }
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/listwithprices', data);
   }
 
   public listaAccesorios(idArticulo : number) : Observable<IRespuestaServer> {
@@ -310,5 +314,39 @@ export class PeticionesHttpService {
     }
 
     return this._httpClient.post<IRespuestaServer>('http://localhost:8900/order/getorders', data);
+  }
+
+  public cargarListaPrecios(listaPrecios : FormGroup) : Observable<IRespuestaServer> {
+    let preciosActualizados : {
+      idArticulo: number,
+      precio: number
+    }[] = [];
+
+    listaPrecios.value.articulos.forEach((articuloActual: {idArticulo: number, precioActual: number, precio: number}) => {
+      let articuloActualizado = {
+        idArticulo: articuloActual.idArticulo,
+        precio: articuloActual.precioActual,
+        precioAnterior: articuloActual.precio
+      }
+
+      preciosActualizados.push(articuloActualizado);
+    });
+
+    let data = {
+      idLista: listaPrecios.value.idLista,
+      observaciones: listaPrecios.value.observaciones,
+      porcentajeAumento: listaPrecios.value.porcentajeAumento,
+      articulos: preciosActualizados
+    }
+
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/createprizeslist', data);
+  }
+
+  public obtenerListaPrecios(id : number) {
+    let data = {
+      id: id
+    };
+
+    return this._httpClient.post<IRespuestaServerSimple>('http://localhost:8900/article/getprizeslist', data);
   }
 }
