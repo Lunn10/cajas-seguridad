@@ -1,0 +1,65 @@
+.contenedor-pagina {
+    display: flex !important;
+    flex-direction: column !important;
+    align-content: center !important;
+    align-items: center;
+}
+
+    .contenedor-lista-articulos {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .contenedor-articulo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid #ccc;
+    }
+
+        .contenedor-nombre-articulo {
+            width: 30%;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .contenedor-descripcion {
+            width: 30%;
+            text-align: left;
+        }
+
+        .contenedor-tipo-articulo {
+            width: 15%;
+        }
+
+        .contenedor-precio-anterior {
+            text-align: right;
+            width: 20%;
+        }
+
+        .contenedor-nuevo-precio {
+            position: relative;
+        }
+
+        .contenedor-nuevo-precio:before {
+            width: 20%;
+            content: "$"; 
+            position: absolute;
+            left: 5px; 
+            top: 50%; 
+            transform: translateY(-50%);
+        }
+
+            .input-precio {
+                padding: 5px 10px; 
+                border: 1px solid #ccc; 
+                border-radius: 5px; 
+                font-size: 14px; 
+                width: 70px;
+                text-align: right;
+            }

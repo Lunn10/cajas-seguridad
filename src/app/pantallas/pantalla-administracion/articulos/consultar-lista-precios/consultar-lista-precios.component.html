@@ -1,3 +1,28 @@
-<app-encabezado titulo="Lista de precios">
-<app-respuesta-server/>
+<app-encabezado titulo="Lista de precios"/>
+<app-respuesta-server />
 <app-boton-cargar [direccion]="'../cargar-lista-precios'" />
+
+<div class="contenedor-pagina">
+    <div class="contenedor-lista-articulos">
+        <!--div class="contenedor-articulo">
+            <div class="contenedor-nombre-articulo"> NOMBRE </div>
+            <div class="contenedor-descripcion"> DESCRIPCIÓN </div>
+            <div class="contenedor-tipo-articulo"> TIPO </div>
+            <div class="contenedor-precio-anterior"> PRECIO </div>
+        </div -->
+        <div *ngFor="let articulo of listaArticulos" class="contenedor-articulo">
+            <div class="contenedor-nombre-articulo">
+                {{articulo.nombre | uppercase}}
+            </div>
+            <div class="contenedor-descripcion">
+                {{articulo.descripcion | uppercase}}
+            </div>
+            <div class="contenedor-tipo-articulo">
+                {{articulo.tipoArticulo | uppercase}}
+            </div>
+            <div class="contenedor-precio-anterior">
+                {{articulo.precio | currency}}
+            </div>
+        </div>
+    </div>
+</div>
