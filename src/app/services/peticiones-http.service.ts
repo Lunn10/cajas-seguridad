@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { IDatosUsuario } from '../models/datos-usuario.model';
 import { IRespuestaServer, IRespuestaServerSimple } from '../models/respuesta-server.model'; 
+import { isDeclarationStatement } from 'typescript';
 
 @Injectable({
   providedIn: 'root'
@@ -348,5 +349,15 @@ export class PeticionesHttpService {
     };
 
     return this._httpClient.post<IRespuestaServerSimple>('http://localhost:8900/article/getprizeslist', data);
+  }
+
+  public obtenerUltimoCAE() {
+    let data = {};
+
+    return this._httpClient.post<IRespuestaServerSimple>('http://localhost:8900/ticket/getlastcae', data);
+  }
+
+  public cargarFactura(datosFacturar : any) {
+    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/ticket/generate', datosFacturar);
   }
 }

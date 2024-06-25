@@ -8,7 +8,7 @@
             <mat-label for="cliente">Cliente</mat-label>
             <mat-select (selectionChange)="obtenerDatosCliente()" formControlName="idCliente">
                 <input matInput id="cuadro-usuario" class="input-interno-select" #inputCliente placeholder="Buscar..." (input)="filtrar()">
-                <mat-option *ngFor="let datosCliente of valoresFiltradosClientes" [value]="datosCliente.id">{{ datosCliente.clientName | titlecase }}</mat-option>
+                <mat-option *ngFor="let datosCliente of valoresFiltradosClientes" [value]="datosCliente.id">{{ datosCliente.clientName | uppercase }}</mat-option>
             </mat-select>
         </mat-form-field>
     </form>
@@ -37,7 +37,7 @@
               </div>
               <div class="detalle">
                 <mat-icon>business</mat-icon>
-                <span>{{ datosCliente.fantasyName | titlecase}}</span>
+                <span>{{ datosCliente.fantasyName | uppercase}}</span>
               </div>
               <div class="detalle">
                 <span>CUIT: {{ datosCliente.cuitNumber }}</span>
@@ -50,10 +50,17 @@
             <div class="detalles-direccion">
               <div class="detalle">
                 <mat-icon>location_on</mat-icon>
-                <span>{{ datosCliente.streetName | titlecase }} {{ datosCliente.streetNumber }}, {{ datosCliente.location | titlecase }}, {{ datosCliente.stateName | titlecase }}, CP {{ datosCliente.cpNumber }}</span>
+                <span>
+                  {{ datosCliente.streetName | titlecase }} {{ datosCliente.streetNumber }}, 
+                  <span *ngIf="datosCliente.location">
+                  {{ datosCliente.location | titlecase }}, 
+                  </span>
+                  {{ datosCliente.stateName | titlecase }}, 
+                  CP {{ datosCliente.cpNumber }}
+                </span>
               </div>
             </div>
-          
+
             <!-- Detalles del Transporte -->
             <div class="detalles-transporte" *ngIf="datosCliente.transportData.name">
               <div class="detalle">
@@ -74,7 +81,7 @@
                     </div>
                     <div class="telefono" *ngIf="contacto.celular">
                       <mat-icon>smartphone</mat-icon> {{ contacto.celular }}
-                      <a href="https://wa.me/{{contacto.telefono}} " target="_blank" title="Enviar Whatsapp">
+                      <a href="https://wa.me/{{formatearNumeroCelularParaWhatsapp(contacto.celular)}} " target="_blank" title="Enviar Whatsapp">
                         <mat-icon class="mensaje">send</mat-icon>
                       </a>
                     </div>

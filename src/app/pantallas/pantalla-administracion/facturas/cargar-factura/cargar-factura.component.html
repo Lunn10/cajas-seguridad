@@ -1,2 +1,90 @@
 <app-encabezado titulo="Cargar factura"/>
 <app-respuesta-server />
+
+
+<div class="contenedor-pagina">
+    <div class="contenedor-formulario">
+        <form [formGroup]="formularioCargarFactura" (ngSubmit)="cargarFactura();">
+            <div class="titulo-seccion">Datos cliente</div>
+            <mat-form-field class="input-mediano">
+                <mat-label for="cliente">Cliente</mat-label>
+                <input #inputCliente type="text" id="cliente" placeholder="Seleccione el cliente" matInput formControlName="cliente" [matAutocomplete]="autocompletarCliente" (input)="filter('cliente')" (focus)="filter('cliente')">
+                <mat-autocomplete requireSelection #autocompletarCliente="matAutocomplete">
+                    <mat-option *ngFor="let datosCliente of listaClientes" [value]="datosCliente.clientName">{{datosCliente.clientName | uppercase }}</mat-option>
+                </mat-autocomplete>
+                <mat-error>Debe indicar el cliente</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label for="cae-factura">CAE factura</mat-label>
+                <input matInput placeholder="" id="cae-factura" value="" formControlName="cae" readonly>
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label for="descuento">Descuento</mat-label>
+                <input matInput placeholder="" id="descuento" value="" formControlName="descuento">
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label for="observaciones">Observaciones</mat-label>
+                <input matInput placeholder="" id="descuento" value="" formControlName="observaciones">
+            </mat-form-field>
+
+            <ng-container formArrayName="pedidos">
+                <div class="titulo-seccion">Datos pedido</div>
+                <div class="contenedor-pedidos-facturar">
+                    <div class="fila-agregar-articulo" *ngFor="let pedido of pedidos.controls; let j = index" [formGroupName]="j">
+                        <input type="number" class="input-fila input-fila-acotado" formControlName="idPedido" placeholder="Pedido" (input)="verificarAgregarFilaPedidos()">
+                        <input class="input-fila input-fila-extendido" formControlName="cliente" readonly>
+                        <input class="input-fila input-fila-extendido" formControlName="observaciones" readonly>
+                        <button type="button" class="icono-eliminar-fila" mat-icon-button (click)="eliminarPedido(j)">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container formArrayName="articulos">
+                <div class="titulo-seccion">Artículos</div>
+                <div class="contenedor-articulos-facturar">
+                    <div class="fila-agregar-articulo" *ngFor="let articulo of articulos.controls; let i = index" [formGroupName]="i">
+                        <input type="number" class="input-fila input-fila-acotado" formControlName="cantidad" placeholder="Cantidad">
+                        <input type="text" class="input-fila input-fila-extendido" placeholder="Seleccione el artículo" matInput formControlName="nombreArticulo" [matAutocomplete]="autocompletarArticulo" (input)="filter('articulo', i, $event)" (focus)="filter('articulo', i, $event)">
+                        <mat-autocomplete requireSelection #autocompletarArticulo="matAutocomplete" (optionSelected)="obtenerDatosAdicionales(i)">
+                            <mat-option *ngFor="let datosArticulo of valoresFiltradosArticulos" [value]="datosArticulo.nombre">{{datosArticulo.nombre | uppercase }}</mat-option>
+                        </mat-autocomplete>
+                        <input class="input-fila input-fila-mediano" formControlName="descripcion" readonly>
+                        <input class="input-fila input-fila-acotado" formControlName="precioFormateado" readonly>
+                        <button type="button" class="icono-eliminar-fila" mat-icon-button (click)="eliminarArticulo(i)">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+
+            <div class="contenedor-datos-subtotal">
+                <div class="dato">
+                    <span class="etiqueta">Subtotal bruto:</span>
+                    <span class="valor">{{ datosSubtotalFactura.subtotal | currency }}</span>
+                </div>
+                <div class="dato">
+                    <span class="etiqueta">Subtotal con descuento:</span>
+                    <span class="valor">{{ datosSubtotalFactura.subtotalDescuento | currency }}</span>
+                </div>
+                <div class="dato">
+                    <span class="etiqueta">IVA:</span>
+                    <span class="valor">{{ datosSubtotalFactura.IVA | currency }} (21.00%)</span>
+                </div>
+                <div class="dato">
+                    <span class="etiqueta">Percepción IIBB:</span>
+                    <span class="valor">{{ datosSubtotalFactura.percepcionIIBB | currency }}</span>
+                </div>
+                <div class="dato">
+                    <span class="etiqueta">Total neto:</span>
+                    <span class="valor">{{ datosSubtotalFactura.totalNeto | currency }}</span>
+                </div>
+            </div>
+
+            <mat-card-actions>
+                <button class="input-extendido" mat-raised-button color="primary">Cargar factura</button>
+            </mat-card-actions>            
+        </form>
+    </div>
+</div>

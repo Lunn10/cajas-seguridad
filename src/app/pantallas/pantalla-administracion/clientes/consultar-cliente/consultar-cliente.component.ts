@@ -56,8 +56,13 @@ export class ConsultarClienteComponent {
   filtrar( ): void {
     const valorFiltradoCliente = this.inputCliente.nativeElement.value.toLowerCase();
     this.valoresFiltradosClientes = this.opcionesSelectClientes.filter(
-      datosCliente => datosCliente.clientName.includes(valorFiltradoCliente)
+      datosCliente => datosCliente.clientName.toLowerCase().includes(valorFiltradoCliente)
     );
+  }
+
+  formatearNumeroCelularParaWhatsapp(numeroCelular : string) {
+    const numeroCelularFormateado = numeroCelular.replace(/\D/g, '');
+    return numeroCelularFormateado;
   }
 
   obtenerDatosCliente() : void {
