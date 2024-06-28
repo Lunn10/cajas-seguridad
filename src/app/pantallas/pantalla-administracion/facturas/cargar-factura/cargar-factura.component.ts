@@ -120,7 +120,8 @@ export class CargarFacturaComponent implements OnInit {
         descripcion: [''],
         precio: [0.0],
         precioFormateado: ['$0.00'],
-        descuento: [0]
+        descuento: [0],
+        esServicio: false
       })
     );
   }
@@ -175,6 +176,7 @@ export class CargarFacturaComponent implements OnInit {
     this.articulos.controls[index].get('descripcion')?.setValue(datosArticulo.descripcion);
     this.articulos.controls[index].get('precio')?.setValue(datosArticulo.precio);
     this.articulos.controls[index].get('idArticulo')?.setValue(datosArticulo.id);
+    this.articulos.controls[index].get('esServicio')?.setValue(datosArticulo.tipoArticulo == 'SERVICIO');
     this.articulos.controls[index].get('precioFormateado')?.setValue(this.formatearValorAPrecio(datosArticulo.precio));
 
     this.verificarAgregarFilaArticulos();
@@ -275,7 +277,7 @@ export class CargarFacturaComponent implements OnInit {
     let filaArticulo : number = 1;
     let errorArticulos : boolean = false;
 
-    this.formularioCargarFactura.value.articulos.forEach((datosArticulo : {cantidad : number; idArticulo: number; precio: number;}) => {
+    this.formularioCargarFactura.value.articulos.forEach((datosArticulo : {cantidad : number; idArticulo: number; precio: number; esServicio: boolean}) => {
       if(!datosArticulo.idArticulo && datosArticulo.cantidad == null) {
         return;
       }
@@ -293,7 +295,8 @@ export class CargarFacturaComponent implements OnInit {
       let articuloFacturado = {
         idArticulo: datosArticulo.idArticulo,
         cantidad: datosArticulo.cantidad,
-        precio: datosArticulo.precio
+        precio: datosArticulo.precio,
+        esServicio: datosArticulo.esServicio
       };
 
       articulosFacturados.push(articuloFacturado);
@@ -309,6 +312,7 @@ export class CargarFacturaComponent implements OnInit {
       cae: this.formularioCargarFactura.value.cae,
       descuento: this.formularioCargarFactura.value.descuento,
       cliente: this.formularioCargarFactura.value.cliente,
+      idCliente: this.obtenerIdClienteSegunNombre(),
       observaciones: this.formularioCargarFactura.value.observaciones,
       pedidosFacturados: pedidosFacturados,
       articulosFacturados: articulosFacturados,
@@ -326,5 +330,17 @@ export class CargarFacturaComponent implements OnInit {
         this._peticionesHttp.setRespuestaServer(error.message);
       }
     })
+  }
+
+  obtenerIdClienteSegunNombre() : number {
+    let idCliente : number = 0;
+
+    const datosCliente = this.listaClientes.find(cliente => cliente.clientName.toLowerCase() === this.formularioCargarFactura.value.cliente.toLowerCase());
+
+    if(datosCliente) {
+      idCliente = datosCliente.id;
+    }
+
+    return idCliente;
   }
 }
