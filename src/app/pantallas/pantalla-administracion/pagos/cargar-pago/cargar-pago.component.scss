@@ -1,0 +1,48 @@
+.contenedor-pagina {
+    display: flex !important;
+    flex-direction: column !important;
+    align-content: center !important;
+    align-items: center;
+}
+
+    .contenedor-formulario {
+        width: 80%;
+        text-align: center;
+    }
+
+        .input-mediano {
+            width: 45%;
+            margin: 1vh;
+        }
+
+        .input-extendido {
+            width: 90%;
+            margin-bottom: 1vh;
+        }
+
+        .contenedor-resultados {
+            margin-top: 20px;
+        }
+        
+        .tabla-resultados {
+            width: 100%;
+            border-collapse: collapse; 
+        }
+        
+        .tabla-resultados th, .tabla-resultados td {
+            border: 1px solid #ccc; 
+            padding: 8px;
+            text-align: center;
+        }
+        
+        .tabla-resultados th {
+            background-color: #f2f2f2;
+        }
+        
+        .tabla-resultados tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .tabla-resultados tbody tr:hover {
+            background-color: #e5e5e5;
+        }

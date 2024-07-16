@@ -1,0 +1,51 @@
+<app-encabezado titulo="Consultar pagos"/>
+<app-respuesta-server />
+
+<div class="contenedor-pagina">
+    <form [formGroup]="formularioConsultarFacturasImpagas" class="contenedor-formulario">
+        <mat-form-field class="input-mediano">
+            <mat-label for="cliente">Cliente</mat-label>
+            <input #inputCliente type="text" id="cliente" placeholder="Seleccione el cliente" matInput formControlName="cliente" [matAutocomplete]="autocompletarCliente" (input)="filter('cliente')" (focus)="filter('cliente')">
+            <mat-autocomplete requireSelection #autocompletarCliente="matAutocomplete" (optionSelected)="consultarEstadoCuentaCliente();">
+                @for (datosCliente of valoresFiltradosClientes; track datosCliente) {
+                    <mat-option [value]="datosCliente.clientName">{{datosCliente.clientName | uppercase }}</mat-option>
+                }
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+
+    <div *ngIf="facturasImpagas.length > 0" class="contenedor-resultados">
+        <table class="tabla-resultados">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Tipo comprobante</th>
+                    <th>Número</th>
+                    <th>Debe</th>
+                    <th>Haber</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let factura of facturasImpagas">
+                    <td>{{ factura.fechaFactura | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ factura.tipoFactura }}</td>
+                    <td>{{ factura.id }}</td>
+                    <td>{{ factura.debe | currency }}</td>
+                    <td>{{ factura.haber | currency }}</td>
+                    <td>{{ factura.montoTotal | currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <form [formGroup]="formularioCargarPago" class="contenedor-formulario">
+        <mat-tab-group>
+            <mat-tab label="Comprobantes a pagar"> 
+                
+            </mat-tab>
+            <mat-tab label="Retenciones"> Content 2 </mat-tab>
+            <mat-tab label="Pagos"> Content 3 </mat-tab>
+          </mat-tab-group>     
+    </form>
+</div>

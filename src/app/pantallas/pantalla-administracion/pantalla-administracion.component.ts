@@ -27,8 +27,13 @@ export class PantallaAdministracionComponent {
     },
     {
       titulo: 'Facturación',
-      url: 'cargar-factura',
+      url: 'consultar-factura',
       icono: 'print_of_sale'
+    },
+    {
+      titulo: 'Pagos',
+      url: 'consultar-pagos',
+      icono: 'credit_card'
     }
   ];
 }

@@ -18,6 +18,8 @@ import { CargarPedidoComponent } from './pantallas/pantalla-pedidos/pedidos/carg
 import { ConsultarPedidosComponent } from './pantallas/pantalla-pedidos/pedidos/consultar-pedidos/consultar-pedidos.component';
 import { ConsultarListaPreciosComponent } from './pantallas/pantalla-administracion/articulos/consultar-lista-precios/consultar-lista-precios.component';
 import { CargarListaPreciosComponent } from './pantallas/pantalla-administracion/articulos/cargar-lista-precios/cargar-lista-precios.component';
+import { CargarPagoComponent } from './pantallas/pantalla-administracion/pagos/cargar-pago/cargar-pago.component';
+import { ConsultarPagosComponent } from './pantallas/pantalla-administracion/pagos/consultar-pagos/consultar-pagos.component';
 
 export const routes: Routes = [
     { path: '', component: PantallaInicioComponent },
@@ -35,6 +37,8 @@ export const routes: Routes = [
         { path: 'consultar-cliente', component: ConsultarClienteComponent },
         { path: 'cargar-factura', component: CargarFacturaComponent },
         { path: 'consultar-factura', component: ConsultarFacturaComponent },
+        { path: 'cargar-pago', component: CargarPagoComponent },
+        { path: 'consultar-pagos', component: ConsultarPagosComponent },
         { path: 'cargar-lista-precios', component: CargarListaPreciosComponent },
         { path: 'cargar-lista-precios/:id', component: CargarListaPreciosComponent },
         { path: 'consultar-lista-precios', component: ConsultarListaPreciosComponent },

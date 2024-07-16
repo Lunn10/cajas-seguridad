@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { FormGroup } from '@angular/forms';
+import { Form, FormGroup } from '@angular/forms';
 import { IDatosUsuario } from '../models/datos-usuario.model';
 import { IRespuestaServer, IRespuestaServerSimple } from '../models/respuesta-server.model'; 
 import { isDeclarationStatement } from 'typescript';
@@ -10,6 +10,7 @@ import { isDeclarationStatement } from 'typescript';
   providedIn: 'root'
 })
 export class PeticionesHttpService {
+  IP_SERVER : string = 'http://localhost:8900';
 
   constructor(
     private _httpClient : HttpClient
@@ -30,11 +31,11 @@ export class PeticionesHttpService {
   }
 
   public logueoUsuario(datosLogueo : FormGroup) : Observable<IDatosUsuario> {
-    return this._httpClient.post<IDatosUsuario>('http://localhost:8900/users', datosLogueo.value);
+    return this._httpClient.post<IDatosUsuario>(this.IP_SERVER + '/users', datosLogueo.value);
   }
 
   public obtenerUsuarios() : Observable<IRespuestaServer> {
-    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/users/showusers');
+    return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/users/showusers');
   }
 
   public obtenerUsuario(idUser : Number) : Observable<IRespuestaServer> {
@@ -42,7 +43,7 @@ export class PeticionesHttpService {
       idUser: idUser
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/users/showoneuser', data);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/users/showoneuser', data);
   }
 
   public cambiarEstadoUsuario(idUser : Number, activo : boolean) : Observable<IRespuestaServer> {
@@ -51,7 +52,7 @@ export class PeticionesHttpService {
       active: !activo
     }
 
-    return this._httpClient.patch<IRespuestaServer>('http://localhost:8900/users/userstate', data);
+    return this._httpClient.patch<IRespuestaServer>(this.IP_SERVER + '/users/userstate', data);
   }
 
   public crearUsuario(datosUsuario : FormGroup) : Observable<IRespuestaServer> {
@@ -62,7 +63,7 @@ export class PeticionesHttpService {
       role: datosUsuario.value.tipoUsuario
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/users/register', datosEnvio);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/users/register', datosEnvio);
   }
 
   public crearTipoUsuario(datosTipoUsuario : FormGroup) : Observable<IRespuestaServer> {
@@ -71,7 +72,7 @@ export class PeticionesHttpService {
       role: datosTipoUsuario.value.tipoUsuario
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/users/registerTypeUser', datosEnvio);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/users/registerTypeUser', datosEnvio);
   }
 
   public obtenerTiposUsuarios(soloActivos : boolean = false) : Observable<IRespuestaServer> {
@@ -81,7 +82,7 @@ export class PeticionesHttpService {
       parametros = parametros.set('active', soloActivos.toString());
     }
 
-    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/users/showlisttypeusers', { params : parametros });
+    return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/users/showlisttypeusers', { params : parametros });
   }
 
   public obtenerTipoUsuario(idTipo : Number) : Observable<IRespuestaServer> {
@@ -89,7 +90,7 @@ export class PeticionesHttpService {
       idType: idTipo
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/users/showonetypeuser', data);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/users/showonetypeuser', data);
   }
 
   public cambiarEstadoTipoUsuario(idType : Number, activo : boolean) : Observable<IRespuestaServer> {
@@ -98,7 +99,7 @@ export class PeticionesHttpService {
       active: !activo
     }
 
-    return this._httpClient.patch<IRespuestaServer>('http://localhost:8900/users/usertypestate', data);
+    return this._httpClient.patch<IRespuestaServer>(this.IP_SERVER + '/users/usertypestate', data);
   }
 
   public crearCliente(datosCliente : FormGroup) : Observable<IRespuestaServer> {
@@ -127,7 +128,7 @@ export class PeticionesHttpService {
       contactos: contactosFiltrados
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/client/create', data)
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/client/create', data)
   }
 
   public obtenerCliente(idCliente : Number) : Observable<IRespuestaServerSimple> {
@@ -135,11 +136,11 @@ export class PeticionesHttpService {
       id : idCliente
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/client/getclient', data);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/client/getclient', data);
   }
 
   public listaClientes() : Observable<IRespuestaServer> {
-    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/client/clientlist');
+    return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/client/clientlist');
   }
 
   public cambiarEstadoCliente(idCliente : number, estado : boolean) : Observable<IRespuestaServer> {
@@ -148,15 +149,15 @@ export class PeticionesHttpService {
       estado : !estado
     };
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/client/changestatus', data);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/client/changestatus', data);
   }
 
   public obtenerTiposIVA() : Observable<IRespuestaServer> {
-    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/client/ivatypes');
+    return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/client/ivatypes');
   }
 
   public obtenerProvincias() : Observable<IRespuestaServer> {
-    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/client/statelist');
+    return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/client/statelist');
   }
 
   public crear(datosArticulo : FormGroup) : Observable<IRespuestaServer> {
@@ -171,7 +172,7 @@ export class PeticionesHttpService {
       profundidad: datosArticulo.value.profundidad
     };
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/create', data)
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/article/create', data)
   }
 
   public crearArticulo(datosArticulo : FormGroup) : Observable<IRespuestaServer> {
@@ -186,7 +187,7 @@ export class PeticionesHttpService {
       profundidad: datosArticulo.value.profundidad
     };
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/create', data)
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/article/create', data)
   }
 
   public crearAccesorio(datosArticulo : FormGroup) : Observable<IRespuestaServer> {
@@ -198,7 +199,7 @@ export class PeticionesHttpService {
       relacionesArticulos: datosArticulo.value.articulos
     };
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/createaccesory', data)
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/article/createaccesory', data)
   }
 
   public crearServicio(datosArticulo : FormGroup) : Observable<IRespuestaServer> {
@@ -209,7 +210,7 @@ export class PeticionesHttpService {
       descripcion: datosArticulo.value.descripcion
     };
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/createservice', data)
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/article/createservice', data)
   }
 
   public obtenerArticulo(idArticulo : Number) : Observable<IRespuestaServerSimple> {
@@ -217,11 +218,11 @@ export class PeticionesHttpService {
       idArticulo: idArticulo
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/getarticle', data);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/article/getarticle', data);
   }
 
   public listaArticulos() : Observable<IRespuestaServer> {
-    return this._httpClient.get<IRespuestaServer>('http://localhost:8900/article/list');
+    return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/article/list');
   }
 
   public listaArticulosConPrecios(idLista : number) : Observable<IRespuestaServer> {
@@ -229,7 +230,7 @@ export class PeticionesHttpService {
       id: idLista
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/listwithprices', data);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/article/listwithprices', data);
   }
 
   public listaAccesorios(idArticulo : number) : Observable<IRespuestaServer> {
@@ -237,7 +238,7 @@ export class PeticionesHttpService {
       idArticulo: idArticulo
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/getaccesoriesarticles', data);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/article/getaccesoriesarticles', data);
   }
 
   public cambiarEstadoArticulo(idArticulo : number, estado : boolean) : Observable<IRespuestaServerSimple> {
@@ -246,7 +247,7 @@ export class PeticionesHttpService {
       estado : !estado
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/changestatus', data);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/article/changestatus', data);
   }
 
   public cargarPedido(datosPedido : FormGroup) : Observable<IRespuestaServer> {
@@ -293,7 +294,7 @@ export class PeticionesHttpService {
       data.articulos.push(articuloAgregar);
     });
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/order/createorder', data);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/order/createorder', data);
   }
 
   public obtenerPedido(idPedido : number) : Observable<IRespuestaServerSimple> {
@@ -301,7 +302,7 @@ export class PeticionesHttpService {
       idPedido: idPedido
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/order/get', data);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/order/get', data);
   }
 
   public obtenerPedidos(filtros : FormGroup) : Observable<IRespuestaServer> {
@@ -314,7 +315,7 @@ export class PeticionesHttpService {
       articulo: filtros.value.articulo
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/order/getorders', data);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/order/getorders', data);
   }
 
   public cargarListaPrecios(listaPrecios : FormGroup) : Observable<IRespuestaServer> {
@@ -340,7 +341,7 @@ export class PeticionesHttpService {
       articulos: preciosActualizados
     }
 
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/article/createprizeslist', data);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/article/createprizeslist', data);
   }
 
   public obtenerListaPrecios(id : number) {
@@ -348,16 +349,38 @@ export class PeticionesHttpService {
       id: id
     };
 
-    return this._httpClient.post<IRespuestaServerSimple>('http://localhost:8900/article/getprizeslist', data);
+    return this._httpClient.post<IRespuestaServerSimple>(this.IP_SERVER + '/article/getprizeslist', data);
   }
 
   public obtenerUltimoCAE() {
     let data = {};
 
-    return this._httpClient.post<IRespuestaServerSimple>('http://localhost:8900/ticket/getlastcae', data);
+    return this._httpClient.post<IRespuestaServerSimple>(this.IP_SERVER + '/ticket/getlastcae', data);
   }
 
   public cargarFactura(datosFacturar : any) {
-    return this._httpClient.post<IRespuestaServer>('http://localhost:8900/ticket/generate', datosFacturar);
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/generate', datosFacturar);
+  }
+
+  public consultarFacturas(datosConsulta : FormGroup) {
+    let data = {
+      cliente: datosConsulta.value.cliente,
+      fechaDesde: datosConsulta.value.fechaFacturaDesde,
+      fechaHasta: datosConsulta.value.fechaFacturaHasta
+    };
+
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/gettickets', data);
+  }
+
+  public obtenerFacturasImpagas(datosConsulta : FormGroup) {
+    let data = {
+      cliente: ''
+    };
+
+    if(datosConsulta.value.cliente) {
+      data.cliente = datosConsulta.value.cliente;
+    }
+    
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/getunpaidtickets', data);
   }
 }

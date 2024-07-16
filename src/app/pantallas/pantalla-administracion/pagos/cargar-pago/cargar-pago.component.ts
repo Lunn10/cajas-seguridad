@@ -1,61 +1,55 @@
-import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
-import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
-import { BotonCargarComponent } from '../../../../components/boton-cargar/boton-cargar.component';
+import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
+import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
-import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatIconModule } from '@angular/material/icon';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-consultar-factura',
+  selector: 'app-cargar-pago',
   standalone: true,
   imports: [
-    EncabezadoComponent,
     RespuestaServerComponent,
-    BotonCargarComponent,
+    EncabezadoComponent,
     ReactiveFormsModule,
     CommonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatCardModule,
-    MatButtonModule,
     MatAutocompleteModule,
-    MatIconModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatTabsModule
   ],
-  providers: [provideNativeDateAdapter()],
-  templateUrl: './consultar-factura.component.html',
-  styleUrl: './consultar-factura.component.scss'
+  templateUrl: './cargar-pago.component.html',
+  styleUrl: './cargar-pago.component.scss'
 })
-export class ConsultarFacturaComponent {
-  formularioConsultarFacturas : FormGroup;
+export class CargarPagoComponent {
+  formularioConsultarFacturasImpagas : FormGroup;
+  formularioCargarPago : FormGroup;
   opcionesSelectClientes : any[] = [];
   valoresFiltradosClientes : any[] = [];
   @ViewChild('inputCliente') inputCliente!: ElementRef<HTMLInputElement>;
-
-  facturas : any[] = [];
+  facturasImpagas : any[] = [];
 
   constructor(
-    private formBuilder : FormBuilder,
     private _peticionesHttp : PeticionesHttpService,
-    private _adapter: DateAdapter<any>
-  ) {
-    this.formularioConsultarFacturas = this.formBuilder.group({
+    private formBuilder : FormBuilder
+  ) { 
+    this.formularioConsultarFacturasImpagas = this.formBuilder.group({
+      cliente: ['']
+    })
+
+    this.formularioCargarPago = this.formBuilder.group({
+      idPago: [0],
       cliente: [''],
-      fechaFacturaDesde: [''],
-      fechaFacturaHasta: ['']
+      retenciones: this.formBuilder.array([]),
+      pagos: this.formBuilder.array([])
     })
 
     this.obtenerListaClientes();
-    this._adapter.setLocale('es-AR');
   }
 
   obtenerListaClientes() : void {
@@ -83,19 +77,17 @@ export class ConsultarFacturaComponent {
     }
   }
 
-  consultarFacturas() : void {
-    if(!this.formularioConsultarFacturas.valid) {
-      return;
-    }
-
-    this._peticionesHttp.consultarFacturas(this.formularioConsultarFacturas).subscribe({
+  consultarEstadoCuentaCliente() : void {
+    this._peticionesHttp.obtenerFacturasImpagas(this.formularioConsultarFacturasImpagas).subscribe({
       next: (data) => {
         if(data.error) {
           this._peticionesHttp.setRespuestaServer(data.message);
           return;
         }
 
-        this.facturas = data.data;
+        this.facturasImpagas = data.data;
+
+        console.log(this.facturasImpagas);
       },
       error: (error) => {
         this._peticionesHttp.setRespuestaServer(error.message);

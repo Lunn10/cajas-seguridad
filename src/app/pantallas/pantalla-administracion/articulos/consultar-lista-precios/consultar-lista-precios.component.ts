@@ -34,8 +34,6 @@ export class ConsultarListaPreciosComponent {
         } else {
           this.listaArticulos = data.data;
         }
-
-        console.log(this.listaArticulos);
       },
       error: (error) => {
         this._peticionesHttp.setRespuestaServer(error.message);

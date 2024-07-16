@@ -1,0 +1,64 @@
+.contenedor-pagina {
+    display: flex !important;
+    flex-direction: column !important;
+    align-content: center !important;
+    align-items: center;
+}
+
+    .contenedor-formulario {
+        width: 80%;
+        text-align: center;
+    }
+
+        .input-mediano {
+            width: 45%;
+            margin: 1vh;
+        }
+
+        .input-extendido {
+            width: 90%;
+            margin-bottom: 1vh;
+        }
+
+        .invoice-card {
+            width: 70%;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+          }
+          
+          .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+          }
+          
+          .mat-icon {
+            vertical-align: middle;
+            margin-right: 5px;
+          }
+          
+          .invoice-details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+          }
+          
+          .invoice-details-table th,
+          .invoice-details-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+          }
+          
+          .invoice-details-table th {
+            background-color: #f2f2f2;
+          }
+          
+          .invoice-details-table tbody tr:hover {
+            background-color: #f5f5f5;
+          }
