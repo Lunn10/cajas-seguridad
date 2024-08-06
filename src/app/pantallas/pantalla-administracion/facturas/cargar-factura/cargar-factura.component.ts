@@ -160,7 +160,7 @@ export class CargarFacturaComponent implements OnInit {
     if(filtro == 'cliente') {
       const valorFiltradoCliente = this.inputCliente.nativeElement.value.toLowerCase();
       this.valoresFiltradosClientes = this.listaClientes.filter(
-        datosCliente => datosCliente.stateName.includes(valorFiltradoCliente)
+        datosCliente => datosCliente.clientName.toLowerCase().includes(valorFiltradoCliente)
       );
     } else if(filtro == 'articulo') {
       const valorFiltradoArticulo = (event?.target as HTMLInputElement).value.toLowerCase();

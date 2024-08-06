@@ -26,9 +26,14 @@ export class PantallaAdministracionComponent {
       icono: 'attach_money'
     },
     {
-      titulo: 'Facturación',
+      titulo: 'Facturas',
       url: 'consultar-factura',
       icono: 'print_of_sale'
+    },
+    {
+      titulo: 'Nota de crédito',
+      url: 'consultar-nota-credito',
+      icono: 'description'
     },
     {
       titulo: 'Pagos',
