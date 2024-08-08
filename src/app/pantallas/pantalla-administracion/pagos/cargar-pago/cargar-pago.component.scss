@@ -10,6 +10,14 @@
         text-align: center;
     }
 
+        .contenedor-pestanias {
+            margin-bottom: 20px;
+        }
+
+            .pestania-formulario {
+                margin-bottom: 20px;;
+            }
+
         .input-mediano {
             width: 45%;
             margin: 1vh;
@@ -46,3 +54,112 @@
         .tabla-resultados tbody tr:hover {
             background-color: #e5e5e5;
         }
+
+        .contenedor-lista-comrprobantes {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+            .contenedor-articulo {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #f0f0f0;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid #ccc;
+            }
+
+                .contenedor-fecha-comprobante {
+                    width: 15%;
+                    font-weight: bold;
+                    text-align: left;
+                }
+
+                .contenedor-tipo-comprobante {
+                    width: 20%;
+                    text-align: left;
+                }
+
+                .contenedor-numero-comprobante {
+                    width: 20%;
+                }
+
+                .contenedor-monto-comprobante {
+                    width: 20%;
+                }
+
+                .contenedor-monto-pago {
+                    position: relative;
+                }
+
+                .contenedor-monto-pago:before {
+                    width: 30%;
+                    content: "$"; 
+                    position: absolute;
+                    left: 5px; 
+                    top: 50%; 
+                    transform: translateY(-50%);
+                }
+
+                    .input-pago {
+                        padding: 5px 10px; 
+                        border: 1px solid #ccc; 
+                        border-radius: 5px; 
+                        font-size: 14px; 
+                        width: 80px;
+                        text-align: right;
+                    }
+
+        .contenedor-pagos {
+            width: 100%;
+            padding-top: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            flex-wrap: wrap;
+        }
+
+            .titulo-seccion {
+                background-color: #f0f0f0;
+                color: #333; 
+                font-size: 18px;
+                font-weight: bold; 
+                padding: 10px; 
+                margin-bottom: 10px;
+                border-bottom: 1px solid #ccc; 
+            }
+
+            .fila-agregar-pago {
+                width: 90%;
+                max-height: 5vh;
+                margin-bottom: 2px;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;  
+            }
+
+                .input-fila {
+                    height: 4vh;
+                }
+
+                    .input-fila-acotado {
+                        width: 10%;
+                    }
+
+                        .input-desactivado {
+                            cursor: default;
+                            border: 0px;
+                        }
+
+                    .input-fila-mediano {
+                        width: 30%;
+                    }
+
+                    .input-fila-extendido {
+                        width: 50%;
+                    }

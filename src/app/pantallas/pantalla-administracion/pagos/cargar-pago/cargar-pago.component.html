@@ -14,38 +14,77 @@
         </mat-form-field>
     </form>
 
-    <div *ngIf="facturasImpagas.length > 0" class="contenedor-resultados">
-        <table class="tabla-resultados">
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Tipo comprobante</th>
-                    <th>Número</th>
-                    <th>Debe</th>
-                    <th>Haber</th>
-                    <th>Monto</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let factura of facturasImpagas">
-                    <td>{{ factura.fechaFactura | date:'dd/MM/yyyy' }}</td>
-                    <td>{{ factura.tipoFactura }}</td>
-                    <td>{{ factura.id }}</td>
-                    <td>{{ factura.debe | currency }}</td>
-                    <td>{{ factura.haber | currency }}</td>
-                    <td>{{ factura.montoTotal | currency }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <form [formGroup]="formularioCargarPago" class="contenedor-formulario">
-        <mat-tab-group>
-            <mat-tab label="Comprobantes a pagar"> 
-                
+    <form [formGroup]="formularioCargarPago" class="contenedor-formulario" (ngSubmit)="cargarPago()">
+        <mat-tab-group class="contenedor-pestanias">
+            <mat-tab label="Comprobantes a pagar" class="pestania-formulario"> 
+                <div class="contenedor-lista-comrprobantes" formArrayName="comprobantes">
+                    <div *ngFor="let comprobante of comprobantes.controls; let i = index" [formGroupName]="i" class="contenedor-articulo">
+                        <div class="contenedor-fecha-comprobante">
+                            {{comprobante.value.fechaComprobante | date: 'dd/MM/YYYY'}}
+                        </div>
+                        <div class="contenedor-tipo-comprobante">
+                            {{comprobante.value.tipoComprobante | uppercase}}
+                        </div>
+                        <div class="contenedor-numero-comprobante">
+                            {{comprobante.value.numeroComprobante}}
+                        </div>
+                        <div class="contenedor-monto-comprobante">
+                            {{comprobante.value.montoComprobante | currency}}
+                        </div>
+                        <div class="contenedor-monto-pago">
+                            <input type="text" class="input-pago" formControlName="montoAPagar">
+                        </div>
+                    </div>
+                </div>
             </mat-tab>
-            <mat-tab label="Retenciones"> Content 2 </mat-tab>
-            <mat-tab label="Pagos"> Content 3 </mat-tab>
+            <mat-tab label="Retenciones" class="pestania-formulario">
+                <div class="contenedor-pagos" formArrayName="retenciones">
+                    <div class="fila-agregar-pago" *ngFor="let retencion of retenciones.controls; let j = index" [formGroupName]="j">
+                        <input type="text" class="input-fila input-fila-extendido" placeholder="Tipo de retención" matInput formControlName="nombre" [matAutocomplete]="autocompletarRetencion" (input)="filter('retencion', j, $event)" (focus)="filter('retencion', j, $event)">
+                        <mat-autocomplete requireSelection #autocompletarRetencion="matAutocomplete" (optionSelected)="verificarAgregarFilasRetenciones()">
+                            <mat-option *ngFor="let datosRetencion of valoresFiltradosRetenciones" [value]="datosRetencion.nombre">{{datosRetencion.nombre | uppercase }}</mat-option>
+                        </mat-autocomplete>
+
+                        <input type="number" class="input-fila input-fila-acotado" formControlName="numero" placeholder="Número" (input)="verificarAgregarFilasPagos()">
+                        
+                        <input class="input-fila input-fila-acotado" #fechaRetencion matInput [matDatepicker]="picker" formControlName="fecha" placeHolder="Fecha">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        
+                        <input type="number" class="input-fila input-fila-acotado" formControlName="regimen" placeholder="Régimen">
+                        
+                        <input type="number" class="input-fila input-fila-acotado" formControlName="importe" placeholder="Importe">
+                        
+
+                        <button type="button" class="icono-eliminar-fila" mat-icon-button (click)="eliminarRetencion(j)">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Pagos" class="pestania-formulario">
+                <div class="contenedor-pagos" formArrayName="pagos">
+                    <div class="fila-agregar-pago" *ngFor="let pago of pagos.controls; let i = index" [formGroupName]="i">
+                        <input type="number" class="input-fila input-fila-acotado" formControlName="numeroCheque" placeholder="Nº de cheque" (input)="verificarAgregarFilasPagos()">
+                        <input type="text" class="input-fila input-fila-extendido" placeholder="Seleccione el banco" matInput formControlName="banco" [matAutocomplete]="autocompletarBanco" (input)="filter('banco', i, $event)" (focus)="filter('banco', i, $event)">
+                        <mat-autocomplete requireSelection #autocompletarBanco="matAutocomplete">
+                            <mat-option *ngFor="let datosBanco of valoresFiltradosBancos" [value]="datosBanco.nombre">{{datosBanco.nombre | uppercase }}</mat-option>
+                        </mat-autocomplete>
+                        <input type="number" class="input-fila input-fila-acotado" formControlName="importe" placeholder="Importe">
+                        
+                        <input class="input-fila input-fila-acotado" #dateInput matInput [matDatepicker]="picker" formControlName="fechaVencimiento" placeHolder="Vencimiento">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+
+                        <button type="button" class="icono-eliminar-fila" mat-icon-button (click)="eliminarPago(i)">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-tab>
         </mat-tab-group>
+        <mat-card-actions class="contenedor-boton-cargar">
+            <button class="input-extendido" mat-raised-button color="primary">Cargar</button>
+        </mat-card-actions>
     </form>
 </div>

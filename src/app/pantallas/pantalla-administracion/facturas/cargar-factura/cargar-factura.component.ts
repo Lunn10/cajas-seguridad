@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
 import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
 import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
-import { AbstractControl, FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardActions, MatCardModule } from '@angular/material/card';
@@ -191,7 +191,7 @@ export class CargarFacturaComponent implements OnInit {
         maximumFractionDigits: 2
     };
 
-    return precio.toLocaleString('es-AR', opciones);
+    return precio.toLocaleString('es-AR');
   }
 
   recalcularResultadoFactura() {

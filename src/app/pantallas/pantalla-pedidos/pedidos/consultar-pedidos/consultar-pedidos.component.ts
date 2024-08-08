@@ -1,4 +1,4 @@
-import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { EncabezadoComponent } from '../../../../components/encabezado/encabezado.component';
 import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
 import { BotonCargarComponent } from '../../../../components/boton-cargar/boton-cargar.component';
@@ -12,7 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { DateAdapter, MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
+import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
@@ -54,7 +54,6 @@ export class ConsultarPedidosComponent {
     private formBuilder : FormBuilder,
     private _peticionesHttp : PeticionesHttpService,
     private _adapter: DateAdapter<any>,
-    @Inject(MAT_DATE_LOCALE) private _locale: string
   ) {
     this.formularioConsultarPedidos = this.formBuilder.group({
       idPedido: [''],

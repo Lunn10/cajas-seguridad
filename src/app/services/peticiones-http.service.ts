@@ -383,4 +383,12 @@ export class PeticionesHttpService {
     
     return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/getunpaidtickets', data);
   }
+
+  public obtenerListaBancos() {
+    return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/administration/banklist');
+  }
+
+  public obtenerListaRetenciones() {
+    return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/administration/retentionlist');
+  }
 }
