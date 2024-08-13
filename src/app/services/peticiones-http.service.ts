@@ -391,4 +391,18 @@ export class PeticionesHttpService {
   public obtenerListaRetenciones() {
     return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/administration/retentionlist');
   }
+
+  public cargarPago(datosCobranza : any) {
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/generatepayment', datosCobranza);
+  }
+
+  public consultarCobranzas(datosConsulta : FormGroup) {
+    let data = {
+      cliente: datosConsulta.value.cliente,
+      fechaDesde: datosConsulta.value.fechaDesde,
+      fechaHasta: datosConsulta.value.fechaHasta
+    };
+
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/getpayments', data);
+  }
 }

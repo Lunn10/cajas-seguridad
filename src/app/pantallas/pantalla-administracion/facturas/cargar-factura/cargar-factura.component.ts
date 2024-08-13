@@ -54,7 +54,7 @@ export class CargarFacturaComponent implements OnInit {
       cae: [0, Validators.required],
       descuento: [0],
       cliente: ['', Validators.required],
-      observaciones: [''],
+      observaciones: ['', Validators.required],
       pedidos: this.formBuilder.array([]),
       articulos: this.formBuilder.array([])
     });
@@ -321,10 +321,11 @@ export class CargarFacturaComponent implements OnInit {
 
     this._peticionesHttp.cargarFactura(data).subscribe({
       next: (data) => {
-        if(data.error) {
-          this._peticionesHttp.setRespuestaServer(data.message);
-          return;
+        if(!data.error) {
+          this.formularioCargarFactura.reset();          
         }
+
+        this._peticionesHttp.setRespuestaServer(data.message);
       },
       error: (error) => {
         this._peticionesHttp.setRespuestaServer(error.message);

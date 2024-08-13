@@ -32,7 +32,7 @@
                             {{comprobante.value.montoComprobante | currency}}
                         </div>
                         <div class="contenedor-monto-pago">
-                            <input type="text" class="input-pago" formControlName="montoAPagar">
+                            <input type="text" class="input-pago" formControlName="montoAPagar" (change)="actualizarValorTotalComprobantes();">
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                         
                         <input type="number" class="input-fila input-fila-acotado" formControlName="regimen" placeholder="Régimen">
                         
-                        <input type="number" class="input-fila input-fila-acotado" formControlName="importe" placeholder="Importe">
+                        <input type="number" class="input-fila input-fila-acotado" formControlName="importe" placeholder="Importe" (change)="actualizarValorTotalRetenciones();">
                         
 
                         <button type="button" class="icono-eliminar-fila" mat-icon-button (click)="eliminarRetencion(j)">
@@ -70,7 +70,7 @@
                         <mat-autocomplete requireSelection #autocompletarBanco="matAutocomplete">
                             <mat-option *ngFor="let datosBanco of valoresFiltradosBancos" [value]="datosBanco.nombre">{{datosBanco.nombre | uppercase }}</mat-option>
                         </mat-autocomplete>
-                        <input type="number" class="input-fila input-fila-acotado" formControlName="importe" placeholder="Importe">
+                        <input type="number" class="input-fila input-fila-acotado" formControlName="importe" placeholder="Importe" (change)="actualizarValorTotalPagos();" >
                         
                         <input class="input-fila input-fila-acotado" #dateInput matInput [matDatepicker]="picker" formControlName="fechaVencimiento" placeHolder="Vencimiento">
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -83,7 +83,27 @@
                 </div>
             </mat-tab>
         </mat-tab-group>
-        <mat-card-actions class="contenedor-boton-cargar">
+
+        <div class="contenedor-datos-subtotal">
+            <div class="dato">
+                <span class="etiqueta">Total retenciones:</span>
+                <span class="valor">{{ datosSubtotal.totalRetenciones | currency }}</span>
+            </div>
+            <div class="dato">
+                <span class="etiqueta">Total pagos:</span>
+                <span class="valor">{{ datosSubtotal.totalPagos | currency }}</span>
+            </div>
+            <div class="dato">
+                <span class="etiqueta">Total a pagar:</span>
+                <span class="valor">{{ datosSubtotal.totalAPagar | currency }}</span>
+            </div>
+            <div class="dato">
+                <span class="etiqueta">Total comprobantes:</span>
+                <span class="valor">{{ datosSubtotal.totalComprobantes | currency }}</span>
+            </div>
+        </div>
+
+        <mat-card-actions class="contenedor-boton-cargar" *ngIf="this.formularioCargarPago.get('cliente')?.value">
             <button class="input-extendido" mat-raised-button color="primary">Cargar</button>
         </mat-card-actions>
     </form>

@@ -48,6 +48,13 @@ export class CargarPagoComponent implements OnInit {
   @ViewChild('inputCliente') inputCliente!: ElementRef<HTMLInputElement>;
   @ViewChildren('dateInput') dateInputs!: QueryList<ElementRef<HTMLInputElement>>;
   @ViewChildren('fechaRetencion') fechaRetenciones!: QueryList<ElementRef<HTMLInputElement>>;
+  
+  datosSubtotal : any = {
+    totalRetenciones: 0.0,
+    totalAPagar: 0.0,
+    totalPagos: 0.0,
+    totalComprobantes: 0.0
+  }
 
   facturasImpagas : any[] = [];
 
@@ -250,6 +257,46 @@ export class CargarPagoComponent implements OnInit {
     }
   }
 
+  actualizarValorTotalPagos() {
+    this.datosSubtotal.totalPagos = 0.0;
+    
+    this.pagos.controls.forEach(datosPago => {
+      if(!datosPago.value.importe) {
+        return;
+      }
+
+      this.datosSubtotal.totalPagos += parseFloat(datosPago.value.importe);
+    })
+
+    this.actualizarValorTotalAPagar();
+  }
+
+  actualizarValorTotalRetenciones() {
+    this.datosSubtotal.totalRetenciones = 0.0;
+    
+    this.retenciones.controls.forEach(datosRetencion => {
+      if(!datosRetencion.value.importe) {
+        return;
+      }
+
+      this.datosSubtotal.totalRetenciones += parseFloat(datosRetencion.value.importe);
+    })
+
+    this.actualizarValorTotalAPagar();
+  }
+
+  actualizarValorTotalAPagar() {
+    this.datosSubtotal.totalAPagar = parseFloat(this.datosSubtotal.totalPagos) + parseFloat(this.datosSubtotal.totalRetenciones);
+  }
+
+  actualizarValorTotalComprobantes() {
+    this.datosSubtotal.totalComprobantes = 0.0;
+    
+    this.comprobantes.controls.forEach(datosComprobante => {
+      this.datosSubtotal.totalComprobantes += parseFloat(datosComprobante.value.montoAPagar);
+    })
+  }
+
   consultarEstadoCuentaCliente() : void {
     this._peticionesHttp.obtenerFacturasImpagas(this.formularioConsultarFacturasImpagas).subscribe({
       next: (data) => {
@@ -259,6 +306,8 @@ export class CargarPagoComponent implements OnInit {
         }
 
         this.facturasImpagas = data.data;
+        this.comprobantes.clear();
+        this.datosSubtotal.totalComprobantes = 0.0;
 
         this.facturasImpagas.forEach(datosFactura => {
           this.comprobantes.push(
@@ -271,6 +320,10 @@ export class CargarPagoComponent implements OnInit {
             })
           )
         });
+
+        this.formularioCargarPago.patchValue({
+          cliente: this.formularioConsultarFacturasImpagas.get('cliente')?.value
+        })
       },
       error: (error) => {
         this._peticionesHttp.setRespuestaServer(error.message);
@@ -282,5 +335,107 @@ export class CargarPagoComponent implements OnInit {
     if(!this.formularioCargarPago.valid) {
       return;
     }
+
+    let comprobantes : any[] = [];
+    let retenciones : any[] = [];
+    let pagos : any[] = [];
+    let errorFormulario : boolean = false;
+
+    if(this.datosSubtotal.totalComprobantes != this.datosSubtotal.totalAPagar) {
+      this._peticionesHttp.setRespuestaServer("El monto a pagar no coincide con el valor de los pagos y retenciones cargadas");
+      errorFormulario = true;
+    }
+
+    this.comprobantes.controls.forEach(datosPago => {
+      let comprobanteActual = {
+        numeroComprobante: datosPago.value.numeroComprobante,
+        montoComprobante: datosPago.value.montoComprobante,
+        montoAPagar: datosPago.value.montoAPagar,
+        tipoFactura: datosPago.value.tipoComprobante
+      }
+
+      if(comprobanteActual.montoComprobante < comprobanteActual.montoAPagar) {
+        this._peticionesHttp.setRespuestaServer("El monto del comprobante " + comprobanteActual.numeroComprobante + " es menor al monto que ingresó para pagar");
+        errorFormulario = true;
+        return;
+      }
+
+      if(comprobanteActual.montoAPagar == 0.0) {
+        return;
+      }
+
+      comprobantes.push(comprobanteActual);
+    });
+
+    this.retenciones.controls.forEach(datosRetencion => {
+      let retencionActual = {
+        nombre: datosRetencion.value.nombre,
+        regimen: datosRetencion.value.regimen,
+        numero: datosRetencion.value.numero,
+        importe: datosRetencion.value.importe,
+        fecha: datosRetencion.value.fecha
+      }
+      
+      if(retencionActual.nombre == '') {
+        return;
+      }
+
+      if(retencionActual.nombre != '' && (
+        retencionActual.regimen == '' || retencionActual.numero == '' || 
+        retencionActual.importe == '' || retencionActual.fecha == null
+      ) ) {
+        this._peticionesHttp.setRespuestaServer("Una de las retenciones no está cargada de manera completa");
+        errorFormulario = true;
+        return;
+      }
+
+      retenciones.push(retencionActual);
+    });
+
+    this.pagos.controls.forEach(datosPago => {
+      let pagoActual = {
+        numeroCheque: datosPago.value.numeroCheque,
+        banco: datosPago.value.banco,
+        importe: datosPago.value.importe,
+        fechaVencimiento: datosPago.value.fechaVencimiento
+      }
+      
+      if(pagoActual.numeroCheque == '') {
+        return;
+      }
+
+      if(pagoActual.numeroCheque != '' && (
+        pagoActual.banco == '' || pagoActual.importe == '' || pagoActual.fechaVencimiento == null
+      ) ) {
+        this._peticionesHttp.setRespuestaServer("Uno de los pagos no está cargado de manera completa");
+        errorFormulario = true;
+        return;
+      }
+
+      pagos.push(pagoActual);
+    });
+
+    if(errorFormulario) {
+      return;
+    }
+
+    let datosCobranza = {
+      comprobantes: comprobantes,
+      retenciones: retenciones,
+      pagos: pagos,
+      cliente: this.formularioCargarPago.get('cliente')?.value,
+      idPago: this.formularioCargarPago.get('idPago')?.value,
+      totalAPagar: this.datosSubtotal.totalComprobantes
+    }
+
+    this._peticionesHttp.cargarPago(datosCobranza).subscribe({
+      next: (data) => {
+
+        this._peticionesHttp.setRespuestaServer(data.message);
+      },
+      error: (error) => {
+        this._peticionesHttp.setRespuestaServer(error.message);
+      }
+    })
   }
 }
