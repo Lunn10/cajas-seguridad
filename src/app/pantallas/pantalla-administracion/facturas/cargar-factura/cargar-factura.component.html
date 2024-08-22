@@ -31,7 +31,7 @@
                 <div class="titulo-seccion">Datos pedido</div>
                 <div class="contenedor-pedidos-facturar">
                     <div class="fila-agregar-articulo" *ngFor="let pedido of pedidos.controls; let j = index" [formGroupName]="j">
-                        <input type="number" class="input-fila input-fila-acotado" formControlName="idPedido" placeholder="Pedido" (input)="verificarAgregarFilaPedidos()">
+                        <input type="number" class="input-fila input-fila-acotado" formControlName="idPedido" placeholder="Pedido" (input)="verificarAgregarFilaPedidos()" (change)="obtenerDatosPedidos();">
                         <input class="input-fila input-fila-extendido" formControlName="cliente" readonly>
                         <input class="input-fila input-fila-extendido" formControlName="observaciones" readonly>
                         <button type="button" class="icono-eliminar-fila" mat-icon-button (click)="eliminarPedido(j)">

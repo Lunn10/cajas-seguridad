@@ -103,7 +103,7 @@ export class CargarListaPreciosComponent implements OnInit {
           this._peticionesHttp.setRespuestaServer(data.message);
         }
 
-        this.listaArticulos = data.data;
+        this.listaArticulos = data.data.articulos;
 
         this.listaArticulos.forEach(articulo => {
           let precioAnterior = 100 * articulo.precio / (100 + this.formularioCargarListaPrecios.get('porcentajeAumento')?.value)

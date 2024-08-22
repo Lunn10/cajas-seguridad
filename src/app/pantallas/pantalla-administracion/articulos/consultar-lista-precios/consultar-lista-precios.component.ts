@@ -19,6 +19,13 @@ import { PeticionesHttpService } from '../../../../services/peticiones-http.serv
 })
 export class ConsultarListaPreciosComponent {
   listaArticulos : any[] = [];
+  ultimaLista : {
+    id: number, fecha: Date | null, porcentaje: number
+  } = {
+    id: 0,
+    fecha: null,
+    porcentaje: 0
+  }
 
   constructor(
     private _peticionesHttp : PeticionesHttpService,
@@ -32,7 +39,12 @@ export class ConsultarListaPreciosComponent {
         if (data.error) {
           this._peticionesHttp.setRespuestaServer(data.message);
         } else {
-          this.listaArticulos = data.data;
+          let datosRespuesta = data.data;
+
+          this.listaArticulos = datosRespuesta.articulos;
+          this.ultimaLista.id = datosRespuesta.idLista;
+          this.ultimaLista.porcentaje = datosRespuesta.porcentaje;
+          this.ultimaLista.fecha = datosRespuesta.fecha;
         }
       },
       error: (error) => {

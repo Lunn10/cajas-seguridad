@@ -4,12 +4,17 @@
 
 <div class="contenedor-pagina">
     <div class="contenedor-lista-articulos">
-        <!--div class="contenedor-articulo">
-            <div class="contenedor-nombre-articulo"> NOMBRE </div>
-            <div class="contenedor-descripcion"> DESCRIPCIÓN </div>
-            <div class="contenedor-tipo-articulo"> TIPO </div>
-            <div class="contenedor-precio-anterior"> PRECIO </div>
-        </div -->
+        <div class="contenedor-titulo-lista">
+            <div class="titulo">
+                <h2>Lista de precios número: {{ultimaLista.id}}</h2>
+              </div>
+              <div class="descripcion">
+                <p>Porcentaje aumentado: {{ultimaLista.porcentaje}}%</p>
+              </div>
+              <div class="fecha">
+                <p>Fecha: {{ ultimaLista.fecha | date:'dd/MM/yyyy' }}</p>
+              </div>
+        </div>
         <div *ngFor="let articulo of listaArticulos" class="contenedor-articulo">
             <div class="contenedor-nombre-articulo">
                 {{articulo.nombre | uppercase}}

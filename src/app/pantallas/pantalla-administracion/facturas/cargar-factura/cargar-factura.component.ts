@@ -170,6 +170,12 @@ export class CargarFacturaComponent implements OnInit {
     }
   }
 
+  obtenerDatosPedidos() {
+    this.pedidos.controls.forEach(datosPedidos => {
+      
+    })
+  }
+
   obtenerDatosAdicionales(index : number) {
     const nombreArticuloSeleccionado = this.articulos.controls[index].get('nombreArticulo')?.value.toLowerCase();
     const datosArticulo = this.listaArticulos.find(articulo => articulo.nombre.toLowerCase() === nombreArticuloSeleccionado);
@@ -217,7 +223,7 @@ export class CargarFacturaComponent implements OnInit {
         if (data.error) {
           this._peticionesHttp.setRespuestaServer(data.message);
         } else {
-          this.listaArticulos = data.data;
+          this.listaArticulos = data.data.articulos;
         }
       },
       error: (error) => {

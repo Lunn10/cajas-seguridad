@@ -225,12 +225,16 @@ export class PeticionesHttpService {
     return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/article/list');
   }
 
-  public listaArticulosConPrecios(idLista : number) : Observable<IRespuestaServer> {
+  public listaArticulosConPrecios(idLista : number) : Observable<IRespuestaServerSimple> {
     let data = {
       id: idLista
     }
 
     return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/article/listwithprices', data);
+  }
+
+  public ultimaListaArticulosConPrecios() : Observable<IRespuestaServer> {
+    return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/article/listwithprices');
   }
 
   public listaAccesorios(idArticulo : number) : Observable<IRespuestaServer> {
