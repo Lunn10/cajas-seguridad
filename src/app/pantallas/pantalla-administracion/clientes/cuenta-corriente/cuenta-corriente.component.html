@@ -2,7 +2,7 @@
 <app-respuesta-server />
 
 <div class="cuenta-corriente">
-    <mat-card *ngFor="let item of cuentaCorriente" class="cuenta-corriente-item">
+    <mat-card *ngFor="let item of cuentaCorriente.reverse()" class="cuenta-corriente-item">
       <div class="cuenta-corriente-header">
         <mat-icon aria-hidden="false" aria-label="concept icon">
           {{ getIcon(item.tipoConcepto) }}
@@ -18,7 +18,13 @@
       </div>
       <div class="cuenta-corriente-amount">
         <span [ngClass]="{'debe': item.debe > 0, 'haber': item.haber > 0}">
-          {{ item.debe > 0 ? '- $' + item.debe : '$' + item.haber }}
+          {{ item.debe > 0 ? '- ' : '' }}
+          {{ item.debe > 0 ? item.debe : item.haber | currency }}
+        </span>
+      </div>
+      <div class="cuenta-corriente-amount">
+        <span>
+          {{ item.saldoActual | currency }}
         </span>
       </div>
     </mat-card>

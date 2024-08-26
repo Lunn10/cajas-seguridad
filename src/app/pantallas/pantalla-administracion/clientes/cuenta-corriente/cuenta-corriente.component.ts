@@ -67,7 +67,29 @@ export class CuentaCorrienteComponent implements OnInit {
           this._peticionesHttp.setRespuestaServer(data.message);
         } else {
           this.datosCliente = data.data.datosCliente;
-          this.cuentaCorriente = data.data.cuentaCorriente;
+          
+          let datosCuentaCorriente : any[] = [];
+          let importeActual = 0;
+
+          data.data.cuentaCorriente.forEach((movimientoActual: { fecha: Date; id: number; tipoConcepto: string; debe: number; haber: number; }) => {
+
+            if(movimientoActual.debe > 0 ) {
+              importeActual -= movimientoActual.debe;
+            } else {
+              importeActual += movimientoActual.haber;
+            }
+
+            datosCuentaCorriente.push({
+              id: movimientoActual.id,
+              fecha: movimientoActual.fecha,
+              tipoConcepto: movimientoActual.tipoConcepto,
+              debe: movimientoActual.debe,
+              haber: movimientoActual.haber,
+              saldoActual: importeActual
+            });
+          });
+
+          this.cuentaCorriente = datosCuentaCorriente;
         }
       },
       error : (data) => {
