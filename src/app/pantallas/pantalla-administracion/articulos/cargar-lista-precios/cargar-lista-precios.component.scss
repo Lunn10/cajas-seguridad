@@ -73,6 +73,28 @@
                     width: 70px;
                     text-align: right;
                 }
+
+            .contenedor-nuevo-porcentaje {
+                position: relative;
+            }
+
+            .contenedor-nuevo-porcentaje:before {
+                width: 20%;
+                content: "%"; 
+                position: absolute;
+                right: 5px; 
+                top: 50%; 
+                transform: translateY(-50%);
+            }
+
+                .input-porcentaje-presonalizado {
+                    padding: 5px 10px; 
+                    border: 1px solid #ccc; 
+                    border-radius: 5px; 
+                    font-size: 14px; 
+                    width: 70px;
+                    text-align: left;
+                }
         
         .contenedor-boton-cargar {
             margin: 30px;

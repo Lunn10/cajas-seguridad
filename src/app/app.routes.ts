@@ -22,6 +22,7 @@ import { CargarPagoComponent } from './pantallas/pantalla-administracion/pagos/c
 import { ConsultarPagosComponent } from './pantallas/pantalla-administracion/pagos/consultar-pagos/consultar-pagos.component';
 import { ConsultarNotaCreditoComponent } from './pantallas/pantalla-administracion/notas-credito/consultar-nota-credito/consultar-nota-credito.component';
 import { CargarNotaCreditoComponent } from './pantallas/pantalla-administracion/notas-credito/cargar-nota-credito/cargar-nota-credito.component';
+import { CuentaCorrienteComponent } from './pantallas/pantalla-administracion/clientes/cuenta-corriente/cuenta-corriente.component';
 
 export const routes: Routes = [
     { path: '', component: PantallaInicioComponent },
@@ -37,6 +38,7 @@ export const routes: Routes = [
         { path: 'cargar-cliente', component: CargarClienteComponent },
         { path: 'cargar-cliente/:id', component: CargarClienteComponent },
         { path: 'consultar-cliente', component: ConsultarClienteComponent },
+        { path: 'cuenta-corriente/:id', component: CuentaCorrienteComponent },
         { path: 'cargar-factura', component: CargarFacturaComponent },
         { path: 'consultar-factura', component: ConsultarFacturaComponent },
         { path: 'cargar-nota-credito', component: CargarNotaCreditoComponent },

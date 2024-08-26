@@ -325,14 +325,16 @@ export class PeticionesHttpService {
   public cargarListaPrecios(listaPrecios : FormGroup) : Observable<IRespuestaServer> {
     let preciosActualizados : {
       idArticulo: number,
-      precio: number
+      precio: number,
+      porcentajeAumento: number
     }[] = [];
 
-    listaPrecios.value.articulos.forEach((articuloActual: {idArticulo: number, precioActual: number, precio: number}) => {
+    listaPrecios.value.articulos.forEach((articuloActual: {idArticulo: number, precioActual: number, precio: number, aumentoPersonalizado: number}) => {
       let articuloActualizado = {
         idArticulo: articuloActual.idArticulo,
         precio: articuloActual.precioActual,
-        precioAnterior: articuloActual.precio
+        precioAnterior: articuloActual.precio,
+        porcentajeAumento: articuloActual.aumentoPersonalizado
       }
 
       preciosActualizados.push(articuloActualizado);
@@ -408,5 +410,13 @@ export class PeticionesHttpService {
     };
 
     return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/getpayments', data);
+  }
+
+  public obtenerCuentaCorrienteCliente(datosConsulta : FormGroup) {
+    let data = {
+      idCliente: datosConsulta.value.idCliente
+    };
+
+    return this._httpClient.post<IRespuestaServerSimple>(this.IP_SERVER + '/client/getcurrentaccount', data);
   }
 }

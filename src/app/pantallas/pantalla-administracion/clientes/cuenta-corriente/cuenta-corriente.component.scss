@@ -1,0 +1,49 @@
+.cuenta-corriente {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .cuenta-corriente-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+  }
+  
+  .cuenta-corriente-header {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .cuenta-corriente-header mat-icon {
+    margin-right: 8px;
+  }
+  
+  .cuenta-corriente-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cuenta-corriente-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cuenta-corriente-amount {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .debe {
+    color: red;
+  }
+  
+  .haber {
+    color: green;
+  }

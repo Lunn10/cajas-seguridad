@@ -57,6 +57,7 @@ export class CargarListaPreciosComponent implements OnInit {
       this.articulos.controls.forEach(articulo => {
         const precioActual = articulo.get('precio')?.value;
         const nuevoPrecio = precioActual + (precioActual * (porcentaje / 100));
+        articulo.get('aumentoPersonalizado')?.setValue(porcentaje);
         articulo.get('precioActual')?.setValue(nuevoPrecio);
       });
     });
@@ -94,6 +95,17 @@ export class CargarListaPreciosComponent implements OnInit {
       });
     });
   }
+
+  cambiarValorArticulo(index : number) {
+    const nuevoPrecio = this.articulos.controls[index].get('precio')?.value + (
+      this.articulos.controls[index].get('precio')?.value * (
+        this.articulos.controls[index].get('aumentoPersonalizado')?.value / 100
+      ));
+
+    this.articulos.controls[index].get('precioActual')?.setValue(
+      nuevoPrecio
+    )
+  }
   
 
   obtenerArticulosConPrecios(idLista : number = 0) {
@@ -113,7 +125,8 @@ export class CargarListaPreciosComponent implements OnInit {
             nombre: [articulo.nombre],
             descripcion: [articulo.descripcion],
             precio: [precioAnterior],
-            precioActual: [articulo.precio]
+            precioActual: [articulo.precio],
+            aumentoPersonalizado: [0]
           }));
         });
       },
@@ -129,11 +142,7 @@ export class CargarListaPreciosComponent implements OnInit {
     }
 
     this._peticionesHttp.cargarListaPrecios(this.formularioCargarListaPrecios).subscribe({
-      next: (data) => {
-        if(!data.error) {
-          this.formularioCargarListaPrecios.reset();
-        }
-        
+      next: (data) => {        
         this._peticionesHttp.setRespuestaServer(data.message);
       },
       error: (error) => {
