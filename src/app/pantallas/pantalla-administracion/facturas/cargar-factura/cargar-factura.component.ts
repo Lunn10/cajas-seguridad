@@ -61,7 +61,6 @@ export class CargarFacturaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.obtenerUltimoCae();
     this.obtenerDatosListaPrecios();
     this.obtenerListaClientes();
 
@@ -171,8 +170,49 @@ export class CargarFacturaComponent implements OnInit {
   }
 
   obtenerDatosPedidos() {
+    this.articulos.clear();
+
     this.pedidos.controls.forEach(datosPedidos => {
-      
+      let idPedidoIngresado = datosPedidos.get('idPedido')?.value;
+
+      if(idPedidoIngresado == '') {
+        return;
+      }
+
+      this._peticionesHttp.obtenerPedido(idPedidoIngresado).subscribe({
+        next: (data) => {
+          if(data.error) {
+            this._peticionesHttp.setRespuestaServer(data.message);
+          } else {
+            let datosCliente = this.listaClientes.find(cliente => cliente.id === data.data.idCliente);
+
+            datosPedidos.get('observaciones')?.setValue(data.data.observaciones);
+            datosPedidos.get('cliente')?.setValue(
+              datosCliente.clientName
+            );
+            
+            data.data.articulos.forEach((articuloPedido : any) => {
+              let datosArticulo = this.listaArticulos.find(articulo => articulo.id === articuloPedido.idArticulo);
+
+              this.articulos.push(
+                this.formBuilder.group({
+                  cantidad: [articuloPedido.cantidad],
+                  idArticulo: [articuloPedido.idArticulo],
+                  nombreArticulo: [datosArticulo.nombre],
+                  descripcion: [datosArticulo.descripcion],
+                  precio: [datosArticulo.precio],
+                  precioFormateado: [this.formatearValorAPrecio(datosArticulo.precio)],
+                  descuento: [0],
+                  esServicio: articuloPedido.tipoArticulo == 'SERVICIO'
+                })
+              );
+            });
+          }
+        },
+        error: (error) => {
+          this._peticionesHttp.setRespuestaServer(error.message);
+        }
+      })
     })
   }
 
@@ -189,14 +229,6 @@ export class CargarFacturaComponent implements OnInit {
   }
 
   formatearValorAPrecio(precio : number) {
-    const opciones = {
-        style: 'currency',
-        currency: 'ARS',
-        currencyDisplay: 'symbol',
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    };
-
     return precio.toLocaleString('es-AR');
   }
 
@@ -249,7 +281,23 @@ export class CargarFacturaComponent implements OnInit {
   }
 
   obtenerUltimoCae() {
-    this._peticionesHttp.obtenerUltimoCAE().subscribe({
+    let datosCliente = this.listaClientes.find(cliente => cliente.clientName == this.formularioCargarFactura.get('cliente')?.value);
+
+    if(!datosCliente) {
+      return;
+    }
+
+    let datosEnvio = {
+      comprobante: ''
+    }
+    
+    if(datosCliente.ivaType == 'RESPONSABLE INSCRIPTO') {
+      datosEnvio.comprobante = 'FACTURA A';
+    } else if(datosCliente.ivaType == 'MONOTRIBUTO' || datosCliente.ivaType == 'CONSUMIDOR FINAL') {
+      datosEnvio.comprobante = 'FACTURA B';
+    }
+
+    this._peticionesHttp.obtenerUltimoCAE(datosEnvio).subscribe({
       next: (data) => {
         if(data.error) {
           this._peticionesHttp.setRespuestaServer(data.message);

@@ -71,12 +71,22 @@ export class CuentaCorrienteComponent implements OnInit {
           let datosCuentaCorriente : any[] = [];
           let importeActual = 0;
 
-          data.data.cuentaCorriente.forEach((movimientoActual: { fecha: Date; id: number; tipoConcepto: string; debe: number; haber: number; }) => {
+          data.data.cuentaCorriente.forEach((movimientoActual: { 
+            fecha: Date; 
+            id: number; 
+            tipoConcepto: string; 
+            debe: number; 
+            haber: number; 
+            idConcepto: number
+          }) => {
+
+            let importe = movimientoActual.debe;
 
             if(movimientoActual.debe > 0 ) {
               importeActual -= movimientoActual.debe;
             } else {
               importeActual += movimientoActual.haber;
+              importe = movimientoActual.haber;
             }
 
             datosCuentaCorriente.push({
@@ -85,6 +95,8 @@ export class CuentaCorrienteComponent implements OnInit {
               tipoConcepto: movimientoActual.tipoConcepto,
               debe: movimientoActual.debe,
               haber: movimientoActual.haber,
+              importe: importe,
+              idConcepto: movimientoActual.idConcepto,
               saldoActual: importeActual
             });
           });

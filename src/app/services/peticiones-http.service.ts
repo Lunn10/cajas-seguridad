@@ -358,9 +358,7 @@ export class PeticionesHttpService {
     return this._httpClient.post<IRespuestaServerSimple>(this.IP_SERVER + '/article/getprizeslist', data);
   }
 
-  public obtenerUltimoCAE() {
-    let data = {};
-
+  public obtenerUltimoCAE(data : any) {
     return this._httpClient.post<IRespuestaServerSimple>(this.IP_SERVER + '/ticket/getlastcae', data);
   }
 
