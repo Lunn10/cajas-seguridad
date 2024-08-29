@@ -18,6 +18,12 @@
                 <input matInput placeholder="" id="cae-factura" value="" formControlName="cae" readonly>
             </mat-form-field>
             <mat-form-field class="input-mediano">
+                <mat-label>Fecha de factura</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fecha">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
                 <mat-label for="descuento">Descuento</mat-label>
                 <input matInput placeholder="" id="descuento" value="" formControlName="descuento">
             </mat-form-field>
@@ -50,7 +56,7 @@
                             <mat-option *ngFor="let datosArticulo of valoresFiltradosArticulos" [value]="datosArticulo.nombre">{{datosArticulo.nombre | uppercase }}</mat-option>
                         </mat-autocomplete>
                         <input class="input-fila input-fila-mediano" formControlName="descripcion" readonly>
-                        <input class="input-fila input-fila-acotado" formControlName="precioFormateado" readonly>
+                        <input class="input-fila input-fila-acotado" formControlName="precio">
                         <button type="button" class="icono-eliminar-fila" mat-icon-button (click)="eliminarArticulo(i)">
                             <mat-icon>close</mat-icon>
                         </button>

@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-cargar-factura',
@@ -25,8 +27,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatAutocompleteModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule
   ],
+  providers: [provideNativeDateAdapter()],
   templateUrl: './cargar-factura.component.html',
   styleUrl: './cargar-factura.component.scss'
 })
@@ -48,13 +52,15 @@ export class CargarFacturaComponent implements OnInit {
 
   constructor(
     private _peticionesHttp : PeticionesHttpService,
-    private formBuilder : FormBuilder
+    private formBuilder : FormBuilder,
+    private _adapter: DateAdapter<any>
   ) {
     this.formularioCargarFactura = this.formBuilder.group({
       cae: [0, Validators.required],
       descuento: [0],
       cliente: ['', Validators.required],
       observaciones: ['', Validators.required],
+      fecha: ['', Validators.required],
       pedidos: this.formBuilder.array([]),
       articulos: this.formBuilder.array([])
     });
@@ -70,6 +76,8 @@ export class CargarFacturaComponent implements OnInit {
     this.formularioCargarFactura.valueChanges.subscribe(() => {
       this.recalcularResultadoFactura();
     })
+
+    this._adapter.setLocale('es-AR');
   }
 
   get articulos(): FormArray {
@@ -238,7 +246,7 @@ export class CargarFacturaComponent implements OnInit {
     
     this.articulos.controls.forEach((articuloAFacturar) => {
       const cantidadArticulo = articuloAFacturar.get('cantidad')?.value ? parseInt(articuloAFacturar.get('cantidad')?.value) : 0;
-      const precioArticulo = articuloAFacturar.get('precio')?.value ? parseInt(articuloAFacturar.get('precio')?.value) : 0;
+      const precioArticulo = articuloAFacturar.get('precio')?.value ? parseFloat(articuloAFacturar.get('precio')?.value) : 0;
 
       subtotalFactura += cantidadArticulo * precioArticulo;
     });
@@ -314,7 +322,7 @@ export class CargarFacturaComponent implements OnInit {
     })
   }
 
-  cargarFactura() {
+  cargarFactura() {    
     if(!this.formularioCargarFactura.valid) {
       return;
     }
@@ -366,12 +374,15 @@ export class CargarFacturaComponent implements OnInit {
       cae: this.formularioCargarFactura.value.cae,
       descuento: this.formularioCargarFactura.value.descuento,
       cliente: this.formularioCargarFactura.value.cliente,
+      fecha: this.formularioCargarFactura.value.fecha,
       idCliente: this.obtenerIdClienteSegunNombre(),
       observaciones: this.formularioCargarFactura.value.observaciones,
       pedidosFacturados: pedidosFacturados,
       articulosFacturados: articulosFacturados,
       resultadoFactura: this.datosSubtotalFactura
     };
+
+    console.log(data);
 
     this._peticionesHttp.cargarFactura(data).subscribe({
       next: (data) => {

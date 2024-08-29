@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-cuenta-corriente',
@@ -60,6 +61,14 @@ export class CuentaCorrienteComponent implements OnInit {
     }
   }
 
+  agregarCerosAdelante(cadena : string, cantidad : number) {
+    while(cadena.length < cantidad) {
+      cadena = '0' + cadena;
+    }
+
+    return cadena;
+  }
+
   obtenerCuentaCorrienteCliente() {
     this._peticionesHttp.obtenerCuentaCorrienteCliente(this.formularioCuentaCorriente).subscribe({
       next : (data) => {
@@ -77,7 +86,10 @@ export class CuentaCorrienteComponent implements OnInit {
             tipoConcepto: string; 
             debe: number; 
             haber: number; 
-            idConcepto: number
+            idConcepto: number,
+            puntoVenta: number,
+            numeroComprobante: number,
+            observaciones: string
           }) => {
 
             let importe = movimientoActual.debe;
@@ -89,15 +101,20 @@ export class CuentaCorrienteComponent implements OnInit {
               importe = movimientoActual.haber;
             }
 
+            console.log(movimientoActual);
+
             datosCuentaCorriente.push({
               id: movimientoActual.id,
               fecha: movimientoActual.fecha,
               tipoConcepto: movimientoActual.tipoConcepto,
               debe: movimientoActual.debe,
               haber: movimientoActual.haber,
+              puntoVenta: this.agregarCerosAdelante(movimientoActual.puntoVenta.toString(), 4),
+              numeroComprobante: this.agregarCerosAdelante(movimientoActual.numeroComprobante.toString(), 8),
               importe: importe,
               idConcepto: movimientoActual.idConcepto,
-              saldoActual: importeActual
+              saldoActual: importeActual,
+              observaciones: movimientoActual.observaciones
             });
           });
 

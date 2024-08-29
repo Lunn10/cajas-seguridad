@@ -114,12 +114,12 @@ export class CargarClienteComponent implements OnInit {
     if(filtro == 'provincias') {
       const valorFiltradoProvincias = this.inputProvincia.nativeElement.value.toLowerCase();
       this.valoresFiltradosProvincias = this.opcionesSelectProvincias.filter(
-        datosProvincia => datosProvincia.stateName.includes(valorFiltradoProvincias)
+        datosProvincia => datosProvincia.stateName.toLowerCase().includes(valorFiltradoProvincias)
       );
     } else if(filtro == 'iva') {
       const valorFiltradoIVA = this.inputIva.nativeElement.value.toLowerCase();
       this.valoresFiltradosTipoIVA = this.opcionesSelectTipoIVA.filter(
-        datosTipoIVA => datosTipoIVA.typeName.includes(valorFiltradoIVA)
+        datosTipoIVA => datosTipoIVA.typeName.toLowerCase().includes(valorFiltradoIVA)
       );
     }
   }
@@ -167,6 +167,7 @@ export class CargarClienteComponent implements OnInit {
           this._peticionesHttp.setRespuestaServer(data.message);
         } else {
           this.opcionesSelectTipoIVA = data.data;
+          this.valoresFiltradosTipoIVA = this.opcionesSelectTipoIVA.slice();
         }
       },
       error : (data) => {
