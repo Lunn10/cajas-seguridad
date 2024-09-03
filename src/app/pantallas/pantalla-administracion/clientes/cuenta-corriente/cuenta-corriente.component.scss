@@ -1,8 +1,25 @@
 .cuenta-corriente {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 2px;
   }
+
+    .encabezado-cuenta-corriente {
+      min-height: 4vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 16px;
+      background-color: #f5f5f5;
+    }
+
+      .titulo-detalles-cuenta-corriente {
+        width: 20%;
+      }
+
+      .alineacion-derecha {
+        text-align: right !important;
+      }
   
   .cuenta-corriente-item {
     display: flex;
@@ -10,7 +27,6 @@
     justify-content: space-between;
     padding: 16px;
     background-color: #f5f5f5;
-    border-radius: 8px;
   }
   
   .cuenta-corriente-header {
@@ -18,7 +34,6 @@
     width: 20%;
     align-items: center;
     font-weight: bold;
-    margin-bottom: 8px;
   }
   
   .cuenta-corriente-header mat-icon {
@@ -26,34 +41,47 @@
   }
   
   .cuenta-corriente-body {
-    width: 40%;
+    width: 20%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
+    .fecha-comprobante {
+      font-weight: bold;
+    }
+
+    .campo-observaciones {
+      font-weight: thin;
+    }
   
   .cuenta-corriente-info {
     display: flex;
     flex-direction: column;
+    align-content: flex-start;
+    justify-content: space-around;
   }
   
   .cuenta-corriente-amount {
     width: 20%;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
+    text-align: right;
+    align-content: center;
   }
 
   .cuenta-corriente-saldo {
     width: 20%;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
     text-align: right;
+    align-content: center;
   }
   
-  .debe {
-    color: red;
-  }
-  
-  .haber {
-    color: green;
-  }
+    .debe {
+      color: red;
+    }
+    
+    .haber {
+      color: green;
+    }

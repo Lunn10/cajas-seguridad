@@ -2,22 +2,34 @@
 <app-respuesta-server />
 
 <div class="cuenta-corriente">
+  <mat-card class="encabezado-cuenta-corriente">
+    <div class="titulo-detalles-cuenta-corriente"> Fecha </div>
+    <div class="titulo-detalles-cuenta-corriente"> Comprobante </div>
+    <div class="titulo-detalles-cuenta-corriente alineacion-derecha"> Haber </div>
+    <div class="titulo-detalles-cuenta-corriente alineacion-derecha"> Debe </div>
+    <div class="titulo-detalles-cuenta-corriente alineacion-derecha"> Saldo </div>
+  </mat-card>
   <mat-card *ngFor="let movimientoActual of cuentaCorriente.reverse()" class="cuenta-corriente-item">
+    <div class="cuenta-corriente-body">
+      <div class="cuenta-corriente-info">
+        <div class="fecha-comprobante">{{ movimientoActual.fecha | date: 'dd/MM/yyyy' }}</div>
+        <div class="campo-observaciones">{{ movimientoActual.observaciones }}</div>
+      </div>
+    </div>
     <div class="cuenta-corriente-header">
       <mat-icon aria-hidden="false" aria-label="concept icon">
         {{ getIcon(movimientoActual.tipoConcepto) }}
       </mat-icon>
       <span>{{ movimientoActual.tipoConcepto }} : {{movimientoActual.puntoVenta}} - {{movimientoActual.numeroComprobante}} </span>
     </div>
-    <div class="cuenta-corriente-body">
-      <div class="cuenta-corriente-info">
-        <div>Fecha: {{ movimientoActual.fecha | date: 'dd/MM/yyyy' }}</div>
-        <div>Observaciones: {{ movimientoActual.observaciones }}</div>
-      </div>
+    <div class="cuenta-corriente-amount">
+      <span *ngIf="movimientoActual.haber" class="haber">
+        {{ movimientoActual.haber | currency }}
+      </span>
     </div>
     <div class="cuenta-corriente-amount">
-      <span [ngClass]="{'debe': movimientoActual.debe > 0, 'haber': movimientoActual.haber > 0}">
-        {{ movimientoActual.debe > 0 ? '- ' : '' }} {{ movimientoActual.importe | currency }}
+      <span *ngIf="movimientoActual.debe" class="debe">
+        {{ movimientoActual.debe | currency }}
       </span>
     </div>
     <div class="cuenta-corriente-saldo">

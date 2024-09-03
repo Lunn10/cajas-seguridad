@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-cargar-factura',
@@ -28,7 +29,8 @@ import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
     MatButtonModule,
     MatAutocompleteModule,
     MatIconModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatSelectModule
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './cargar-factura.component.html',
@@ -61,6 +63,7 @@ export class CargarFacturaComponent implements OnInit {
       cliente: ['', Validators.required],
       observaciones: ['', Validators.required],
       fecha: ['', Validators.required],
+      puntoVenta: ['', Validators.required],
       pedidos: this.formBuilder.array([]),
       articulos: this.formBuilder.array([])
     });
@@ -375,14 +378,13 @@ export class CargarFacturaComponent implements OnInit {
       descuento: this.formularioCargarFactura.value.descuento,
       cliente: this.formularioCargarFactura.value.cliente,
       fecha: this.formularioCargarFactura.value.fecha,
+      puntoVenta: this.formularioCargarFactura.value.puntoVenta,
       idCliente: this.obtenerIdClienteSegunNombre(),
       observaciones: this.formularioCargarFactura.value.observaciones,
       pedidosFacturados: pedidosFacturados,
       articulosFacturados: articulosFacturados,
       resultadoFactura: this.datosSubtotalFactura
     };
-
-    console.log(data);
 
     this._peticionesHttp.cargarFactura(data).subscribe({
       next: (data) => {

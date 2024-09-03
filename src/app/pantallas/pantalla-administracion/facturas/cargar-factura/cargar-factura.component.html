@@ -4,7 +4,7 @@
 <div class="contenedor-pagina">
     <div class="contenedor-formulario">
         <form [formGroup]="formularioCargarFactura" (ngSubmit)="cargarFactura();">
-            <div class="titulo-seccion">Datos cliente</div>
+            <div class="titulo-seccion">Datos facturación</div>
             <mat-form-field class="input-mediano">
                 <mat-label for="cliente">Cliente</mat-label>
                 <input #inputCliente type="text" id="cliente" placeholder="Seleccione el cliente" matInput formControlName="cliente" [matAutocomplete]="autocompletarCliente" (input)="filter('cliente')" (focus)="filter('cliente')" >
@@ -30,6 +30,13 @@
             <mat-form-field class="input-mediano">
                 <mat-label for="observaciones">Observaciones</mat-label>
                 <input matInput placeholder="" id="descuento" value="" formControlName="observaciones">
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label for="id-punto-venta">Punto de venta</mat-label>
+                <mat-select formControlName="puntoVenta">
+                        <mat-option [value]="6">Punto de venta 6</mat-option>
+                        <mat-option [value]="7">Punto de venta 7</mat-option>
+                  </mat-select>
             </mat-form-field>
 
             <ng-container formArrayName="pedidos">

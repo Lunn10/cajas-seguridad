@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-cargar-nota-credito',
@@ -24,7 +25,8 @@ import { MatCardModule } from '@angular/material/card';
     MatAutocompleteModule,
     MatIconModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ],
   templateUrl: './cargar-nota-credito.component.html',
   styleUrl: './cargar-nota-credito.component.scss'
@@ -34,6 +36,7 @@ export class CargarNotaCreditoComponent implements OnInit {
   listaClientes : any[] = [];
   valoresFiltradosClientes : any[] = [];
   @ViewChild('inputCliente') inputCliente!: ElementRef<HTMLInputElement>;
+  porcentajeIvaCliente : number = 0;
 
   constructor(
     private formBuilder : FormBuilder,

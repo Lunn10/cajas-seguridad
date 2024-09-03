@@ -74,6 +74,16 @@ export class ConsultarFacturaComponent {
     })
   }
 
+  agregarCerosAdelante(cadena : string, cantidad : number) : string {
+    cadena = cadena.toString();
+
+    while(cadena.length < cantidad) {
+      cadena = '0' + cadena;	
+    }
+
+    return cadena;
+  }
+
   filter(filtro : string ): void {
     if(filtro == 'cliente') {
       const valorFiltradoCliente = this.inputCliente.nativeElement.value.toLowerCase();

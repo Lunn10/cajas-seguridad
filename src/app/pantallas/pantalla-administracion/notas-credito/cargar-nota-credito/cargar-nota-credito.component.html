@@ -1,4 +1,4 @@
-<app-encabezado titulo="Cargar factura"/>
+<app-encabezado titulo="Cargar nota de crédito"/>
 <app-respuesta-server />
 
 <div class="contenedor-pagina">
@@ -28,7 +28,15 @@
                     <div class="fila-agregar-item" *ngFor="let item of items.controls; let j = index" [formGroupName]="j">
                         <input type="text" class="input-fila input-fila-extendido" formControlName="descripcion" placeholder="Descripción" (input)="verificarAgregarItems()" (change)="verificarAgregarItems();" >
                         <input class="input-fila input-fila-mediano" formControlName="importe" placeholder="Importe">
-                        <input class="input-fila input-fila-mediano" formControlName="iva" placeholder="Tipo de iva">
+                        <input type="text" class="input-fila input-fila-acotado" placeholder="Tipo de IVA" matInput formControlName="iva" [matAutocomplete]="autocompletarIva">
+                        <mat-autocomplete requireSelection #autocompletarIva="matAutocomplete">
+                            <mat-option [value]="0">0%</mat-option>
+                            <mat-option [value]="2.5">2.5%</mat-option>
+                            <mat-option [value]="5">5%</mat-option>
+                            <mat-option [value]="10.5">10.5%</mat-option>    
+                            <mat-option [value]="21">21%</mat-option>
+                            <mat-option [value]="27">27%</mat-option>
+                        </mat-autocomplete>
                         <button type="button" class="icono-eliminar-fila" mat-icon-button (click)="eliminarFilaItem(j)">
                             <mat-icon>close</mat-icon>
                         </button>
