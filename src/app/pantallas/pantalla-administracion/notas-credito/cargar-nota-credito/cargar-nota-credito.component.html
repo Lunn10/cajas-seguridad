@@ -18,6 +18,12 @@
                 <input matInput placeholder="" id="cae-nota-credito" value="" formControlName="cae" readonly>
             </mat-form-field>
             <mat-form-field class="input-mediano">
+                <mat-label>Fecha de nota de crédito</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fecha">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
                 <mat-label for="observaciones">Observaciones</mat-label>
                 <input matInput placeholder="" id="descuento" value="" formControlName="observaciones">
             </mat-form-field>

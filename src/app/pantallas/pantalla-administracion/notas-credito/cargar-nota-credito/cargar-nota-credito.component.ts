@@ -11,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-cargar-nota-credito',
@@ -26,8 +28,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatCardModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule
   ],
+  providers: [provideNativeDateAdapter()],
   templateUrl: './cargar-nota-credito.component.html',
   styleUrl: './cargar-nota-credito.component.scss'
 })
@@ -40,7 +44,8 @@ export class CargarNotaCreditoComponent implements OnInit {
 
   constructor(
     private formBuilder : FormBuilder,
-    private _peticionesHttp : PeticionesHttpService
+    private _peticionesHttp : PeticionesHttpService,
+    private _adapter: DateAdapter<any>
   ) {
     this.formularioCargarnotaCredito = this.formBuilder.group({
       cliente: [''],
@@ -55,6 +60,8 @@ export class CargarNotaCreditoComponent implements OnInit {
   ngOnInit() : void {
     this.obtenerListaClientes();
     this.verificarAgregarItems();
+
+    this._adapter.setLocale('es-AR');
   }
   
   get items() {
@@ -157,5 +164,47 @@ export class CargarNotaCreditoComponent implements OnInit {
     if(!this.formularioCargarnotaCredito.valid) {
       return;
     }
+
+    let comprobantesAsociadosNotaCredito : any[] = [];
+    let itemsNotaCredito : any[] = [];
+
+    let filaItem : number = 0;
+
+    this.items.controls.forEach(item => {
+      if(item.get('descripcion')?.value == '' || item.get('importe')?.value == '' || item.get('iva')?.value == '') {
+        return;
+      }
+
+      itemsNotaCredito.push({
+        descripcion: item.get('descripcion')?.value,
+        importe: item.get('importe')?.value,
+        iva: item.get('iva')?.value
+      });
+    });
+
+    let data = {
+      cae: this.formularioCargarnotaCredito.value.cae,
+      descuento: this.formularioCargarnotaCredito.value.descuento,
+      cliente: this.formularioCargarnotaCredito.value.cliente,
+      fecha: this.formularioCargarnotaCredito.value.fecha,
+      puntoVenta: this.formularioCargarnotaCredito.value.puntoVenta,
+      idCliente: this.obtenerIdClienteSegunNombre(),
+      observaciones: this.formularioCargarnotaCredito.value.observaciones,
+      comprobantesAsociados: comprobantesAsociadosNotaCredito,
+      itemsNotaCredito: itemsNotaCredito,
+      resultadoFactura: this.formularioCargarnotaCredito
+    };
+   }
+
+   obtenerIdClienteSegunNombre() : number {
+     let idCliente : number = 0;
+ 
+     const datosCliente = this.listaClientes.find(cliente => cliente.clientName.toLowerCase() === this.formularioCargarnotaCredito.value.cliente.toLowerCase());
+ 
+     if(datosCliente) {
+       idCliente = datosCliente.id;
+     }
+ 
+     return idCliente;
    }
 }
