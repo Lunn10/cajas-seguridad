@@ -27,6 +27,30 @@
                 <mat-label for="observaciones">Observaciones</mat-label>
                 <input matInput placeholder="" id="descuento" value="" formControlName="observaciones">
             </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label for="id-punto-venta">Punto de venta</mat-label>
+                <mat-select formControlName="puntoVenta">
+                        <mat-option [value]="6">Punto de venta 6</mat-option>
+                        <mat-option [value]="7">Punto de venta 7</mat-option>
+                  </mat-select>
+            </mat-form-field>
+
+            <ng-container formArrayName="comprobantesAsociados">
+                <div class="titulo-seccion">Comprobantes asociados</div>
+                <div class="contenedor-comprobantes-asociados">
+                    <div class="fila-agregar-comprobante" *ngFor="let comprobante of comprobantesAsociados.controls; let i = index" [formGroupName]="i">
+                        <input type="text" class="input-fila input-fila-mediano" formControlName="tipoComprobante" placeholder="Tipo de comprobante" [matAutocomplete]="autocompletarComprobante"  (input)="filter('comprobante', i, $event);" (focus)="filter('comprobante', i, $event)">
+                        <mat-autocomplete requireSelection #autocompletarComprobante="matAutocomplete" (optionSelected)="verificarAgregarComprobantes()">
+                            <mat-option *ngFor="let comprobante of valoresFiltradosComprobantes" [value]="comprobante.tipo">{{comprobante.tipo | uppercase }}</mat-option>
+                        </mat-autocomplete>
+                        <input type="text" class="input-fila input-fila-mediano" formControlName="puntoVenta" placeholder="Punto de venta">
+                        <input type="text" class="input-fila input-fila-mediano" formControlName="numeroComprobante" placeholder="Número de comprobante">
+                        <button type="button" class="icono-eliminar-fila" mat-icon-button (click)="eliminarFilaComprobante(i)">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
 
             <ng-container formArrayName="items">
                 <div class="titulo-seccion">Datos items</div>
@@ -50,9 +74,16 @@
                 </div>
             </ng-container>
 
+            <div class="contenedor-datos-subtotal">
+                <div class="dato">
+                    <span class="etiqueta">Importe total:</span>
+                    <span class="valor">{{ datosSubtotalNotaCredito.subtotal | currency }}</span>
+                </div>
+            </div>
+
             <mat-card-actions>
                 <button class="input-extendido" mat-raised-button color="primary">Cargar factura</button>
-            </mat-card-actions>   
+            </mat-card-actions>
         </form>
     </div>
 </div>

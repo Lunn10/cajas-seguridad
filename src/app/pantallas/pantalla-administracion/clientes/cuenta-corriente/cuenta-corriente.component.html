@@ -3,8 +3,9 @@
 
 <div class="cuenta-corriente">
   <mat-card class="encabezado-cuenta-corriente">
-    <div class="titulo-detalles-cuenta-corriente"> Fecha </div>
+    <div class="titulo-detalles-cuenta-corriente titulo-detalles-extendido"> Fecha </div>
     <div class="titulo-detalles-cuenta-corriente"> Comprobante </div>
+    <div class="titulo-detalles-cuenta-corriente"> Número </div>
     <div class="titulo-detalles-cuenta-corriente alineacion-derecha"> Haber </div>
     <div class="titulo-detalles-cuenta-corriente alineacion-derecha"> Debe </div>
     <div class="titulo-detalles-cuenta-corriente alineacion-derecha"> Saldo </div>
@@ -20,8 +21,11 @@
       <mat-icon aria-hidden="false" aria-label="concept icon">
         {{ getIcon(movimientoActual.tipoConcepto) }}
       </mat-icon>
-      <span>{{ movimientoActual.tipoConcepto }} : {{movimientoActual.puntoVenta}} - {{movimientoActual.numeroComprobante}} </span>
+      <span>{{ movimientoActual.tipoConcepto }} </span>
     </div>
+    <div class="cuenta-corriente-header">
+      <span>{{movimientoActual.puntoVenta}} - {{movimientoActual.numeroComprobante}} </span>
+    </div> 
     <div class="cuenta-corriente-amount">
       <span *ngIf="movimientoActual.haber" class="haber">
         {{ movimientoActual.haber | currency }}

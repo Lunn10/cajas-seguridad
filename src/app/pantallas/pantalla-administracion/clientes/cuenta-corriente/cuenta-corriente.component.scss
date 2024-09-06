@@ -14,8 +14,12 @@
     }
 
       .titulo-detalles-cuenta-corriente {
-        width: 20%;
+        width: 15%;
       }
+
+        .titulo-detalles-extendido {
+          width: 20% !important;
+        }
 
       .alineacion-derecha {
         text-align: right !important;
@@ -31,7 +35,7 @@
   
   .cuenta-corriente-header {
     display: flex;
-    width: 20%;
+    width: 15%;
     align-items: center;
     font-weight: bold;
   }
@@ -63,7 +67,7 @@
   }
   
   .cuenta-corriente-amount {
-    width: 20%;
+    width: 15%;
     font-size: 1em;
     font-weight: bold;
     text-align: right;
@@ -71,7 +75,7 @@
   }
 
   .cuenta-corriente-saldo {
-    width: 20%;
+    width: 15%;
     font-size: 1em;
     font-weight: bold;
     text-align: right;

@@ -417,4 +417,8 @@ export class PeticionesHttpService {
 
     return this._httpClient.post<IRespuestaServerSimple>(this.IP_SERVER + '/client/getcurrentaccount', data);
   }
+
+  public cargarNotaCredito(datosNotaCredito : any) {
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/generatecreditnote', datosNotaCredito);
+  }
 }

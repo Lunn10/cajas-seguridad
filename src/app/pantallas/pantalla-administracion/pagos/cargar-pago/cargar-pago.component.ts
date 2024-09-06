@@ -212,7 +212,15 @@ export class CargarPagoComponent implements OnInit {
         if(data.error) {
           this._peticionesHttp.setRespuestaServer(data.message);
         } else {
-          this.opcionesSelectBancos = data.data;
+          data.data.forEach((datosBanco : any) => {
+            this.opcionesSelectBancos.push({
+              numeroInterno: datosBanco.numero_interno.toString().padStart(3, '0'),
+              nombre: datosBanco.nombre
+            })
+          });
+
+          this.opcionesSelectBancos.sort((a, b) => a.numeroInterno - b.numeroInterno);
+
           this.valoresFiltradosBancos = this.opcionesSelectBancos.slice();
         }
       },
@@ -247,7 +255,7 @@ export class CargarPagoComponent implements OnInit {
     } else if(filtro == 'banco') {
       const valorFiltradoBanco = (event?.target as HTMLInputElement).value.toLowerCase();
       this.valoresFiltradosBancos = this.opcionesSelectBancos.filter(
-        datosBanco => datosBanco.nombre.toLowerCase().includes(valorFiltradoBanco)
+        datosBanco => (datosBanco.numeroInterno + ' - ' + datosBanco.nombre).toLowerCase().includes(valorFiltradoBanco)
       );
     } else if(filtro == 'retencion') {
       const valorFiltradoRetencion = (event?.target as HTMLInputElement).value.toLowerCase();

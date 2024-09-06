@@ -54,10 +54,8 @@ export class CuentaCorrienteComponent implements OnInit {
     switch (tipoConcepto) {
       case 'PAGO FACTURA':
         return 'payment';
-      case 'FACTURA A':
-        return 'receipt';
       default:
-        return 'help_outline';
+        return 'receipt';
     }
   }
 
@@ -100,8 +98,6 @@ export class CuentaCorrienteComponent implements OnInit {
               importeActual += movimientoActual.haber;
               importe = movimientoActual.haber;
             }
-
-            console.log(movimientoActual);
 
             datosCuentaCorriente.push({
               id: movimientoActual.id,

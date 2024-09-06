@@ -68,7 +68,7 @@
                         <input type="number" class="input-fila input-fila-acotado" formControlName="numeroCheque" placeholder="Nº de cheque" (input)="verificarAgregarFilasPagos()">
                         <input type="text" class="input-fila input-fila-extendido" placeholder="Seleccione el banco" matInput formControlName="banco" [matAutocomplete]="autocompletarBanco" (input)="filter('banco', i, $event)" (focus)="filter('banco', i, $event)">
                         <mat-autocomplete requireSelection #autocompletarBanco="matAutocomplete">
-                            <mat-option *ngFor="let datosBanco of valoresFiltradosBancos" [value]="datosBanco.nombre">{{datosBanco.nombre | uppercase }}</mat-option>
+                            <mat-option *ngFor="let datosBanco of valoresFiltradosBancos" [value]="datosBanco.nombre">{{datosBanco.numeroInterno + ' - ' + datosBanco.nombre | uppercase }}</mat-option>
                         </mat-autocomplete>
                         <input type="number" class="input-fila input-fila-acotado" formControlName="importe" placeholder="Importe" (change)="actualizarValorTotalPagos();" >
                         
