@@ -26,7 +26,7 @@
                             {{comprobante.value.tipoComprobante | uppercase}}
                         </div>
                         <div class="contenedor-numero-comprobante">
-                            {{comprobante.value.numeroComprobante}}
+                            {{comprobante.value.numeroFacturaFormateado}}
                         </div>
                         <div class="contenedor-monto-comprobante">
                             {{comprobante.value.montoComprobante | currency}}
@@ -65,17 +65,24 @@
             <mat-tab label="Pagos" class="pestania-formulario">
                 <div class="contenedor-pagos" formArrayName="pagos">
                     <div class="fila-agregar-pago" *ngFor="let pago of pagos.controls; let i = index" [formGroupName]="i">
-                        <input type="number" class="input-fila input-fila-acotado" formControlName="numeroCheque" placeholder="Nº de cheque" (input)="verificarAgregarFilasPagos()">
-                        <input type="text" class="input-fila input-fila-extendido" placeholder="Seleccione el banco" matInput formControlName="banco" [matAutocomplete]="autocompletarBanco" (input)="filter('banco', i, $event)" (focus)="filter('banco', i, $event)">
+                        
+                        ¿Es transferencia?
+                        <mat-checkbox formControlName="esTransferencia" (change)="actualizarCampos(i)">
+                        </mat-checkbox>
+                
+                        <input type="number" class="input-fila input-fila-acotado" formControlName="numeroCheque" placeholder="Nº de cheque" *ngIf="!pago.get('esTransferencia')?.value">
+
+                        <input type="text" class="input-fila input-fila-extendido" placeholder="Seleccione el banco" matInput formControlName="banco" [matAutocomplete]="autocompletarBanco">
                         <mat-autocomplete requireSelection #autocompletarBanco="matAutocomplete">
                             <mat-option *ngFor="let datosBanco of valoresFiltradosBancos" [value]="datosBanco.nombre">{{datosBanco.numeroInterno + ' - ' + datosBanco.nombre | uppercase }}</mat-option>
                         </mat-autocomplete>
-                        <input type="number" class="input-fila input-fila-acotado" formControlName="importe" placeholder="Importe" (change)="actualizarValorTotalPagos();" >
-                        
-                        <input class="input-fila input-fila-acotado" #dateInput matInput [matDatepicker]="picker" formControlName="fechaVencimiento" placeHolder="Vencimiento">
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
 
+                        <input type="number" class="input-fila input-fila-acotado" formControlName="importe" placeholder="Importe" (change)="actualizarValorTotalPagos();">
+
+                        <input class="input-fila input-fila-acotado" #dateInput matInput [matDatepicker]="picker" formControlName="fechaVencimiento" placeHolder="Vencimiento" *ngIf="!pago.get('esTransferencia')?.value">
+                        <mat-datepicker-toggle *ngIf="!pago.get('esTransferencia')?.value" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                
                         <button type="button" class="icono-eliminar-fila" mat-icon-button (click)="eliminarPago(i)">
                             <mat-icon>close</mat-icon>
                         </button>

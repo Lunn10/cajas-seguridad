@@ -6,10 +6,12 @@
     <form [formGroup]="formularioConsultarCliente" class="contenedor-formulario">
         <mat-form-field class="input-mediano">
             <mat-label for="cliente">Cliente</mat-label>
-            <mat-select (selectionChange)="obtenerDatosCliente()" formControlName="idCliente">
-                <input matInput id="cuadro-usuario" class="input-interno-select" #inputCliente placeholder="Buscar..." (input)="filtrar()">
-                <mat-option *ngFor="let datosCliente of valoresFiltradosClientes" [value]="datosCliente.id">{{ datosCliente.clientName | uppercase }}</mat-option>
-            </mat-select>
+            <input #inputCliente type="text" id="cliente" placeholder="Seleccione el cliente" matInput formControlName="idCliente" [matAutocomplete]="autocompletarCliente" (input)="filtrar()" (focus)="filtrar()">
+            <mat-autocomplete requireSelection #autocompletarCliente="matAutocomplete" (optionSelected)="obtenerDatosCliente();">
+                @for (datosCliente of valoresFiltradosClientes; track datosCliente) {
+                    <mat-option [value]="datosCliente.clientName">{{datosCliente.clientName | uppercase }}</mat-option>
+                }
+            </mat-autocomplete>
         </mat-form-field>
     </form>
 

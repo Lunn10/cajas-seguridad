@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @Component({
@@ -30,7 +31,8 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatCardModule
+    MatCardModule,
+    MatCheckboxModule
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './cargar-pago.component.html',
@@ -173,6 +175,7 @@ export class CargarPagoComponent implements OnInit {
 
   private crearFormGroupPago(): FormGroup {
     return this.formBuilder.group({
+      esTransferencia: [false],	
       numeroCheque: [''],
       banco: [''],
       importe: [''],
@@ -189,6 +192,16 @@ export class CargarPagoComponent implements OnInit {
       importe: ['']
     });
   }
+
+  actualizarCampos(index: number) {
+    const pago = this.pagos.at(index) as FormGroup;
+    const esTransferencia = pago.get('esTransferencia')?.value;
+
+    if (esTransferencia) {
+        pago.get('numeroCheque')?.setValue('');
+        pago.get('fechaVencimiento')?.setValue('');
+    }
+}
 
   obtenerListaClientes() : void {
     this._peticionesHttp.listaClientes().subscribe({
@@ -323,8 +336,11 @@ export class CargarPagoComponent implements OnInit {
               fechaComprobante: [datosFactura.fechaFactura],
               tipoComprobante: [datosFactura.tipoFactura],
               numeroComprobante: [datosFactura.id],
-              montoComprobante: [datosFactura.montoTotal],
-              montoAPagar:[0]
+              montoComprobante: [parseFloat(datosFactura.montoTotal).toFixed(2)],
+              montoAPagar:[0],
+              numeroFacturaFormateado: this.formatearNumeroFactura(datosFactura.puntoVenta, datosFactura.numeroFactura),
+              puntoVenta: datosFactura.puntoVenta,
+              numeroFactura: datosFactura.numeroFactura
             })
           )
         });
@@ -337,6 +353,10 @@ export class CargarPagoComponent implements OnInit {
         this._peticionesHttp.setRespuestaServer(error.message);
       }
     })
+  }
+
+  formatearNumeroFactura(puntoVenta : number, numeroFactura : number) : string {
+    return puntoVenta.toString().padStart(4, '0') + '-' + numeroFactura.toString().padStart(8, '0');
   }
 
   cargarPago() {
@@ -359,10 +379,14 @@ export class CargarPagoComponent implements OnInit {
         numeroComprobante: datosPago.value.numeroComprobante,
         montoComprobante: datosPago.value.montoComprobante,
         montoAPagar: datosPago.value.montoAPagar,
-        tipoFactura: datosPago.value.tipoComprobante
+        tipoFactura: datosPago.value.tipoComprobante,
+        numeroFactura: datosPago.value.numeroFactura,
+        puntoVenta: datosPago.value.puntoVenta
       }
 
-      if(comprobanteActual.montoComprobante < comprobanteActual.montoAPagar) {
+      console.log(comprobanteActual);
+
+      if(parseFloat(comprobanteActual.montoComprobante).toFixed(2) < parseFloat(comprobanteActual.montoAPagar).toFixed(2)) {
         this._peticionesHttp.setRespuestaServer("El monto del comprobante " + comprobanteActual.numeroComprobante + " es menor al monto que ingresó para pagar");
         errorFormulario = true;
         return;
@@ -400,27 +424,58 @@ export class CargarPagoComponent implements OnInit {
       retenciones.push(retencionActual);
     });
 
+    let filaPago = 1;
+
     this.pagos.controls.forEach(datosPago => {
       let pagoActual = {
+        esTransferencia: datosPago.value.esTransferencia,
         numeroCheque: datosPago.value.numeroCheque,
         banco: datosPago.value.banco,
         importe: datosPago.value.importe,
         fechaVencimiento: datosPago.value.fechaVencimiento
       }
       
-      if(pagoActual.numeroCheque == '') {
+      if(pagoActual.numeroCheque == '' && !pagoActual.esTransferencia) {
         return;
       }
 
-      if(pagoActual.numeroCheque != '' && (
-        pagoActual.banco == '' || pagoActual.importe == '' || pagoActual.fechaVencimiento == null
-      ) ) {
-        this._peticionesHttp.setRespuestaServer("Uno de los pagos no está cargado de manera completa");
-        errorFormulario = true;
-        return;
+      if(pagoActual.numeroCheque != '' ) {
+        if(pagoActual.banco == '') {
+          this._peticionesHttp.setRespuestaServer("Debe seleccionar un banco para el pago de la fila " + filaPago);
+          errorFormulario = true;
+          return;
+        }
+
+        if(pagoActual.importe == '') {
+          this._peticionesHttp.setRespuestaServer("Debe ingresar un importe para el pago de la fila " + filaPago);
+          errorFormulario = true;
+          return;
+        }
+
+        if(pagoActual.fechaVencimiento == '') {
+          this._peticionesHttp.setRespuestaServer("Debe ingresar una fecha de vencimiento para el pago de la fila " + filaPago);
+          errorFormulario = true;
+          return;
+        }
+      }
+
+      if(pagoActual.esTransferencia) {
+        if(pagoActual.banco == '') {
+          this._peticionesHttp.setRespuestaServer("Debe seleccionar un banco para el pago de la fila " + filaPago);
+          errorFormulario = true;
+          return;
+        }
+
+        if(pagoActual.importe == '') {
+          this._peticionesHttp.setRespuestaServer("Debe ingresar un importe para el pago de la fila " + filaPago);
+          errorFormulario = true;
+          return;
+        }
       }
 
       pagos.push(pagoActual);
+
+      filaPago++;
     });
 
     if(errorFormulario) {
@@ -438,8 +493,11 @@ export class CargarPagoComponent implements OnInit {
 
     this._peticionesHttp.cargarPago(datosCobranza).subscribe({
       next: (data) => {
-
         this._peticionesHttp.setRespuestaServer(data.message);
+
+        if(!data.error) {
+          this.formularioCargarPago.reset();
+        }
       },
       error: (error) => {
         this._peticionesHttp.setRespuestaServer(error.message);

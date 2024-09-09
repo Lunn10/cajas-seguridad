@@ -69,8 +69,10 @@ export class ConsultarClienteComponent {
     if(!this.formularioConsultarCliente.valid) {
       return;
     }
-
-    let idCliente : number = this.formularioConsultarCliente.get('idCliente')?.value;
+    
+    const idCliente : number = this.opcionesSelectClientes.find(
+      (cliente) => cliente.clientName === this.formularioConsultarCliente.value.idCliente
+    ).id;
 
     this._peticionesHttp.obtenerCliente(idCliente).subscribe({
       next: (data) => {
