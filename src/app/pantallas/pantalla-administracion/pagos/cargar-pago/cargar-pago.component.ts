@@ -307,15 +307,17 @@ export class CargarPagoComponent implements OnInit {
   }
 
   actualizarValorTotalAPagar() {
-    this.datosSubtotal.totalAPagar = parseFloat(this.datosSubtotal.totalPagos) + parseFloat(this.datosSubtotal.totalRetenciones);
+    this.datosSubtotal.totalAPagar = (parseFloat(this.datosSubtotal.totalPagos) + parseFloat(this.datosSubtotal.totalRetenciones)).toFixed(2);
   }
 
   actualizarValorTotalComprobantes() {
     this.datosSubtotal.totalComprobantes = 0.0;
-    
+
     this.comprobantes.controls.forEach(datosComprobante => {
       this.datosSubtotal.totalComprobantes += parseFloat(datosComprobante.value.montoAPagar);
     })
+
+    this.datosSubtotal.totalComprobantes = parseFloat(this.datosSubtotal.totalComprobantes).toFixed(2);
   }
 
   consultarEstadoCuentaCliente() : void {
@@ -369,6 +371,8 @@ export class CargarPagoComponent implements OnInit {
     let pagos : any[] = [];
     let errorFormulario : boolean = false;
 
+    console.log(this.datosSubtotal.totalComprobantes, this.datosSubtotal.totalAPagar);
+
     if(this.datosSubtotal.totalComprobantes != this.datosSubtotal.totalAPagar) {
       this._peticionesHttp.setRespuestaServer("El monto a pagar no coincide con el valor de los pagos y retenciones cargadas");
       errorFormulario = true;
@@ -383,8 +387,6 @@ export class CargarPagoComponent implements OnInit {
         numeroFactura: datosPago.value.numeroFactura,
         puntoVenta: datosPago.value.puntoVenta
       }
-
-      console.log(comprobanteActual);
 
       if(parseFloat(comprobanteActual.montoComprobante).toFixed(2) < parseFloat(comprobanteActual.montoAPagar).toFixed(2)) {
         this._peticionesHttp.setRespuestaServer("El monto del comprobante " + comprobanteActual.numeroComprobante + " es menor al monto que ingresó para pagar");
@@ -497,6 +499,14 @@ export class CargarPagoComponent implements OnInit {
 
         if(!data.error) {
           this.formularioCargarPago.reset();
+          this.formularioConsultarFacturasImpagas.reset();
+
+          this.datosSubtotal  = {
+            totalRetenciones: 0.0,
+            totalAPagar: 0.0,
+            totalPagos: 0.0,
+            totalComprobantes: 0.0
+          }
         }
       },
       error: (error) => {

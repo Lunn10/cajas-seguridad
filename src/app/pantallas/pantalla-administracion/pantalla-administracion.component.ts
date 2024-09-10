@@ -18,7 +18,19 @@ export class PantallaAdministracionComponent {
     {
       titulo: 'Clientes',
       url: 'consultar-cliente',
-      icono: 'storefront'
+      icono: 'storefront',
+      subopciones: [
+        {
+          titulo: 'Agregar cliente',
+          url: 'agregar-cliente',
+          icono: 'add'
+        },
+        {
+          titulo: 'Consultar cliente',
+          url: 'consultar-cliente',
+          icono: 'edit'
+        }
+      ]
     },
     {
       titulo: 'Lista de precios',
@@ -39,6 +51,11 @@ export class PantallaAdministracionComponent {
       titulo: 'Pagos',
       url: 'consultar-pagos',
       icono: 'credit_card'
+    },
+    {
+      titulo: 'Volver al inicio',
+      url: '',
+      icono: 'home'
     }
   ];
 }

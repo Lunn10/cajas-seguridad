@@ -1,18 +1,16 @@
 <div class="menu-interno-sistema menu-administrar-sistema">
-    <div *ngFor="let opcionMenu of opcionesMenu" class="caja-opcion-menu">
-        <a routerLink="{{opcionMenu.url}}">
-            <div class="contenedor-icono">
-                <mat-icon *ngIf="opcionMenu?.icono" aria-hidden="false" aria-label="Example home icon" fontIcon="{{opcionMenu?.icono}}"></mat-icon>
-            </div>
-            <div class="titulo-boton">{{opcionMenu.titulo}}</div>
-        </a>
-    </div>
-    <div class="caja-opcion-menu">
-        <a routerLink="">
-            <div class="contenedor-icono">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-            </div>
-            <div class="titulo-boton">Volver al inicio</div>
-        </a>
+    <div 
+        *ngFor="let opcionMenu of opcionesMenu" 
+        class="caja-opcion-menu" 
+        (click)="centrarOpcionMenu(opcionMenu)"
+        [class.selected]="selectedOpcionMenu === opcionMenu"
+    >
+        <div class="contenedor-icono">
+            <mat-icon *ngIf="opcionMenu?.icono" aria-hidden="false" aria-label="Example home icon" fontIcon="{{opcionMenu?.icono}}"></mat-icon>
+        </div>
+        <div 
+            class="titulo-boton"
+            [class.ocultar-titulo]="selectedOpcionMenu && selectedOpcionMenu != opcionMenu"
+        >{{opcionMenu.titulo}}</div>
     </div>
 </div>

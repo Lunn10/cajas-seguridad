@@ -72,16 +72,16 @@
                 
                         <input type="number" class="input-fila input-fila-acotado" formControlName="numeroCheque" placeholder="Nº de cheque" *ngIf="!pago.get('esTransferencia')?.value">
 
-                        <input type="text" class="input-fila input-fila-extendido" placeholder="Seleccione el banco" matInput formControlName="banco" [matAutocomplete]="autocompletarBanco">
+                        <input type="text" class="input-fila input-fila-extendido" placeholder="Seleccione el banco" matInput formControlName="banco" [matAutocomplete]="autocompletarBanco" (input)="filter('banco', i, $event)" (focus)="filter('banco', i, $event)">
                         <mat-autocomplete requireSelection #autocompletarBanco="matAutocomplete">
                             <mat-option *ngFor="let datosBanco of valoresFiltradosBancos" [value]="datosBanco.nombre">{{datosBanco.numeroInterno + ' - ' + datosBanco.nombre | uppercase }}</mat-option>
                         </mat-autocomplete>
 
                         <input type="number" class="input-fila input-fila-acotado" formControlName="importe" placeholder="Importe" (change)="actualizarValorTotalPagos();">
 
-                        <input class="input-fila input-fila-acotado" #dateInput matInput [matDatepicker]="picker" formControlName="fechaVencimiento" placeHolder="Vencimiento" *ngIf="!pago.get('esTransferencia')?.value">
-                        <mat-datepicker-toggle *ngIf="!pago.get('esTransferencia')?.value" matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
+                        <input class="input-fila input-fila-acotado" #dateInput matInput [matDatepicker]="fechaVencimiento" formControlName="fechaVencimiento" placeHolder="Vencimiento" *ngIf="!pago.get('esTransferencia')?.value">
+                        <mat-datepicker-toggle *ngIf="!pago.get('esTransferencia')?.value" matIconSuffix [for]="fechaVencimiento"></mat-datepicker-toggle>
+                        <mat-datepicker #fechaVencimiento></mat-datepicker>
                 
                         <button type="button" class="icono-eliminar-fila" mat-icon-button (click)="eliminarPago(i)">
                             <mat-icon>close</mat-icon>

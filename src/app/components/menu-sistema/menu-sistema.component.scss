@@ -39,3 +39,34 @@ a:hover {
         .titulo-boton {
             width: 100%;
         }
+        
+        .menu-interno-sistema {
+            position: relative;
+            display: flex;
+            flex-wrap: nowrap;
+            overflow: hidden;
+            transition: transform 0.5s ease;
+          }
+          
+          .caja-opcion-menu {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: all 0.5s ease;
+          }
+          
+          .caja-opcion-menu.selected {
+            opacity: 1;
+            flex: 1 1 90%; 
+          }
+          
+          .caja-opcion-menu.hidden {
+            opacity: 0;
+            pointer-events: none; 
+          }
+
+          .ocultar-titulo {
+            display: none;
+          }

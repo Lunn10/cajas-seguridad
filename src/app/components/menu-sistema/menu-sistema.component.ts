@@ -18,4 +18,17 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class MenuSistemaComponent {
   @Input() opcionesMenu : IOpcionesMenu[] = [];
+  selectedOpcionMenu: any = null;
+  estaOpcionMenuSeleccionada: boolean = false;
+
+
+  centrarOpcionMenu(opcionMenu: any) {
+    if (this.selectedOpcionMenu === opcionMenu) {
+      this.selectedOpcionMenu = null;
+      this.estaOpcionMenuSeleccionada = false;
+    } else {
+      this.selectedOpcionMenu = opcionMenu;
+      this.estaOpcionMenuSeleccionada = true;
+    }
+  }
 }
