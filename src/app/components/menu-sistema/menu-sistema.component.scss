@@ -19,6 +19,7 @@ a:hover {
     display: inline-flex;
     justify-content: space-around;
     align-items: center;
+    overflow: visible;
 }
 
     .caja-opcion-menu {
@@ -30,6 +31,7 @@ a:hover {
         align-items: center;
         align-content: center;
         justify-content: center;
+        position: relative;
     }
 
         .contenedor-icono {
@@ -41,12 +43,11 @@ a:hover {
         }
         
         .menu-interno-sistema {
-            position: relative;
-            display: flex;
-            flex-wrap: nowrap;
-            overflow: hidden;
-            transition: transform 0.5s ease;
-          }
+          position: relative;
+          display: flex;
+          flex-wrap: nowrap;
+          transition: transform 0.5s ease;
+        }
           
           .caja-opcion-menu {
             flex: 1;
@@ -59,7 +60,7 @@ a:hover {
           
           .caja-opcion-menu.selected {
             opacity: 1;
-            flex: 1 1 90%; 
+            flex: 1 1 90%;
           }
           
           .caja-opcion-menu.hidden {
@@ -69,4 +70,32 @@ a:hover {
 
           .ocultar-titulo {
             display: none;
+          }
+
+          .caja-opcion-menu .icono-submenu {
+            background-color: #FFFFFF;
+            box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+            min-width: 50px;
+            min-height: 50px;
+            position: absolute;
+            transform-origin: 150px;
+            transform: rotate(0deg); 
+            opacity: 0; 
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            display: flex;
+            border-radius: 50%;
+            border: solid 1px #112E55;    align-content: center;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .caja-opcion-menu.selected .icono-submenu {
+            transform: rotate(calc(30deg + ((130deg / var(--cantidadOpciones) ) * var(--i))));
+            opacity: 1;
+            transition-delay: calc(0.1s * var(--i));
+          }
+
+          .icono-submenu mat-icon {
+            transform: rotate(calc(-1 * (30deg + (130deg / var(--cantidadOpciones) ) * var(--i))));
+            transition: transform 0.5s ease-in-out;
           }

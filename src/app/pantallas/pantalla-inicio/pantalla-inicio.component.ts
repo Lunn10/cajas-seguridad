@@ -20,27 +20,32 @@ export class PantallaInicioComponent {
     {
       titulo: 'Administrar cuentas',
       url: 'administrar-sistema',
-      icono: 'manage_accounts'
+      icono: 'manage_accounts',
+      subopciones: []
     },
     {
       titulo: 'Producción',
       url: 'sistema-produccion',
-      icono: 'precision_manufacturing'
+      icono: 'precision_manufacturing',
+      subopciones: []
     },
     {
       titulo: 'Administración',
       url: 'sistema-administracion',
-      icono: 'receipt_long'
+      icono: 'receipt_long',
+      subopciones: []
     },
     {
       titulo: 'Pedidos',
       url: 'sistema-pedidos',
-      icono: 'local_shipping'
+      icono: 'local_shipping',
+      subopciones: []
     },
     {
       titulo: 'Mensajería',
       url: '',
-      icono: 'forum'
+      icono: 'forum',
+      subopciones: []
     }
   ]
 }

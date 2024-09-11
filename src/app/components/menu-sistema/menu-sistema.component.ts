@@ -29,6 +29,6 @@ export class MenuSistemaComponent {
     } else {
       this.selectedOpcionMenu = opcionMenu;
       this.estaOpcionMenuSeleccionada = true;
-    }
+    } 
   }
 }

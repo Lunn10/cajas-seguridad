@@ -22,40 +22,70 @@ export class PantallaAdministracionComponent {
       subopciones: [
         {
           titulo: 'Agregar cliente',
-          url: 'agregar-cliente',
+          url: 'cargar-cliente',
           icono: 'add'
         },
         {
           titulo: 'Consultar cliente',
           url: 'consultar-cliente',
-          icono: 'edit'
+          icono: 'search'
+        },
+        {
+          titulo: 'Consultar cliente',
+          url: 'consultar-cliente',
+          icono: 'person'
+        },
+        {
+          titulo: 'Consultar cliente',
+          url: 'consultar-cliente',
+          icono: 'road'
         }
       ]
     },
     {
       titulo: 'Lista de precios',
       url: 'consultar-lista-precios',
-      icono: 'attach_money'
+      icono: 'attach_money',
+      subopciones: []
     },
     {
       titulo: 'Facturas',
       url: 'consultar-factura',
-      icono: 'print_of_sale'
+      icono: 'print_of_sale',
+      subopciones: [
+        {
+          titulo: 'Agregar cliente',
+          url: 'cargar-cliente',
+          icono: 'add'
+        },
+        {
+          titulo: 'Consultar cliente',
+          url: 'consultar-cliente',
+          icono: 'search'
+        },
+        {
+          titulo: 'Consultar cliente',
+          url: 'consultar-cliente',
+          icono: 'person'
+        },
+        {
+          titulo: 'Consultar cliente',
+          url: 'consultar-cliente',
+          icono: 'road'
+        }
+      ]
     },
     {
       titulo: 'Nota de crédito',
       url: 'consultar-nota-credito',
-      icono: 'description'
+      icono: 'description',
+      subopciones: []
     },
     {
       titulo: 'Pagos',
       url: 'consultar-pagos',
-      icono: 'credit_card'
-    },
-    {
-      titulo: 'Volver al inicio',
-      url: '',
-      icono: 'home'
+      icono: 'credit_card',
+      subopciones: []
     }
   ];
 }

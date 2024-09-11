@@ -12,5 +12,11 @@
             class="titulo-boton"
             [class.ocultar-titulo]="selectedOpcionMenu && selectedOpcionMenu != opcionMenu"
         >{{opcionMenu.titulo}}</div>
+
+        <div *ngFor="let opcionesSubmenu of opcionMenu.subopciones; let i = index" class="icono-submenu" style="--i: {{i}}; --cantidadOpciones: {{opcionMenu.subopciones.length}};">
+            <a *ngIf="selectedOpcionMenu == opcionMenu" [routerLink]="[opcionesSubmenu.url]" routerLinkActive="active">
+                <mat-icon *ngIf="opcionesSubmenu?.icono" aria-hidden="false" aria-label="Example home icon" fontIcon="{{opcionesSubmenu?.icono}}"></mat-icon>
+            </a>
+       </div>
     </div>
 </div>

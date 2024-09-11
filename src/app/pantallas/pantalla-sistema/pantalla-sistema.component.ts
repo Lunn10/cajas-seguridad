@@ -15,22 +15,26 @@ export class PantallaSistemaComponent {
     {
       titulo: 'Lista usuarios',
       url: 'lista-usuarios',
-      icono: 'person'
+      icono: 'person',
+      subopciones: []
     },
     {
       titulo: 'Crear usuario',
       url: 'crear-usuario',
-      icono: 'person_add'
+      icono: 'person_add',
+      subopciones: []
     },
     {
       titulo: 'Lista tipos de usuario',
       url: 'lista-tipos-usuario',
-      icono: 'group'
+      icono: 'group',
+      subopciones: []
     },
     {
       titulo: 'Crear tipo de usuario',
       url: 'crear-tipo-usuario',
-      icono: 'group_add'
+      icono: 'group_add',
+      subopciones: []
     }    
   ]
 }

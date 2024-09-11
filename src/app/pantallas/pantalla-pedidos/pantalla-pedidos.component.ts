@@ -18,11 +18,13 @@ export class PantallaPedidosComponent {
     {
       titulo: 'Artículos',
       url: 'lista-articulos',
-      icono: 'key_vertical'
+      icono: 'key_vertical',
+      subopciones: []
     }, {
       titulo: 'Pedidos',
       url: 'consultar-pedidos',
-      icono: 'shopping_cart'
+      icono: 'shopping_cart',
+      subopciones: []
     }
   ]
 }
