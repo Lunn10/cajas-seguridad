@@ -28,64 +28,80 @@ export class PantallaAdministracionComponent {
         {
           titulo: 'Consultar cliente',
           url: 'consultar-cliente',
-          icono: 'search'
-        },
-        {
-          titulo: 'Consultar cliente',
-          url: 'consultar-cliente',
-          icono: 'person'
-        },
-        {
-          titulo: 'Consultar cliente',
-          url: 'consultar-cliente',
-          icono: 'road'
+          icono: 'manage_search'
         }
       ]
     },
     {
       titulo: 'Lista de precios',
-      url: 'consultar-lista-precios',
+      url: '',
       icono: 'attach_money',
-      subopciones: []
-    },
-    {
-      titulo: 'Facturas',
-      url: 'consultar-factura',
-      icono: 'print_of_sale',
       subopciones: [
         {
-          titulo: 'Agregar cliente',
-          url: 'cargar-cliente',
+          titulo: 'Cargar lista de precios',
+          url: 'cargar-lista-precios',
           icono: 'add'
         },
         {
-          titulo: 'Consultar cliente',
-          url: 'consultar-cliente',
-          icono: 'search'
-        },
-        {
-          titulo: 'Consultar cliente',
-          url: 'consultar-cliente',
-          icono: 'person'
-        },
-        {
-          titulo: 'Consultar cliente',
-          url: 'consultar-cliente',
-          icono: 'road'
+          titulo: 'Consultar lista de precios',
+          url: 'consultar-lista-precios',
+          icono: 'manage_search'
         }
       ]
     },
     {
-      titulo: 'Nota de crédito',
-      url: 'consultar-nota-credito',
-      icono: 'description',
-      subopciones: []
+      titulo: 'Facturación',
+      url: '',
+      icono: 'print_add',
+      subopciones: [
+        {
+          titulo: 'Cargar factura',
+          url: 'cargar-factura',
+          icono: 'description'
+        },
+        {
+          titulo: 'Consultar factura',
+          url: 'consultar-factura',
+          icono: 'manage_search'
+        },
+        {
+          titulo: 'Cargar nota de crédito',
+          url: 'cargar-nota-credito',
+          icono: 'description'
+        },
+        {
+          titulo: 'Consultar nota de crédito',
+          url: 'consultar-nota-credito',
+          icono: 'manage_search'
+        },
+        {
+          titulo: 'Cargar nota de débito',
+          url: 'cargar-nota-debito',
+          icono: 'description'
+        },
+        {
+          titulo: 'Consultar nota de débito',
+          url: 'consultar-nota-debito',
+          icono: 'manage_search'
+        }
+      ]
     },
     {
       titulo: 'Pagos',
       url: 'consultar-pagos',
       icono: 'credit_card',
-      subopciones: []
+      subopciones: [ 
+        {
+          titulo: 'Cargar pago',
+          url: 'cargar-pago',
+          icono: 'add'
+        },
+        {
+          titulo: 'Consultar pago',
+          url: 'consultar-pagos',
+          icono: 'manage_search'
+        }
+      ]
     }
   ];
 }

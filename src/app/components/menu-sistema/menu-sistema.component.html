@@ -8,15 +8,29 @@
         <div class="contenedor-icono">
             <mat-icon *ngIf="opcionMenu?.icono" aria-hidden="false" aria-label="Example home icon" fontIcon="{{opcionMenu?.icono}}"></mat-icon>
         </div>
-        <div 
-            class="titulo-boton"
-            [class.ocultar-titulo]="selectedOpcionMenu && selectedOpcionMenu != opcionMenu"
-        >{{opcionMenu.titulo}}</div>
+        <div class="titulo-boton" [class.ocultar-titulo]="selectedOpcionMenu && selectedOpcionMenu != opcionMenu">{{opcionMenu.titulo}}</div>
 
-        <div *ngFor="let opcionesSubmenu of opcionMenu.subopciones; let i = index" class="icono-submenu" style="--i: {{i}}; --cantidadOpciones: {{opcionMenu.subopciones.length}};">
+        <div *ngFor="let opcionesSubmenu of opcionMenu.subopciones; let i = index" class="contenedor-opcion-submenu" style="--i: {{i}}; --cantidadOpciones: {{opcionMenu.subopciones.length}};">
             <a *ngIf="selectedOpcionMenu == opcionMenu" [routerLink]="[opcionesSubmenu.url]" routerLinkActive="active">
-                <mat-icon *ngIf="opcionesSubmenu?.icono" aria-hidden="false" aria-label="Example home icon" fontIcon="{{opcionesSubmenu?.icono}}"></mat-icon>
+                <div class="icono-submenu">
+                    <mat-icon *ngIf="opcionesSubmenu?.icono" aria-hidden="false" aria-label="Example home icon" fontIcon="{{opcionesSubmenu?.icono}}"></mat-icon>
+                </div>
+                <div class="titulo-submenu">
+                    {{opcionesSubmenu.titulo}}
+                </div>
             </a>
-       </div>
+        </div>
+    </div>
+
+    <div class="caja-opcion-menu">
+        <a routerLink="" routerLinkActive="active">
+            <div class="contenedor-icono">
+                <div class="contenedor-icono">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+                </div>
+                <div class="titulo-boton"
+                [class.ocultar-titulo]="selectedOpcionMenu">Volver al inicio</div>
+            </div>
+        </a>
     </div>
 </div>

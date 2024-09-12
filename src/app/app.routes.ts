@@ -23,6 +23,9 @@ import { ConsultarPagosComponent } from './pantallas/pantalla-administracion/pag
 import { ConsultarNotaCreditoComponent } from './pantallas/pantalla-administracion/notas-credito/consultar-nota-credito/consultar-nota-credito.component';
 import { CargarNotaCreditoComponent } from './pantallas/pantalla-administracion/notas-credito/cargar-nota-credito/cargar-nota-credito.component';
 import { CuentaCorrienteComponent } from './pantallas/pantalla-administracion/clientes/cuenta-corriente/cuenta-corriente.component';
+import { CargarNotaDebitoComponent } from './pantallas/pantalla-administracion/notas-debito/cargar-nota-debito/cargar-nota-debito.component';
+import { ConsultarNotaDebitoComponent } from './pantallas/pantalla-administracion/notas-debito/consultar-nota-debito/consultar-nota-debito.component';
+import { GenerarPdfFacturaComponent } from './pantallas/pantalla-administracion/facturas/generar-pdf-factura/generar-pdf-factura.component';
 
 export const routes: Routes = [
     { path: '', component: PantallaInicioComponent },
@@ -43,11 +46,14 @@ export const routes: Routes = [
         { path: 'consultar-factura', component: ConsultarFacturaComponent },
         { path: 'cargar-nota-credito', component: CargarNotaCreditoComponent },
         { path: 'consultar-nota-credito', component: ConsultarNotaCreditoComponent },
+        { path: 'cargar-nota-debito', component: CargarNotaDebitoComponent },
+        { path: 'consultar-nota-debito', component: ConsultarNotaDebitoComponent },
         { path: 'cargar-pago', component: CargarPagoComponent },
         { path: 'consultar-pagos', component: ConsultarPagosComponent },
         { path: 'cargar-lista-precios', component: CargarListaPreciosComponent },
         { path: 'cargar-lista-precios/:id', component: CargarListaPreciosComponent },
         { path: 'consultar-lista-precios', component: ConsultarListaPreciosComponent },
+        { path: 'generar-factura/:id', component: GenerarPdfFacturaComponent }
     ] },
     { path: 'sistema-pedidos', component: PantallaPedidosComponent, children: [
         { path: 'lista-articulos', component: ConsultarArticuloComponent },

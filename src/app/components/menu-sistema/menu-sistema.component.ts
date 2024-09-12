@@ -21,7 +21,6 @@ export class MenuSistemaComponent {
   selectedOpcionMenu: any = null;
   estaOpcionMenuSeleccionada: boolean = false;
 
-
   centrarOpcionMenu(opcionMenu: any) {
     if (this.selectedOpcionMenu === opcionMenu) {
       this.selectedOpcionMenu = null;
