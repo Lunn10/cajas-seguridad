@@ -29,9 +29,10 @@
             </mat-form-field>
             <mat-form-field class="input-mediano">
                 <mat-label for="id-punto-venta">Punto de venta</mat-label>
-                <mat-select formControlName="puntoVenta">
+                <mat-select formControlName="puntoVenta" (selectionChange)="obtenerUltimoCae()">
                         <mat-option [value]="6">Punto de venta 6</mat-option>
                         <mat-option [value]="7">Punto de venta 7</mat-option>
+                        <mat-option [value]="8">Factura electrónica</mat-option>
                   </mat-select>
             </mat-form-field>
 

@@ -220,14 +220,16 @@ export class CargarNotaCreditoComponent implements OnInit {
   }
 
   obtenerUltimoCae() {
-    let datosCliente = this.listaClientes.find(cliente => cliente.clientName == this.formularioCargarnotaCredito.get('cliente')?.value);
+    const datosCliente = this.listaClientes.find(cliente => cliente.clientName == this.formularioCargarnotaCredito.get('cliente')?.value);
+    const puntoVenta = this.formularioCargarnotaCredito.get('puntoVenta')?.value;
 
-    if(!datosCliente) {
+    if(!datosCliente || !puntoVenta) {
       return;
     }
 
     let datosEnvio = {
-      comprobante: ''
+      comprobante: '',
+      puntoVenta: puntoVenta
     }
     
     if(datosCliente.ivaType == 'RESPONSABLE INSCRIPTO') {

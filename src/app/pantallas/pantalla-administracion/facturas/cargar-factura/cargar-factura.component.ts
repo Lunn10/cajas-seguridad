@@ -292,14 +292,16 @@ export class CargarFacturaComponent implements OnInit {
   }
 
   obtenerUltimoCae() {
-    let datosCliente = this.listaClientes.find(cliente => cliente.clientName == this.formularioCargarFactura.get('cliente')?.value);
+    const datosCliente = this.listaClientes.find(cliente => cliente.clientName == this.formularioCargarFactura.get('cliente')?.value);
+    const puntoVenta = this.formularioCargarFactura.get('puntoVenta')?.value;
 
-    if(!datosCliente) {
+    if(!datosCliente || !puntoVenta) {
       return;
     }
 
     let datosEnvio = {
-      comprobante: ''
+      comprobante: '',
+      puntoVenta: puntoVenta
     }
     
     if(datosCliente.ivaType == 'RESPONSABLE INSCRIPTO') {
