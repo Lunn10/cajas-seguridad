@@ -1,14 +1,14 @@
 export interface IOpcionesMenu {
     titulo: string,
-    url : String,
-    icono : String,
-    urlAssetIcono? : String,
+    url : string,
+    icono : string,
+    urlAssetIcono? : string,
     subopciones : IOpcionesSubmenu[]
 }
 
 export interface IOpcionesSubmenu {
     titulo: string,
-    url : String,
-    icono : String,
-    urlAssetIcono? : String
+    url : string,
+    icono : string,
+    urlAssetIcono? : string
 }

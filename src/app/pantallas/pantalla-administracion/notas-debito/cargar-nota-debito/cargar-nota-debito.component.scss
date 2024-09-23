@@ -1,0 +1,114 @@
+input[readonly] {
+    cursor: default;
+}
+
+.contenedor-pagina {
+    display: flex !important;
+    flex-direction: column !important;
+    align-content: center !important;
+    align-items: center;
+}
+
+    .contenedor-formulario {
+        width: 80%;
+        text-align: center;
+    }
+
+        .input-mediano {
+            width: 45%;
+            margin: 1vh;
+        }
+
+        .input-extendido {
+            width: 90%;
+            margin-bottom: 1vh;
+        }
+
+        .contenedor-items-nota-debito {
+            width: 100%;
+            padding-top: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contenedor-comprobantes-asociados {
+            width: 100%;
+            padding-top: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            flex-wrap: wrap;
+        }
+
+            .titulo-seccion {
+                background-color: #f0f0f0;
+                color: #333; 
+                font-size: 18px;
+                font-weight: bold; 
+                padding: 10px; 
+                margin-bottom: 10px;
+                border-bottom: 1px solid #ccc; 
+            }
+
+            .fila-agregar-comprobante {
+                width: 90%;
+                max-height: 5vh;
+                margin-bottom: 2px;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;  
+            }
+
+            .fila-agregar-item {
+                width: 90%;
+                max-height: 5vh;
+                margin-bottom: 2px;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;  
+            }
+
+                .input-fila {
+                    height: 4vh;
+                }
+
+                    .input-fila-acotado {
+                        width: 10%;
+                    }
+
+                    .input-fila-mediano {
+                        width: 30%;
+                    }
+
+                    .input-fila-extendido {
+                        width: 50%;
+                    }
+
+    .contenedor-datos-subtotal {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 10px;
+    }
+    
+        .dato {
+            flex: 1 1 250px;
+            padding: 5px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        
+            .etiqueta {
+                font-weight: bold;
+                margin-right: 5px;
+            }
+            
+            .valor {
+                font-size: 1.1em;
+            }

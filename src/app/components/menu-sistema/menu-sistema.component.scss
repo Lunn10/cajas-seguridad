@@ -106,6 +106,7 @@ a:hover {
             align-content: center;
             align-items: center;
             justify-content: center;
+            position: relative;
           }
 
             .contenedor-opcion-submenu:hover .icono-submenu  {
@@ -172,5 +173,28 @@ a:hover {
             } 
             to {
               --angle: 360deg;
+            }
+          }
+
+          .fa-lock {
+            font-size: 24px;
+          }
+
+          .fa-key {
+            font-size: 24px;
+            position: absolute;
+          }
+
+          .key-animate {
+            z-index: 2;              
+            animation: key 1s ease;
+          }
+
+          @keyframes key {
+            0% {
+              transform: translate(-45px);
+            }
+            100% {
+              transform: translate(-5px, 3px);
             }
           }

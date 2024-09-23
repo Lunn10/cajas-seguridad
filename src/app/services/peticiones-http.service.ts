@@ -421,4 +421,8 @@ export class PeticionesHttpService {
   public cargarNotaCredito(datosNotaCredito : any) {
     return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/generatecreditnote', datosNotaCredito);
   }
+
+  public cargarNotaDebito(datosNotaDebito : any) {
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/generatedebitnote', datosNotaDebito);
+  }
 }

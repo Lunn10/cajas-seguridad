@@ -2,7 +2,7 @@
     <div 
         *ngFor="let opcionMenu of opcionesMenu" 
         class="caja-opcion-menu" 
-        (click)="centrarOpcionMenu(opcionMenu)"
+        (click)="accionClickMenu($event, opcionMenu)"
         [class.selected]="selectedOpcionMenu === opcionMenu"
     >
         <div class="contenedor-icono">
@@ -11,14 +11,19 @@
         <div class="titulo-boton" [class.ocultar-titulo]="selectedOpcionMenu && selectedOpcionMenu != opcionMenu">{{opcionMenu.titulo}}</div>
 
         <div *ngFor="let opcionesSubmenu of opcionMenu.subopciones; let i = index" class="contenedor-opcion-submenu" style="--i: {{i}}; --cantidadOpciones: {{opcionMenu.subopciones.length}};">
-            <a *ngIf="selectedOpcionMenu == opcionMenu" [routerLink]="[opcionesSubmenu.url]" routerLinkActive="active">
+            <a *ngIf="selectedOpcionMenu == opcionMenu" (click)="playAnimation(i, opcionesSubmenu.url, $event)">
                 <div class="icono-submenu">
-                    <mat-icon *ngIf="opcionesSubmenu?.icono" aria-hidden="false" aria-label="Example home icon" fontIcon="{{opcionesSubmenu?.icono}}"></mat-icon>
+                  <mat-icon *ngIf="opcionesSubmenu?.icono && !estaEnAnimacion[i]" 
+                            aria-hidden="false" 
+                            fontIcon="{{opcionesSubmenu?.icono}}">
+                  </mat-icon>
+                  <mat-icon *ngIf="estaEnAnimacion[i]" fontIcon="lock" class="fa-lock"></mat-icon>
+                  <mat-icon *ngIf="estaEnAnimacion[i]" fontIcon="key" class="fa-key" [ngClass]="{'key-animate': estaEnAnimacion[i]}"></mat-icon>
                 </div>
                 <div class="titulo-submenu">
-                    {{opcionesSubmenu.titulo}}
+                  {{opcionesSubmenu.titulo}}
                 </div>
-            </a>
+              </a>
         </div>
     </div>
 
