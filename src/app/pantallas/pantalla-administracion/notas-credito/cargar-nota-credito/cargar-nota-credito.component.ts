@@ -311,6 +311,7 @@ export class CargarNotaCreditoComponent implements OnInit {
 
       comprobantesAsociadosNotaCredito.push({
         tipoComprobante: comprobante.get('tipoComprobante')?.value,
+        idTipoComprobante: this.comprobantes.find(comprobanteActual => comprobanteActual.tipo == comprobante.get('tipoComprobante')?.value)?.valor,
         puntoVenta: comprobante.get('puntoVenta')?.value,
         numeroComprobante: comprobante.get('numeroComprobante')?.value
       });
