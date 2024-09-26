@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { PageSize } from 'pdfmake/interfaces';
 import { fondoPDF } from './../../../../../assets/img64/fondoPDF';
 import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 /*pdfMake.fonts = {
@@ -15,13 +16,14 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-generar-pdf-factura',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule
+  ],
   templateUrl: './generar-pdf-factura.component.html',
   styleUrl: './generar-pdf-factura.component.scss'
 })
 export class GenerarPdfFacturaComponent implements OnInit {
   tamañoPagina : PageSize = 'A4';
-  @ViewChild('content', { static: false }) content : any;
 
   constructor(
     private _route : ActivatedRoute
@@ -29,28 +31,11 @@ export class GenerarPdfFacturaComponent implements OnInit {
 
   ngOnInit(): void {
     this._route.params.subscribe( params => {
-      if(params['id']) {
-        this.obtenerFactura(params['id']);
-      }
+      this.generarPDF(params['id']);
     })
   }
 
-  obtenerFactura(idFactura : Number) {
-    this.generarPDFFactura();
-  }
-
-  generarPDFFactura() {
-    // instalar html2canvas
-    
-    /*html2canvas(this.content.nativeElement).then(canvas => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, 'PNG', 0, 0);
-      pdf.save('factura.pdf');
-    });*/
-  }
-
-  generarPDF() {
+  generarPDF(numero : number) {
     const documentDefinition = {
       pageSize: this.tamañoPagina,
       PageOrientation: 'landscape',
@@ -65,7 +50,14 @@ export class GenerarPdfFacturaComponent implements OnInit {
         font: 'Roboto'
       },
       content: [
-        { text: 'Hola, este es un PDF predefinido!', fontSize: 10 },
+        { 
+          text: 'A', 
+          fontSize: 25,
+          absolutePosition: { 
+            x: 291, 
+            y: 5
+          }
+        },
         {
           table: {
             widths: ['*', '*', '*'],
@@ -76,17 +68,15 @@ export class GenerarPdfFacturaComponent implements OnInit {
                 'asda'
               ]
             ]
+          },
+          absolutePosition: { 
+            x: 30, 
+            y: 100 
           }
         }
       ]
     };
 
     pdfMake.createPdf(documentDefinition).open();
-
-    /*
-    pdfMake.createPdf(documentDefinition).getBlob((blob) => {
-      const url = URL.createObjectURL(blob);
-      window.location.href = url;
-    });*/
   }
 }
