@@ -18,6 +18,9 @@
         <mat-tab-group class="contenedor-pestanias">
             <mat-tab label="Comprobantes a pagar" class="pestania-formulario"> 
                 <div class="contenedor-lista-comrprobantes" formArrayName="comprobantes">
+                    <div *ngIf="comprobantes.controls.length === 0" class="mensaje-vacio">
+                        No hay comprobantes pendientes de pago
+                    </div>
                     <div *ngFor="let comprobante of comprobantes.controls; let i = index" [formGroupName]="i" class="contenedor-articulo">
                         <div class="contenedor-fecha-comprobante">
                             {{comprobante.value.fechaComprobante | date: 'dd/MM/YYYY'}}

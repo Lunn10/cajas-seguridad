@@ -61,6 +61,14 @@
             gap: 3px;
         }
 
+            .mensaje-vacio {
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: bold;
+                color: #666;
+                margin-top: 20px;
+            }
+
             .contenedor-articulo {
                 display: flex;
                 justify-content: space-between;

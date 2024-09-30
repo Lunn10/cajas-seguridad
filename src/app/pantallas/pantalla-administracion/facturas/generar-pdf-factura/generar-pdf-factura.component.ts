@@ -5,6 +5,7 @@ import { PageSize } from 'pdfmake/interfaces';
 import { fondoPDF } from './../../../../../assets/img64/fondoPDF';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { abort } from 'node:process';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 /*pdfMake.fonts = {
@@ -56,6 +57,39 @@ export class GenerarPdfFacturaComponent implements OnInit {
           absolutePosition: { 
             x: 291, 
             y: 5
+          }
+        },
+        {
+          text: 'OPERACIÓN',
+          fontSize: 6,
+          absolutePosition: { 
+            x: 283, 
+            y: 34 
+          }
+        },
+        {
+          text: 'SUJETA A',
+          fontSize: 6,
+          absolutePosition: { 
+            x: 285, 
+            y: 40 
+          }
+        },
+        {
+          text: 'RETENCIÓN',
+          fontSize: 6,
+          absolutePosition: { 
+            x: 283, 
+            y: 46 
+          }
+        },
+        {
+          text: 'FACTURA',
+          fontSize: 18,
+          bold: true,
+          absolutePosition: { 
+            x: 350, 
+            y: 15 
           }
         },
         {

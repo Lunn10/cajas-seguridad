@@ -19,12 +19,34 @@ export class PantallaPedidosComponent {
       titulo: 'Artículos',
       url: 'lista-articulos',
       icono: 'key_vertical',
-      subopciones: []
+      subopciones: [
+        {
+          titulo: 'Cargar artículo',
+          url: 'cargar-articulo',
+          icono: 'enhanced_encryption',
+        },
+        {
+          titulo: 'Lista artículos',
+          url: 'lista-articulos',
+          icono: 'manage_search',
+        }
+      ]
     }, {
       titulo: 'Pedidos',
       url: 'consultar-pedidos',
       icono: 'shopping_cart',
-      subopciones: []
+      subopciones: [
+        {
+          titulo: 'Cargar pedido',
+          url: 'cargar-pedido',
+          icono: 'add_shopping_cart',
+        },
+        {
+          titulo: 'Consultar pedidos',
+          url: 'consultar-pedidos',
+          icono: 'manage_search',
+        }
+      ]
     }
   ]
 }
