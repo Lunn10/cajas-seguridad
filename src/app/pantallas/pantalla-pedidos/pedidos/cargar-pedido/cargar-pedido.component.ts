@@ -175,7 +175,7 @@ export class CargarPedidoComponent implements OnInit {
     if(filtro == 'cliente') {
       const valorFiltradoCliente = this.inputCliente.nativeElement.value.toLowerCase();
       this.valoresFiltradosClientes = this.opcionesSelectClientes.filter(
-        datosCliente => datosCliente.stateName.includes(valorFiltradoCliente)
+        datosCliente => datosCliente.clientName.toLowerCase().includes(valorFiltradoCliente)
       );
     }
   }

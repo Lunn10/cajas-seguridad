@@ -11,7 +11,7 @@
                         <input #inputCliente type="text" id="cliente" placeholder="Seleccione el cliente" matInput formControlName="cliente" [matAutocomplete]="autocompletarCliente" (input)="filter('cliente')" (focus)="filter('cliente')">
                         <mat-autocomplete requireSelection #autocompletarCliente="matAutocomplete">
                             @for (datosCliente of valoresFiltradosClientes; track datosCliente) {
-                                <mat-option [value]="datosCliente.clientName">{{datosCliente.clientName | titlecase }}</mat-option>
+                                <mat-option [value]="datosCliente.clientName">{{datosCliente.clientName | uppercase }}</mat-option>
                             }
                         </mat-autocomplete>
                         <mat-error>Debe indicar el cliente</mat-error>

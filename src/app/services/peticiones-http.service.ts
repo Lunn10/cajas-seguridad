@@ -1,10 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Form, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { IDatosUsuario } from '../models/datos-usuario.model';
 import { IRespuestaServer, IRespuestaServerSimple } from '../models/respuesta-server.model'; 
-import { isDeclarationStatement } from 'typescript';
 
 @Injectable({
   providedIn: 'root'

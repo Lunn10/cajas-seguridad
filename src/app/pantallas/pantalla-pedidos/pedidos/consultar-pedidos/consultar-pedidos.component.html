@@ -55,9 +55,9 @@
             <div class="pedido-info">
               <p><mat-icon>person</mat-icon> Cliente: {{ pedido.nombreCliente }}</p>
               <p><mat-icon>event</mat-icon> Fecha del Pedido: {{ pedido.fechaPedido | date:'dd/MM/yyyy HH:mm:ss' }}</p>
-              <p><mat-icon>comment</mat-icon> Observaciones: {{ pedido.observaciones }}</p>
+              <p *ngIf="pedido.observaciones"><mat-icon>comment</mat-icon> Observaciones: {{ pedido.observaciones }}</p>
               <p><mat-icon>local_shipping</mat-icon> Transporte: {{ pedido.transporte }}</p>
-              <p><mat-icon>speaker_notes</mat-icon> Observaciones Transporte: {{ pedido.observacionesTransporte }}</p>
+              <p *ngIf="pedido.observacionesTransporte"><mat-icon>speaker_notes</mat-icon> Observaciones Transporte: {{ pedido.observacionesTransporte }}</p>
               <p><mat-icon>list</mat-icon> Artículos:</p>
               <ul>
                 <li *ngFor="let articulo of pedido.articulos">
