@@ -26,6 +26,8 @@ import { CuentaCorrienteComponent } from './pantallas/pantalla-administracion/cl
 import { CargarNotaDebitoComponent } from './pantallas/pantalla-administracion/notas-debito/cargar-nota-debito/cargar-nota-debito.component';
 import { ConsultarNotaDebitoComponent } from './pantallas/pantalla-administracion/notas-debito/consultar-nota-debito/consultar-nota-debito.component';
 import { GenerarPdfFacturaComponent } from './pantallas/pantalla-administracion/facturas/generar-pdf-factura/generar-pdf-factura.component';
+import { CargarProcesoComponent } from './pantallas/pantalla-produccion/procesos/cargar-proceso/cargar-proceso.component';
+import { ConsultarProcesosComponent } from './pantallas/pantalla-produccion/procesos/consultar-procesos/consultar-procesos.component';
 
 export const routes: Routes = [
     { path: '', component: PantallaInicioComponent },
@@ -63,6 +65,10 @@ export const routes: Routes = [
         { path: 'cargar-pedido', component: CargarPedidoComponent },
         { path: 'cargar-pedido/:id', component: CargarPedidoComponent }
     ] },
-    { path: 'sistema-produccion', component: PantallaProduccionComponent },
+    { path: 'sistema-produccion', component: PantallaProduccionComponent, children: [
+        { path: 'cargar-proceso', component: CargarProcesoComponent },
+        { path: 'cargar-proceso/:id', component: CargarProcesoComponent },
+        { path: 'consultar-proceso', component: ConsultarProcesosComponent }
+    ] },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

@@ -220,8 +220,8 @@ export class PeticionesHttpService {
     return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/article/getarticle', data);
   }
 
-  public listaArticulos() : Observable<IRespuestaServer> {
-    return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/article/list');
+  public listaArticulos(filtros : any = null) : Observable<IRespuestaServer> {
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/article/list', filtros);
   }
 
   public listaArticulosConPrecios(idLista : number) : Observable<IRespuestaServerSimple> {
@@ -423,5 +423,9 @@ export class PeticionesHttpService {
 
   public cargarNotaDebito(datosNotaDebito : any) {
     return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/generatedebitnote', datosNotaDebito);
+  }
+
+  public cargarProcesoProduccion(datosProceso : any) {
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/production/generateprocess', datosProceso);
   }
 }

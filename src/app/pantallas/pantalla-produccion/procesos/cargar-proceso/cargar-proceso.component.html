@@ -1,2 +1,50 @@
 <app-encabezado titulo="Cargar proceso" />
 <app-respuesta-server/>
+
+<div class="contenedor-pagina">
+    <div class="contenedor-formulario">
+        <form [formGroup]="formularioCargarProceso" (ngSubmit)="cargarProcesoProduccion()">
+            <mat-form-field class="input-mediano">
+                <mat-label for="nombre-proceso">Nombre del proceso</mat-label>
+                <input matInput placeholder="Nombre del proceso" formControlName="nombreProceso" id="nombre-proceso">
+                <mat-error>Debe indicar un nombre para el proceso</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label for="descripcion">Descripción</mat-label>
+                <input matInput placeholder="Descripción del proceso" formControlName="descripcion" id="descripcion">
+                <mat-error>Debe indicar una descripción</mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-mediano">
+                <mat-label for="tiempo">Tipo de proceso</mat-label>
+                <mat-select formControlName="tipoProceso" id="tipo-proceso">
+                    <mat-option value="PRODUCCIÓN">Proceso de producción</mat-option>
+                    <mat-option value="INSUMO">Insumo para producir</mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+
+            <ng-container formArrayName="articulos">
+                <div class="selector-articulo">
+                    <div class="contenedor-articulo" [ngClass]="articulo.value.checked ? 'articulo-seleccionado' : 'articulo-no-seleccionado'" *ngFor="let articulo of articulos.controls; let i = index" (click)="cambiarEstadoCheckbox(i)" [formGroupName]="i">
+                        <mat-checkbox class="checkbox-oculto"></mat-checkbox>
+                        <div class="imagen-articulo">
+                            <img [src]="'assets/articulos-img/' + articulo.value.id + '.png' ? 'assets/articulos-img/' + articulo.value.id + '.png' : 'ruta/a/imagen-por-defecto.jpg'" />
+                        </div>
+
+                        <div class="nombre-articulo">{{articulo.value.nombre}}</div>
+
+                        <mat-form-field class="input-corto">
+                            <mat-label for="cantidad-proceso">Cantidad</mat-label>
+                            <input matInput formControlName="cantidad" *ngIf="articulo.value.checked" (click)="$event.stopPropagation()" >
+                        </mat-form-field>
+                    </div>
+                </div>
+            </ng-container>
+
+            <mat-card-actions>
+                <input type="hidden" value="" id="id-proceso" formControlName="idProceso">
+                <button class="input-extendido" mat-raised-button color="primary">Cargar proceso</button>
+            </mat-card-actions>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+.contenedor-pagina {
+    display: flex !important;
+    flex-direction: column !important;
+    align-content: center !important;
+    align-items: center;
+}
+
+    .contenedor-formulario {
+        width: 80%;
+        text-align: center;
+        background-color: #FFFFFF;
+    }
+
+        .input-extendido {
+            width: 90%;
+            margin-bottom: 1vh;
+        }
+
+        .input-mediano {
+            width: 45%;
+            margin: 1vh;
+        }
+
+        .input-corto {
+            width: 30%;
+            margin: 1vh;
+        }
+
+        .selector-articulo {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+            .contenedor-articulo {
+                width: 30%;
+                display: flex;
+                margin: 3px;
+                align-items: center; 
+                border: 1px solid #ccc;
+                border-radius: 5px; 
+                transition: background-color 0.3s, transform 0.2s; 
+                cursor: pointer;
+            }
+
+                .articulo-seleccionado {
+                    opacity: 1;
+                }
+
+                .articulo-no-seleccionado {
+                    opacity: 0.5;
+                }
+
+                .checkbox-oculto {
+                    display: none;
+                }
+
+                .input-oculto {
+                    display: none;
+                }
+
+                .input-visible {
+                    display: block;
+                }
+
+                .imagen-articulo {
+                    width: 30px; 
+                    height: auto; 
+                    overflow: hidden; 
+                    border-radius: 5px;
+                    margin-right: 10px; 
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: center; 
+                    background-color: #f0f0f0;
+                    border: 1px solid #ccc; 
+                    transition: transform 0.3s; 
+                  }
+                  
+                  .imagen-articulo img {
+                    max-width: 100%; 
+                    max-height: 100%; 
+                    object-fit: cover;
+                  }
+
+                  .nombre-articulo {
+                    padding: 10px;
+                    font-size: 16px; 
+                    font-weight: bold; 
+                    color: #333; 
+                    margin-left: 10px;
+                    display: flex;
+                    align-items: center;
+                    transition: color 0.3s;
+                  }
