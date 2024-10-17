@@ -33,9 +33,9 @@
 
                         <div class="nombre-articulo">{{articulo.value.nombre}}</div>
 
-                        <mat-form-field class="input-corto">
+                        <mat-form-field class="input-corto" *ngIf="articulo.value.checked">
                             <mat-label for="cantidad-proceso">Cantidad</mat-label>
-                            <input matInput formControlName="cantidad" *ngIf="articulo.value.checked" (click)="$event.stopPropagation()" >
+                            <input matInput formControlName="cantidad" (click)="$event.stopPropagation()" >
                         </mat-form-field>
                     </div>
                 </div>

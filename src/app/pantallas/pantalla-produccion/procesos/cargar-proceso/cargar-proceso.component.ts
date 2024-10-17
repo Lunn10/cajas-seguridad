@@ -53,7 +53,9 @@ export class CargarProcesoComponent {
   }
 
   cambiarEstadoCheckbox(index : number) {
-    this.listaArticulos[index].checked = !this.listaArticulos[index].checked;
+    const articuloControl = this.articulos.at(index); 
+    const currentCheckedValue = articuloControl.get('checked')?.value; 
+    articuloControl.get('checked')?.setValue(!currentCheckedValue);
   }
 
   cargarProcesoProduccion() : void {

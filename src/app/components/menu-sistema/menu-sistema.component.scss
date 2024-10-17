@@ -199,3 +199,40 @@ a:hover {
               transform: translate(-5px, 3px);
             }
           }
+
+
+  @media (max-width: 600px) {
+    .menu-interno-sistema {
+        min-height: 15vh; /* Aumentar la altura para un mejor acceso */
+    }
+
+    .caja-opcion-menu {
+        height: 12vh; /* Aumentar la altura de las opciones del menú */
+        width: 100%; /* Asegurarse de que ocupe todo el ancho */
+    }
+
+    .contenedor-icono {
+        width: auto; /* Ajustar el ancho del contenedor del icono */
+    }
+
+    .titulo-boton {
+        font-size: 14px; /* Reducir el tamaño de la fuente */
+    }
+
+    .contenedor-opcion-submenu {
+        flex-direction: column; /* Alinear submenús en columna */
+        width: 100%; /* Asegurar que ocupe todo el ancho */
+    }
+
+    .icono-submenu {
+        width: 5vh; /* Ajustar el tamaño del icono */
+        height: 5vh; 
+        margin-right: 0; /* Eliminar margen derecho en vista móvil */
+        margin-bottom: 5px; /* Espaciado entre iconos en columna */
+    }
+
+    .titulo-submenu {
+        min-width: 80%; /* Aumentar el ancho mínimo del título en móviles */
+        font-size: 16px; /* Reducir el tamaño de la fuente */
+    }
+}
