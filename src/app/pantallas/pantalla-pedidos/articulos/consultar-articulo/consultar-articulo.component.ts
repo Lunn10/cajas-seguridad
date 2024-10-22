@@ -43,6 +43,7 @@ export class ConsultarArticuloComponent implements AfterContentInit {
         this.listaArticulos = data.data;
       },
       error: (error) => {
+        alert(error.error);
         this._peticionesHttp.setRespuestaServer(error.message);
       }
     })

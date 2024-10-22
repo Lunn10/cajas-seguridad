@@ -9,7 +9,7 @@ import { IRespuestaServer, IRespuestaServerSimple } from '../models/respuesta-se
   providedIn: 'root'
 })
 export class PeticionesHttpService {
-  IP_SERVER : string = 'http://localhost:8900';
+  IP_SERVER : string = '/api';
 
   constructor(
     private _httpClient : HttpClient
@@ -22,6 +22,8 @@ export class PeticionesHttpService {
   }
 
   public setRespuestaServer(respuesta : string) : void {
+    return;
+
     this.respuestaServer.next(respuesta);
   }
 

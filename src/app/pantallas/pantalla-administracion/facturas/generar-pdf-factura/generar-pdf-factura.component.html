@@ -1,1 +1,66 @@
-<div #content></div>
+<div class="factura">
+    <div class="contenedor-estado-copia">ORIGINAL</div>
+    <header class="encabezado-factura">
+        <div class="datos-empresa">
+            <div class="contenedor-logo">
+                <img src="assets/img/logo.png" alt="Logo de la empresa" class="imagen-logo">
+            </div>
+            <div class="nombre-empresa">
+                <h1>DI FRESCA VITO ANTONIO</h1>
+            </div>
+            <div class="detalles-datos-empresa">
+                <p>Razón social: DI FRESCA VITO ANTONIO</p>
+                <p>Domicilio: REPÚBLICA DE CHILE 2052 - San Justo - Buenos Aires</p>
+                <p>IVA: Responsable inscripto</p>
+            </div>
+        </div>
+        <div class="datos-tipo-factura">
+            <div class="tipo-factura">A</div>
+            <div class="codigo-factura">COD. 01</div>
+            <div class="datos-operacion">OPERACIÓN SUJETA A RETENCIÓN</div>
+        </div>
+        <div class="datos-empresa">
+            <div class="tipo-comprobante">
+                <h2>FACTURA</h2>
+                <div class="numero-comprobante">0001 - 00000001</div>
+            </div>
+            <div class="datos-comprobante">
+            </div>
+        </div>
+    </header>
+
+    <table class="items">
+        <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Producto A</td>
+                <td>2</td>
+                <td>$50.00</td>
+                <td>$100.00</td>
+            </tr>
+            <tr>
+                <td>Producto B</td>
+                <td>1</td>
+                <td>$150.00</td>
+                <td>$150.00</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total</td>
+                <td>$250.00</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <footer>
+        <p>Gracias por su compra!</p>
+    </footer>
+</div>

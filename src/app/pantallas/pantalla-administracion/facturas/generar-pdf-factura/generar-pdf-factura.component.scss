@@ -1,0 +1,129 @@
+@media print {
+    @page {
+        size: A4; /* Define el tamaño de la página */
+        margin: 0; /* Sin márgenes */
+    }
+}
+
+.factura {
+    margin: 0px;
+    padding: 0px 20px;
+    background-image: url('background-pdf.jpg'); /* Reemplaza con la URL de tu imagen */
+    background-size: cover; /* Ajusta el tamaño */
+    background-repeat: no-repeat; /* Evita repetir la imagen */
+    background-position: center; /* Centra la imagen */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-estado-copia {
+    width: 100%;
+    border: solid 1.5px black;
+    text-align: center;
+    font-size: 22px;
+}
+
+.encabezado-factura {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+    .datos-tipo-factura {
+        width: 10vw;
+        height: 10vw;;
+        position: absolute;
+        border: solid 1.5px;
+        text-align: center;
+        left: 45%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+        .tipo-factura {
+            font-size: 33px;
+            font-weight: bold;
+        }
+
+        .codigo-factura {
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .datos-operacion {
+            font-size: 8px;
+        }
+
+    .datos-empresa {
+        width: 50%;
+    }
+
+        .contenedor-logo {
+            
+        }
+
+            .imagen-logo {
+                width: 20%;
+            }
+
+        .nombre-empresa {
+            font-weight: bold;
+        }
+
+        .detalles-datos-empresa {
+            text-align: left;
+        }
+
+        .tipo-comprobante {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .datos-comprobante {
+            padding-top: 5vw;
+            display: flex;
+        }
+
+        .numero-comprobante {
+            font-size: 3vh;
+            font-weight: bold;
+        }
+
+    .datos-cliente {
+        width: 50%;
+        text-align: right;
+    }
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.company-info, .client-info {
+    margin: 20px 0;
+}
+
+.items {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.items th, .items td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.items th {
+    background-color: #f0f0f0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
