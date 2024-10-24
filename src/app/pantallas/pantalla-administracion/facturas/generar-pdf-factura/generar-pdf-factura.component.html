@@ -22,45 +22,51 @@
         <div class="datos-empresa">
             <div class="tipo-comprobante">
                 <h2>FACTURA</h2>
-                <div class="numero-comprobante">0001 - 00000001</div>
+                <div class="numero-comprobante"></div>
+                <div class="contenedor-fecha-emision">Fecha de emisión: 23/10/2024</div>
+                <div class="contenedor-numero-cuit">CUIT: 20-93375654-9</div>
+                <div class="contenedor-ingresos-brutos">Ingresos brutos: 20933756549</div>
+                <div class="fecha-inicio-actividades">Fecha de inicio de actividades: 03/06/2016</div>
             </div>
             <div class="datos-comprobante">
             </div>
         </div>
     </header>
 
-    <table class="items">
-        <thead>
-            <tr>
-                <th>Descripción</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Producto A</td>
-                <td>2</td>
-                <td>$50.00</td>
-                <td>$100.00</td>
-            </tr>
-            <tr>
-                <td>Producto B</td>
-                <td>1</td>
-                <td>$150.00</td>
-                <td>$150.00</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3">Total</td>
-                <td>$250.00</td>
-            </tr>
-        </tfoot>
-    </table>
+    <div class="datos-cliente">
+        <div class="seccion-datos-cliente-izquierda">
+            <p>Razón social / Apellido y nombre: {{datosFactura.nombreCliente}}</p>
+            <p>CUIT: </p>
+        </div>
+        <div class="seccion-datos-cliente-derecha">
+            <p>Domicilio: Av. Rivadavia 1234 - CABA</p>
+            <p>IVA: Consumidor final</p>
+        </div>
+    </div>
 
-    <footer>
-        <p>Gracias por su compra!</p>
-    </footer>
+    <div class="items-factura">
+        <div class="contenedor-titulo">
+            <div class="descripcion">Artículo</div>
+            <div class="cantidad">Cantidad</div>
+            <div class="precio-unitario">Precio unitario</div>
+            <div class="subtotal">Subtotal</div>
+        </div>
+        <div class="contenedor-articulo" *ngFor="let articulo of datosFactura.detallesFactura" >
+            <div class="descripcion">{{articulo.nombreArticulo}}</div>
+            <div class="cantidad">{{articulo.cantidad}}</div>
+            <div class="precio-unitario">{{articulo.precioUnitario | currency}}</div>
+            <div class="subtotal">{{articulo.cantidad * articulo.precioUnitario | currency}}</div>
+        </div>
+    </div>
+
+    <div class="resumen-factura">
+        <p class="texto-resumen-factura">Importe neto gravado: {{datosFactura.subtotalSinIva | currency}}</p>
+        <p class="texto-resumen-factura">IVA 21%: {{datosFactura.iva | currency}}</p>
+        <p class="texto-resumen-factura">Importe total: {{datosFactura.totalConIva | currency}}</p>
+    </div>
+    
+    <div class="datos-cae">
+        <p class="cae">CAE: {{datosFactura.cae}}</p>
+        <p class="fecha-cae">Vencimiento CAE: </p>
+    </div>
 </div>

@@ -1,7 +1,7 @@
 @media print {
     @page {
-        size: A4; /* Define el tamaño de la página */
-        margin: 0; /* Sin márgenes */
+        size: A4;
+        margin: 0;
     }
 }
 
@@ -76,51 +76,141 @@
         }
 
         .tipo-comprobante {
+            font-size: 2vh;
             font-weight: bold;
             text-align: right;
         }
 
         .datos-comprobante {
-            padding-top: 5vw;
+            padding: 3vw 0vw;
             display: flex;
         }
 
         .numero-comprobante {
+            margin-top: 4vh;
             font-size: 3vh;
             font-weight: bold;
         }
 
+        .contenedor-fecha-emision {
+            margin-top: 1vh;
+            font-size: 16px;
+            font-weight: lighter;
+        }
+
+        .contenedor-numero-cuit {
+            margin-top: 1vh;
+            font-size: 16px;
+            font-weight: lighter;
+        }
+
+        .contenedor-ingresos-brutos {
+            margin-top: 1vh;
+            font-size: 16px;
+            font-weight: lighter;
+        }
+
+        .fecha-inicio-actividades {
+            margin-top: 1vh;
+            font-size: 16px;
+            font-weight: lighter;
+        }
+
     .datos-cliente {
-        width: 50%;
+        width: 98%;
         text-align: right;
+        border: solid 1px;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
     }
+
+        .seccion-datos-cliente-izquierda {
+            text-align: left;
+        }
+
+        .seccion-datos-cliente-derecha {
+            margin: 0;
+            padding: 0;
+            text-align: right;
+        }
+
+    .items-factura {
+        width: 99%;
+        height: 400px;
+        margin-top: 20px;
+        border: solid 1px;
+        background-color: red;
+    }
+
+        .contenedor-titulo {
+            width: 100%;
+            min-height: 30px;
+            display: flex;
+            align-items: center;
+            border: solid 1px;
+        }
+
+            .descripcion {
+                width: 50%;
+                padding-left: 10px;
+            }
+
+            .cantidad {
+                width: 10%;
+                text-align: center;
+            }
+
+            .precio-unitario {
+                width: 20%;
+                text-align: center;
+            }
+
+            .subtotal {
+                width: 20%;
+                padding-right: 10px;
+                text-align: right;
+            }
+
+        .contenedor-articulo {
+            width: 100%;
+            min-height: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+    .resumen-factura {
+        width: 99%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-top: 20px;
+        border: solid 1px;
+    }
+
+        .texto-resumen-factura {
+            padding-right: 10px;
+        }
+
+    .datos-cae {
+        width: 99%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        border: solid 1px;
+    }
+
+        .cae {
+            padding-left: 10px;
+        }
+
+        .fecha-cae {
+            padding-right: 10px;
+        }
 
 header {
     text-align: center;
-}
-
-header h1 {
-    margin: 0;
-}
-
-.company-info, .client-info {
-    margin: 20px 0;
-}
-
-.items {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-.items th, .items td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-}
-
-.items th {
-    background-color: #f0f0f0;
+    margin-bottom: 0;
 }
 
 footer {

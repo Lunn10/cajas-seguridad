@@ -369,10 +369,27 @@ export class PeticionesHttpService {
 
   public consultarFacturas(datosConsulta : FormGroup) {
     let data = {
-      cliente: datosConsulta.value.cliente,
-      fechaDesde: datosConsulta.value.fechaFacturaDesde,
-      fechaHasta: datosConsulta.value.fechaFacturaHasta
+      id: null,
+      cliente: null,
+      fechaDesde: null,
+      fechaHasta: null
     };
+
+    if(datosConsulta.value.id) {
+      data.id = datosConsulta.value.id;
+    }
+
+    if(datosConsulta.value.cliente) {
+      data.cliente = datosConsulta.value.cliente;
+    }
+
+    if(datosConsulta.value.fechaFacturaDesde) {
+      data.fechaDesde = datosConsulta.value.fechaFacturaDesde;
+    }
+
+    if(datosConsulta.value.fechaFacturaHasta) {
+      data.fechaHasta = datosConsulta.value.fechaFacturaHasta;
+    }
 
     return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/gettickets', data);
   }
