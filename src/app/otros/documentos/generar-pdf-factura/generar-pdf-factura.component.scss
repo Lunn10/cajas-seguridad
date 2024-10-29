@@ -3,12 +3,16 @@
         size: A4;
         margin: 0;
     }
+
+    .contenedor-menu-sistema {
+        display: none;
+    }
 }
 
 .factura {
     margin: 0px;
     padding: 0px 20px;
-    background-image: url('background-pdf.jpg'); /* Reemplaza con la URL de tu imagen */
+    background-image: url('background-white.png'); /* Reemplaza con la URL de tu imagen */
     background-size: cover; /* Ajusta el tamaño */
     background-repeat: no-repeat; /* Evita repetir la imagen */
     background-position: center; /* Centra la imagen */
@@ -26,7 +30,13 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    flex-direction: column;
 }
+
+    .seccion-superior-encabezado {
+        display: flex;
+        justify-content: space-between;
+    }
 
     .datos-tipo-factura {
         width: 10vw;
@@ -59,36 +69,55 @@
         width: 50%;
     }
 
+        .alineacion-derecha {
+            text-align: right !important;
+            padding-right: 10px;
+        }
+
         .contenedor-logo {
-            
+            margin: 0px;
+            padding: 0px;
         }
 
             .imagen-logo {
-                width: 20%;
+                width: 30%;
+                margin-top: 5px;
             }
 
         .nombre-empresa {
             font-weight: bold;
         }
 
-        .detalles-datos-empresa {
-            text-align: left;
+        .detalles-empresa {
+            display: flex;
+            justify-content: space-between;
         }
 
-        .tipo-comprobante {
+            .detalles-datos-empresa {
+                text-align: left;
+                font-size: 15px;
+            }
+
+                .separacion-media {
+                    margin: 3px 0px;
+                    padding-top: 0px;
+                }
+
+        .datos-comprobante {
+            margin: 5px 0px;
             font-size: 2vh;
             font-weight: bold;
             text-align: right;
         }
 
-        .datos-comprobante {
-            padding: 3vw 0vw;
-            display: flex;
+        .tipo-comprobante {
+            margin: 0px 0px 1.5vh 0px;
+            padding: 10px 0px 0px 0px;
+            font-weight: bold;
         }
 
         .numero-comprobante {
-            margin-top: 4vh;
-            font-size: 3vh;
+            font-size: 2vh;
             font-weight: bold;
         }
 
@@ -99,7 +128,7 @@
         }
 
         .contenedor-numero-cuit {
-            margin-top: 1vh;
+            margin-top: 5vh;
             font-size: 16px;
             font-weight: lighter;
         }
@@ -123,6 +152,7 @@
         display: flex;
         justify-content: space-between;
         padding: 5px;
+        font-size: 15px;
     }
 
         .seccion-datos-cliente-izquierda {
@@ -137,10 +167,9 @@
 
     .items-factura {
         width: 99%;
-        height: 400px;
+        height: 300px;
         margin-top: 20px;
         border: solid 1px;
-        background-color: red;
     }
 
         .contenedor-titulo {
@@ -184,7 +213,6 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        margin-top: 20px;
         border: solid 1px;
     }
 

@@ -1,34 +1,38 @@
-<div class="factura">
-    <div class="contenedor-estado-copia">ORIGINAL</div>
+<div class="factura" *ngFor="let copia of ['ORIGINAL', 'DUPLICADO', 'TRIPLICADO']; let i = index"  >
+    <div class="contenedor-estado-copia">{{copia}}</div>
     <header class="encabezado-factura">
-        <div class="datos-empresa">
-            <div class="contenedor-logo">
-                <img src="assets/img/logo.png" alt="Logo de la empresa" class="imagen-logo">
-            </div>
-            <div class="nombre-empresa">
-                <h1>DI FRESCA VITO ANTONIO</h1>
-            </div>
-            <div class="detalles-datos-empresa">
-                <p>Razón social: DI FRESCA VITO ANTONIO</p>
-                <p>Domicilio: REPÚBLICA DE CHILE 2052 - San Justo - Buenos Aires</p>
-                <p>IVA: Responsable inscripto</p>
-            </div>
-        </div>
         <div class="datos-tipo-factura">
             <div class="tipo-factura">A</div>
             <div class="codigo-factura">COD. 01</div>
             <div class="datos-operacion">OPERACIÓN SUJETA A RETENCIÓN</div>
         </div>
-        <div class="datos-empresa">
-            <div class="tipo-comprobante">
-                <h2>FACTURA</h2>
-                <div class="numero-comprobante"></div>
-                <div class="contenedor-fecha-emision">Fecha de emisión: 23/10/2024</div>
-                <div class="contenedor-numero-cuit">CUIT: 20-93375654-9</div>
-                <div class="contenedor-ingresos-brutos">Ingresos brutos: 20933756549</div>
-                <div class="fecha-inicio-actividades">Fecha de inicio de actividades: 03/06/2016</div>
+
+        <div class="seccion-superior-encabezado">
+            <div class="datos-empresa">
+                <div class="contenedor-logo">
+                    <img src="assets/img/logo.png" alt="Logo de la empresa" class="imagen-logo">
+                </div>
+                <div class="nombre-empresa">
+                    <h2>DI FRESCA VITO ANTONIO</h2>
+                </div>
             </div>
-            <div class="datos-comprobante">
+            <div class="datos-empresa alineacion-derecha">
+                <h1 class="tipo-comprobante">FACTURA</h1>
+                <div class="numero-comprobante">{{datosFactura.numeroComprobante}} </div>
+                <div class="contenedor-fecha-emision">Fecha de emisión: 23/10/2024</div>
+            </div>
+        </div>        
+
+        <div class="detalles-empresa">
+            <div class="detalles-datos-empresa">
+                <p class="separacion-media">Razón social: Di Fresca Vito Antonio</p>
+                <p class="separacion-media">Domicilio: República de Chile 2052 - San Justo - Buenos Aires</p>
+                <p class="separacion-media">IVA: Responsable inscripto</p>
+            </div>
+            <div class="detalles-datos-empresa alineacion-derecha">
+                <p class="separacion-media">CUIT: 20-93375654-9</p>
+                <p class="separacion-media">Ingresos brutos: 20933756549</p>
+                <p class="separacion-media">Fecha de inicio de actividades: 03/06/2016</p>
             </div>
         </div>
     </header>
@@ -36,11 +40,11 @@
     <div class="datos-cliente">
         <div class="seccion-datos-cliente-izquierda">
             <p>Razón social / Apellido y nombre: {{datosFactura.nombreCliente}}</p>
-            <p>CUIT: </p>
+            <p>Domicilio: {{datosCliente.streetName}} - {{datosCliente.stateName}}</p>
         </div>
         <div class="seccion-datos-cliente-derecha">
-            <p>Domicilio: Av. Rivadavia 1234 - CABA</p>
-            <p>IVA: Consumidor final</p>
+            <p>CUIT: {{datosCliente.cuitNumber}} </p>
+            <p>IVA: {{datosCliente.ivaType}}</p>
         </div>
     </div>
 
@@ -67,6 +71,6 @@
     
     <div class="datos-cae">
         <p class="cae">CAE: {{datosFactura.cae}}</p>
-        <p class="fecha-cae">Vencimiento CAE: </p>
+        <p class="fecha-cae">Vencimiento CAE: {{datosFactura.fechaVtoCae}} </p>
     </div>
 </div>

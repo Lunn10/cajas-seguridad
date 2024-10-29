@@ -25,7 +25,7 @@ import { CargarNotaCreditoComponent } from './pantallas/pantalla-administracion/
 import { CuentaCorrienteComponent } from './pantallas/pantalla-administracion/clientes/cuenta-corriente/cuenta-corriente.component';
 import { CargarNotaDebitoComponent } from './pantallas/pantalla-administracion/notas-debito/cargar-nota-debito/cargar-nota-debito.component';
 import { ConsultarNotaDebitoComponent } from './pantallas/pantalla-administracion/notas-debito/consultar-nota-debito/consultar-nota-debito.component';
-import { GenerarPdfFacturaComponent } from './pantallas/pantalla-administracion/facturas/generar-pdf-factura/generar-pdf-factura.component';
+import { GenerarPdfFacturaComponent } from './otros/documentos/generar-pdf-factura/generar-pdf-factura.component';
 import { CargarProcesoComponent } from './pantallas/pantalla-produccion/procesos/cargar-proceso/cargar-proceso.component';
 import { ConsultarProcesosComponent } from './pantallas/pantalla-produccion/procesos/consultar-procesos/consultar-procesos.component';
 
@@ -54,8 +54,7 @@ export const routes: Routes = [
         { path: 'consultar-pagos', component: ConsultarPagosComponent },
         { path: 'cargar-lista-precios', component: CargarListaPreciosComponent },
         { path: 'cargar-lista-precios/:id', component: CargarListaPreciosComponent },
-        { path: 'consultar-lista-precios', component: ConsultarListaPreciosComponent },
-        { path: 'generar-factura/:id', component: GenerarPdfFacturaComponent }
+        { path: 'consultar-lista-precios', component: ConsultarListaPreciosComponent }
     ] },
     { path: 'sistema-pedidos', component: PantallaPedidosComponent, children: [
         { path: 'lista-articulos', component: ConsultarArticuloComponent },
@@ -69,6 +68,9 @@ export const routes: Routes = [
         { path: 'cargar-proceso', component: CargarProcesoComponent },
         { path: 'cargar-proceso/:id', component: CargarProcesoComponent },
         { path: 'consultar-proceso', component: ConsultarProcesosComponent }
+    ] },
+    { path: 'otros', children: [
+        { path: 'generar-pdf-factura/:id', component: GenerarPdfFacturaComponent }
     ] },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
