@@ -51,7 +51,9 @@ export class ConsultarFacturaComponent {
     this.formularioConsultarFacturas = this.formBuilder.group({
       cliente: [''],
       fechaFacturaDesde: [''],
-      fechaFacturaHasta: ['']
+      fechaFacturaHasta: [''],
+      puntoVenta: [''],
+      numeroFactura: ['']
     })
 
     this.obtenerListaClientes();
@@ -98,7 +100,7 @@ export class ConsultarFacturaComponent {
       return;
     }
 
-    this._peticionesHttp.consultarFacturas(this.formularioConsultarFacturas).subscribe({
+    this._peticionesHttp.consultarNotasCredito(this.formularioConsultarFacturas).subscribe({
       next: (data) => {
         if(data.error) {
           this._peticionesHttp.setRespuestaServer(data.message);

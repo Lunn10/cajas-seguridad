@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PeticionesHttpService } from '../../../../services/peticiones-http.service';
 import { ActivatedRoute } from '@angular/router';
 import { RespuestaServerComponent } from '../../../../components/respuesta-server/respuesta-server.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-cargar-cliente',
@@ -22,7 +23,8 @@ import { RespuestaServerComponent } from '../../../../components/respuesta-serve
     RespuestaServerComponent,
     ReactiveFormsModule,
     CommonModule,
-    MatFormFieldModule, 
+    MatFormFieldModule,
+    MatCheckboxModule,
     MatInputModule, 
     MatButtonModule, 
     MatCardModule,
@@ -101,12 +103,13 @@ export class CargarClienteComponent implements OnInit {
     this.verificarAgregarFilas();
   }
 
-  private crearFormGroupContacto(): FormGroup {
+  private crearFormGroupContacto(nombre : string = '', telefono : string = '', celular : string = '', email : string = '', contactoFactura : boolean = false): FormGroup {
     return this.form.group({
-      nombre: [''],
-      telefono: [''],
-      celular: [''],
-      email: ['', Validators.email]
+      nombre: [nombre],
+      telefono: [telefono],
+      celular: [celular],
+      email: [email, Validators.email],
+      contactoFactura: [contactoFactura]
     });
   }
 
@@ -162,7 +165,7 @@ export class CargarClienteComponent implements OnInit {
 
   obtenerTiposIVA() : void {
     this._peticionesHttp.obtenerTiposIVA().subscribe({
-      next : (data) => {
+      next : (data) => {   
         if(data.error) {
           this._peticionesHttp.setRespuestaServer(data.message);
         } else {
@@ -180,13 +183,13 @@ export class CargarClienteComponent implements OnInit {
     this._peticionesHttp.obtenerProvincias().subscribe({
       next : (data) => {
         if(data.error) {
-          this._peticionesHttp.setRespuestaServer(data.message);
+   //       this._peticionesHttp.setRespuestaServer(data.message);
         } else {
           this.opcionesSelectProvincias = data.data;
         }
       },
       error : (data) => {
-        this._peticionesHttp.setRespuestaServer(data.message);
+ //       this._peticionesHttp.setRespuestaServer(data.message);
       }
     });
   }
@@ -198,18 +201,6 @@ export class CargarClienteComponent implements OnInit {
           this._peticionesHttp.setRespuestaServer(data.message);
         } else {
           let datosCliente = data.data;
-          let datosContactos : any[] = [];
-
-          datosCliente.contactData.forEach((contacto: { nombre: string; telefono: string; celular: string; email: string; }) => {
-            let datoContacto = {
-              nombre : contacto.nombre,
-              telefono : contacto.telefono,
-              celular : contacto.celular,
-              email : contacto.email
-            }
-
-            datosContactos.push(datoContacto);
-          })
 
           this.formularioCargarCliente.patchValue({
             idCliente: datosCliente?.id,
@@ -223,8 +214,13 @@ export class CargarClienteComponent implements OnInit {
             cuit: datosCliente.cuitNumber,
             iva: datosCliente.ivaType,
             transporte: datosCliente.transportData.name,
-            observacionesTransporte: datosCliente.transportData.observations,
-            contactos: datosContactos
+            observacionesTransporte: datosCliente.transportData.observations
+          })
+
+          this.contactos.clear();
+
+          datosCliente.contactData.forEach((contacto: { nombre: string; telefono: string; celular: string; email: string; contactoFactura : boolean }) => {
+            this.contactos.push(this.crearFormGroupContacto(contacto.nombre, contacto.telefono, contacto.celular, contacto.email, contacto.contactoFactura));
           })
 
           this.verificarAgregarFilas();

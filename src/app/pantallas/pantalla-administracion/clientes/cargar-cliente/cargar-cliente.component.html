@@ -80,9 +80,9 @@
                 </mat-step>
                 <mat-step label="Datos contacto">
                     <ng-container formArrayName="contactos">
-                        <div *ngFor="let contacto of contactos.controls; let i = index" [formGroupName]="i">
+                        <div *ngFor="let contacto of contactos.controls; let i = index" [formGroupName]="i" class="fila-contacto">
                             <mat-form-field>
-                                <mat-label for="telefono">Nombre de contacto</mat-label>
+                                <mat-label for="nombre">Nombre de contacto</mat-label>
                                 <input type="text" matInput formControlName="nombre" (input)="verificarAgregarFilas()">
                             </mat-form-field>
                             
@@ -92,15 +92,17 @@
                             </mat-form-field>
                             
                             <mat-form-field>
-                                <mat-label for="telefono">Celular</mat-label>
+                                <mat-label for="celular">Celular</mat-label>
                                 <input type="text" matInput formControlName="celular">
                             </mat-form-field>
-                            
+
                             <mat-form-field>
-                                <mat-label for="telefono">Email</mat-label>
+                                <mat-label for="email">Email</mat-label>
                                 <input type="text" matInput formControlName="email">
                             </mat-form-field>
-                            
+
+                            <mat-checkbox formControlName="contactoFactura" matInput value="">Enviar factura</mat-checkbox>
+                                                        
                             <button type="button" mat-icon-button (click)="eliminarContacto(i)">
                                 <mat-icon>close</mat-icon>
                             </button>

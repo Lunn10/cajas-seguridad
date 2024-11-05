@@ -17,8 +17,4 @@ import { RouterLink } from '@angular/router';
 })
 export class TarjetaMenuInicioComponent {
   @Input() opcionesMenu : IOpcionesMenu[] = [];
-
-  constructor() {
-    console.log(this.opcionesMenu);
-  }
 }

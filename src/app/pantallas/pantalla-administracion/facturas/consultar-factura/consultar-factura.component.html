@@ -22,6 +22,14 @@
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>
         </mat-form-field>
+        <mat-form-field class="input-mediano">
+            <mat-label for="puntoVenta">Punto de venta</mat-label>
+            <input type="number" id="puntoVenta" matInput formControlName="puntoVenta">
+        </mat-form-field>
+        <mat-form-field class="input-mediano">
+            <mat-label for="numeroFactura">Número de factura</mat-label>
+            <input type="number" id="numeroFactura" matInput formControlName="numeroFactura">
+        </mat-form-field>
         <mat-card-actions>
             <button class="input-extendido" mat-raised-button color="primary">Consultar facturas</button>
         </mat-card-actions>

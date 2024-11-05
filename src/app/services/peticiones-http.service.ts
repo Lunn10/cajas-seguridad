@@ -9,11 +9,17 @@ import { IRespuestaServer, IRespuestaServerSimple } from '../models/respuesta-se
   providedIn: 'root'
 })
 export class PeticionesHttpService {
-  IP_SERVER : string = '/api';
+  IP_SERVER : string = '';
 
   constructor(
     private _httpClient : HttpClient
-  ) { }
+  ) {
+    if (typeof window !== 'undefined') {
+      this.IP_SERVER = '/api';
+    } else {
+      this.IP_SERVER = 'http://127.0.0.1:8900/api';
+    }
+  }
 
   private respuestaServer = new BehaviorSubject<string>('');
 
@@ -22,8 +28,6 @@ export class PeticionesHttpService {
   }
 
   public setRespuestaServer(respuesta : string) : void {
-    return;
-
     this.respuestaServer.next(respuesta);
   }
 
@@ -137,7 +141,7 @@ export class PeticionesHttpService {
       id : idCliente
     }
 
-    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/client/getclient', data);
+    return this._httpClient.post<IRespuestaServerSimple>(this.IP_SERVER + '/client/getclient', data, {responseType : 'json'});
   }
 
   public listaClientes() : Observable<IRespuestaServer> {
@@ -154,7 +158,9 @@ export class PeticionesHttpService {
   }
 
   public obtenerTiposIVA() : Observable<IRespuestaServer> {
-    return this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/client/ivatypes');
+    const respuesta = this._httpClient.get<IRespuestaServer>(this.IP_SERVER + '/client/ivatypes');
+
+    return respuesta;
   }
 
   public obtenerProvincias() : Observable<IRespuestaServer> {
@@ -372,7 +378,9 @@ export class PeticionesHttpService {
       id: null,
       cliente: null,
       fechaDesde: null,
-      fechaHasta: null
+      fechaHasta: null,
+      puntoVenta: null,
+      numeroFactura: null
     };
 
     if(datosConsulta.value.id) {
@@ -391,7 +399,52 @@ export class PeticionesHttpService {
       data.fechaHasta = datosConsulta.value.fechaFacturaHasta;
     }
 
+    if(datosConsulta.value.puntoVenta) {
+      data.puntoVenta = datosConsulta.value.puntoVenta;
+    }
+
+    if(datosConsulta.value.numeroFactura) {
+      data.numeroFactura = datosConsulta.value.numeroFactura;
+    }
+
     return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/gettickets', data);
+  }
+
+  public consultarNotasCredito(datosConsulta : FormGroup) {
+    let data = {
+      id: null,
+      cliente: null,
+      fechaDesde: null,
+      fechaHasta: null,
+      puntoVenta: null,
+      numeroNotaCredito: null
+    };
+
+    if(datosConsulta.value.id) {
+      data.id = datosConsulta.value.id;
+    }
+
+    if(datosConsulta.value.cliente) {
+      data.cliente = datosConsulta.value.cliente;
+    }
+
+    if(datosConsulta.value.fechaFacturaDesde) {
+      data.fechaDesde = datosConsulta.value.fechaFacturaDesde;
+    }
+
+    if(datosConsulta.value.fechaFacturaHasta) {
+      data.fechaHasta = datosConsulta.value.fechaFacturaHasta;
+    }
+
+    if(datosConsulta.value.puntoVenta) {
+      data.puntoVenta = datosConsulta.value.puntoVenta;
+    }
+
+    if(datosConsulta.value.numeroNotaCredito) {
+      data.numeroNotaCredito = datosConsulta.value.numeroFactura;
+    }
+
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/getcreditnotes', data);
   }
 
   public obtenerFacturasImpagas(datosConsulta : FormGroup) {
