@@ -45,11 +45,35 @@ export class ConsultarListaPreciosComponent {
           this.ultimaLista.id = datosRespuesta.idLista;
           this.ultimaLista.porcentaje = datosRespuesta.porcentaje;
           this.ultimaLista.fecha = datosRespuesta.fecha;
+
+          this.listaArticulos.sort((a, b) => {
+            if (a.tipoArticulo === 'ARTICULO' && b.tipoArticulo !== 'ARTICULO') {
+              return -1;
+            } else if (a.tipoArticulo !== 'ARTICULO' && b.tipoArticulo === 'ARTICULO') {
+              return 1;
+            } else if (a.tipoArticulo === 'ACCESORIO' && b.tipoArticulo !== 'ACCESORIO') {
+              return -1;
+            } else if (a.tipoArticulo !== 'ACCESORIO' && b.tipoArticulo === 'ACCESORIO') {
+              return 1;
+            } else {
+              return a.tipoArticulo.localeCompare(b.tipoArticulo);
+            }
+          });
         }
       },
       error: (error) => {
         this._peticionesHttp.setRespuestaServer(error.message);
       }
     });
+  }
+
+  claseSegunTipoArticulo(tipoArticulo : string) : string {
+    if(tipoArticulo === 'ARTICULO') {
+      return 'tipo-articulo';
+    } else if(tipoArticulo === 'ACCESORIO') {
+      return 'tipo-accesorio';
+    }
+    
+    return 'tipo-servicio';
   }
 }

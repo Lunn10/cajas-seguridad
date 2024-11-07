@@ -14,12 +14,14 @@ export class SesionService {
 
   constructor() { }
 
-  public setUsuario(data : IDatosUsuario) {
+  setUsuario(data : IDatosUsuario) {
     this.datosUsuario = data;
     this.sesionIniciada = true;
   }
 
-  public getSesionIniciada() {
+  getSesionIniciada() {
     return this.sesionIniciada;
   }
+
+
 }

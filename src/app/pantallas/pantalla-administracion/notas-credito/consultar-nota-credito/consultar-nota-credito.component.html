@@ -2,10 +2,6 @@
 <app-respuesta-server />
 <app-boton-cargar [direccion]="'../cargar-nota-credito'" />
 
-<app-encabezado titulo="Consultar facturas"/>
-<app-respuesta-server />
-<app-boton-cargar [direccion]="'../cargar-factura'" />
-
 <div class="contenedor-pagina">
     <form [formGroup]="formularioConsultarNotaCredito" class="contenedor-formulario" (submit)="consultarNotasCredito()" >
         <mat-form-field class="input-mediano">
@@ -54,16 +50,33 @@
         <table class="invoice-details-table">
           <thead>
             <tr>
-              <th>Cantidad</th>
-              <th>Nombre</th>
-              <th>Precio Unitario</th>
+              <th>Descripción</th>
+              <th>Importe</th>
+              <th>Porcentaje IVA</th>
+              <th>Importe total</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of notaCredito.detallesFactura">
-              <td>{{ item.cantidad }}</td>
-              <td>{{ item.nombreArticulo }}</td>
-              <td>{{ item.precioUnitario | currency }}</td>
+            <tr *ngFor="let item of notaCredito.detallesNotaCredito">
+                <td>{{ item.descripcion }}</td>
+                <td>{{ item.importe | currency }}</td>
+                <td>{{item.importe * item.iva / 100 | currency}} ({{ item.iva }}%)</td>
+                <td>{{ item.importe + (item.importe * item.iva / 100) | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <table class="invoice-details-table">
+          <thead>
+            <tr>
+              <th>Tipo de comprobante asociado</th>
+              <th>Número</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let comprobante of notaCredito.comprobantesAsociados">
+              <td>{{ comprobante.tipoComprobante }}</td>
+              <td>{{ agregarCerosAdelante(comprobante.puntoVenta, 4) }} - {{ agregarCerosAdelante(comprobante.numeroComprobante, 8) }}</td>
             </tr>
           </tbody>
         </table>

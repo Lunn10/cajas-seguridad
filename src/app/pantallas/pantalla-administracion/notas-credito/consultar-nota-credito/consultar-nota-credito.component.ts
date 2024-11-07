@@ -100,7 +100,7 @@ export class ConsultarNotaCreditoComponent {
       return;
     }
 
-    this._peticionesHttp.consultarFacturas(this.formularioConsultarNotaCredito).subscribe({
+    this._peticionesHttp.consultarNotasCredito(this.formularioConsultarNotaCredito).subscribe({
       next: (data) => {
         if(data.error) {
           this._peticionesHttp.setRespuestaServer(data.message);

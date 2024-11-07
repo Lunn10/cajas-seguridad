@@ -441,10 +441,47 @@ export class PeticionesHttpService {
     }
 
     if(datosConsulta.value.numeroNotaCredito) {
-      data.numeroNotaCredito = datosConsulta.value.numeroFactura;
+      data.numeroNotaCredito = datosConsulta.value.numeroNotaCredito;
     }
 
     return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/getcreditnotes', data);
+  }
+
+  public consultarNotasDebito(datosConsulta : FormGroup) {
+    let data = {
+      id: null,
+      cliente: null,
+      fechaDesde: null,
+      fechaHasta: null,
+      puntoVenta: null,
+      numeroNotaDebito: null
+    };
+
+    if(datosConsulta.value.id) {
+      data.id = datosConsulta.value.id;
+    }
+
+    if(datosConsulta.value.cliente) {
+      data.cliente = datosConsulta.value.cliente;
+    }
+
+    if(datosConsulta.value.fechaFacturaDesde) {
+      data.fechaDesde = datosConsulta.value.fechaFacturaDesde;
+    }
+
+    if(datosConsulta.value.fechaFacturaHasta) {
+      data.fechaHasta = datosConsulta.value.fechaFacturaHasta;
+    }
+
+    if(datosConsulta.value.puntoVenta) {
+      data.puntoVenta = datosConsulta.value.puntoVenta;
+    }
+
+    if(datosConsulta.value.numeroNotaDebito) {
+      data.numeroNotaDebito = datosConsulta.value.numeroNotaDebito;
+    }
+
+    return this._httpClient.post<IRespuestaServer>(this.IP_SERVER + '/ticket/getdebitnotes', data);
   }
 
   public obtenerFacturasImpagas(datosConsulta : FormGroup) {

@@ -7,15 +7,16 @@
         <div class="contenedor-titulo-lista">
             <div class="titulo">
                 <h2>Lista de precios número: {{ultimaLista.id}}</h2>
-              </div>
-              <div class="descripcion">
+            </div>
+            <div class="descripcion">
                 <p>Porcentaje aumentado: {{ultimaLista.porcentaje}}%</p>
-              </div>
-              <div class="fecha">
+            </div>
+            <div class="fecha">
                 <p>Fecha: {{ ultimaLista.fecha | date:'dd/MM/yyyy' }}</p>
-              </div>
+            </div>
         </div>
-        <div *ngFor="let articulo of listaArticulos" class="contenedor-articulo">
+
+        <div *ngFor="let articulo of listaArticulos" class="contenedor-articulo {{claseSegunTipoArticulo(articulo.tipoArticulo)}} ">
             <div class="contenedor-nombre-articulo">
                 {{articulo.nombre | uppercase}}
             </div>
